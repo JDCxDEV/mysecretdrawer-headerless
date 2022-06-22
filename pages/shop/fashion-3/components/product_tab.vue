@@ -11,14 +11,14 @@
             <div class="theme-tab">
               <b-tabs content-class="mt-3">
                 <b-tab
-                  :title="collection"
+                  :title="collection.name"
                   v-for="(collection,index) in category"
                   :key="index"
                 >
                   <div class="no-slider row">
                     <div
                       class="product-box"
-                      v-for="(product,index) in getCategoryProduct(collection)"
+                      v-for="(product,index) in products"
                       :key="index"
                     >
                     <productBox1
@@ -43,8 +43,10 @@
 </template>
 <script type="text/javascript">
 import productBox1 from '../../../../components/product-box/product-box1'
+import CoCartAPI from "@cocart/cocart-rest-api";
+import axios from 'axios'
+
 export default {
-  props: ['products', 'category'],
   components: {
     productBox1
   },
@@ -59,13 +61,39 @@ export default {
       comapreproduct: {},
       cartproduct: {},
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 0,
+      category: [],
+      products: [],
     }
   },
+
+  mounted() {
+    this.init();
+  },
+
   methods: {
+    init() {
+      this.fetchCategories();
+    },
+    fetchProducts() {
+     axios
+      .get('http://dev-msd.com/wp-json/cocart/v2/products')
+      .then((response) => { 
+          this.products = response.data.products;
+       })
+    },
+
+    fetchCategories() {
+     axios
+      .get('http://dev-msd.com/wp-json/cocart/v2/products/categories')
+      .then((response) => { 
+          this.category = response.data;
+          this.fetchProducts();
+       })
+    },
     getCategoryProduct(collection) {
       return this.products.filter((item) => {
-        if (item.collection.find(i => i === collection)) {
+        if (item.categories.find(i => i.id === collection.id)) {
           return item
         }
       })

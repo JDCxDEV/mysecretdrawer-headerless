@@ -4,206 +4,206 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _6c8f5a4a = () => interopDefault(import('..\\pages\\blog\\blog-detail.vue' /* webpackChunkName: "pages/blog/blog-detail" */))
-const _ad7c174a = () => interopDefault(import('..\\pages\\blog\\blog-leftsidebar.vue' /* webpackChunkName: "pages/blog/blog-leftsidebar" */))
-const _2ad42c3e = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
-const _407f3f4a = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
-const _1f650715 = () => interopDefault(import('..\\pages\\collection\\full-width.vue' /* webpackChunkName: "pages/collection/full-width" */))
-const _ca924e12 = () => interopDefault(import('..\\pages\\collection\\list-view.vue' /* webpackChunkName: "pages/collection/list-view" */))
-const _19f5fa9c = () => interopDefault(import('..\\pages\\collection\\metro.vue' /* webpackChunkName: "pages/collection/metro" */))
-const _48875d46 = () => interopDefault(import('..\\pages\\collection\\no-sidebar.vue' /* webpackChunkName: "pages/collection/no-sidebar" */))
-const _079f23a4 = () => interopDefault(import('..\\pages\\collection\\right-sidebar.vue' /* webpackChunkName: "pages/collection/right-sidebar" */))
-const _d1e0e704 = () => interopDefault(import('..\\pages\\collection\\sidebar-popup.vue' /* webpackChunkName: "pages/collection/sidebar-popup" */))
-const _2b2fc41e = () => interopDefault(import('..\\pages\\collection\\six-grid.vue' /* webpackChunkName: "pages/collection/six-grid" */))
-const _0ee795a2 = () => interopDefault(import('..\\pages\\collection\\three-grid.vue' /* webpackChunkName: "pages/collection/three-grid" */))
-const _0914d3ea = () => interopDefault(import('..\\pages\\page\\404.vue' /* webpackChunkName: "pages/page/404" */))
-const _1b2d5d3f = () => interopDefault(import('..\\pages\\page\\about.vue' /* webpackChunkName: "pages/page/about" */))
-const _9a218648 = () => interopDefault(import('..\\pages\\page\\collection.vue' /* webpackChunkName: "pages/page/collection" */))
-const _f6fd040e = () => interopDefault(import('..\\pages\\page\\coming-soon.vue' /* webpackChunkName: "pages/page/coming-soon" */))
-const _95f51270 = () => interopDefault(import('..\\pages\\page\\faq.vue' /* webpackChunkName: "pages/page/faq" */))
-const _5c9a5674 = () => interopDefault(import('..\\pages\\page\\lookbook.vue' /* webpackChunkName: "pages/page/lookbook" */))
-const _edcdae94 = () => interopDefault(import('..\\pages\\page\\order-success.vue' /* webpackChunkName: "pages/page/order-success" */))
-const _f25648d4 = () => interopDefault(import('..\\pages\\page\\review.vue' /* webpackChunkName: "pages/page/review" */))
-const _64febc34 = () => interopDefault(import('..\\pages\\page\\search.vue' /* webpackChunkName: "pages/page/search" */))
-const _2b1052ed = () => interopDefault(import('..\\pages\\page\\typography.vue' /* webpackChunkName: "pages/page/typography" */))
-const _57f657b4 = () => interopDefault(import('..\\pages\\product\\bundle-product.vue' /* webpackChunkName: "pages/product/bundle-product" */))
-const _62fac304 = () => interopDefault(import('..\\pages\\product\\four-image.vue' /* webpackChunkName: "pages/product/four-image" */))
-const _4c327d32 = () => interopDefault(import('..\\pages\\shop\\bags\\index.vue' /* webpackChunkName: "pages/shop/bags/index" */))
-const _7f22b4c1 = () => interopDefault(import('..\\pages\\shop\\beauty\\index.vue' /* webpackChunkName: "pages/shop/beauty/index" */))
-const _23b5277c = () => interopDefault(import('..\\pages\\shop\\electronics-1\\index.vue' /* webpackChunkName: "pages/shop/electronics-1/index" */))
-const _76237cbf = () => interopDefault(import('..\\pages\\shop\\fashion\\index.vue' /* webpackChunkName: "pages/shop/fashion/index" */))
-const _7957ccba = () => interopDefault(import('..\\pages\\shop\\fashion-2\\index.vue' /* webpackChunkName: "pages/shop/fashion-2/index" */))
-const _fded1bce = () => interopDefault(import('..\\pages\\shop\\fashion-3\\index.vue' /* webpackChunkName: "pages/shop/fashion-3/index" */))
-const _6af9b982 = () => interopDefault(import('..\\pages\\shop\\flower\\index.vue' /* webpackChunkName: "pages/shop/flower/index" */))
-const _6a1f0b05 = () => interopDefault(import('..\\pages\\shop\\furniture\\index.vue' /* webpackChunkName: "pages/shop/furniture/index" */))
-const _dbde7148 = () => interopDefault(import('..\\pages\\shop\\gym\\index.vue' /* webpackChunkName: "pages/shop/gym/index" */))
-const _fe8103d8 = () => interopDefault(import('..\\pages\\shop\\jewellery\\index.vue' /* webpackChunkName: "pages/shop/jewellery/index" */))
-const _8f631a20 = () => interopDefault(import('..\\pages\\shop\\kids\\index.vue' /* webpackChunkName: "pages/shop/kids/index" */))
-const _4b5e706e = () => interopDefault(import('..\\pages\\shop\\pets\\index.vue' /* webpackChunkName: "pages/shop/pets/index" */))
-const _623d8e62 = () => interopDefault(import('..\\pages\\shop\\shoes\\index.vue' /* webpackChunkName: "pages/shop/shoes/index" */))
-const _a9efa808 = () => interopDefault(import('..\\pages\\shop\\tools\\index.vue' /* webpackChunkName: "pages/shop/tools/index" */))
-const _4e0f118b = () => interopDefault(import('..\\pages\\shop\\vegetables\\index.vue' /* webpackChunkName: "pages/shop/vegetables/index" */))
-const _17d59088 = () => interopDefault(import('..\\pages\\shop\\watch\\index.vue' /* webpackChunkName: "pages/shop/watch/index" */))
-const _685928ab = () => interopDefault(import('..\\pages\\blog\\widgets\\blog-list.vue' /* webpackChunkName: "pages/blog/widgets/blog-list" */))
-const _063d1b5f = () => interopDefault(import('..\\pages\\blog\\widgets\\blog-sidebar.vue' /* webpackChunkName: "pages/blog/widgets/blog-sidebar" */))
-const _11610a82 = () => interopDefault(import('..\\pages\\page\\account\\cart.vue' /* webpackChunkName: "pages/page/account/cart" */))
-const _ca722336 = () => interopDefault(import('..\\pages\\page\\account\\checkout.vue' /* webpackChunkName: "pages/page/account/checkout" */))
-const _3e5bf851 = () => interopDefault(import('..\\pages\\page\\account\\contact.vue' /* webpackChunkName: "pages/page/account/contact" */))
-const _07b96285 = () => interopDefault(import('..\\pages\\page\\account\\dashboard.vue' /* webpackChunkName: "pages/page/account/dashboard" */))
-const _5a6fbc2c = () => interopDefault(import('..\\pages\\page\\account\\forget-password.vue' /* webpackChunkName: "pages/page/account/forget-password" */))
-const _fbd8ed4c = () => interopDefault(import('..\\pages\\page\\account\\login.vue' /* webpackChunkName: "pages/page/account/login" */))
-const _6e60114a = () => interopDefault(import('..\\pages\\page\\account\\login-firebase.vue' /* webpackChunkName: "pages/page/account/login-firebase" */))
-const _4683715a = () => interopDefault(import('..\\pages\\page\\account\\profile.vue' /* webpackChunkName: "pages/page/account/profile" */))
-const _44644d7c = () => interopDefault(import('..\\pages\\page\\account\\register.vue' /* webpackChunkName: "pages/page/account/register" */))
-const _31f8ff64 = () => interopDefault(import('..\\pages\\page\\account\\wishlist.vue' /* webpackChunkName: "pages/page/account/wishlist" */))
-const _539d8dfc = () => interopDefault(import('..\\pages\\page\\compare\\compare-1.vue' /* webpackChunkName: "pages/page/compare/compare-1" */))
-const _53815efa = () => interopDefault(import('..\\pages\\page\\compare\\compare-2.vue' /* webpackChunkName: "pages/page/compare/compare-2" */))
-const _4dee495a = () => interopDefault(import('..\\pages\\page\\element\\banner.vue' /* webpackChunkName: "pages/page/element/banner" */))
-const _88b17ea8 = () => interopDefault(import('..\\pages\\page\\element\\category.vue' /* webpackChunkName: "pages/page/element/category" */))
-const _802dfa06 = () => interopDefault(import('..\\pages\\page\\element\\collection-banner.vue' /* webpackChunkName: "pages/page/element/collection-banner" */))
-const _2b2858d1 = () => interopDefault(import('..\\pages\\page\\element\\home-slider.vue' /* webpackChunkName: "pages/page/element/home-slider" */))
-const _48745085 = () => interopDefault(import('..\\pages\\page\\element\\logo-slider.vue' /* webpackChunkName: "pages/page/element/logo-slider" */))
-const _1687a123 = () => interopDefault(import('..\\pages\\page\\element\\multi-slider.vue' /* webpackChunkName: "pages/page/element/multi-slider" */))
-const _f68223a6 = () => interopDefault(import('..\\pages\\page\\element\\product-slider.vue' /* webpackChunkName: "pages/page/element/product-slider" */))
-const _7a014f4a = () => interopDefault(import('..\\pages\\page\\element\\product-tabs.vue' /* webpackChunkName: "pages/page/element/product-tabs" */))
-const _71323bf7 = () => interopDefault(import('..\\pages\\page\\element\\service.vue' /* webpackChunkName: "pages/page/element/service" */))
-const _ea9b74a4 = () => interopDefault(import('..\\pages\\page\\portfolio\\masonary-fullwidth.vue' /* webpackChunkName: "pages/page/portfolio/masonary-fullwidth" */))
-const _6ebd5360 = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-2.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-2" */))
-const _6ecb6ae1 = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-3.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-3" */))
-const _6ed98262 = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-4.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-4" */))
-const _15d9c3d4 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-2-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-2-col" */))
-const _ed50e5d2 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-3-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-3-col" */))
-const _1d9bfc18 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-4-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-4-col" */))
-const _b891b168 = () => interopDefault(import('..\\pages\\product\\sidebar\\no-sidebar.vue' /* webpackChunkName: "pages/product/sidebar/no-sidebar" */))
-const _4993c442 = () => interopDefault(import('..\\pages\\product\\sidebar\\right-sidebar.vue' /* webpackChunkName: "pages/product/sidebar/right-sidebar" */))
-const _6dedb93e = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-bottom.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-bottom" */))
-const _d5f36a86 = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-left.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-left" */))
-const _490826d6 = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-right.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-right" */))
-const _4e1eac6e = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\image-outside.vue' /* webpackChunkName: "pages/product/thumbnail-image/image-outside" */))
-const _0dcca922 = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\left-image.vue' /* webpackChunkName: "pages/product/thumbnail-image/left-image" */))
-const _80f67e00 = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\right-image.vue' /* webpackChunkName: "pages/product/thumbnail-image/right-image" */))
-const _41be4e80 = () => interopDefault(import('..\\pages\\page\\account\\auth\\auth.js' /* webpackChunkName: "pages/page/account/auth/auth" */))
-const _19456392 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\banner.vue' /* webpackChunkName: "pages/shop/bags/components/banner" */))
-const _774ef6f0 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\blog.vue' /* webpackChunkName: "pages/shop/bags/components/blog" */))
-const _0da0ace4 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\category.vue' /* webpackChunkName: "pages/shop/bags/components/category" */))
-const _b2e6ce04 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\category2.vue' /* webpackChunkName: "pages/shop/bags/components/category2" */))
-const _2ef2f1e1 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\categorytab.vue' /* webpackChunkName: "pages/shop/bags/components/categorytab" */))
-const _7eb42ebc = () => interopDefault(import('..\\pages\\shop\\bags\\components\\instagram.vue' /* webpackChunkName: "pages/shop/bags/components/instagram" */))
-const _369bfc18 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\productcategoryslider.vue' /* webpackChunkName: "pages/shop/bags/components/productcategoryslider" */))
-const _3143159a = () => interopDefault(import('..\\pages\\shop\\bags\\components\\productslider.vue' /* webpackChunkName: "pages/shop/bags/components/productslider" */))
-const _0aba5044 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\services.vue' /* webpackChunkName: "pages/shop/bags/components/services" */))
-const _ce9b0a72 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\slider.vue' /* webpackChunkName: "pages/shop/bags/components/slider" */))
-const _286871b4 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\about.vue' /* webpackChunkName: "pages/shop/beauty/components/about" */))
-const _5ba964ce = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\blog.vue' /* webpackChunkName: "pages/shop/beauty/components/blog" */))
-const _5f39684b = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\instagram.vue' /* webpackChunkName: "pages/shop/beauty/components/instagram" */))
-const _4e2fb836 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/beauty/components/product-slider" */))
-const _7cf74398 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\slider.vue' /* webpackChunkName: "pages/shop/beauty/components/slider" */))
-const _1cf867a4 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\top-product-slider.vue' /* webpackChunkName: "pages/shop/beauty/components/top-product-slider" */))
-const _5b0dd0a7 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\video-tutorial.vue' /* webpackChunkName: "pages/shop/beauty/components/video-tutorial" */))
-const _511fabc1 = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/electronics-1/components/collection_banner" */))
-const _a30fadce = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/electronics-1/components/product_tab" */))
-const _167058bd = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\slider.vue' /* webpackChunkName: "pages/shop/electronics-1/components/slider" */))
-const _c168ddec = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion-2/components/banner" */))
-const _a08ab708 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\collection.vue' /* webpackChunkName: "pages/shop/fashion-2/components/collection" */))
-const _716b0d4d = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/fashion-2/components/collection-banner" */))
-const _07996e44 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\instagram.vue' /* webpackChunkName: "pages/shop/fashion-2/components/instagram" */))
-const _65864381 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\product.vue' /* webpackChunkName: "pages/shop/fashion-2/components/product" */))
-const _1eb8a83f = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion-2/components/slider" */))
-const _237bde0b = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion-3/components/banner" */))
-const _b517a8e0 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/fashion-3/components/product_slider" */))
-const _408be676 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/fashion-3/components/product_tab" */))
-const _ba2e1580 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion-3/components/slider" */))
-const _2f5a5db6 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion/components/banner" */))
-const _34fa3adb = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\blog.vue' /* webpackChunkName: "pages/shop/fashion/components/blog" */))
-const _5bc32804 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/fashion/components/collection_banner" */))
-const _6a567449 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\instagram.vue' /* webpackChunkName: "pages/shop/fashion/components/instagram" */))
-const _59ded94c = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/logo_slider" */))
-const _389b64aa = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/product_slider" */))
-const _311a58c8 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/fashion/components/product_tab" */))
-const _4c22a517 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\services.vue' /* webpackChunkName: "pages/shop/fashion/components/services" */))
-const _67bfe85a = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion/components/slider" */))
-const _7d777638 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\blog.vue' /* webpackChunkName: "pages/shop/flower/components/blog" */))
-const _2eba7c6a = () => interopDefault(import('..\\pages\\shop\\flower\\components\\category_tab.vue' /* webpackChunkName: "pages/shop/flower/components/category_tab" */))
-const _9d1fe872 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/flower/components/collection_banner" */))
-const _3498cb0c = () => interopDefault(import('..\\pages\\shop\\flower\\components\\instagram.vue' /* webpackChunkName: "pages/shop/flower/components/instagram" */))
-const _d5c06072 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/flower/components/product_slider" */))
-const _52a8e9f4 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\services.vue' /* webpackChunkName: "pages/shop/flower/components/services" */))
-const _f4487f12 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\slider.vue' /* webpackChunkName: "pages/shop/flower/components/slider" */))
-const _7dbfc3a4 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\top_products.vue' /* webpackChunkName: "pages/shop/flower/components/top_products" */))
-const _2a6d24d5 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\blog.vue' /* webpackChunkName: "pages/shop/furniture/components/blog" */))
-const _efcb83f2 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\category_tab.vue' /* webpackChunkName: "pages/shop/furniture/components/category_tab" */))
-const _82ac776c = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/collection_banner" */))
-const _8a44a61e = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\parallax_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/parallax_banner" */))
-const _67bf8858 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\slider.vue' /* webpackChunkName: "pages/shop/furniture/components/slider" */))
-const _64ad1c1e = () => interopDefault(import('..\\pages\\shop\\gym\\components\\blog.vue' /* webpackChunkName: "pages/shop/gym/components/blog" */))
-const _98327c22 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/gym/components/collection-banner" */))
-const _c2c63634 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\instagram.vue' /* webpackChunkName: "pages/shop/gym/components/instagram" */))
-const _fcbea612 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\logo-slider.vue' /* webpackChunkName: "pages/shop/gym/components/logo-slider" */))
-const _28cd2390 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\product-list.vue' /* webpackChunkName: "pages/shop/gym/components/product-list" */))
-const _763f84dd = () => interopDefault(import('..\\pages\\shop\\gym\\components\\slider.vue' /* webpackChunkName: "pages/shop/gym/components/slider" */))
-const _3aafe792 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\top-collection.vue' /* webpackChunkName: "pages/shop/gym/components/top-collection" */))
-const _9f8ce87c = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\category.vue' /* webpackChunkName: "pages/shop/jewellery/components/category" */))
-const _2f372b9e = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\instagram.vue' /* webpackChunkName: "pages/shop/jewellery/components/instagram" */))
-const _b4da1de4 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\parallax-banner.vue' /* webpackChunkName: "pages/shop/jewellery/components/parallax-banner" */))
-const _42f610c3 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/jewellery/components/product-slider" */))
-const _a5ef73ba = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\product-tab.vue' /* webpackChunkName: "pages/shop/jewellery/components/product-tab" */))
-const _a559a1bc = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\services.vue' /* webpackChunkName: "pages/shop/jewellery/components/services" */))
-const _57117925 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\slider.vue' /* webpackChunkName: "pages/shop/jewellery/components/slider" */))
-const _11aa4996 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/kids/components/collection_banner" */))
-const _7697f26a = () => interopDefault(import('..\\pages\\shop\\kids\\components\\collection_slider.vue' /* webpackChunkName: "pages/shop/kids/components/collection_slider" */))
-const _774e2f0c = () => interopDefault(import('..\\pages\\shop\\kids\\components\\instagram.vue' /* webpackChunkName: "pages/shop/kids/components/instagram" */))
-const _3d15053d = () => interopDefault(import('..\\pages\\shop\\kids\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/kids/components/logo_slider" */))
-const _8804fac8 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\parallax_banner.vue' /* webpackChunkName: "pages/shop/kids/components/parallax_banner" */))
-const _159ee719 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/kids/components/product_slider" */))
-const _55ef6c6e = () => interopDefault(import('..\\pages\\shop\\kids\\components\\slider.vue' /* webpackChunkName: "pages/shop/kids/components/slider" */))
-const _89def4de = () => interopDefault(import('..\\pages\\shop\\pets\\components\\blog.vue' /* webpackChunkName: "pages/shop/pets/components/blog" */))
-const _f690e948 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/pets/components/collection-banner" */))
-const _692767b8 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\logo-slider.vue' /* webpackChunkName: "pages/shop/pets/components/logo-slider" */))
-const _b3ae55fa = () => interopDefault(import('..\\pages\\shop\\pets\\components\\parallax-banner.vue' /* webpackChunkName: "pages/shop/pets/components/parallax-banner" */))
-const _7cc95a2e = () => interopDefault(import('..\\pages\\shop\\pets\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/pets/components/product-slider" */))
-const _7d2344e0 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\slider.vue' /* webpackChunkName: "pages/shop/pets/components/slider" */))
-const _3d3f4576 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\top-collection.vue' /* webpackChunkName: "pages/shop/pets/components/top-collection" */))
-const _290ea634 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\about.vue' /* webpackChunkName: "pages/shop/shoes/components/about" */))
-const _36ad566a = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\blog.vue' /* webpackChunkName: "pages/shop/shoes/components/blog" */))
-const _49fb412e = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\brand.vue' /* webpackChunkName: "pages/shop/shoes/components/brand" */))
-const _068cb8b2 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category.vue' /* webpackChunkName: "pages/shop/shoes/components/category" */))
-const _cadb0aca = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category2.vue' /* webpackChunkName: "pages/shop/shoes/components/category2" */))
-const _cabedbc8 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category3.vue' /* webpackChunkName: "pages/shop/shoes/components/category3" */))
-const _c933021a = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectionbanner.vue' /* webpackChunkName: "pages/shop/shoes/components/collectionbanner" */))
-const _1ad39628 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectionslider.vue' /* webpackChunkName: "pages/shop/shoes/components/collectionslider" */))
-const _3c237a44 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectiontab.vue' /* webpackChunkName: "pages/shop/shoes/components/collectiontab" */))
-const _72ba1059 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\instagram.vue' /* webpackChunkName: "pages/shop/shoes/components/instagram" */))
-const _7ce6bcd7 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\productSlider.vue' /* webpackChunkName: "pages/shop/shoes/components/productSlider" */))
-const _a5cbe4c8 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\service.vue' /* webpackChunkName: "pages/shop/shoes/components/service" */))
-const _2fdf736c = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\slider.vue' /* webpackChunkName: "pages/shop/shoes/components/slider" */))
-const _48693de1 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\about.vue' /* webpackChunkName: "pages/shop/tools/components/about" */))
-const _a7db5e4c = () => interopDefault(import('..\\pages\\shop\\tools\\components\\category.vue' /* webpackChunkName: "pages/shop/tools/components/category" */))
-const _182f1349 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/tools/components/logo_slider" */))
-const _1dfca3db = () => interopDefault(import('..\\pages\\shop\\tools\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/tools/components/product-slider" */))
-const _34def013 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\product-tab-slider.vue' /* webpackChunkName: "pages/shop/tools/components/product-tab-slider" */))
-const _67211b69 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\select-vehical.vue' /* webpackChunkName: "pages/shop/tools/components/select-vehical" */))
-const _602d6e09 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\service.vue' /* webpackChunkName: "pages/shop/tools/components/service" */))
-const _97eeb786 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\slider.vue' /* webpackChunkName: "pages/shop/tools/components/slider" */))
-const _88d7304e = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\banner.vue' /* webpackChunkName: "pages/shop/vegetables/components/banner" */))
-const _bd4c22e2 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\blog.vue' /* webpackChunkName: "pages/shop/vegetables/components/blog" */))
-const _d7f5f144 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/vegetables/components/product_slider" */))
-const _55595ecb = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\services.vue' /* webpackChunkName: "pages/shop/vegetables/components/services" */))
-const _3b017f0e = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\slider.vue' /* webpackChunkName: "pages/shop/vegetables/components/slider" */))
-const _6a576597 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\special_products.vue' /* webpackChunkName: "pages/shop/vegetables/components/special_products" */))
-const _29c91f72 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\blog.vue' /* webpackChunkName: "pages/shop/watch/components/blog" */))
-const _7bd47a64 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\category.vue' /* webpackChunkName: "pages/shop/watch/components/category" */))
-const _59dafc4c = () => interopDefault(import('..\\pages\\shop\\watch\\components\\categorytabs.vue' /* webpackChunkName: "pages/shop/watch/components/categorytabs" */))
-const _731bfd49 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\collectionbanners.vue' /* webpackChunkName: "pages/shop/watch/components/collectionbanners" */))
-const _58e1d612 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\instagram.vue' /* webpackChunkName: "pages/shop/watch/components/instagram" */))
-const _59ce2656 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/watch/components/logo_slider" */))
-const _f3fa8efe = () => interopDefault(import('..\\pages\\shop\\watch\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/watch/components/product_slider" */))
-const _81a133a4 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\services.vue' /* webpackChunkName: "pages/shop/watch/components/services" */))
-const _64680331 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\slider.vue' /* webpackChunkName: "pages/shop/watch/components/slider" */))
-const _17256336 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\timer_banner.vue' /* webpackChunkName: "pages/shop/watch/components/timer_banner" */))
-const _0dd992de = () => interopDefault(import('..\\pages\\shop\\watch\\components\\top_products.vue' /* webpackChunkName: "pages/shop/watch/components/top_products" */))
-const _367259b2 = () => interopDefault(import('..\\pages\\collection\\leftsidebar\\_id.vue' /* webpackChunkName: "pages/collection/leftsidebar/_id" */))
-const _4c70ce6e = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
-const _2da85f9a = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _4a16a73b = () => interopDefault(import('..\\pages\\blog\\blog-detail.vue' /* webpackChunkName: "pages/blog/blog-detail" */))
+const _a2ed480a = () => interopDefault(import('..\\pages\\blog\\blog-leftsidebar.vue' /* webpackChunkName: "pages/blog/blog-leftsidebar" */))
+const _4bd2b981 = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
+const _37b668ac = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
+const _24ac6eb5 = () => interopDefault(import('..\\pages\\collection\\full-width.vue' /* webpackChunkName: "pages/collection/full-width" */))
+const _6113fd57 = () => interopDefault(import('..\\pages\\collection\\list-view.vue' /* webpackChunkName: "pages/collection/list-view" */))
+const _cb576208 = () => interopDefault(import('..\\pages\\collection\\metro.vue' /* webpackChunkName: "pages/collection/metro" */))
+const _3df88e06 = () => interopDefault(import('..\\pages\\collection\\no-sidebar.vue' /* webpackChunkName: "pages/collection/no-sidebar" */))
+const _4ca4628e = () => interopDefault(import('..\\pages\\collection\\right-sidebar.vue' /* webpackChunkName: "pages/collection/right-sidebar" */))
+const _30f8fe44 = () => interopDefault(import('..\\pages\\collection\\sidebar-popup.vue' /* webpackChunkName: "pages/collection/sidebar-popup" */))
+const _e726d884 = () => interopDefault(import('..\\pages\\collection\\six-grid.vue' /* webpackChunkName: "pages/collection/six-grid" */))
+const _142efd42 = () => interopDefault(import('..\\pages\\collection\\three-grid.vue' /* webpackChunkName: "pages/collection/three-grid" */))
+const _0c84ef6c = () => interopDefault(import('..\\pages\\page\\404.vue' /* webpackChunkName: "pages/page/404" */))
+const _f70b0cc2 = () => interopDefault(import('..\\pages\\page\\about.vue' /* webpackChunkName: "pages/page/about" */))
+const _7d44dc7c = () => interopDefault(import('..\\pages\\page\\collection.vue' /* webpackChunkName: "pages/page/collection" */))
+const _04dfd259 = () => interopDefault(import('..\\pages\\page\\coming-soon.vue' /* webpackChunkName: "pages/page/coming-soon" */))
+const _b4a3a9b0 = () => interopDefault(import('..\\pages\\page\\faq.vue' /* webpackChunkName: "pages/page/faq" */))
+const _53a84734 = () => interopDefault(import('..\\pages\\page\\lookbook.vue' /* webpackChunkName: "pages/page/lookbook" */))
+const _6b33e516 = () => interopDefault(import('..\\pages\\page\\order-success.vue' /* webpackChunkName: "pages/page/order-success" */))
+const _472b4b36 = () => interopDefault(import('..\\pages\\page\\review.vue' /* webpackChunkName: "pages/page/review" */))
+const _e451dcf4 = () => interopDefault(import('..\\pages\\page\\search.vue' /* webpackChunkName: "pages/page/search" */))
+const _15341ae6 = () => interopDefault(import('..\\pages\\page\\typography.vue' /* webpackChunkName: "pages/page/typography" */))
+const _08c837d8 = () => interopDefault(import('..\\pages\\product\\bundle-product.vue' /* webpackChunkName: "pages/product/bundle-product" */))
+const _45157f64 = () => interopDefault(import('..\\pages\\product\\four-image.vue' /* webpackChunkName: "pages/product/four-image" */))
+const _66de5cdc = () => interopDefault(import('..\\pages\\shop\\bags\\index.vue' /* webpackChunkName: "pages/shop/bags/index" */))
+const _613d7121 = () => interopDefault(import('..\\pages\\shop\\beauty\\index.vue' /* webpackChunkName: "pages/shop/beauty/index" */))
+const _3c8081c8 = () => interopDefault(import('..\\pages\\shop\\electronics-1\\index.vue' /* webpackChunkName: "pages/shop/electronics-1/index" */))
+const _513f6742 = () => interopDefault(import('..\\pages\\shop\\fashion\\index.vue' /* webpackChunkName: "pages/shop/fashion/index" */))
+const _7e9f345a = () => interopDefault(import('..\\pages\\shop\\fashion-2\\index.vue' /* webpackChunkName: "pages/shop/fashion-2/index" */))
+const _f35e4c8e = () => interopDefault(import('..\\pages\\shop\\fashion-3\\index.vue' /* webpackChunkName: "pages/shop/fashion-3/index" */))
+const _4d1475e2 = () => interopDefault(import('..\\pages\\shop\\flower\\index.vue' /* webpackChunkName: "pages/shop/flower/index" */))
+const _6f6672a5 = () => interopDefault(import('..\\pages\\shop\\furniture\\index.vue' /* webpackChunkName: "pages/shop/furniture/index" */))
+const _5c6666fc = () => interopDefault(import('..\\pages\\shop\\gym\\index.vue' /* webpackChunkName: "pages/shop/gym/index" */))
+const _f3f23498 = () => interopDefault(import('..\\pages\\shop\\jewellery\\index.vue' /* webpackChunkName: "pages/shop/jewellery/index" */))
+const _38acc750 = () => interopDefault(import('..\\pages\\shop\\kids\\index.vue' /* webpackChunkName: "pages/shop/kids/index" */))
+const _5aaf1c29 = () => interopDefault(import('..\\pages\\shop\\pets\\index.vue' /* webpackChunkName: "pages/shop/pets/index" */))
+const _5a4d706f = () => interopDefault(import('..\\pages\\shop\\shoes\\index.vue' /* webpackChunkName: "pages/shop/shoes/index" */))
+const _3674639c = () => interopDefault(import('..\\pages\\shop\\tools\\index.vue' /* webpackChunkName: "pages/shop/tools/index" */))
+const _1c96c42a = () => interopDefault(import('..\\pages\\shop\\vegetables\\index.vue' /* webpackChunkName: "pages/shop/vegetables/index" */))
+const _b97c6fb0 = () => interopDefault(import('..\\pages\\shop\\watch\\index.vue' /* webpackChunkName: "pages/shop/watch/index" */))
+const _3965284b = () => interopDefault(import('..\\pages\\blog\\widgets\\blog-list.vue' /* webpackChunkName: "pages/blog/widgets/blog-list" */))
+const _098577bf = () => interopDefault(import('..\\pages\\blog\\widgets\\blog-sidebar.vue' /* webpackChunkName: "pages/blog/widgets/blog-sidebar" */))
+const _4d2b91c2 = () => interopDefault(import('..\\pages\\page\\account\\cart.vue' /* webpackChunkName: "pages/page/account/cart" */))
+const _3e6c7ac5 = () => interopDefault(import('..\\pages\\page\\account\\checkout.vue' /* webpackChunkName: "pages/page/account/checkout" */))
+const _43a35ff1 = () => interopDefault(import('..\\pages\\page\\account\\contact.vue' /* webpackChunkName: "pages/page/account/contact" */))
+const _4e753bb6 = () => interopDefault(import('..\\pages\\page\\account\\dashboard.vue' /* webpackChunkName: "pages/page/account/dashboard" */))
+const _5c2583cc = () => interopDefault(import('..\\pages\\page\\account\\forget-password.vue' /* webpackChunkName: "pages/page/account/forget-password" */))
+const _395f4e0c = () => interopDefault(import('..\\pages\\page\\account\\login.vue' /* webpackChunkName: "pages/page/account/login" */))
+const _7dfa54ac = () => interopDefault(import('..\\pages\\page\\account\\login-firebase.vue' /* webpackChunkName: "pages/page/account/login-firebase" */))
+const _4bcad8fa = () => interopDefault(import('..\\pages\\page\\account\\profile.vue' /* webpackChunkName: "pages/page/account/profile" */))
+const _fd1934bc = () => interopDefault(import('..\\pages\\page\\account\\register.vue' /* webpackChunkName: "pages/page/account/register" */))
+const _54c2e878 = () => interopDefault(import('..\\pages\\page\\account\\wishlist.vue' /* webpackChunkName: "pages/page/account/wishlist" */))
+const _b1858ebc = () => interopDefault(import('..\\pages\\page\\compare\\compare-1.vue' /* webpackChunkName: "pages/page/compare/compare-1" */))
+const _b1695fba = () => interopDefault(import('..\\pages\\page\\compare\\compare-2.vue' /* webpackChunkName: "pages/page/compare/compare-2" */))
+const _144b6dba = () => interopDefault(import('..\\pages\\page\\element\\banner.vue' /* webpackChunkName: "pages/page/element/banner" */))
+const _5f4ccd0c = () => interopDefault(import('..\\pages\\page\\element\\category.vue' /* webpackChunkName: "pages/page/element/category" */))
+const _2b4b629d = () => interopDefault(import('..\\pages\\page\\element\\collection-banner.vue' /* webpackChunkName: "pages/page/element/collection-banner" */))
+const _2d9a1f1e = () => interopDefault(import('..\\pages\\page\\element\\home-slider.vue' /* webpackChunkName: "pages/page/element/home-slider" */))
+const _067ee825 = () => interopDefault(import('..\\pages\\page\\element\\logo-slider.vue' /* webpackChunkName: "pages/page/element/logo-slider" */))
+const _19cffd83 = () => interopDefault(import('..\\pages\\page\\element\\multi-slider.vue' /* webpackChunkName: "pages/page/element/multi-slider" */))
+const _513c9ae6 = () => interopDefault(import('..\\pages\\page\\element\\product-slider.vue' /* webpackChunkName: "pages/page/element/product-slider" */))
+const _7d49abaa = () => interopDefault(import('..\\pages\\page\\element\\product-tabs.vue' /* webpackChunkName: "pages/page/element/product-tabs" */))
+const _7679a397 = () => interopDefault(import('..\\pages\\page\\element\\service.vue' /* webpackChunkName: "pages/page/element/service" */))
+const _10ef7be4 = () => interopDefault(import('..\\pages\\page\\portfolio\\masonary-fullwidth.vue' /* webpackChunkName: "pages/page/portfolio/masonary-fullwidth" */))
+const _4bc09a00 = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-2.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-2" */))
+const _4ba46afe = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-3.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-3" */))
+const _4b883bfc = () => interopDefault(import('..\\pages\\page\\portfolio\\mesonary-grid-4.vue' /* webpackChunkName: "pages/page/portfolio/mesonary-grid-4" */))
+const _60757db6 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-2-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-2-col" */))
+const _168c2692 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-3-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-3-col" */))
+const _ee034890 = () => interopDefault(import('..\\pages\\page\\portfolio\\portfolio-4-col.vue' /* webpackChunkName: "pages/page/portfolio/portfolio-4-col" */))
+const _097a56ec = () => interopDefault(import('..\\pages\\product\\sidebar\\no-sidebar.vue' /* webpackChunkName: "pages/product/sidebar/no-sidebar" */))
+const _10394a3f = () => interopDefault(import('..\\pages\\product\\sidebar\\right-sidebar.vue' /* webpackChunkName: "pages/product/sidebar/right-sidebar" */))
+const _b06c207e = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-bottom.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-bottom" */))
+const _244eaf1d = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-left.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-left" */))
+const _ba676314 = () => interopDefault(import('..\\pages\\product\\three-column\\thumbnail-right.vue' /* webpackChunkName: "pages/product/three-column/thumbnail-right" */))
+const _909d13ae = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\image-outside.vue' /* webpackChunkName: "pages/product/thumbnail-image/image-outside" */))
+const _27033b0f = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\left-image.vue' /* webpackChunkName: "pages/product/thumbnail-image/left-image" */))
+const _4ecd2560 = () => interopDefault(import('..\\pages\\product\\thumbnail-image\\right-image.vue' /* webpackChunkName: "pages/product/thumbnail-image/right-image" */))
+const _12ca4e20 = () => interopDefault(import('..\\pages\\page\\account\\auth\\auth.js' /* webpackChunkName: "pages/page/account/auth/auth" */))
+const _1afb2b32 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\banner.vue' /* webpackChunkName: "pages/shop/bags/components/banner" */))
+const _2a1bb428 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\blog.vue' /* webpackChunkName: "pages/shop/bags/components/blog" */))
+const _79030c84 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\category.vue' /* webpackChunkName: "pages/shop/bags/components/category" */))
+const _b113a544 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\category2.vue' /* webpackChunkName: "pages/shop/bags/components/category2" */))
+const _c86e237e = () => interopDefault(import('..\\pages\\shop\\bags\\components\\categorytab.vue' /* webpackChunkName: "pages/shop/bags/components/categorytab" */))
+const _7f9dc31c = () => interopDefault(import('..\\pages\\shop\\bags\\components\\instagram.vue' /* webpackChunkName: "pages/shop/bags/components/instagram" */))
+const _52ea0078 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\productcategoryslider.vue' /* webpackChunkName: "pages/shop/bags/components/productcategoryslider" */))
+const _7ee90c0c = () => interopDefault(import('..\\pages\\shop\\bags\\components\\productslider.vue' /* webpackChunkName: "pages/shop/bags/components/productslider" */))
+const _761cafe4 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\services.vue' /* webpackChunkName: "pages/shop/bags/components/services" */))
+const _cb2f7b32 = () => interopDefault(import('..\\pages\\shop\\bags\\components\\slider.vue' /* webpackChunkName: "pages/shop/bags/components/slider" */))
+const _20cef386 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\about.vue' /* webpackChunkName: "pages/shop/beauty/components/about" */))
+const _583dd58e = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\blog.vue' /* webpackChunkName: "pages/shop/beauty/components/blog" */))
+const _67e136aa = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\instagram.vue' /* webpackChunkName: "pages/shop/beauty/components/instagram" */))
+const _478877d6 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/beauty/components/product-slider" */))
+const _2f4cb990 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\slider.vue' /* webpackChunkName: "pages/shop/beauty/components/slider" */))
+const _0b33bbce = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\top-product-slider.vue' /* webpackChunkName: "pages/shop/beauty/components/top-product-slider" */))
+const _54669047 = () => interopDefault(import('..\\pages\\shop\\beauty\\components\\video-tutorial.vue' /* webpackChunkName: "pages/shop/beauty/components/video-tutorial" */))
+const _2cc56361 = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/electronics-1/components/collection_banner" */))
+const _6fafce8e = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/electronics-1/components/product_tab" */))
+const _159db5c6 = () => interopDefault(import('..\\pages\\shop\\electronics-1\\components\\slider.vue' /* webpackChunkName: "pages/shop/electronics-1/components/slider" */))
+const _0c218d6a = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion-2/components/banner" */))
+const _e3091e48 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\collection.vue' /* webpackChunkName: "pages/shop/fashion-2/components/collection" */))
+const _4244d626 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/fashion-2/components/collection-banner" */))
+const _615d95e4 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\instagram.vue' /* webpackChunkName: "pages/shop/fashion-2/components/instagram" */))
+const _d92059be = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\product.vue' /* webpackChunkName: "pages/shop/fashion-2/components/product" */))
+const _e8e2b6c2 = () => interopDefault(import('..\\pages\\shop\\fashion-2\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion-2/components/slider" */))
+const _df5c4b2a = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion-3/components/banner" */))
+const _6437c7f0 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/fashion-3/components/product_slider" */))
+const _39e4a616 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/fashion-3/components/product_tab" */))
+const _0fbef1a0 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion-3/components/slider" */))
+const _2d8734f6 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion/components/banner" */))
+const _69fd673b = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\blog.vue' /* webpackChunkName: "pages/shop/fashion/components/blog" */))
+const _757317a4 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/fashion/components/collection_banner" */))
+const _cf7ff82e = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\instagram.vue' /* webpackChunkName: "pages/shop/fashion/components/instagram" */))
+const _98b9fe28 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/logo_slider" */))
+const _6a5a990a = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/product_slider" */))
+const _4136fb3c = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\product_tab.vue' /* webpackChunkName: "pages/shop/fashion/components/product_tab" */))
+const _8e0ebd12 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\services.vue' /* webpackChunkName: "pages/shop/fashion/components/services" */))
+const _68a97cba = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\slider.vue' /* webpackChunkName: "pages/shop/fashion/components/slider" */))
+const _7f2d3dd8 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\blog.vue' /* webpackChunkName: "pages/shop/flower/components/blog" */))
+const _ef02b7ec = () => interopDefault(import('..\\pages\\shop\\flower\\components\\category_tab.vue' /* webpackChunkName: "pages/shop/flower/components/category_tab" */))
+const _7033a827 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/flower/components/collection_banner" */))
+const _bd227128 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\instagram.vue' /* webpackChunkName: "pages/shop/flower/components/instagram" */))
+const _e30ee132 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/flower/components/product_slider" */))
+const _6ef1e194 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\services.vue' /* webpackChunkName: "pages/shop/flower/components/services" */))
+const _1d83bfd2 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\slider.vue' /* webpackChunkName: "pages/shop/flower/components/slider" */))
+const _50f82978 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\top_products.vue' /* webpackChunkName: "pages/shop/flower/components/top_products" */))
+const _2b56b935 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\blog.vue' /* webpackChunkName: "pages/shop/furniture/components/blog" */))
+const _8c4d1b32 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\category_tab.vue' /* webpackChunkName: "pages/shop/furniture/components/category_tab" */))
+const _2c1c4bea = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/collection_banner" */))
+const _56e4c6de = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\parallax_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/parallax_banner" */))
+const _38f63834 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\slider.vue' /* webpackChunkName: "pages/shop/furniture/components/slider" */))
+const _67f5787e = () => interopDefault(import('..\\pages\\shop\\gym\\components\\blog.vue' /* webpackChunkName: "pages/shop/gym/components/blog" */))
+const _a580fce2 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/gym/components/collection-banner" */))
+const _09ff4486 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\instagram.vue' /* webpackChunkName: "pages/shop/gym/components/instagram" */))
+const _c42cb6d2 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\logo-slider.vue' /* webpackChunkName: "pages/shop/gym/components/logo-slider" */))
+const _586f6a98 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\product-list.vue' /* webpackChunkName: "pages/shop/gym/components/product-list" */))
+const _6e3b6d86 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\slider.vue' /* webpackChunkName: "pages/shop/gym/components/slider" */))
+const _6c0f681c = () => interopDefault(import('..\\pages\\shop\\gym\\components\\top-collection.vue' /* webpackChunkName: "pages/shop/gym/components/top-collection" */))
+const _3f81f022 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\category.vue' /* webpackChunkName: "pages/shop/jewellery/components/category" */))
+const _ee095984 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\instagram.vue' /* webpackChunkName: "pages/shop/jewellery/components/instagram" */))
+const _817a3ea4 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\parallax-banner.vue' /* webpackChunkName: "pages/shop/jewellery/components/parallax-banner" */))
+const _01b9ad23 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/jewellery/components/product-slider" */))
+const _b33df47a = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\product-tab.vue' /* webpackChunkName: "pages/shop/jewellery/components/product-tab" */))
+const _3c9b9382 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\services.vue' /* webpackChunkName: "pages/shop/jewellery/components/services" */))
+const _783114f6 = () => interopDefault(import('..\\pages\\shop\\jewellery\\components\\slider.vue' /* webpackChunkName: "pages/shop/jewellery/components/slider" */))
+const _28ea0f95 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/kids/components/collection_banner" */))
+const _af51b26c = () => interopDefault(import('..\\pages\\shop\\kids\\components\\collection_slider.vue' /* webpackChunkName: "pages/shop/kids/components/collection_slider" */))
+const _757b064c = () => interopDefault(import('..\\pages\\shop\\kids\\components\\instagram.vue' /* webpackChunkName: "pages/shop/kids/components/instagram" */))
+const _ac29fcc6 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/kids/components/logo_slider" */))
+const _ca836208 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\parallax_banner.vue' /* webpackChunkName: "pages/shop/kids/components/parallax_banner" */))
+const _6f630eb9 = () => interopDefault(import('..\\pages\\shop\\kids\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/kids/components/product_slider" */))
+const _5283dd2e = () => interopDefault(import('..\\pages\\shop\\kids\\components\\slider.vue' /* webpackChunkName: "pages/shop/kids/components/slider" */))
+const _20d3b531 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\blog.vue' /* webpackChunkName: "pages/shop/pets/components/blog" */))
+const _93128088 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\collection-banner.vue' /* webpackChunkName: "pages/shop/pets/components/collection-banner" */))
+const _38424884 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\logo-slider.vue' /* webpackChunkName: "pages/shop/pets/components/logo-slider" */))
+const _f62cbd3a = () => interopDefault(import('..\\pages\\shop\\pets\\components\\parallax-banner.vue' /* webpackChunkName: "pages/shop/pets/components/parallax-banner" */))
+const _52e4fc64 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/pets/components/product-slider" */))
+const _79b7b5a0 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\slider.vue' /* webpackChunkName: "pages/shop/pets/components/slider" */))
+const _3b2484e5 = () => interopDefault(import('..\\pages\\shop\\pets\\components\\top-collection.vue' /* webpackChunkName: "pages/shop/pets/components/top-collection" */))
+const _2ac46dd4 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\about.vue' /* webpackChunkName: "pages/shop/shoes/components/about" */))
+const _374c192b = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\blog.vue' /* webpackChunkName: "pages/shop/shoes/components/blog" */))
+const _4bb108ce = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\brand.vue' /* webpackChunkName: "pages/shop/shoes/components/brand" */))
+const _04b98ff2 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category.vue' /* webpackChunkName: "pages/shop/shoes/components/category" */))
+const _92491b8a = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category2.vue' /* webpackChunkName: "pages/shop/shoes/components/category2" */))
+const _922cec88 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\category3.vue' /* webpackChunkName: "pages/shop/shoes/components/category3" */))
+const _65b4995a = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectionbanner.vue' /* webpackChunkName: "pages/shop/shoes/components/collectionbanner" */))
+const _4c92ca88 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectionslider.vue' /* webpackChunkName: "pages/shop/shoes/components/collectionslider" */))
+const _3bb26a7e = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\collectiontab.vue' /* webpackChunkName: "pages/shop/shoes/components/collectiontab" */))
+const _e1f9f00e = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\instagram.vue' /* webpackChunkName: "pages/shop/shoes/components/instagram" */))
+const _52aa3712 = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\productSlider.vue' /* webpackChunkName: "pages/shop/shoes/components/productSlider" */))
+const _187c6d3c = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\service.vue' /* webpackChunkName: "pages/shop/shoes/components/service" */))
+const _1d1372aa = () => interopDefault(import('..\\pages\\shop\\shoes\\components\\slider.vue' /* webpackChunkName: "pages/shop/shoes/components/slider" */))
+const _4a1f0581 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\about.vue' /* webpackChunkName: "pages/shop/tools/components/about" */))
+const _a608358c = () => interopDefault(import('..\\pages\\shop\\tools\\components\\category.vue' /* webpackChunkName: "pages/shop/tools/components/category" */))
+const _4618a2e9 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/tools/components/logo_slider" */))
+const _06851f8a = () => interopDefault(import('..\\pages\\shop\\tools\\components\\product-slider.vue' /* webpackChunkName: "pages/shop/tools/components/product-slider" */))
+const _18bae71a = () => interopDefault(import('..\\pages\\shop\\tools\\components\\product-tab-slider.vue' /* webpackChunkName: "pages/shop/tools/components/product-tab-slider" */))
+const _45e1e7c9 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\select-vehical.vue' /* webpackChunkName: "pages/shop/tools/components/select-vehical" */))
+const _68e064ae = () => interopDefault(import('..\\pages\\shop\\tools\\components\\service.vue' /* webpackChunkName: "pages/shop/tools/components/service" */))
+const _2de85ec6 = () => interopDefault(import('..\\pages\\shop\\tools\\components\\slider.vue' /* webpackChunkName: "pages/shop/tools/components/slider" */))
+const _2d04110e = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\banner.vue' /* webpackChunkName: "pages/shop/vegetables/components/banner" */))
+const _84ba33a2 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\blog.vue' /* webpackChunkName: "pages/shop/vegetables/components/blog" */))
+const _a4961204 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/vegetables/components/product_slider" */))
+const _a1c4f32a = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\services.vue' /* webpackChunkName: "pages/shop/vegetables/components/services" */))
+const _68eb0eae = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\slider.vue' /* webpackChunkName: "pages/shop/vegetables/components/slider" */))
+const _506c2592 = () => interopDefault(import('..\\pages\\shop\\vegetables\\components\\special_products.vue' /* webpackChunkName: "pages/shop/vegetables/components/special_products" */))
+const _7c6be3d2 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\blog.vue' /* webpackChunkName: "pages/shop/watch/components/blog" */))
+const _7a0151a4 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\category.vue' /* webpackChunkName: "pages/shop/watch/components/category" */))
+const _2db93ea8 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\categorytabs.vue' /* webpackChunkName: "pages/shop/watch/components/categorytabs" */))
+const _794354e9 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\collectionbanners.vue' /* webpackChunkName: "pages/shop/watch/components/collectionbanners" */))
+const _752acdb2 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\instagram.vue' /* webpackChunkName: "pages/shop/watch/components/instagram" */))
+const _01027c75 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/watch/components/logo_slider" */))
+const _64c384e1 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/watch/components/product_slider" */))
+const _7fce0ae4 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\services.vue' /* webpackChunkName: "pages/shop/watch/components/services" */))
+const _cd29a0de = () => interopDefault(import('..\\pages\\shop\\watch\\components\\slider.vue' /* webpackChunkName: "pages/shop/watch/components/slider" */))
+const _b32470d4 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\timer_banner.vue' /* webpackChunkName: "pages/shop/watch/components/timer_banner" */))
+const _c5bc1184 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\top_products.vue' /* webpackChunkName: "pages/shop/watch/components/top_products" */))
+const _c794ed5c = () => interopDefault(import('..\\pages\\collection\\leftsidebar\\_id.vue' /* webpackChunkName: "pages/collection/leftsidebar/_id" */))
+const _12cdf2ce = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
+const _281db493 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -218,803 +218,803 @@ export const routerOptions = {
 
   routes: [{
     path: "/blog/blog-detail",
-    component: _6c8f5a4a,
+    component: _4a16a73b,
     name: "blog-blog-detail"
   }, {
     path: "/blog/blog-leftsidebar",
-    component: _ad7c174a,
+    component: _a2ed480a,
     name: "blog-blog-leftsidebar"
   }, {
     path: "/blog/blog-nosidebar",
-    component: _2ad42c3e,
+    component: _4bd2b981,
     name: "blog-blog-nosidebar"
   }, {
     path: "/blog/blog-rightsidebar",
-    component: _407f3f4a,
+    component: _37b668ac,
     name: "blog-blog-rightsidebar"
   }, {
     path: "/collection/full-width",
-    component: _1f650715,
+    component: _24ac6eb5,
     name: "collection-full-width"
   }, {
     path: "/collection/list-view",
-    component: _ca924e12,
+    component: _6113fd57,
     name: "collection-list-view"
   }, {
     path: "/collection/metro",
-    component: _19f5fa9c,
+    component: _cb576208,
     name: "collection-metro"
   }, {
     path: "/collection/no-sidebar",
-    component: _48875d46,
+    component: _3df88e06,
     name: "collection-no-sidebar"
   }, {
     path: "/collection/right-sidebar",
-    component: _079f23a4,
+    component: _4ca4628e,
     name: "collection-right-sidebar"
   }, {
     path: "/collection/sidebar-popup",
-    component: _d1e0e704,
+    component: _30f8fe44,
     name: "collection-sidebar-popup"
   }, {
     path: "/collection/six-grid",
-    component: _2b2fc41e,
+    component: _e726d884,
     name: "collection-six-grid"
   }, {
     path: "/collection/three-grid",
-    component: _0ee795a2,
+    component: _142efd42,
     name: "collection-three-grid"
   }, {
     path: "/page/404",
-    component: _0914d3ea,
+    component: _0c84ef6c,
     name: "page-404"
   }, {
     path: "/page/about",
-    component: _1b2d5d3f,
+    component: _f70b0cc2,
     name: "page-about"
   }, {
     path: "/page/collection",
-    component: _9a218648,
+    component: _7d44dc7c,
     name: "page-collection"
   }, {
     path: "/page/coming-soon",
-    component: _f6fd040e,
+    component: _04dfd259,
     name: "page-coming-soon"
   }, {
     path: "/page/faq",
-    component: _95f51270,
+    component: _b4a3a9b0,
     name: "page-faq"
   }, {
     path: "/page/lookbook",
-    component: _5c9a5674,
+    component: _53a84734,
     name: "page-lookbook"
   }, {
     path: "/page/order-success",
-    component: _edcdae94,
+    component: _6b33e516,
     name: "page-order-success"
   }, {
     path: "/page/review",
-    component: _f25648d4,
+    component: _472b4b36,
     name: "page-review"
   }, {
     path: "/page/search",
-    component: _64febc34,
+    component: _e451dcf4,
     name: "page-search"
   }, {
     path: "/page/typography",
-    component: _2b1052ed,
+    component: _15341ae6,
     name: "page-typography"
   }, {
     path: "/product/bundle-product",
-    component: _57f657b4,
+    component: _08c837d8,
     name: "product-bundle-product"
   }, {
     path: "/product/four-image",
-    component: _62fac304,
+    component: _45157f64,
     name: "product-four-image"
   }, {
     path: "/shop/bags",
-    component: _4c327d32,
+    component: _66de5cdc,
     name: "shop-bags"
   }, {
     path: "/shop/beauty",
-    component: _7f22b4c1,
+    component: _613d7121,
     name: "shop-beauty"
   }, {
     path: "/shop/electronics-1",
-    component: _23b5277c,
+    component: _3c8081c8,
     name: "shop-electronics-1"
   }, {
     path: "/shop/fashion",
-    component: _76237cbf,
+    component: _513f6742,
     name: "shop-fashion"
   }, {
     path: "/shop/fashion-2",
-    component: _7957ccba,
+    component: _7e9f345a,
     name: "shop-fashion-2"
   }, {
     path: "/shop/fashion-3",
-    component: _fded1bce,
+    component: _f35e4c8e,
     name: "shop-fashion-3"
   }, {
     path: "/shop/flower",
-    component: _6af9b982,
+    component: _4d1475e2,
     name: "shop-flower"
   }, {
     path: "/shop/furniture",
-    component: _6a1f0b05,
+    component: _6f6672a5,
     name: "shop-furniture"
   }, {
     path: "/shop/gym",
-    component: _dbde7148,
+    component: _5c6666fc,
     name: "shop-gym"
   }, {
     path: "/shop/jewellery",
-    component: _fe8103d8,
+    component: _f3f23498,
     name: "shop-jewellery"
   }, {
     path: "/shop/kids",
-    component: _8f631a20,
+    component: _38acc750,
     name: "shop-kids"
   }, {
     path: "/shop/pets",
-    component: _4b5e706e,
+    component: _5aaf1c29,
     name: "shop-pets"
   }, {
     path: "/shop/shoes",
-    component: _623d8e62,
+    component: _5a4d706f,
     name: "shop-shoes"
   }, {
     path: "/shop/tools",
-    component: _a9efa808,
+    component: _3674639c,
     name: "shop-tools"
   }, {
     path: "/shop/vegetables",
-    component: _4e0f118b,
+    component: _1c96c42a,
     name: "shop-vegetables"
   }, {
     path: "/shop/watch",
-    component: _17d59088,
+    component: _b97c6fb0,
     name: "shop-watch"
   }, {
     path: "/blog/widgets/blog-list",
-    component: _685928ab,
+    component: _3965284b,
     name: "blog-widgets-blog-list"
   }, {
     path: "/blog/widgets/blog-sidebar",
-    component: _063d1b5f,
+    component: _098577bf,
     name: "blog-widgets-blog-sidebar"
   }, {
     path: "/page/account/cart",
-    component: _11610a82,
+    component: _4d2b91c2,
     name: "page-account-cart"
   }, {
     path: "/page/account/checkout",
-    component: _ca722336,
+    component: _3e6c7ac5,
     name: "page-account-checkout"
   }, {
     path: "/page/account/contact",
-    component: _3e5bf851,
+    component: _43a35ff1,
     name: "page-account-contact"
   }, {
     path: "/page/account/dashboard",
-    component: _07b96285,
+    component: _4e753bb6,
     name: "page-account-dashboard"
   }, {
     path: "/page/account/forget-password",
-    component: _5a6fbc2c,
+    component: _5c2583cc,
     name: "page-account-forget-password"
   }, {
     path: "/page/account/login",
-    component: _fbd8ed4c,
+    component: _395f4e0c,
     name: "page-account-login"
   }, {
     path: "/page/account/login-firebase",
-    component: _6e60114a,
+    component: _7dfa54ac,
     name: "page-account-login-firebase"
   }, {
     path: "/page/account/profile",
-    component: _4683715a,
+    component: _4bcad8fa,
     name: "page-account-profile"
   }, {
     path: "/page/account/register",
-    component: _44644d7c,
+    component: _fd1934bc,
     name: "page-account-register"
   }, {
     path: "/page/account/wishlist",
-    component: _31f8ff64,
+    component: _54c2e878,
     name: "page-account-wishlist"
   }, {
     path: "/page/compare/compare-1",
-    component: _539d8dfc,
+    component: _b1858ebc,
     name: "page-compare-compare-1"
   }, {
     path: "/page/compare/compare-2",
-    component: _53815efa,
+    component: _b1695fba,
     name: "page-compare-compare-2"
   }, {
     path: "/page/element/banner",
-    component: _4dee495a,
+    component: _144b6dba,
     name: "page-element-banner"
   }, {
     path: "/page/element/category",
-    component: _88b17ea8,
+    component: _5f4ccd0c,
     name: "page-element-category"
   }, {
     path: "/page/element/collection-banner",
-    component: _802dfa06,
+    component: _2b4b629d,
     name: "page-element-collection-banner"
   }, {
     path: "/page/element/home-slider",
-    component: _2b2858d1,
+    component: _2d9a1f1e,
     name: "page-element-home-slider"
   }, {
     path: "/page/element/logo-slider",
-    component: _48745085,
+    component: _067ee825,
     name: "page-element-logo-slider"
   }, {
     path: "/page/element/multi-slider",
-    component: _1687a123,
+    component: _19cffd83,
     name: "page-element-multi-slider"
   }, {
     path: "/page/element/product-slider",
-    component: _f68223a6,
+    component: _513c9ae6,
     name: "page-element-product-slider"
   }, {
     path: "/page/element/product-tabs",
-    component: _7a014f4a,
+    component: _7d49abaa,
     name: "page-element-product-tabs"
   }, {
     path: "/page/element/service",
-    component: _71323bf7,
+    component: _7679a397,
     name: "page-element-service"
   }, {
     path: "/page/portfolio/masonary-fullwidth",
-    component: _ea9b74a4,
+    component: _10ef7be4,
     name: "page-portfolio-masonary-fullwidth"
   }, {
     path: "/page/portfolio/mesonary-grid-2",
-    component: _6ebd5360,
+    component: _4bc09a00,
     name: "page-portfolio-mesonary-grid-2"
   }, {
     path: "/page/portfolio/mesonary-grid-3",
-    component: _6ecb6ae1,
+    component: _4ba46afe,
     name: "page-portfolio-mesonary-grid-3"
   }, {
     path: "/page/portfolio/mesonary-grid-4",
-    component: _6ed98262,
+    component: _4b883bfc,
     name: "page-portfolio-mesonary-grid-4"
   }, {
     path: "/page/portfolio/portfolio-2-col",
-    component: _15d9c3d4,
+    component: _60757db6,
     name: "page-portfolio-portfolio-2-col"
   }, {
     path: "/page/portfolio/portfolio-3-col",
-    component: _ed50e5d2,
+    component: _168c2692,
     name: "page-portfolio-portfolio-3-col"
   }, {
     path: "/page/portfolio/portfolio-4-col",
-    component: _1d9bfc18,
+    component: _ee034890,
     name: "page-portfolio-portfolio-4-col"
   }, {
     path: "/product/sidebar/no-sidebar",
-    component: _b891b168,
+    component: _097a56ec,
     name: "product-sidebar-no-sidebar"
   }, {
     path: "/product/sidebar/right-sidebar",
-    component: _4993c442,
+    component: _10394a3f,
     name: "product-sidebar-right-sidebar"
   }, {
     path: "/product/three-column/thumbnail-bottom",
-    component: _6dedb93e,
+    component: _b06c207e,
     name: "product-three-column-thumbnail-bottom"
   }, {
     path: "/product/three-column/thumbnail-left",
-    component: _d5f36a86,
+    component: _244eaf1d,
     name: "product-three-column-thumbnail-left"
   }, {
     path: "/product/three-column/thumbnail-right",
-    component: _490826d6,
+    component: _ba676314,
     name: "product-three-column-thumbnail-right"
   }, {
     path: "/product/thumbnail-image/image-outside",
-    component: _4e1eac6e,
+    component: _909d13ae,
     name: "product-thumbnail-image-image-outside"
   }, {
     path: "/product/thumbnail-image/left-image",
-    component: _0dcca922,
+    component: _27033b0f,
     name: "product-thumbnail-image-left-image"
   }, {
     path: "/product/thumbnail-image/right-image",
-    component: _80f67e00,
+    component: _4ecd2560,
     name: "product-thumbnail-image-right-image"
   }, {
     path: "/page/account/auth/auth",
-    component: _41be4e80,
+    component: _12ca4e20,
     name: "page-account-auth-auth"
   }, {
     path: "/shop/bags/components/banner",
-    component: _19456392,
+    component: _1afb2b32,
     name: "shop-bags-components-banner"
   }, {
     path: "/shop/bags/components/blog",
-    component: _774ef6f0,
+    component: _2a1bb428,
     name: "shop-bags-components-blog"
   }, {
     path: "/shop/bags/components/category",
-    component: _0da0ace4,
+    component: _79030c84,
     name: "shop-bags-components-category"
   }, {
     path: "/shop/bags/components/category2",
-    component: _b2e6ce04,
+    component: _b113a544,
     name: "shop-bags-components-category2"
   }, {
     path: "/shop/bags/components/categorytab",
-    component: _2ef2f1e1,
+    component: _c86e237e,
     name: "shop-bags-components-categorytab"
   }, {
     path: "/shop/bags/components/instagram",
-    component: _7eb42ebc,
+    component: _7f9dc31c,
     name: "shop-bags-components-instagram"
   }, {
     path: "/shop/bags/components/productcategoryslider",
-    component: _369bfc18,
+    component: _52ea0078,
     name: "shop-bags-components-productcategoryslider"
   }, {
     path: "/shop/bags/components/productslider",
-    component: _3143159a,
+    component: _7ee90c0c,
     name: "shop-bags-components-productslider"
   }, {
     path: "/shop/bags/components/services",
-    component: _0aba5044,
+    component: _761cafe4,
     name: "shop-bags-components-services"
   }, {
     path: "/shop/bags/components/slider",
-    component: _ce9b0a72,
+    component: _cb2f7b32,
     name: "shop-bags-components-slider"
   }, {
     path: "/shop/beauty/components/about",
-    component: _286871b4,
+    component: _20cef386,
     name: "shop-beauty-components-about"
   }, {
     path: "/shop/beauty/components/blog",
-    component: _5ba964ce,
+    component: _583dd58e,
     name: "shop-beauty-components-blog"
   }, {
     path: "/shop/beauty/components/instagram",
-    component: _5f39684b,
+    component: _67e136aa,
     name: "shop-beauty-components-instagram"
   }, {
     path: "/shop/beauty/components/product-slider",
-    component: _4e2fb836,
+    component: _478877d6,
     name: "shop-beauty-components-product-slider"
   }, {
     path: "/shop/beauty/components/slider",
-    component: _7cf74398,
+    component: _2f4cb990,
     name: "shop-beauty-components-slider"
   }, {
     path: "/shop/beauty/components/top-product-slider",
-    component: _1cf867a4,
+    component: _0b33bbce,
     name: "shop-beauty-components-top-product-slider"
   }, {
     path: "/shop/beauty/components/video-tutorial",
-    component: _5b0dd0a7,
+    component: _54669047,
     name: "shop-beauty-components-video-tutorial"
   }, {
     path: "/shop/electronics-1/components/collection_banner",
-    component: _511fabc1,
+    component: _2cc56361,
     name: "shop-electronics-1-components-collection_banner"
   }, {
     path: "/shop/electronics-1/components/product_tab",
-    component: _a30fadce,
+    component: _6fafce8e,
     name: "shop-electronics-1-components-product_tab"
   }, {
     path: "/shop/electronics-1/components/slider",
-    component: _167058bd,
+    component: _159db5c6,
     name: "shop-electronics-1-components-slider"
   }, {
     path: "/shop/fashion-2/components/banner",
-    component: _c168ddec,
+    component: _0c218d6a,
     name: "shop-fashion-2-components-banner"
   }, {
     path: "/shop/fashion-2/components/collection",
-    component: _a08ab708,
+    component: _e3091e48,
     name: "shop-fashion-2-components-collection"
   }, {
     path: "/shop/fashion-2/components/collection-banner",
-    component: _716b0d4d,
+    component: _4244d626,
     name: "shop-fashion-2-components-collection-banner"
   }, {
     path: "/shop/fashion-2/components/instagram",
-    component: _07996e44,
+    component: _615d95e4,
     name: "shop-fashion-2-components-instagram"
   }, {
     path: "/shop/fashion-2/components/product",
-    component: _65864381,
+    component: _d92059be,
     name: "shop-fashion-2-components-product"
   }, {
     path: "/shop/fashion-2/components/slider",
-    component: _1eb8a83f,
+    component: _e8e2b6c2,
     name: "shop-fashion-2-components-slider"
   }, {
     path: "/shop/fashion-3/components/banner",
-    component: _237bde0b,
+    component: _df5c4b2a,
     name: "shop-fashion-3-components-banner"
   }, {
     path: "/shop/fashion-3/components/product_slider",
-    component: _b517a8e0,
+    component: _6437c7f0,
     name: "shop-fashion-3-components-product_slider"
   }, {
     path: "/shop/fashion-3/components/product_tab",
-    component: _408be676,
+    component: _39e4a616,
     name: "shop-fashion-3-components-product_tab"
   }, {
     path: "/shop/fashion-3/components/slider",
-    component: _ba2e1580,
+    component: _0fbef1a0,
     name: "shop-fashion-3-components-slider"
   }, {
     path: "/shop/fashion/components/banner",
-    component: _2f5a5db6,
+    component: _2d8734f6,
     name: "shop-fashion-components-banner"
   }, {
     path: "/shop/fashion/components/blog",
-    component: _34fa3adb,
+    component: _69fd673b,
     name: "shop-fashion-components-blog"
   }, {
     path: "/shop/fashion/components/collection_banner",
-    component: _5bc32804,
+    component: _757317a4,
     name: "shop-fashion-components-collection_banner"
   }, {
     path: "/shop/fashion/components/instagram",
-    component: _6a567449,
+    component: _cf7ff82e,
     name: "shop-fashion-components-instagram"
   }, {
     path: "/shop/fashion/components/logo_slider",
-    component: _59ded94c,
+    component: _98b9fe28,
     name: "shop-fashion-components-logo_slider"
   }, {
     path: "/shop/fashion/components/product_slider",
-    component: _389b64aa,
+    component: _6a5a990a,
     name: "shop-fashion-components-product_slider"
   }, {
     path: "/shop/fashion/components/product_tab",
-    component: _311a58c8,
+    component: _4136fb3c,
     name: "shop-fashion-components-product_tab"
   }, {
     path: "/shop/fashion/components/services",
-    component: _4c22a517,
+    component: _8e0ebd12,
     name: "shop-fashion-components-services"
   }, {
     path: "/shop/fashion/components/slider",
-    component: _67bfe85a,
+    component: _68a97cba,
     name: "shop-fashion-components-slider"
   }, {
     path: "/shop/flower/components/blog",
-    component: _7d777638,
+    component: _7f2d3dd8,
     name: "shop-flower-components-blog"
   }, {
     path: "/shop/flower/components/category_tab",
-    component: _2eba7c6a,
+    component: _ef02b7ec,
     name: "shop-flower-components-category_tab"
   }, {
     path: "/shop/flower/components/collection_banner",
-    component: _9d1fe872,
+    component: _7033a827,
     name: "shop-flower-components-collection_banner"
   }, {
     path: "/shop/flower/components/instagram",
-    component: _3498cb0c,
+    component: _bd227128,
     name: "shop-flower-components-instagram"
   }, {
     path: "/shop/flower/components/product_slider",
-    component: _d5c06072,
+    component: _e30ee132,
     name: "shop-flower-components-product_slider"
   }, {
     path: "/shop/flower/components/services",
-    component: _52a8e9f4,
+    component: _6ef1e194,
     name: "shop-flower-components-services"
   }, {
     path: "/shop/flower/components/slider",
-    component: _f4487f12,
+    component: _1d83bfd2,
     name: "shop-flower-components-slider"
   }, {
     path: "/shop/flower/components/top_products",
-    component: _7dbfc3a4,
+    component: _50f82978,
     name: "shop-flower-components-top_products"
   }, {
     path: "/shop/furniture/components/blog",
-    component: _2a6d24d5,
+    component: _2b56b935,
     name: "shop-furniture-components-blog"
   }, {
     path: "/shop/furniture/components/category_tab",
-    component: _efcb83f2,
+    component: _8c4d1b32,
     name: "shop-furniture-components-category_tab"
   }, {
     path: "/shop/furniture/components/collection_banner",
-    component: _82ac776c,
+    component: _2c1c4bea,
     name: "shop-furniture-components-collection_banner"
   }, {
     path: "/shop/furniture/components/parallax_banner",
-    component: _8a44a61e,
+    component: _56e4c6de,
     name: "shop-furniture-components-parallax_banner"
   }, {
     path: "/shop/furniture/components/slider",
-    component: _67bf8858,
+    component: _38f63834,
     name: "shop-furniture-components-slider"
   }, {
     path: "/shop/gym/components/blog",
-    component: _64ad1c1e,
+    component: _67f5787e,
     name: "shop-gym-components-blog"
   }, {
     path: "/shop/gym/components/collection-banner",
-    component: _98327c22,
+    component: _a580fce2,
     name: "shop-gym-components-collection-banner"
   }, {
     path: "/shop/gym/components/instagram",
-    component: _c2c63634,
+    component: _09ff4486,
     name: "shop-gym-components-instagram"
   }, {
     path: "/shop/gym/components/logo-slider",
-    component: _fcbea612,
+    component: _c42cb6d2,
     name: "shop-gym-components-logo-slider"
   }, {
     path: "/shop/gym/components/product-list",
-    component: _28cd2390,
+    component: _586f6a98,
     name: "shop-gym-components-product-list"
   }, {
     path: "/shop/gym/components/slider",
-    component: _763f84dd,
+    component: _6e3b6d86,
     name: "shop-gym-components-slider"
   }, {
     path: "/shop/gym/components/top-collection",
-    component: _3aafe792,
+    component: _6c0f681c,
     name: "shop-gym-components-top-collection"
   }, {
     path: "/shop/jewellery/components/category",
-    component: _9f8ce87c,
+    component: _3f81f022,
     name: "shop-jewellery-components-category"
   }, {
     path: "/shop/jewellery/components/instagram",
-    component: _2f372b9e,
+    component: _ee095984,
     name: "shop-jewellery-components-instagram"
   }, {
     path: "/shop/jewellery/components/parallax-banner",
-    component: _b4da1de4,
+    component: _817a3ea4,
     name: "shop-jewellery-components-parallax-banner"
   }, {
     path: "/shop/jewellery/components/product-slider",
-    component: _42f610c3,
+    component: _01b9ad23,
     name: "shop-jewellery-components-product-slider"
   }, {
     path: "/shop/jewellery/components/product-tab",
-    component: _a5ef73ba,
+    component: _b33df47a,
     name: "shop-jewellery-components-product-tab"
   }, {
     path: "/shop/jewellery/components/services",
-    component: _a559a1bc,
+    component: _3c9b9382,
     name: "shop-jewellery-components-services"
   }, {
     path: "/shop/jewellery/components/slider",
-    component: _57117925,
+    component: _783114f6,
     name: "shop-jewellery-components-slider"
   }, {
     path: "/shop/kids/components/collection_banner",
-    component: _11aa4996,
+    component: _28ea0f95,
     name: "shop-kids-components-collection_banner"
   }, {
     path: "/shop/kids/components/collection_slider",
-    component: _7697f26a,
+    component: _af51b26c,
     name: "shop-kids-components-collection_slider"
   }, {
     path: "/shop/kids/components/instagram",
-    component: _774e2f0c,
+    component: _757b064c,
     name: "shop-kids-components-instagram"
   }, {
     path: "/shop/kids/components/logo_slider",
-    component: _3d15053d,
+    component: _ac29fcc6,
     name: "shop-kids-components-logo_slider"
   }, {
     path: "/shop/kids/components/parallax_banner",
-    component: _8804fac8,
+    component: _ca836208,
     name: "shop-kids-components-parallax_banner"
   }, {
     path: "/shop/kids/components/product_slider",
-    component: _159ee719,
+    component: _6f630eb9,
     name: "shop-kids-components-product_slider"
   }, {
     path: "/shop/kids/components/slider",
-    component: _55ef6c6e,
+    component: _5283dd2e,
     name: "shop-kids-components-slider"
   }, {
     path: "/shop/pets/components/blog",
-    component: _89def4de,
+    component: _20d3b531,
     name: "shop-pets-components-blog"
   }, {
     path: "/shop/pets/components/collection-banner",
-    component: _f690e948,
+    component: _93128088,
     name: "shop-pets-components-collection-banner"
   }, {
     path: "/shop/pets/components/logo-slider",
-    component: _692767b8,
+    component: _38424884,
     name: "shop-pets-components-logo-slider"
   }, {
     path: "/shop/pets/components/parallax-banner",
-    component: _b3ae55fa,
+    component: _f62cbd3a,
     name: "shop-pets-components-parallax-banner"
   }, {
     path: "/shop/pets/components/product-slider",
-    component: _7cc95a2e,
+    component: _52e4fc64,
     name: "shop-pets-components-product-slider"
   }, {
     path: "/shop/pets/components/slider",
-    component: _7d2344e0,
+    component: _79b7b5a0,
     name: "shop-pets-components-slider"
   }, {
     path: "/shop/pets/components/top-collection",
-    component: _3d3f4576,
+    component: _3b2484e5,
     name: "shop-pets-components-top-collection"
   }, {
     path: "/shop/shoes/components/about",
-    component: _290ea634,
+    component: _2ac46dd4,
     name: "shop-shoes-components-about"
   }, {
     path: "/shop/shoes/components/blog",
-    component: _36ad566a,
+    component: _374c192b,
     name: "shop-shoes-components-blog"
   }, {
     path: "/shop/shoes/components/brand",
-    component: _49fb412e,
+    component: _4bb108ce,
     name: "shop-shoes-components-brand"
   }, {
     path: "/shop/shoes/components/category",
-    component: _068cb8b2,
+    component: _04b98ff2,
     name: "shop-shoes-components-category"
   }, {
     path: "/shop/shoes/components/category2",
-    component: _cadb0aca,
+    component: _92491b8a,
     name: "shop-shoes-components-category2"
   }, {
     path: "/shop/shoes/components/category3",
-    component: _cabedbc8,
+    component: _922cec88,
     name: "shop-shoes-components-category3"
   }, {
     path: "/shop/shoes/components/collectionbanner",
-    component: _c933021a,
+    component: _65b4995a,
     name: "shop-shoes-components-collectionbanner"
   }, {
     path: "/shop/shoes/components/collectionslider",
-    component: _1ad39628,
+    component: _4c92ca88,
     name: "shop-shoes-components-collectionslider"
   }, {
     path: "/shop/shoes/components/collectiontab",
-    component: _3c237a44,
+    component: _3bb26a7e,
     name: "shop-shoes-components-collectiontab"
   }, {
     path: "/shop/shoes/components/instagram",
-    component: _72ba1059,
+    component: _e1f9f00e,
     name: "shop-shoes-components-instagram"
   }, {
     path: "/shop/shoes/components/productSlider",
-    component: _7ce6bcd7,
+    component: _52aa3712,
     name: "shop-shoes-components-productSlider"
   }, {
     path: "/shop/shoes/components/service",
-    component: _a5cbe4c8,
+    component: _187c6d3c,
     name: "shop-shoes-components-service"
   }, {
     path: "/shop/shoes/components/slider",
-    component: _2fdf736c,
+    component: _1d1372aa,
     name: "shop-shoes-components-slider"
   }, {
     path: "/shop/tools/components/about",
-    component: _48693de1,
+    component: _4a1f0581,
     name: "shop-tools-components-about"
   }, {
     path: "/shop/tools/components/category",
-    component: _a7db5e4c,
+    component: _a608358c,
     name: "shop-tools-components-category"
   }, {
     path: "/shop/tools/components/logo_slider",
-    component: _182f1349,
+    component: _4618a2e9,
     name: "shop-tools-components-logo_slider"
   }, {
     path: "/shop/tools/components/product-slider",
-    component: _1dfca3db,
+    component: _06851f8a,
     name: "shop-tools-components-product-slider"
   }, {
     path: "/shop/tools/components/product-tab-slider",
-    component: _34def013,
+    component: _18bae71a,
     name: "shop-tools-components-product-tab-slider"
   }, {
     path: "/shop/tools/components/select-vehical",
-    component: _67211b69,
+    component: _45e1e7c9,
     name: "shop-tools-components-select-vehical"
   }, {
     path: "/shop/tools/components/service",
-    component: _602d6e09,
+    component: _68e064ae,
     name: "shop-tools-components-service"
   }, {
     path: "/shop/tools/components/slider",
-    component: _97eeb786,
+    component: _2de85ec6,
     name: "shop-tools-components-slider"
   }, {
     path: "/shop/vegetables/components/banner",
-    component: _88d7304e,
+    component: _2d04110e,
     name: "shop-vegetables-components-banner"
   }, {
     path: "/shop/vegetables/components/blog",
-    component: _bd4c22e2,
+    component: _84ba33a2,
     name: "shop-vegetables-components-blog"
   }, {
     path: "/shop/vegetables/components/product_slider",
-    component: _d7f5f144,
+    component: _a4961204,
     name: "shop-vegetables-components-product_slider"
   }, {
     path: "/shop/vegetables/components/services",
-    component: _55595ecb,
+    component: _a1c4f32a,
     name: "shop-vegetables-components-services"
   }, {
     path: "/shop/vegetables/components/slider",
-    component: _3b017f0e,
+    component: _68eb0eae,
     name: "shop-vegetables-components-slider"
   }, {
     path: "/shop/vegetables/components/special_products",
-    component: _6a576597,
+    component: _506c2592,
     name: "shop-vegetables-components-special_products"
   }, {
     path: "/shop/watch/components/blog",
-    component: _29c91f72,
+    component: _7c6be3d2,
     name: "shop-watch-components-blog"
   }, {
     path: "/shop/watch/components/category",
-    component: _7bd47a64,
+    component: _7a0151a4,
     name: "shop-watch-components-category"
   }, {
     path: "/shop/watch/components/categorytabs",
-    component: _59dafc4c,
+    component: _2db93ea8,
     name: "shop-watch-components-categorytabs"
   }, {
     path: "/shop/watch/components/collectionbanners",
-    component: _731bfd49,
+    component: _794354e9,
     name: "shop-watch-components-collectionbanners"
   }, {
     path: "/shop/watch/components/instagram",
-    component: _58e1d612,
+    component: _752acdb2,
     name: "shop-watch-components-instagram"
   }, {
     path: "/shop/watch/components/logo_slider",
-    component: _59ce2656,
+    component: _01027c75,
     name: "shop-watch-components-logo_slider"
   }, {
     path: "/shop/watch/components/product_slider",
-    component: _f3fa8efe,
+    component: _64c384e1,
     name: "shop-watch-components-product_slider"
   }, {
     path: "/shop/watch/components/services",
-    component: _81a133a4,
+    component: _7fce0ae4,
     name: "shop-watch-components-services"
   }, {
     path: "/shop/watch/components/slider",
-    component: _64680331,
+    component: _cd29a0de,
     name: "shop-watch-components-slider"
   }, {
     path: "/shop/watch/components/timer_banner",
-    component: _17256336,
+    component: _b32470d4,
     name: "shop-watch-components-timer_banner"
   }, {
     path: "/shop/watch/components/top_products",
-    component: _0dd992de,
+    component: _c5bc1184,
     name: "shop-watch-components-top_products"
   }, {
     path: "/collection/leftsidebar/:id?",
-    component: _367259b2,
+    component: _c794ed5c,
     name: "collection-leftsidebar-id"
   }, {
     path: "/product/sidebar/:id?",
-    component: _4c70ce6e,
+    component: _12cdf2ce,
     name: "product-sidebar-id"
   }, {
     path: "/",
-    component: _2da85f9a,
+    component: _f35e4c8e,
     name: "index"
   }],
 
