@@ -18,8 +18,8 @@
                     <div class="col">
                       <div class="slider-contain">
                         <div>
-                          <h4>{{ item.title }}</h4>
-                          <h1>{{ item.subtitle }}</h1>
+                          <h4 class="text-white">{{ item.title }}</h4>
+                          <h4 class="text-white text-header-gb">{{ item.subtitle }}</h4>
                           <nuxt-link :to="{ path: '/collection/leftsidebar/all'}" class="btn btn-solid">shop now</nuxt-link>
                         </div>
                       </div>
@@ -51,14 +51,14 @@ export default {
       items: [
         {
           imagepath: require('@/assets/images/home-banner/1.jpg'),
-          title: 'welcome to fashion',
-          subtitle: 'women fashion',
+          title: 'Bring new adventure into your life!',
+          subtitle: 'Beautiful Things For The Beautiful You',
           alignclass: 'p-left'
         },
         {
           imagepath: require('@/assets/images/home-banner/1.jpg'),
-          title: 'welcome to fashion',
-          subtitle: 'men fashion',
+          title: 'Bring new adventure into your life!',
+          subtitle: 'Beautiful Things For The Beautiful You',
           alignclass: 'p-left'
         }
       ]

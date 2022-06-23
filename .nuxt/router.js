@@ -1014,7 +1014,7 @@ export const routerOptions = {
     name: "product-sidebar-id"
   }, {
     path: "/",
-    component: _f35e4c8e,
+    component: _281db493,
     name: "index"
   }],
 

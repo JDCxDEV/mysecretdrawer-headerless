@@ -9,6 +9,12 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: "Great Vibes";
+	src: local("GreatVibes"),
+	 url(../fonts/GreatVibes-Regular.ttf) format("truetype");
+  }
+
 [class^="ti-"], [class*=" ti-"] {
 	font-family: 'themify';
 	speak: none;
@@ -1078,4 +1084,13 @@
 }
 .ti-rss-alt:before {
 	content: "\e75f";
+}
+
+.text-header-gb {
+	margin-top: 10px;
+	font-family: "Great Vibes", Sans-serif;
+    font-weight: 400 !important;
+    line-height: 1.3em !important;
+	font-size: 100px;
+	letter-spacing: 0.2em !important;
 }

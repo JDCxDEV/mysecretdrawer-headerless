@@ -1,7 +1,7 @@
 
 export default {
   ssr: false,
-  subdirectory: '/multikart',
+  subdirectory: '/au',
   /*
   ** Headers of the page
   */
