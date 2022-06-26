@@ -41,7 +41,7 @@
       <section class="section-b-space light-layout">
         <div class="container">
           <div class="row footer-theme partition-f">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-5 col-md-6">
               <div class="footer-title footer-mobile-title">
                 <h4>about</h4>
               </div>
@@ -49,7 +49,13 @@
                 <div class="footer-logo">
                   <img :src='"@/assets/images/icon/logo.png"' alt="logo" />
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <p>
+                  A life without lingerie would be a dull life indeed! Lingerie adds spark and excitement to any relationship. Lingerie enhances, intrigues, titillates and invites! Beautiful lingerie for the beautiful you!<br><br>
+
+                  We believe that quality lingerie, well designed and made with lovely, soft, sensual fabrics should always be affordable. At My Secret Drawer® we keep prices low by selling our beautiful lingerie direct to you, our valued customer.<br><br>
+
+                  You have one life to live. We invite you to add excitement with beautiful, sensual lingerie from My Secret Drawer®.<br><br>
+                </p>
                 <div class="footer-social">
                   <ul>
                     <li>
@@ -166,7 +172,7 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by pixelstrap
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2022 All Rights Reserved 
                 </p>
               </div>
             </div>

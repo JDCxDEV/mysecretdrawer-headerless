@@ -49,8 +49,12 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    'vue-scrollto/nuxt'
+    'vue-scrollto/nuxt',
+    '@nuxtjs/dotenv'
   ],
+  dotenv: {
+    /* module options */
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

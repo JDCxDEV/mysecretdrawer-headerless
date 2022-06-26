@@ -45,8 +45,8 @@
               />
             </svg>
             <div class="media-body">
-              <h4>free shipping</h4>
-              <p>free shipping world wide</p>
+              <h4>Nationwide</h4>
+              <p>Shipping nationwide</p>
             </div>
           </div>
           <div class="media">

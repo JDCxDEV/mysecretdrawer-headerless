@@ -26,6 +26,7 @@
 <script type="text/javascript">
 import axios from 'axios';
 import CoCartAPI from "@cocart/cocart-rest-api";
+import fetchMixin from '../../../../mixins/cocart'
 export default {
   data() {
     return {
@@ -33,32 +34,10 @@ export default {
     }
   },
 
+   mixins: [fetchMixin],
+
   mounted() {
-    const CoCart = new CoCartAPI({
-      url: "http://dev-msd.com/",
-    });
-
-    CoCart.get("products/categories")
-    .then((response) => {
-      // Successful request
-      console.log(response.data);
-      response.data.forEach((item) => {
-        let category=  {
-          title: item.name,
-          imagepath : item.image ? item.image.src : require('@/assets/images/electronics/5.jpg'),
-          subtitle: item.description
-        };
-
-        this.items.push(category);
-      });
-      console.log("Response Data:", response.data);
-    })
-    .catch((error) => {
-
-    })
-    .finally(() => {
-      // Always executed.
-    });
+    this.fetchCategories();
   },
 }
 </script>
