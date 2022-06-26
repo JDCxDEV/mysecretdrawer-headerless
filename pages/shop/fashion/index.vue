@@ -5,10 +5,7 @@
     <CollectionBanner />
     <ProductSlider :products="products" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Banner />
-    <ProductTab :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Services />
-    <Blog />
-    <Instagram />
     <LogoSlider />
     <Footer />
     <quickviewModel :openModal="showquickviewmodel" :productData="quickviewproduct" />
