@@ -54,7 +54,7 @@
 
                   We believe that quality lingerie, well designed and made with lovely, soft, sensual fabrics should always be affordable. At My Secret Drawer® we keep prices low by selling our beautiful lingerie direct to you, our valued customer.<br><br>
 
-                  You have one life to live. We invite you to add excitement with beautiful, sensual lingerie from My Secret Drawer®.<br><br>
+                  You have one life to live. We invite you to add excitement with beautiful, sensual lingerie from My Secret Drawer®.
                 </p>
                 <div class="footer-social">
                   <ul>
@@ -218,3 +218,9 @@
 export default {
 }
 </script>
+
+<style>
+footer p {
+  line-height: 20px !important;
+}
+</style>
