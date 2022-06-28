@@ -23,7 +23,7 @@ export default {
   },
 
   router: {
-    base: '/multikart/'
+    base: ''
   },
   /*
   ** Customize the progress-bar color
