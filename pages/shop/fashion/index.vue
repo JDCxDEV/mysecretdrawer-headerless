@@ -5,9 +5,9 @@
     <CollectionBanner />
     <ProductSlider :products="products" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Banner />
+    <CountDown />
     <ProductTab :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Services />
-    <CountDown />
     <LogoSlider />
     <Footer />
     <quickviewModel :openModal="showquickviewmodel" :productData="quickviewproduct" />
