@@ -102,13 +102,12 @@
     <!-- service layout  end -->
   </div>
 </template>
-
 <script type="text/javascript">
 export default {
   data() {
     return {
-      title_1: 'Nationwide',
-      subtitle_1: 'Shipping nationwide',
+      title_1: 'free shipping',
+      subtitle_1: 'free shipping world wide',
       title_2: '24 X 7 service',
       subtitle_2: 'online service for new customer',
       title_3: 'festival offer',

@@ -784,6 +784,13 @@
     "_name": "_757317a4"
   },
   {
+    "name": "shop-fashion-components-countdown",
+    "path": "/shop/fashion/components/countdown",
+    "component": "C:\\\\Users\\\\jeremy.delacruz\\\\Desktop\\\\4ever\\\\mysecretdrawer-headerless\\\\pages\\\\shop\\\\fashion\\\\components\\\\countdown.vue",
+    "chunkName": "pages/shop/fashion/components/countdown",
+    "_name": "_6d720a30"
+  },
+  {
     "name": "shop-fashion-components-instagram",
     "path": "/shop/fashion/components/instagram",
     "component": "C:\\\\Users\\\\jeremy.delacruz\\\\Desktop\\\\4ever\\\\mysecretdrawer-headerless\\\\pages\\\\shop\\\\fashion\\\\components\\\\instagram.vue",

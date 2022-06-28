@@ -5,7 +5,9 @@
     <CollectionBanner />
     <ProductSlider :products="products" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Banner />
+    <ProductTab :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCoampre" @openCart="showCart" />
     <Services />
+    <CountDown />
     <LogoSlider />
     <Footer />
     <quickviewModel :openModal="showquickviewmodel" :productData="quickviewproduct" />
@@ -31,6 +33,7 @@ import Services from './components/services'
 import Blog from './components/blog'
 import Instagram from './components/instagram'
 import LogoSlider from './components/logo_slider'
+import CountDown from './components/countdown';
 
 export default {
   components: {
@@ -48,7 +51,8 @@ export default {
     quickviewModel,
     compareModel,
     cartModel,
-    newsletterModel
+    newsletterModel,
+    CountDown
   },
   data() {
     return {

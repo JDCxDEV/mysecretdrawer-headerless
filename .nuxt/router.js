@@ -116,6 +116,7 @@ const _0fbef1a0 = () => interopDefault(import('..\\pages\\shop\\fashion-3\\compo
 const _2d8734f6 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\banner.vue' /* webpackChunkName: "pages/shop/fashion/components/banner" */))
 const _69fd673b = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\blog.vue' /* webpackChunkName: "pages/shop/fashion/components/blog" */))
 const _757317a4 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/fashion/components/collection_banner" */))
+const _6d720a30 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\countdown.vue' /* webpackChunkName: "pages/shop/fashion/components/countdown" */))
 const _cf7ff82e = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\instagram.vue' /* webpackChunkName: "pages/shop/fashion/components/instagram" */))
 const _98b9fe28 = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\logo_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/logo_slider" */))
 const _6a5a990a = () => interopDefault(import('..\\pages\\shop\\fashion\\components\\product_slider.vue' /* webpackChunkName: "pages/shop/fashion/components/product_slider" */))
@@ -664,6 +665,10 @@ export const routerOptions = {
     path: "/shop/fashion/components/collection_banner",
     component: _757317a4,
     name: "shop-fashion-components-collection_banner"
+  }, {
+    path: "/shop/fashion/components/countdown",
+    component: _6d720a30,
+    name: "shop-fashion-components-countdown"
   }, {
     path: "/shop/fashion/components/instagram",
     component: _cf7ff82e,

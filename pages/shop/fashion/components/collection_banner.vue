@@ -1,18 +1,18 @@
 <template>
   <div>
-    <section class="pb-0 ratio2_1 mb-4">
+    <section class="pb-0 ratio2_1">
       <div class="container">
         <div class="row partition2">
-          <div class="col-md-4" v-for="(item, index) in items" :key="index">
+          <div class="col-md-6" v-for="(item, index) in items" :key="index">
             <nuxt-link :to="{ path: '/collection/leftsidebar/all'}">
-              <div class="collection-banner mb-4">
+              <div class="collection-banner p-right text-center">
                 <div class="img-part">
-                  <img :src="item.imagepath" class="img-fluid" alt/>
+                  <img :src="item.imagepath" class="img-fluid" alt />
                 </div>
-                <div class="contain-banner text-center">
+                <div class="contain-banner">
                   <div>
                     <h4>{{item.subtitle}}</h4>
-                    <h4>{{item.title}}</h4>
+                    <h2>{{item.title}}</h2>
                   </div>
                 </div>
               </div>
@@ -24,32 +24,22 @@
   </div>
 </template>
 <script type="text/javascript">
-import axios from 'axios';
-import CoCartAPI from "@cocart/cocart-rest-api";
-import fetchMixin from '../../../../mixins/cocart'
 export default {
   data() {
     return {
-      items: []
+      items: [
+        {
+          imagepath: require('@/assets/images/sub-banner1.jpg'),
+          title: 'men',
+          subtitle: 'save 30%'
+        },
+        {
+          imagepath: require('@/assets/images/sub-banner2.jpg'),
+          title: 'women',
+          subtitle: 'save 60%'
+        }
+      ]
     }
-  },
-
-   mixins: [fetchMixin],
-
-  mounted() {
-    this.fetchCategories();
-  },
+  }
 }
 </script>
-
-<style>
-.collection-banner .contain-banner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black !important;
-  padding-left: 70px;
-  padding-right: 70px;
-}
-</style>
