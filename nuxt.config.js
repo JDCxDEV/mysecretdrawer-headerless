@@ -2,6 +2,7 @@
 export default {
   ssr: false,
   subdirectory: '/au',
+  target: 'static',
   /*
   ** Headers of the page
   */
