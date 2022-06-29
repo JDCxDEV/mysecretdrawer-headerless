@@ -60,7 +60,7 @@ export default {
    
   ],
   helmet: {    // helmet options
-    // frameguard: { action: "deny" },  // Sets "X-Frame-Options: DENY"
+    frameguard: { action: "deny" },  // Sets "X-Frame-Options: DENY"
     // // ...other Helmet headers settings except CSP
   },
   dotenv: {
