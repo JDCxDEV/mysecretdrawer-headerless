@@ -6,12 +6,14 @@ export default {
   /*
   ** Headers of the page
   */
+
   head: {
     title: 'Multikart Ecommerce | Vuejs shopping theme',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { 'http-equiv' : 'Content-Security-Policy', content: 'upgrade-insecure-requests'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/multikart/favicon.png' },
@@ -51,8 +53,13 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    'nuxt-helmet'
   ],
+  helmet: {    // helmet options
+    frameguard: { action: "deny" },  // Sets "X-Frame-Options: DENY"
+    // ...other Helmet headers settings except CSP
+  },
   dotenv: {
     /* module options */
   },
