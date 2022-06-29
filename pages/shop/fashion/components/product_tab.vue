@@ -11,7 +11,7 @@
             <div class="theme-tab">
               <b-tabs content-class="mt-3">
                 <b-tab
-                  :title="collection"
+                  :title="collection.title"
                   v-for="(collection,index) in category"
                   :key="index"
                 >
@@ -50,9 +50,10 @@
   </div>
 </template>
 <script type="text/javascript">
-import productBox1 from '../../../../components/product-box/product-box1'
+import productBox1 from '../../../../components/product-box/product-box1';
+import cocart from '../../../../mixins/cocart'
 export default {
-  props: ['products', 'category'],
+  mixins: [cocart],
   components: {
     productBox1
   },
@@ -67,13 +68,20 @@ export default {
       comapreproduct: {},
       cartproduct: {},
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 0, 
+      category: [],
+      products: [],
     }
+  },
+
+  mounted() {
+    this.fetchCategories();
+    this.fetchProducts();
   },
   methods: {
     getCategoryProduct(collection) {
       return this.products.filter((item) => {
-        if (item.collection.find(i => i === collection)) {
+        if (item.collection.find(i => i.title === collection.title)) {
           return item
         }
       })

@@ -8,7 +8,7 @@
       <div class="front">
         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
           <img
-            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src)'
+            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src, true)'
             :id="product.id"
             class="img-fluid bg-img"
             :alt="product.title"
@@ -25,7 +25,7 @@
           @click="productVariantChange(image.src)"
         >
           <a href="javascript:void(0);">
-            <img :src="getImgUrl(image.src)" />
+            <img :src="getImgUrl(image.src, true)" />
           </a>
         </li>
       </ul>
@@ -68,7 +68,7 @@
         <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
       </h4>
       <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
-      <ul class="color-variant" v-if="product.variants[0].color">
+      <!-- <ul class="color-variant" v-if="product.variants[0].color">
         <li v-for="(variant,variantIndex) in Color(product.variants)" :key="variantIndex">
           <a
             @click="productColorchange(variant, product)"
@@ -76,7 +76,7 @@
             v-bind:style="{ 'background-color' : variant}"
           ></a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
@@ -112,8 +112,8 @@ export default {
     })
   },
   methods: {
-    getImgUrl(path) {
-      return require('@/assets/images/' + path)
+    getImgUrl(path, isUrl = false) {
+      return isUrl ? path : require('@/assets/images/' + path) 
     },
     addToCart: function (product) {
       this.cartval = true

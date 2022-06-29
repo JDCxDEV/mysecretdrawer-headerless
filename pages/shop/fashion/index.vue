@@ -34,10 +34,8 @@ import Blog from './components/blog'
 import Instagram from './components/instagram'
 import LogoSlider from './components/logo_slider'
 import CountDown from './components/countdown';
-import cocart from '../../../mixins/cocart'
 
 export default {
-  mixins: [ cocart ],
   components: {
     Header,
     Slider,
@@ -75,7 +73,7 @@ export default {
   },
   mounted() {
     this.productsArray()
-    this.fetchCategories();
+  
   },
   methods: {
     productsArray: function () {
