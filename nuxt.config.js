@@ -16,8 +16,6 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      { 'http-equiv' : 'Content-Security-Policy', content: 'upgrade-insecure-requests'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/multikart/favicon.png' },
@@ -61,11 +59,9 @@ export default {
     '@nuxtjs/dotenv',
    
   ],
-  helmet: {
-    /*
-    frameguard: false,
-    ...
-    */
+  helmet: {    // helmet options
+    // frameguard: { action: "deny" },  // Sets "X-Frame-Options: DENY"
+    // // ...other Helmet headers settings except CSP
   },
   dotenv: {
     /* module options */
