@@ -7,6 +7,10 @@ export default {
   ** Headers of the page
   */
 
+  render: {
+    csp: true
+  },
+
   head: {
     title: 'Multikart Ecommerce | Vuejs shopping theme',
     meta: [
