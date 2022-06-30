@@ -6,7 +6,6 @@ const CoCart = new CoCartAPI({
 });
 
 export default {
-
     methods: {
         fetchCategories() {        
             CoCart.get("products/categories",{
@@ -56,40 +55,57 @@ export default {
             return images;
         },
 
-        fetchProducts() {        
-            CoCart.get("products")
-            .then((response) => {
-                let data = response.data;
-                if(data.total_products) {
-                    data.products.forEach((item) => {
-                        let product = {
-                            id: item.id,
-                            title: item.name,
-                            description: item.description,
-                            type: item.type,
-                            brand: item.type,
-                            collection: this.formatCategories(item.categories),
-                            category: item.categories[0].name,
-                            price: item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price,
-                            sale: item.prices.sale_price,
-                            discount: "40",
-                            stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
-                            new: true,
-                            tags: item.tags,
-                            variations: item.variations,
-                            images : this.formatImages(item.images, item.id),
-                        };
-                        console.log(product);
-                        this.products.push(product);
-                    });   
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-            // Always executed.
-            });
-      }
+        formatProduct(item) {
+            let product = {
+                id: item.id,
+                title: item.name,
+                description: item.description,
+                type: item.type,
+                brand: item.type,
+                collection: this.formatCategories(item.categories),
+                category: item.categories[0].name,
+                price: item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price,
+                sale: item.prices.sale_price,
+                discount: "40",
+                stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
+                new: true,
+                tags: item.tags,
+                variants: item.variations,
+                images : this.formatImages(item.images, item.id),
+            };
+            return product;
+        },
+
+    fetchProducts() {        
+        CoCart.get("products")
+        .then((response) => {
+            let data = response.data;
+            if(data.total_products) {
+                data.products.forEach((item) => {
+                    this.products.push(this.formatProduct(item));
+                });   
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+        // Always executed.
+        });
+    },
+
+    async fetchSingleProduct(id){
+        CoCart.get("products/" + id)
+        .then((response) => {
+           
+            this.getDetail = this.formatProduct(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+        // Always executed.
+        });
     }
-  };
+    }
+};

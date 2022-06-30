@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="getDetail.id">
     <Header />
     <Breadcrumbs :title="getDetail.title" />
     <section class="section-b-space">
@@ -21,7 +21,7 @@
                           :key="index"
                         >
                           <img
-                            :src="getImgUrl(product.src)"
+                            :src="getImgUrl(product.src, true)"
                             :id="product.image_id"
                             class="img-fluid bg-img"
                             :alt="product.alt"
@@ -39,7 +39,7 @@
                               :key="index"
                             >
                               <img
-                                :src="getImgUrl(product.src)"
+                                :src="getImgUrl(product.src, true)"
                                 :id="product.image_id"
                                 class="img-fluid bg-img"
                                 alt="product.alt"
@@ -60,7 +60,7 @@
                       </h4>
                       <h3 v-if="getDetail.sale">{{ discountedPrice(getDetail) * curr.curr | currency(curr.symbol) }}</h3>
                       <h3 v-else>{{ getDetail.price * curr.curr | currency(curr.symbol) }}</h3>
-                      <ul class="color-variant">
+                      <!-- <ul class="color-variant">
                         <li
                           v-bind:class="{ active: activeColor == variant}"
                           v-for="(variant,variantIndex) in Color(getDetail.variants)"
@@ -72,7 +72,7 @@
                             @click="sizeVariant(getDetail.variants[variantIndex].image_id, variantIndex, variant)"
                           ></a>
                         </li>
-                      </ul>
+                      </ul> -->
                       <div class="pro_inventory" v-if="getDetail.stock < 8">
                         <p class="active"> Hurry! We have only {{ getDetail.stock }} product in stock. </p>
                         <div class="inventory-scroll">
@@ -160,7 +160,7 @@
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">product details</h6>
-                        <p>{{getDetail.description.substring(0,200)+"...."}}</p>
+                        <p>{{ getDetail.description }}</p>
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">share it</h6>
@@ -352,7 +352,9 @@ import Breadcrumbs from '../../../components/widgets/breadcrumbs'
 import Timer from '../../../components/widgets/timer'
 import productSidebar from '../../../components/widgets/product-sidebar'
 import relatedProduct from '../../../components/widgets/related-products'
+import cocart from '../../../mixins/cocart';
 export default {
+  mixins: [cocart],
   components: {
     Header,
     Footer,
@@ -380,6 +382,10 @@ export default {
         spaceBetween: 30,
         freeMode: true,
         centeredSlides: false
+      },
+      getDetail : {
+        id: null,
+        title: '',
       }
     }
   },
@@ -390,24 +396,28 @@ export default {
     ...mapGetters({
       curr: 'products/changeCurrency'
     }),
-    getDetail: function () {
-      return this.$store.getters['products/getProductById'](
-        this.$route.params.id
-      )
-    },
     swiper() {
       return this.$refs.mySwiper.swiper
     }
   },
+  beforeMount() {
+    this.fetchSingleProduct(this.$route.params.id);
+  },
   mounted() {
+
+    
     // For displaying default color and size on pageload
-    this.uniqColor = this.getDetail.variants[0].color
-    this.sizeVariant(this.getDetail.variants[0].image_id)
-    // Active default color
-    this.activeColor = this.uniqColor
-    this.changeSizeVariant(this.getDetail.variants[0].size)
-    // related product type
-    this.relatedProducts()
+    // if(this.getDetail.variants?.length) {
+    //   this.uniqColor = this.getDetail.variants[0].color
+    //   this.sizeVariant(this.getDetail.variants[0].image_id)
+    //   this.changeSizeVariant(this.getDetail.variants[0].size)
+    // }
+
+    // // Active default color
+    // this.activeColor = this.uniqColor
+ 
+    // // related product type
+    // this.relatedProducts()
   },
   methods: {
     priceCurrency: function () {
@@ -456,8 +466,8 @@ export default {
     changeSizeVariant(variant) {
       this.selectedSize = variant
     },
-    getImgUrl(path) {
-      return require('@/assets/images/' + path)
+    getImgUrl(path, isUrl = false) {
+      return isUrl ? path : require('@/assets/images/' + path)
     },
     slideTo(id) {
       this.swiper.slideTo(id, 1000, false)
