@@ -55,13 +55,15 @@
 
 <script>
 import productBox1 from '../../../../components/product-box/product-box1'
+import cocart from '../../../../mixins/cocart'
 export default {
-  props: ['products'],
+  mixins: [ cocart ],
   components: {
     productBox1
   },
   data() {
     return {
+      products: [],
       title: 'top collection',
       subtitle: 'special offer',
       showCart: false,
@@ -98,6 +100,9 @@ export default {
         }
       }
     }
+  },
+  mounted() {
+    this.fetchProducts();
   },
   methods: {
     alert(item) {
