@@ -68,6 +68,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+
 export default {
     props: ['leftSidebarVal'],
   data() {
@@ -83,6 +84,9 @@ export default {
     ...mapState({
       menulist: state => state.menu.data
     })
+  },
+  mounted() {
+    this.$store.dispatch('menu/fetchCategories')
   },
   methods: {
     mobilenav: function () {
