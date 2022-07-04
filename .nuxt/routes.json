@@ -1386,18 +1386,18 @@
     "_name": "_21be3075"
   },
   {
-    "name": "collection-leftsidebar-id",
-    "path": "/collection/leftsidebar/:id?",
-    "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\collection\\\\leftsidebar\\\\_id.vue",
-    "chunkName": "pages/collection/leftsidebar/_id",
-    "_name": "_47d4c63b"
-  },
-  {
     "name": "product-sidebar-id",
     "path": "/product/sidebar/:id?",
     "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\product\\\\sidebar\\\\_id.vue",
     "chunkName": "pages/product/sidebar/_id",
     "_name": "_24d97a05"
+  },
+  {
+    "name": "collection-id",
+    "path": "/collection/:id?",
+    "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\collection\\\\_id.vue",
+    "chunkName": "pages/collection/_id",
+    "_name": "_871f6358"
   },
   {
     "name": "index",

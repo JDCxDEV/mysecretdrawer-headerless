@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row partition2">
           <div class="col-md-6" v-for="(item, index) in items" :key="index">
-            <nuxt-link :to="{ path: '/collection/leftsidebar/all'}">
+            <nuxt-link :to="{ path: '/collection/all'}">
               <div class="collection-banner p-right text-center">
                 <div class="img-part">
                   <img :src="item.imagepath" class="img-fluid" alt />

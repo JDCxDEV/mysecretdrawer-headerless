@@ -23,12 +23,12 @@
           <div class="collection-brand-filter">
             <ul class="category-list">
               <li>
-                <nuxt-link :to="{ path: '/collection/leftsidebar/all'}">All products</nuxt-link>
+                <nuxt-link :to="{ path: '/collection/all'}">All products</nuxt-link>
               </li>
               <li
               v-for="(category,index) in filterbyCategory"
               :key="index">
-                <nuxt-link :to="{ path: '/collection/leftsidebar/'+category}" @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
+                <nuxt-link :to="{ path: '/collection/'+category}" @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
               </li>
             </ul>
           </div>

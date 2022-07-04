@@ -6,18 +6,26 @@ const CoCart = new CoCartAPI({
 });
 
 const state = {
-  data: Menu.data
+  data: Menu.data,
+  selected_category: {
+    product_id: null,
+  },
 }
 
 // getters
 const getters = {
   getMenus: (state) => state.data,
+  getCategoryId: (state) => state.selected_category.product_id,
+  
 }
 
 // mutations
 const mutations = {
-  SET_MENUS(state, data) {
+  setMenus(state, data) {
     state.data = data
+  },
+  setSelectedCategory(state, data) {
+    state.selected_category = data
   }        
 }
 
@@ -31,7 +39,7 @@ const actions = {
 
       let categories = [];
       result.data.forEach((item) => {
-        let category = { "path": "/collection/leftsidebar/" + item.slug, "title": item.name.replace("&amp;", "&") , "type": "link" };
+        let category = { "path": "/collection/" + item.slug, "title": item.name.replace("&amp;", "&") , "type": "link", product_id: item.id };
         categories.push(category);
       });
 
@@ -62,14 +70,17 @@ const actions = {
         blogs_tab,
       ];
 
-      commit('SET_MENUS', temp_data);
+      commit('setMenus', temp_data);
 
       }
       catch (error) {
           alert(error)
           console.log(error)
       }
-  }
+  },
+  setSelectedCategory: (context, payload) => {
+    context.commit("setSelectedCategory", payload);
+  },
 }
 
 export default {

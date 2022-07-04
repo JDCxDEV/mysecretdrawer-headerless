@@ -19,8 +19,8 @@
               <span class="sub-arrow" v-if="menuItem.children || menuItem.megamenu"></span>
             </a>
             <ul class="nav-submenu" :class="{ opensubmenu: isActive(menuItem.title) }" v-if="menuItem.children">
-              <li v-for="(childrenItem, index) in menuItem.children" :key="index">
-                <a href="javascript:void(0)" @click="setActiveChild(childrenItem.title)" v-if="childrenItem.children">
+              <li v-for="(childrenItem, index) in menuItem.children" :key="index" @click="setCategory(childrenItem)">
+                <a href="javascript:void(0)" @click="setAc1tiveChild(childrenItem.title)" v-if="childrenItem.children">
                   {{childrenItem.title}}
                   <span class="sub-arrow" v-if="childrenItem.children"></span>
                 </a>
@@ -68,9 +68,9 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-
 export default {
-    props: ['leftSidebarVal'],
+  props: ['leftSidebarVal'],
+
   data() {
     return {
       openmobilenav: false,
@@ -83,8 +83,9 @@ export default {
   computed: {
     ...mapState({
       menulist: state => state.menu.data
-    })
+    }),
   },
+
   mounted() {
     this.$store.dispatch('menu/fetchCategories')
   },
@@ -96,6 +97,7 @@ export default {
       return this.activeItem === menuItem
     },
     setActive: function (menuItem) {
+      console.log(menuItem);
       if (this.activeItem === menuItem) {
         this.activeItem = ''
       } else {
@@ -106,7 +108,6 @@ export default {
       return this.activeChildItem === menuChildItem
     },
     setActiveChild: function (menuChildItem) {
-      console.log(menuChildItem)
       if (this.activeChildItem === menuChildItem) {
         this.activeChildItem = ''
       } else {
@@ -117,11 +118,15 @@ export default {
       return this.activemegaChild === megaChildItem
     },
     setActivesubmega: function (megaChildItem) {
+         console.log(megaChildItem);
       if (this.activemegaChild === megaChildItem) {
         this.activemegaChild = ''
       } else {
         this.activemegaChild = megaChildItem
       }
+    },
+    setCategory: function (item){
+      this.$store.dispatch('menu/setSelectedCategory', item);
     }
   }
 }

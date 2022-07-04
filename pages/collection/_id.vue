@@ -42,7 +42,7 @@
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>Showing Products 1-12 of {{ filterProduct.length }} Result</h5>
+                                <h5>Showing Products 1-12 of {{ currentList.length }} Result</h5>
                               </div>
                               <div class="collection-view">
                                 <ul>
@@ -102,7 +102,7 @@
                       <div class="product-wrapper-grid" :class="{'list-view':listview == true}">
                         <div class="row">
                           <div class="col-sm-12">
-                            <div class="text-center section-t-space section-b-space" v-if="filterProduct.length == 0">
+                            <div class="text-center section-t-space section-b-space" v-if="currentList.length == 0">
                               <img :src='"@/assets/images/empty-search.jpg"' class="img-fluid" alt />
                               <h3 class="mt-3">Sorry! Couldn't find the product you were looking For!!!</h3>
                               <div class="col-12 mt-3">
@@ -113,7 +113,7 @@
                           <div
                           class="col-grid-box"
                           :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-2':col6 == true, 'col-lg-12':listview == true}"
-                          v-for="(product,index) in filterProduct"
+                          v-for="(product,index) in currentList"
                           :key="index"
                           v-show="setPaginate(index)"
                           >
@@ -131,7 +131,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="product-pagination mb-0" v-if="filterProduct.length > this.paginate">
+                      <div class="product-pagination mb-0" v-if="currentList.length > this.paginate">
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
@@ -163,7 +163,7 @@
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
-                                <h5>Showing Products 1-12 of {{ filterProduct.length }} Result</h5>
+                                <h5>Showing Products 1-12 of {{ currentList.length }} Result</h5>
                               </div>
                             </div>
                           </div>
@@ -188,21 +188,24 @@
     </b-alert>
     <quickviewModel :openModal="showquickviewmodel" :productData="quickviewproduct" />
     <compareModel :openCompare="showcomparemodal" :productData="comapreproduct" @closeCompare="closeCompareModal" />
-    <cartModel :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal" :products="filterProduct" />
+    <cartModel :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal" :products="currentList" />
     <Footer />
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import productBox1 from '../../../components/product-box/product-box1'
-import Header from '../../../components/header/header1'
-import Footer from '../../../components/footer/footer1'
-import Breadcrumbs from '../../../components/widgets/breadcrumbs'
-import sidebar from '../../../components/widgets/collection-sidebar'
-import quickviewModel from '../../../components/widgets/quickview'
-import compareModel from '../../../components/widgets/compare-popup'
-import cartModel from '../../../components/cart-model/cart-modal-popup'
+import productBox1 from '../../components/product-box/product-box1'
+import Header from '../../components/header/header1'
+import Footer from '../../components/footer/footer1'
+import Breadcrumbs from '../../components/widgets/breadcrumbs'
+import sidebar from '../../components/widgets/collection-sidebar'
+import quickviewModel from '../../components/widgets/quickview'
+import compareModel from '../../components/widgets/compare-popup'
+import cartModel from '../../components/cart-model/cart-modal-popup'
+import cocart from '../../mixins/cocart'
+
 export default {
+  mixins: [ cocart ],
   components: {
     Header,
     Footer,
@@ -246,15 +249,23 @@ export default {
       }
     }
   },
+  
   computed: {
     ...mapGetters({
       filterProduct: 'filter/filterProducts',
       tags: 'filter/setTags',
-      curr: 'products/changeCurrency'
-    })
+      curr: 'products/changeCurrency',
+      product: 'products/changeCurrency',
+      productList: 'products/getProductList',
+    }),
+
+    currentList() {
+      return !this.filterProduct.length ? this.productList :  this.filterProduct;
+    },
   },
   mounted() {
-    this.updatePaginate(1)
+    this.updatePaginate(1);
+    this.$store.dispatch('products/fetchProducts',{ category: this.$store.state.menu.selected_category.product_id} );
   },
   methods: {
     onChangeSort(event) {
@@ -325,7 +336,7 @@ export default {
       this.updatePaginate(1)
     },
     getPaginate() {
-      this.paginates = Math.round(this.filterProduct.length / this.paginate)
+      this.paginates = Math.round(this.currentList.length / this.paginate)
       this.pages = []
       for (let i = 0; i < this.paginates; i++) {
         this.pages.push(i + 1)

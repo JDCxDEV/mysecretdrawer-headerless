@@ -202,8 +202,8 @@ const _70386745 = () => interopDefault(import('..\\pages\\shop\\watch\\component
 const _711c5e08 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\slider.vue' /* webpackChunkName: "pages/shop/watch/components/slider" */))
 const _2b0a00cd = () => interopDefault(import('..\\pages\\shop\\watch\\components\\timer_banner.vue' /* webpackChunkName: "pages/shop/watch/components/timer_banner" */))
 const _21be3075 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\top_products.vue' /* webpackChunkName: "pages/shop/watch/components/top_products" */))
-const _47d4c63b = () => interopDefault(import('..\\pages\\collection\\leftsidebar\\_id.vue' /* webpackChunkName: "pages/collection/leftsidebar/_id" */))
 const _24d97a05 = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
+const _871f6358 = () => interopDefault(import('..\\pages\\collection\\_id.vue' /* webpackChunkName: "pages/collection/_id" */))
 const _0816ec6c = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -1010,13 +1010,13 @@ export const routerOptions = {
     component: _21be3075,
     name: "shop-watch-components-top_products"
   }, {
-    path: "/collection/leftsidebar/:id?",
-    component: _47d4c63b,
-    name: "collection-leftsidebar-id"
-  }, {
     path: "/product/sidebar/:id?",
     component: _24d97a05,
     name: "product-sidebar-id"
+  }, {
+    path: "/collection/:id?",
+    component: _871f6358,
+    name: "collection-id"
   }, {
     path: "/",
     component: _0816ec6c,

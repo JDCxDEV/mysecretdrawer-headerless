@@ -52,17 +52,12 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    'nuxt-helmet',
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
     '@nuxtjs/dotenv',
    
   ],
-  helmet: {    // helmet options
-    frameguard: { action: "deny" },  // Sets "X-Frame-Options: DENY"
-    // // ...other Helmet headers settings except CSP
-  },
   dotenv: {
     /* module options */
   },

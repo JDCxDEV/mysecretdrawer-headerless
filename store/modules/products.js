@@ -1,4 +1,63 @@
 import products from '../../data/products'
+import CoCartAPI from "@cocart/cocart-rest-api";
+
+const CoCart = new CoCartAPI({
+  url: process.env.VUE_APP_API_URL,
+  version: 'cocart/v2'
+});
+
+const formatImages = (items, product_id) =>{
+  let images = [];
+  items.forEach((item) => {
+      let image =  {
+          "image_id": item.id,
+          "id": product_id,
+          "alt": item.alt,
+          "src": item.src.full,
+          "variant_id": [
+              201,
+              204,
+              207
+          ]
+      };
+      images.push(image);
+  });
+
+  return images;
+};
+const formatCategories = (items) =>{
+  let categories = [];
+  items.forEach((item) => {
+      let category =  {
+          title: item.name.replace("&amp;", "&"),
+          imagepath : item.image ? item.image.src : require('@/assets/images/electronics/5.jpg'),
+          subtitle: item.description
+      };
+      categories.push(category);
+  });
+  return categories;
+};
+
+const formatProduct = (item) =>{
+  let product = {
+      id: item.id,
+      title: item.name,
+      description: item.description,
+      type: item.type,
+      brand: item.type,
+      collection: formatCategories(item.categories),
+      category: item.categories[0].name,
+      price: item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price,
+      sale: item.prices.sale_price,
+      discount: "40",
+      stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
+      new: true,
+      tags: item.tags,
+      variants: item.variations,
+      images : formatImages(item.images, item.id),
+  };
+  return product;
+};
 
 const state = {
   productslist: products.data,
@@ -47,7 +106,10 @@ const getters = {
     }
   },
   getOrder: (state) => {
-    return state.order
+    return state.order;
+  },
+  getProductList: (state) => {
+    return state.productslist;
   }
 }
 // mutations
@@ -96,6 +158,10 @@ const mutations = {
   },
   createOrder: (state, payload) => {
     state.order = payload
+  },
+
+  setProducts: (state, payload) =>{
+    state.productslist = payload;
   }
 }
 // actions
@@ -120,7 +186,30 @@ const actions = {
   },
   createOrder: (context, payload) => {
     context.commit('createOrder', payload)
-  }
+  },
+
+  async fetchProducts({ commit }, payload) {
+  
+    try {
+
+      const params = new URLSearchParams(payload).toString();
+      let products = [];
+      const result = await CoCart.get("products?" + params, {
+        categories: 17
+    });
+
+      result.data.products.forEach((item) => {
+        products.push(formatProduct(item));
+      });
+
+      commit('setProducts', products);
+
+      }
+      catch (error) {
+          alert(error)
+          console.log(error)
+      }
+  },
 }
 export default {
   namespaced: true,

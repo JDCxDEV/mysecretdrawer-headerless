@@ -3,6 +3,7 @@ import CoCartAPI from "@cocart/cocart-rest-api";
 
 const CoCart = new CoCartAPI({
     url: process.env.VUE_APP_API_URL,
+    version: 'cocart/v2'
 });
 
 export default {
@@ -34,7 +35,6 @@ export default {
             });
             return categories;
         },
-
         formatImages(items, product_id) {
             let images = [];
             items.forEach((item) => {
@@ -54,7 +54,6 @@ export default {
 
             return images;
         },
-
         formatProduct(item) {
             let product = {
                 id: item.id,
@@ -76,36 +75,36 @@ export default {
             return product;
         },
 
-    fetchProducts() {        
-        CoCart.get("products")
-        .then((response) => {
-            let data = response.data;
-            if(data.total_products) {
-                data.products.forEach((item) => {
-                    this.products.push(this.formatProduct(item));
-                });   
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-        // Always executed.
-        });
-    },
+        fetchProducts() {        
+            CoCart.get("products")
+            .then((response) => {
+                let data = response.data;
+                if(data.total_products) {
+                    data.products.forEach((item) => {
+                        this.products.push(this.formatProduct(item));
+                    });   
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+            // Always executed.
+            });
+        },
 
-    async fetchSingleProduct(id){
-        CoCart.get("products/" + id)
-        .then((response) => {
-           
-            this.getDetail = this.formatProduct(response.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-        // Always executed.
-        });
-    }
+        async fetchSingleProduct(id){
+            CoCart.get("products/" + id)
+            .then((response) => {
+            
+                this.getDetail = this.formatProduct(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+            // Always executed.
+            });
+        }
     }
 };
