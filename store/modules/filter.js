@@ -1,4 +1,9 @@
 import products from '../../data/products'
+import CoCartAPI from "@cocart/cocart-rest-api";
+
+const CoCart = new CoCartAPI({
+  url: process.env.VUE_APP_API_URL,
+});
 
 const state = {
   productslist: products.data,
@@ -7,7 +12,8 @@ const state = {
   filteredProduct: [],
   paginate: 12,
   pages: [],
-  priceArray: []
+  priceArray: [],
+  filterItems: [],
 }
 // getters
 const getters = {
@@ -20,28 +26,28 @@ const getters = {
     return brands
   },
   filterbycolor: (state) => {
-    const uniqueColors = []
-    state.filteredProduct.filter((product) => {
-      product.variants.filter((variant) => {
-        if (variant.color) {
-          const index = uniqueColors.indexOf(variant.color)
-          if (index === -1) uniqueColors.push(variant.color)
+    let colors = []
+    if(state.filterItems.length) {
+      state.filterItems.filter((item) => {
+        if(item.slug == 'pa_color') {
+          colors = item.terms;
         }
-      })
-    })
-    return uniqueColors
+      });
+    }
+
+    return colors;
   },
   filterbysize: (state) => {
-    const uniqueSize = []
-    state.filteredProduct.filter((product) => {
-      product.variants.filter((variant) => {
-        if (variant.size) {
-          const index = uniqueSize.indexOf(variant.size)
-          if (index === -1) uniqueSize.push(variant.size)
+    let size = []
+    if(state.filterItems.length) {
+      state.filterItems.filter((item) => {
+        if(item.slug == 'pa_product-size') {
+          size = item.terms;
         }
-      })
-    })
-    return uniqueSize
+      });
+    }
+
+    return size;
   },
   filterProducts: (state) => {
     return state.filteredProduct.filter((product) => {
@@ -122,7 +128,10 @@ const mutations = {
         return 0
       })
     }
-  }
+  },
+  setFilterItems: (state, payload) => {
+    state.filterItems = payload
+  },
 }
 // actions
 const actions = {
@@ -140,7 +149,28 @@ const actions = {
   },
   sortProducts: (context, payload) => {
     context.commit('sortProducts', payload)
-  }
+  },
+  async fetchFilterItems({ commit }) {
+    try {
+
+      let filters = [];
+      const result = await CoCart.get("products/attributes");
+    
+
+      const registers = await Promise.all(result.data.map(item => 
+        CoCart.get("products/attributes/" + item.id + '/terms').then( response =>{
+          item.terms = response.data;
+          filters.push(item);
+        })
+      ));
+
+      commit('setFilterItems', filters);
+      }
+      catch (error) {
+          alert(error)
+          console.log(error)
+      }
+  },
 }
 export default {
   namespaced: true,

@@ -32,7 +32,7 @@
                       class="mr-1"
                       v-for="(tag,index) in allfilters"
                       :key="index">
-                      <a href="javascript:void(0)" class="filter_tag">{{tag}}<i class="ti-close" @click="removeTags(tag)"></i></a>
+                      <a href="javascript:void(0)" class="filter_tag">{{tag.name}}<i class="ti-close" @click="removeTags(tag)"></i></a>
                       </li>
                       <li class="clear_filter" v-if="allfilters.length > 0"><a href="javascript:void(0)" class="clear_filter" @click="removeAllTags()">Clear all</a></li>
                     </ul>
@@ -42,7 +42,7 @@
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>Showing Products 1-12 of {{ currentList.length }} Result</h5>
+                                <h5>Showing Products {{ currentList.length }} of {{ pagination.total_products }} Result</h5>
                               </div>
                               <div class="collection-view">
                                 <ul>
@@ -115,7 +115,6 @@
                           :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-2':col6 == true, 'col-lg-12':listview == true}"
                           v-for="(product,index) in currentList"
                           :key="index"
-                          v-show="setPaginate(index)"
                           >
                             <div class="product-box">
                               <productBox1
@@ -131,7 +130,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="product-pagination mb-0" v-if="currentList.length > this.paginate">
+                      <div class="product-pagination mb-0" v-if="pagination.total_products > this.paginate">
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
@@ -144,7 +143,7 @@
                                       </span>
                                     </a>
                                   </li>
-                                  <li class="page-item" v-for="(page_index, index) in this.pages" :key="index" :class="{'active': page_index == current}">
+                                  <li class="page-item" v-for="(page_index, index) in pagination.total_pages" :key="index" :class="{'active': page_index == current}">
                                     <a
                                       class="page-link"
                                       href="javascrip:void(0)"
@@ -163,7 +162,7 @@
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
-                                <h5>Showing Products 1-12 of {{ currentList.length }} Result</h5>
+                                <h5>Showing Products {{ currentList.length }} of {{ pagination.total_products }} Result</h5>
                               </div>
                             </div>
                           </div>
@@ -229,7 +228,7 @@ export default {
       items: [],
       current: 1,
       paginate: 12,
-      paginateRange: 3,
+      paginateRange: 5,
       pages: [],
       paginates: '',
       showquickviewmodel: false,
@@ -257,17 +256,26 @@ export default {
       curr: 'products/changeCurrency',
       product: 'products/changeCurrency',
       productList: 'products/getProductList',
+      pagination: 'products/getPagination',
     }),
 
     currentList() {
-      return !this.filterProduct.length ? this.productList :  this.filterProduct;
+      return this.productList;
     },
   },
   mounted() {
     this.updatePaginate(1);
-    this.$store.dispatch('products/fetchProducts',{ category: this.$store.state.menu.selected_category.product_id} );
+    this.fetchProduct(1);
   },
   methods: {
+    fetchProduct(page) {
+      let params = {
+        category: this.$store.state.menu.selected_category.product_id,
+        page: page,
+      };
+
+      this.$store.dispatch('products/fetchProducts', params);
+    },
     onChangeSort(event) {
       this.$store.dispatch('filter/sortProducts', event.target.value)
     },
@@ -336,9 +344,9 @@ export default {
       this.updatePaginate(1)
     },
     getPaginate() {
-      this.paginates = Math.round(this.currentList.length / this.paginate)
+      this.paginates = this.pagination.total_pages;
       this.pages = []
-      for (let i = 0; i < this.paginates; i++) {
+      for (let i = 0; i < this.pagination.total_pages; i++) {
         this.pages.push(i + 1)
       }
     },
@@ -349,28 +357,9 @@ export default {
         return (i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate))
       }
     },
-    updatePaginate(i) {
-      this.current = i
-      let start = 0
-      let end = 0
-      if (this.current < this.paginateRange - 1) {
-        start = 1
-        end = start + this.paginateRange - 1
-      } else {
-        start = this.current - 1
-        end = this.current + 1
-      }
-      if (start < 1) {
-        start = 1
-      }
-      if (end > this.paginates) {
-        end = this.paginates
-      }
-      this.pages = []
-      for (let i = start; i <= end; i++) {
-        this.pages.push(i)
-      }
-      return this.pages
+    updatePaginate(page) {
+      this.current = page;
+      this.fetchProduct(page);
     },
     alert(item) {
       this.dismissCountDown = item

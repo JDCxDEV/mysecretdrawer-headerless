@@ -10,13 +10,14 @@ const state = {
   selected_category: {
     product_id: null,
   },
+  categories: [],
 }
 
 // getters
 const getters = {
   getMenus: (state) => state.data,
   getCategoryId: (state) => state.selected_category.product_id,
-  
+  getCategories: (state) => state.categories,
 }
 
 // mutations
@@ -26,16 +27,22 @@ const mutations = {
   },
   setSelectedCategory(state, data) {
     state.selected_category = data
-  }        
+  },
+  setCategories(state, data) {
+    state.categories = data
+  }         
 }
 
 // actions
 const actions = {
   async fetchCategories({ commit }) {
     try {
-      const  result = await CoCart.get("products/categories",{
+
+      const params = new URLSearchParams({
         exclude: 17
-      });
+      }).toString();
+
+      const result = await CoCart.get("products/categories?"+params);
 
       let categories = [];
       result.data.forEach((item) => {
@@ -71,6 +78,7 @@ const actions = {
       ];
 
       commit('setMenus', temp_data);
+      commit('setCategories', categories);
 
       }
       catch (error) {

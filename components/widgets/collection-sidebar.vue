@@ -23,13 +23,14 @@
           <div class="collection-collapse-block-content">
           <div class="collection-brand-filter">
             <ul class="category-list">
-              <li>
-                <nuxt-link :to="{ path: '/collection/leftsidebar/all'}">All products</nuxt-link>
+              <li @click="getCategoryFilter('all')">
+                <nuxt-link :to="{ path: '/collection/all'}">All products</nuxt-link>
               </li>
               <li
+              @click="getCategoryFilter(category)"
               v-for="(category,index) in filterbyCategory"
               :key="index">
-                <nuxt-link :to="{ path: '/collection/leftsidebar/'+category}" @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
+                <nuxt-link :to="{ path: category.path }" >{{ category.title }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -39,30 +40,6 @@
     </div>
     <!-- side-bar colleps block stat -->
     <div class="collection-filter-block">
-      <!-- brand filter start -->
-      <div class="collection-collapse-block open" v-if="filterbyBrand.length">
-        <h3 class="collapse-block-title"  v-b-toggle.brand >brand</h3>
-         <b-collapse id="brand" visible accordion="myaccordion1" role="tabpanel">
-        <div class="collection-collapse-block-content">
-          <div class="collection-brand-filter">
-            <div
-              class="custom-control custom-checkbox collection-filter-checkbox"
-              v-for="(brand,index) in filterbyBrand"
-              :key="index"
-            >
-              <input
-              type="checkbox"
-              class="custom-control-input"
-              :value="brand"
-              :id="brand"
-              v-model="applyFilter"
-              @change="appliedFilter(brand)" />
-              <label class="custom-control-label" v-bind:for="brand">{{brand}}</label>
-            </div>
-          </div>
-        </div>
-         </b-collapse>
-      </div>
       <!-- color filter start here -->
       <div class="collection-collapse-block open" v-if="filterbycolor.length">
         <h3 class="collapse-block-title" v-b-toggle.colors>colors</h3>
@@ -78,11 +55,11 @@
               type="checkbox"
               class="custom-control-input"
               :value="color"
-              :id="color"
+              :id="color.id"
               v-model="applyFilter"
-              @change="appliedFilter(color)" />
-              <span :class="color" v-bind:style="{ 'background-color' : color}"></span>
-              <label class="custom-control-label" :class="{selected: isActive(color)}" v-bind:for="color">{{color}}</label>
+              @change="appliedFilter(color.id)" />
+              <span :class="color" v-bind:style="{ 'background-color' : color.slug}"></span>
+              <label class="custom-control-label" :class="{selected: isActive(color.name)}" v-bind:for="color.id">{{color.name}}</label>
             </div>
           </div>
         </div>
@@ -104,10 +81,10 @@
                 type="checkbox"
                 class="custom-control-input"
                 :value="size"
-                :id="size"
+                :id="size.id"
                 v-model="applyFilter"
-                @change="appliedFilter(size)" />
-                <label class="custom-control-label" v-bind:for="size">{{size}}</label>
+                @change="appliedFilter(size.id)" />
+                <label class="custom-control-label" v-bind:for="size.id">{{size.name}}</label>
               </div>
             </div>
           </div>
@@ -202,11 +179,7 @@
         </div>
             <!-- side-bar single product slider end -->
             <!-- side-bar banner start here -->
-            <div class="collection-sidebar-banner">
-              <a href="#">
-                <img :src="bannerimagepath" class="img-fluid" />
-              </a>
-            </div>
+
             <!-- side-bar banner end here -->
     </div>
     <!-- silde-bar colleps block end here -->
@@ -246,7 +219,7 @@ export default {
       currency: state => state.products.currency
     }),
     ...mapGetters({
-      filterbyCategory: 'filter/filterbyCategory',
+      filterbyCategory: 'menu/getCategories',
       filterbyBrand: 'filter/filterbyBrand',
       filterbycolor: 'filter/filterbycolor',
       filterbysize: 'filter/filterbysize'
@@ -283,6 +256,7 @@ export default {
       this.openBlock = !this.openBlock
     },
     getCategoryFilter(category) {
+      this.$store.dispatch('menu/setSelectedCategory', category);
       this.$store.dispatch('filter/getCategoryFilter', category)
     }
   }

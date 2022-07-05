@@ -1,5 +1,6 @@
 import products from '../../data/products'
 import CoCartAPI from "@cocart/cocart-rest-api";
+import _ from 'lodash';
 
 const CoCart = new CoCartAPI({
   url: process.env.VUE_APP_API_URL,
@@ -62,6 +63,12 @@ const formatProduct = (item) =>{
 const state = {
   productslist: products.data,
   products: products.data,
+  pagination: {
+    page: 0,
+    total_pages: 0,
+    total_products: 0,
+    links: {},
+  },
   wishlist: [],
   compare: [],
   currency: {
@@ -110,6 +117,9 @@ const getters = {
   },
   getProductList: (state) => {
     return state.productslist;
+  },
+  getPagination: (state) => {
+    return state.pagination;
   }
 }
 // mutations
@@ -159,9 +169,11 @@ const mutations = {
   createOrder: (state, payload) => {
     state.order = payload
   },
-
   setProducts: (state, payload) =>{
     state.productslist = payload;
+  },
+  setPagination: (state, payload) =>{
+    state.pagination = payload;
   }
 }
 // actions
@@ -189,20 +201,36 @@ const actions = {
   },
 
   async fetchProducts({ commit }, payload) {
-  
     try {
 
-      const params = new URLSearchParams(payload).toString();
+      let url = "products?";
+      let params = {
+        /* Default  number of product */
+        per_page: 8,
+      };
+      
+      params = {...params, ...payload};
+      params = new URLSearchParams(_.pickBy(params)).toString();
+      
+      url += params;
+
       let products = [];
-      const result = await CoCart.get("products?" + params, {
-        categories: 17
-    });
+      const result = await CoCart.get(url);
 
       result.data.products.forEach((item) => {
         products.push(formatProduct(item));
       });
 
+      /* create pagination object */
+      const pagination = {
+        page: result.data.page,
+        total_pages: result.data.total_pages,
+        total_products: result.data.total_products,
+        links: result.data._links,
+      }
+
       commit('setProducts', products);
+      commit('setPagination', pagination);
 
       }
       catch (error) {

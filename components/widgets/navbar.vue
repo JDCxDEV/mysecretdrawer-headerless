@@ -88,6 +88,7 @@ export default {
 
   mounted() {
     this.$store.dispatch('menu/fetchCategories')
+    this.$store.dispatch('filter/fetchFilterItems')
   },
   methods: {
     mobilenav: function () {
