@@ -54,7 +54,7 @@ export default {
 
             return images;
         },
-        formatProduct(item) {
+        formatProduct(item, shouldFetchRelatedData = false) {
             let product = {
                 id: item.id,
                 title: item.name,
@@ -72,6 +72,14 @@ export default {
                 variants: item.variations,
                 images : this.formatImages(item.images, item.id),
             };
+
+            if(item.related.length && shouldFetchRelatedData) {
+                let ids = [];
+                item.related.forEach((item) => {
+                    ids.push(item.id);
+                });
+                this.$store.dispatch('products/fetchRelatedProducts', ids);
+            }
             return product;
         },
 
@@ -96,8 +104,8 @@ export default {
         async fetchSingleProduct(id){
             CoCart.get("products/" + id)
             .then((response) => {
-            
-                this.getDetail = this.formatProduct(response.data);
+
+                this.getDetail = this.formatProduct(response.data, true);
             })
             .catch((error) => {
                 console.log(error);

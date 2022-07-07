@@ -22,13 +22,14 @@
         <div class="collection-collapse-block-content">
           <div class="collection-brand-filter">
             <ul class="category-list">
-              <li>
+              <li @click="getCategoryFilter('all')">
                 <nuxt-link :to="{ path: '/collection/all'}">All products</nuxt-link>
               </li>
               <li
+              @click="getCategoryFilter(category)"
               v-for="(category,index) in filterbyCategory"
               :key="index">
-                <nuxt-link :to="{ path: '/collection/'+category}" @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
+                <nuxt-link :to="{ path: category.path }" @click="getCategoryFilter(category)">{{ category.title }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -273,7 +274,7 @@ export default {
       currency: state => state.products.currency
     }),
     ...mapGetters({
-      filterbyCategory: 'filter/filterbyCategory',
+      filterbyCategory: 'menu/getCategories',
       curr: 'products/changeCurrency'
     })
   },
@@ -296,6 +297,8 @@ export default {
       return this.applyFilter.indexOf(filterItem) > -1
     },
     getCategoryFilter(category) {
+      console.log(category);
+      this.$store.dispatch('menu/setSelectedCategory', category);
       this.$store.dispatch('filter/getCategoryFilter', category)
     },
     toggleSidebarBlock() {

@@ -253,10 +253,12 @@ export default {
     ...mapGetters({
       filterProduct: 'filter/filterProducts',
       tags: 'filter/setTags',
+      filterItems: 'filter/tagItems',
       curr: 'products/changeCurrency',
       product: 'products/changeCurrency',
       productList: 'products/getProductList',
       pagination: 'products/getPagination',
+
     }),
 
     currentList() {
@@ -268,13 +270,17 @@ export default {
     this.fetchProduct(1);
   },
   methods: {
-    fetchProduct(page) {
-      let params = {
-        category: this.$store.state.menu.selected_category.product_id,
-        page: page,
+    fetchProduct(page , params, string_url = '') {
+      let default_params = {
+        params : {
+          category: this.$store.state.menu.selected_category.product_id,
+          page: page,
+          ...params
+        },
+        string_url: string_url
       };
 
-      this.$store.dispatch('products/fetchProducts', params);
+      this.$store.dispatch('products/fetchProducts', default_params);
     },
     onChangeSort(event) {
       this.$store.dispatch('filter/sortProducts', event.target.value)
@@ -335,9 +341,56 @@ export default {
       this.allfilters = selectedVal
       this.$store.dispatch('filter/setTags', selectedVal)
       this.getPaginate()
-      this.updatePaginate(1)
+      this.updatePaginate(1);
+
+
+      let params = [];
+
+      let colors = {
+        slug: [],
+        parent_slug: 'pa_color',
+      };
+      let size = {
+        slug: [],
+        parent_slug: 'pa_product-size',
+      };
+
+      this.filterItems.forEach(term => {
+          if(term.parent_slug == 'pa_color'){
+            colors.slug.push(term.slug);
+          }
+          if(term.parent_slug == 'pa_product-size'){
+            size.slug.push(term.slug);
+          }
+      });
+
+      if(colors.slug.length) {
+        params.push(colors);
+      }
+      if(size.slug.length) {
+        params.push(size);
+      }
+
+      this.generateFilterUrl(params)
     },
+
+    generateFilterUrl(params) {
+      let string_params = '';
+      params.forEach((item, index) => {
+        if(item.slug.length) {
+            let slug = '';
+            item.slug.forEach(item => {
+              slug += item + '%2C';
+            });
+            string_params += '&attributes['+ index +'][attribute]='+ item.parent_slug +'&attributes['+ index +'][slug]=' + slug.slice(0, -3);
+        }
+      });
+
+      this.fetchProduct(1,{}, string_params)
+    },
+
     pricefilterArray(item) {
+      console.log(item);
       this.getCategoryFilter()
       this.$store.dispatch('filter/priceFilter', item)
       this.getPaginate()
@@ -359,7 +412,6 @@ export default {
     },
     updatePaginate(page) {
       this.current = page;
-      this.fetchProduct(page);
     },
     alert(item) {
       this.dismissCountDown = item

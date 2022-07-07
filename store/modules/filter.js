@@ -1,4 +1,3 @@
-import products from '../../data/products'
 import CoCartAPI from "@cocart/cocart-rest-api";
 
 const CoCart = new CoCartAPI({
@@ -6,8 +5,8 @@ const CoCart = new CoCartAPI({
 });
 
 const state = {
-  productslist: products.data,
-  products: products.data,
+  productslist: [],
+  products: [],
   tagItems: [],
   filteredProduct: [],
   paginate: 12,
@@ -30,7 +29,10 @@ const getters = {
     if(state.filterItems.length) {
       state.filterItems.filter((item) => {
         if(item.slug == 'pa_color') {
-          colors = item.terms;
+          colors = item.terms.map(term => {
+            term.parent_slug = item.slug;
+            return term;
+          });
         }
       });
     }
@@ -42,12 +44,19 @@ const getters = {
     if(state.filterItems.length) {
       state.filterItems.filter((item) => {
         if(item.slug == 'pa_product-size') {
-          size = item.terms;
+          size = item.terms.map(term => {
+            term.parent_slug = item.slug;
+            return term;
+          });
         }
       });
     }
 
     return size;
+  },
+
+  tagItems: (state) => {
+    return state.tagItems;
   },
   filterProducts: (state) => {
     return state.filteredProduct.filter((product) => {
@@ -79,13 +88,22 @@ const mutations = {
       }
     })
   },
-  priceFilter: (state, payload) => {
+  getCategoryFilter: (state, payload) => {
     state.filteredProduct = []
-    state.priceArray.find((product) => {
-      if (product.price >= payload[0] && product.price <= payload[1]) {
+    state.tagItems = []
+    state.products.filter((product) => {
+      if (payload === product.type) {
         state.filteredProduct.push(product)
+        state.priceArray = state.filteredProduct
+      }
+      if (payload === 'all' || payload === undefined) {
+        state.filteredProduct.push(product)
+        state.priceArray = state.filteredProduct
       }
     })
+  },
+  priceFilter: (state, payload) => {
+    state.priceArray = payload;
   },
   setTags: (state, payload) => {
     state.tagItems = payload
@@ -152,7 +170,6 @@ const actions = {
   },
   async fetchFilterItems({ commit }) {
     try {
-
       let filters = [];
       const result = await CoCart.get("products/attributes");
     
@@ -165,11 +182,11 @@ const actions = {
       ));
 
       commit('setFilterItems', filters);
-      }
-      catch (error) {
-          alert(error)
-          console.log(error)
-      }
+    }
+    catch (error) {
+        alert(error)
+        console.log(error)
+    }
   },
 }
 export default {

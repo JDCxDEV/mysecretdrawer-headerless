@@ -77,7 +77,8 @@ const state = {
   },
   order: [],
   locale: 'en',
-  searchProduct: []
+  searchProduct: [],
+  relatedProducts: [],
 }
 // getters
 const getters = {
@@ -174,7 +175,10 @@ const mutations = {
   },
   setPagination: (state, payload) =>{
     state.pagination = payload;
-  }
+  },
+  setRelatedProducts: (state, payload) =>{
+    state.relatedProducts = payload;
+  },
 }
 // actions
 const actions = {
@@ -209,10 +213,10 @@ const actions = {
         per_page: 8,
       };
       
-      params = {...params, ...payload};
+      params = {...params, ...payload?.params};
       params = new URLSearchParams(_.pickBy(params)).toString();
-      
-      url += params;
+  
+      url += params + payload?.string_url;
 
       let products = [];
       const result = await CoCart.get(url);
@@ -231,6 +235,26 @@ const actions = {
 
       commit('setProducts', products);
       commit('setPagination', pagination);
+
+      }
+      catch (error) {
+          alert(error)
+          console.log(error)
+      }
+  },
+
+  async fetchRelatedProducts({ commit }, payload) {
+    try {
+
+      let relatedProducts = [];
+
+      await Promise.all(payload.map(id => 
+        CoCart.get("products/" + id).then( response =>{
+          relatedProducts.push(formatProduct(response.data));
+        })
+      ));
+
+      commit('setRelatedProducts', relatedProducts);
 
       }
       catch (error) {

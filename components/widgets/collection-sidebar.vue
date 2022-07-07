@@ -99,8 +99,8 @@
           <div class="collection-brand-filter price-rangee-picker">
             <vue-slider
             v-model="value"
-            :min="0"
-            :max="800"
+            :min="1"
+            :max="1000"
             ref="slider"
             @change="sliderChange($refs.slider.getValue())">
             </vue-slider>
@@ -194,7 +194,7 @@ export default {
   data() {
     return {
       bannerimagepath: require('@/assets/images/side-banner.png'),
-      value: [50, 550],
+      value: [1, 500],
       selectedcolor: [],
       selectedbrand: [],
       selectedsize: [],
@@ -257,7 +257,7 @@ export default {
     },
     getCategoryFilter(category) {
       this.$store.dispatch('menu/setSelectedCategory', category);
-      this.$store.dispatch('filter/getCategoryFilter', category)
+      this.$store.dispatch('filter/getCategoryFilter', category);
     }
   }
 }

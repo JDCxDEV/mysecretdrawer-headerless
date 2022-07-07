@@ -47,7 +47,7 @@ import cartModel from '../cart-model/cart-modal-popup'
 import quickviewModel from './quickview'
 import compareModel from './compare-popup'
 export default {
-  props: ['productTYpe', 'productId'],
+  props: ['productType', 'productId'],
   components: {
     productBox1,
     quickviewModel,
@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     ...mapState({
-      productslist: state => state.products.productslist
+      productslist: state => state.products.relatedProducts
     })
   },
   mounted() {
