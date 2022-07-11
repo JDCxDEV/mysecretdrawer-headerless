@@ -42,7 +42,7 @@ export default {
                     "image_id": item.id,
                     "id": product_id,
                     "alt": item.alt,
-                    "src": item.src.full,
+                    "src": item.src,
                     "variant_id": [
                         201,
                         204,
@@ -59,6 +59,7 @@ export default {
                 id: item.id,
                 title: item.name,
                 description: item.description,
+                short_description: item.short_description,
                 type: item.type,
                 brand: item.type,
                 collection: this.formatCategories(item.categories),

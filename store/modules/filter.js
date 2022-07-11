@@ -70,7 +70,18 @@ const getters = {
       })
       return Tags
     })
-  }
+  },
+  getPriceRange: (state) => {
+    let priceRange = {};
+    
+    if(state.priceArray) {
+      priceRange = {
+        min_price : state.priceArray[0],
+        max_price : state.priceArray[1]
+      };
+    }
+    return priceRange;
+  },
 }
 // mutations
 const mutations = {

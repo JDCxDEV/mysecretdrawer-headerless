@@ -100,9 +100,9 @@
             <vue-slider
             v-model="value"
             :min="1"
-            :max="1000"
+            :max="100"
             ref="slider"
-            @change="sliderChange($refs.slider.getValue())">
+            @change="bridgeMethod($refs.slider.getValue())">
             </vue-slider>
           </div>
         </div>
@@ -189,12 +189,13 @@
 import { mapState, mapGetters } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
+import _ from 'lodash';
 
 export default {
   data() {
     return {
       bannerimagepath: require('@/assets/images/side-banner.png'),
-      value: [1, 500],
+      value: [1, 50],
       selectedcolor: [],
       selectedbrand: [],
       selectedsize: [],
@@ -226,7 +227,7 @@ export default {
     })
   },
   mounted() {
-    this.$emit('priceVal', this.value)
+    
   },
   methods: {
     getCategoryProduct(collection) {
@@ -249,9 +250,12 @@ export default {
     appliedFilter(val) {
       this.$emit('allFilters', this.applyFilter)
     },
-    sliderChange(event) {
-      this.$emit('priceVal', event)
+    bridgeMethod(event) {
+      this.sliderChange(event, this);
     },
+    sliderChange: _.debounce((event, vm) => {
+        vm.$emit('priceVal', event)
+    }, 1500),
     toggleSidebarBlock() {
       this.openBlock = !this.openBlock
     },

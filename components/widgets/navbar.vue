@@ -82,13 +82,16 @@ export default {
   },
   computed: {
     ...mapState({
-      menulist: state => state.menu.data
+      menulist: state => state.menu.data,
+      hasFilterItem: state => state.filter.filterItems.length ? true : false
     }),
   },
 
   mounted() {
     this.$store.dispatch('menu/fetchCategories')
-    this.$store.dispatch('filter/fetchFilterItems')
+    if(!this.hasFilterItem) {
+      this.$store.dispatch('filter/fetchFilterItems')
+    }
   },
   methods: {
     mobilenav: function () {

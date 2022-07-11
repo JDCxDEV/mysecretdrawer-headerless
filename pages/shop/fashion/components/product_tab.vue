@@ -76,7 +76,6 @@ export default {
 
   mounted() {
     this.fetchCategories();
-    this.fetchProducts();
   },
   methods: {
     getCategoryProduct(collection) {

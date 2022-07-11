@@ -8,9 +8,9 @@
       <div class="front">
         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
           <img
-            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src, true)'
+            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src.woocommerce_thumbnail, true)'
             :id="product.id"
-            class="img-fluid bg-img"
+            class="img-fluid bg-img custom-img-collection"
             :alt="product.title"
             :key="index"
           />
@@ -19,13 +19,13 @@
       <ul class="product-thumb-list">
         <li
           class="grid_thumb_img"
-          :class="{active: imageSrc === image.src}"
-          v-for="(image,index) in product.images"
+          :class="{active: imageSrc === image.src.woocommerce_thumbnail}"
+          v-for="(image,index) in product.images.slice(0,4)"
           :key="index"
-          @click="productVariantChange(image.src)"
+          @click="productVariantChange(image.src.woocommerce_thumbnail)"
         >
           <a href="javascript:void(0);">
-            <img :src="getImgUrl(image.src, true)" />
+            <img :src="getImgUrl(image.src.woocommerce_thumbnail, true)" />
           </a>
         </li>
       </ul>
@@ -64,10 +64,10 @@
       </nuxt-link>
       <p>{{ product.description }}</p>
       <h4 v-if="product.sale">
-        {{ discountedPrice(product) * curr.curr | currency(curr.symbol) }}
-        <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
+        {{ discountedPrice(product) | currency(curr.symbol) }}
+        <del>{{ product.price }}</del>
       </h4>
-      <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
+      <h4 v-else>{{ product.price | currency(curr.symbol) }}</h4>
       <!-- <ul class="color-variant" v-if="product.variants[0].color">
         <li v-for="(variant,variantIndex) in Color(product.variants)" :key="variantIndex">
           <a
@@ -158,7 +158,6 @@ export default {
       })
     },
     productVariantChange(imgsrc) {
-      console.log("I am calll");      
       this.imageSrc = imgsrc
     },
     countDownChanged(dismissCountDown) {
@@ -172,3 +171,8 @@ export default {
   }
 }
 </script>
+<style>
+.custom-img-collection {
+  min-height: 300px;
+}
+</style>

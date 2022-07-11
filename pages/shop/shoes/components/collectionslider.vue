@@ -27,11 +27,11 @@
                           <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
                             <h6>{{product.title}}</h6>
                           </nuxt-link>
-                          <h4 v-if="product.sale">
-        {{ discountedPrice(product) * curr.curr | currency(curr.symbol) }}
-        <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
-      </h4>
-      <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
+                            <h4 v-if="product.sale">
+                              {{ discountedPrice(product) * curr.curr | currency(curr.symbol) }}
+                              <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
+                            </h4>
+                            <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
                         </div>
                       </div>
                     </div>
@@ -54,10 +54,10 @@
                             <h6>{{product.title}}</h6>
                           </nuxt-link>
                           <h4 v-if="product.sale">
-        {{ discountedPrice(product) * curr.curr | currency(curr.symbol) }}
-        <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
-      </h4>
-      <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
+                            {{ discountedPrice(product) * curr.curr | currency(curr.symbol) }}
+                            <del>{{ product.price * curr.curr | currency(curr.symbol) }}</del>
+                          </h4>
+                          <h4 v-else>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
                         </div>
                       </div>
                     </div>

@@ -21,9 +21,9 @@
                           :key="index"
                         >
                           <img
-                            :src="getImgUrl(product.src, true)"
+                            :src="getImgUrl(product.src.woocommerce_thumbnail, true)"
                             :id="product.image_id"
-                            class="img-fluid bg-img"
+                            class="img-fluid bg-img custom-img-lg"
                             :alt="product.alt"
                           />
                         </div>
@@ -39,9 +39,9 @@
                               :key="index"
                             >
                               <img
-                                :src="getImgUrl(product.src, true)"
+                                :src="getImgUrl(product.src.woocommerce_thumbnail, true)"
                                 :id="product.image_id"
-                                class="img-fluid bg-img"
+                                class="img-fluid bg-img custom-img"
                                 alt="product.alt"
                                 @click="slideTo(index)"
                               />
@@ -160,7 +160,7 @@
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">product details</h6>
-                        <p>{{ getDetail.description }}</p>
+                        <p>{{ getDetail.short_description }}</p>
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">share it</h6>
@@ -213,7 +213,7 @@
                   <div class="col-sm-12 col-lg-12">
                     <b-tabs card>
                       <b-tab title="Description" active>
-                        <b-card-text>{{getDetail.description}}</b-card-text>
+                        <b-card-text v-html="getDetail.description"></b-card-text>
                       </b-tab>
                       <b-tab title="Details">
                         <b-card-text>
@@ -485,3 +485,20 @@ export default {
   }
 }
 </script>
+
+  <style>
+  .custom-img {
+    min-height: 170px;
+    max-height: 170px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-img-lg {
+    min-height: 624px;
+    max-height: 624px;
+    min-width: 480px;
+    max-width: 480px;
+  }
+  </style>

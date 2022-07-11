@@ -77,13 +77,6 @@
                                       class="product-4-layout-view"
                                     />
                                   </li>
-                                  <li>
-                                    <img
-                                      :src='"@/assets/images/icon/6.png"'
-                                      @click="grid6()"
-                                      class="product-6-layout-view"
-                                    />
-                                  </li>
                                 </ul>
                               </div>
                               <div class="product-page-filter">
@@ -112,7 +105,7 @@
                           </div>
                           <div
                           class="col-grid-box"
-                          :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-2':col6 == true, 'col-lg-12':listview == true}"
+                          :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-12':listview == true}"
                           v-for="(product,index) in currentList"
                           :key="index"
                           >
@@ -143,14 +136,14 @@
                                       </span>
                                     </a>
                                   </li>
-                                  <li class="page-item" v-for="(page_index, index) in pagination.total_pages" :key="index" :class="{'active': page_index == current}">
+                                  <li class="page-item" v-for="(page_index, index) in pages" :key="index" :class="{'active': page_index == current}">
                                     <a
                                       class="page-link"
                                       href="javascrip:void(0)"
                                       @click.prevent="updatePaginate(page_index)"
                                     >{{ page_index }}</a>
                                   </li>
-                                  <li class="page-item" :class="{'disable': current == this.paginates }">
+                                  <li class="page-item" :class="{'disable': current >= pagination.total_pages }">
                                     <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current+1)">
                                       <span aria-hidden="true">
                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -221,7 +214,6 @@ export default {
       col2: false,
       col3: false,
       col4: true,
-      col6: false,
       listview: false,
       priceArray: [],
       allfilters: [],
@@ -229,7 +221,7 @@ export default {
       current: 1,
       paginate: 12,
       paginateRange: 5,
-      pages: [],
+      pages: [1, 2, 3, 4, 5],
       paginates: '',
       showquickviewmodel: false,
       showcomparemodal: false,
@@ -245,7 +237,8 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         }
-      }
+      },
+      string_params: '',
     }
   },
   
@@ -258,6 +251,7 @@ export default {
       product: 'products/changeCurrency',
       productList: 'products/getProductList',
       pagination: 'products/getPagination',
+      priceRange: 'filter/getPriceRange'
 
     }),
 
@@ -267,17 +261,16 @@ export default {
   },
   mounted() {
     this.updatePaginate(1);
-    this.fetchProduct(1);
   },
   methods: {
-    fetchProduct(page , params, string_url = '') {
+    fetchProduct(page , params) {
       let default_params = {
         params : {
           category: this.$store.state.menu.selected_category.product_id,
           page: page,
           ...params
         },
-        string_url: string_url
+        string_url: this.string_params
       };
 
       this.$store.dispatch('products/fetchProducts', default_params);
@@ -289,7 +282,6 @@ export default {
       this.col4 = true
       this.col2 = false
       this.col3 = false
-      this.col6 = false
       this.listview = false
     },
     listView() {
@@ -297,31 +289,26 @@ export default {
       this.col4 = false
       this.col2 = false
       this.col3 = false
-      this.col6 = false
     },
     grid2() {
       this.col2 = true
       this.col3 = false
       this.col4 = false
-      this.col6 = false
       this.listview = false
     },
     grid3() {
       this.col3 = true
       this.col2 = false
       this.col4 = false
-      this.col6 = false
       this.listview = false
     },
     grid4() {
       this.col4 = true
       this.col2 = false
       this.col3 = false
-      this.col6 = false
       this.listview = false
     },
     grid6() {
-      this.col6 = true
       this.col2 = false
       this.col3 = false
       this.col4 = false
@@ -341,8 +328,6 @@ export default {
       this.allfilters = selectedVal
       this.$store.dispatch('filter/setTags', selectedVal)
       this.getPaginate()
-      this.updatePaginate(1);
-
 
       let params = [];
 
@@ -375,26 +360,23 @@ export default {
     },
 
     generateFilterUrl(params) {
-      let string_params = '';
+      this.string_params = '';
       params.forEach((item, index) => {
         if(item.slug.length) {
             let slug = '';
             item.slug.forEach(item => {
               slug += item + '%2C';
             });
-            string_params += '&attributes['+ index +'][attribute]='+ item.parent_slug +'&attributes['+ index +'][slug]=' + slug.slice(0, -3);
+            this.string_params += '&attributes['+ index +'][attribute]='+ item.parent_slug +'&attributes['+ index +'][slug]=' + slug.slice(0, -3);
         }
       });
 
-      this.fetchProduct(1,{}, string_params)
+      this.fetchProduct(1,{})
     },
 
     pricefilterArray(item) {
-      console.log(item);
-      this.getCategoryFilter()
       this.$store.dispatch('filter/priceFilter', item)
-      this.getPaginate()
-      this.updatePaginate(1)
+      this.fetchProduct(1, this.priceRange)
     },
     getPaginate() {
       this.paginates = this.pagination.total_pages;
@@ -405,13 +387,40 @@ export default {
     },
     setPaginate(i) {
       if (this.current === 1) {
-        return i < this.paginate
+        return i < this.updatePaginate
       } else {
         return (i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate))
       }
     },
+
     updatePaginate(page) {
-      this.current = page;
+      this.current = page
+      let start = 0
+      let end = 0
+      if (this.current < this.paginateRange - 1) {
+        start = 1
+        end = start + this.paginateRange - 1
+      } else {
+        start = this.current - 1
+        end = this.current + 1
+      }
+      if (start < 1) {
+        start = 1
+      }
+      if (end > this.paginates) {
+        end = this.paginates
+      }
+
+      if(page > this.paginateRange) {
+          let tem_pages = [];
+          this.pages.forEach(page => {  
+            tem_pages.push(page + 1)    
+          });
+          this.pages = tem_pages;
+      }
+      
+      this.fetchProduct(page, {}, this.string_params)
+      return this.pages
     },
     alert(item) {
       this.dismissCountDown = item

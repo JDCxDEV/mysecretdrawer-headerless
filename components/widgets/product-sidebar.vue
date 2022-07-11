@@ -190,7 +190,7 @@
                     <div>
                       <div class="media" v-for="(product,index) in getCategoryProduct('new products').splice(0,3)" :key="index">
                         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
-                          <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
+                          <img class="img-fluid" :src="getImgUrl(product.images[0].src.woocommerce_thumbnail, true)" alt>
                         </nuxt-link>
                         <div class="media-body align-self-center">
                           <div class="rating">
@@ -216,7 +216,7 @@
                     <div>
                       <div class="media" v-for="(product, index) in getCategoryProduct('new products').splice(3,3)" :key="index">
                         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
-                          <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
+                          <img class="img-fluid" :src="getImgUrl(product.images[0].src.woocommerce_thumbnail, true)" alt>
                         </nuxt-link>
                         <div class="media-body align-self-center">
                           <div class="rating">
@@ -286,8 +286,8 @@ export default {
         }
       })
     },
-    getImgUrl(path) {
-      return require('@/assets/images/' + path)
+    getImgUrl(path, isUrl = false) {
+      return isUrl ? path : require('@/assets/images/' + path) 
     },
     discountedPrice(product) {
       const price = product.price - (product.price * product.discount / 100)

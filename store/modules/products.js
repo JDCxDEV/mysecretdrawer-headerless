@@ -1,4 +1,3 @@
-import products from '../../data/products'
 import CoCartAPI from "@cocart/cocart-rest-api";
 import _ from 'lodash';
 
@@ -14,7 +13,7 @@ const formatImages = (items, product_id) =>{
           "image_id": item.id,
           "id": product_id,
           "alt": item.alt,
-          "src": item.src.full,
+          "src": item.src,
           "variant_id": [
               201,
               204,
@@ -48,7 +47,8 @@ const formatProduct = (item) =>{
       brand: item.type,
       collection: formatCategories(item.categories),
       category: item.categories[0].name,
-      price: item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price,
+      price: (item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price) / 100,
+      currency: item.currency,
       sale: item.prices.sale_price,
       discount: "40",
       stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
@@ -61,8 +61,8 @@ const formatProduct = (item) =>{
 };
 
 const state = {
-  productslist: products.data,
-  products: products.data,
+  productslist: [],
+  products: [],
   pagination: {
     page: 0,
     total_pages: 0,
