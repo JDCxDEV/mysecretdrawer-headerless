@@ -52,12 +52,13 @@
       </div>
     </div>
     <div class="product-detail">
-      <div class="rating">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
+      <div>
+        <template v-for="rating in Math.round(product.average_rating)">
+          <i class="fa fa-star" style="color: #ffd200;"></i>
+        </template>
+        <template v-for="rating in (5 - Math.round(product.average_rating))">
+          <i class="fa fa-star" style="color: gray;"></i>
+        </template>
       </div>
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
         <h6>{{ product.title }}</h6>

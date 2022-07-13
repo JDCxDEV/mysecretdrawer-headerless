@@ -45,6 +45,7 @@ const formatProduct = (item) =>{
       description: item.description,
       type: item.type,
       brand: item.type,
+      average_rating: item.average_rating,
       collection: formatCategories(item.categories),
       category: item.categories[0].name,
       price: (item.prices.on_sale ? item.prices.sale_price : item.prices.regular_price) / 100,
@@ -52,6 +53,7 @@ const formatProduct = (item) =>{
       sale: item.prices.sale_price,
       discount: "40",
       stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
+      is_in_stock: item.stock.is_in_stock,
       new: true,
       tags: item.tags,
       variants: item.variations,
@@ -214,6 +216,11 @@ const actions = {
       };
       
       params = {...params, ...payload?.params};
+      
+      if(!params.min_price) {
+        params.min_price = 1;
+      }
+      
       params = new URLSearchParams(_.pickBy(params)).toString();
   
       url += params + payload?.string_url;

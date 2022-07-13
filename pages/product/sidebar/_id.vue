@@ -60,7 +60,7 @@
                       </h4>
                       <h3 v-if="getDetail.sale">{{ discountedPrice(getDetail) * curr.curr | currency(curr.symbol) }}</h3>
                       <h3 v-else>{{ getDetail.price * curr.curr | currency(curr.symbol) }}</h3>
-                      <!-- <ul class="color-variant">
+                      <ul class="color-variant">
                         <li
                           v-bind:class="{ active: activeColor == variant}"
                           v-for="(variant,variantIndex) in Color(getDetail.variants)"
@@ -72,12 +72,9 @@
                             @click="sizeVariant(getDetail.variants[variantIndex].image_id, variantIndex, variant)"
                           ></a>
                         </li>
-                      </ul> -->
-                      <div class="pro_inventory" v-if="getDetail.stock < 8">
-                        <p class="active"> Hurry! We have only {{ getDetail.stock }} product in stock. </p>
-                        <div class="inventory-scroll">
-                          <span style="width: 95%;"></span>
-                        </div>
+                      </ul>
+                      <div class="pro_inventory" v-if="getDetail.stock">
+                        <p class="active" v-if="getDetail.stock"> Hurry! We have only {{ getDetail.stock }} product in stock. </p>
                       </div>
                       <div class="product-description border-product">
                         <h6 class="product-title size-text">
@@ -91,20 +88,20 @@
                             <li
                               class="product-title"
                               v-bind:class="{ active: selectedSize == size}"
-                              v-for="(size,index) in size"
+                              v-for="(size,index) in getDetail.variants"
                               :key="index"
                             >
                               <a
                                 href="javascript:void(0)"
                                 @click="changeSizeVariant(size)"
-                              >{{size}}</a>
+                              >{{size.attributes['attribute_product-size']}}</a>
                             </li>
                           </ul>
                         </div>
-                        <h5 class="avalibility" v-if="counter <= getDetail.stock">
+                        <h5 class="avalibility" v-if="counter <= getDetail.stock || getDetail.is_in_stock">
                           <span>In Stock</span>
                         </h5>
-                        <h5 class="avalibility" v-if="counter > getDetail.stock">
+                        <h5 class="avalibility" v-if="counter > getDetail.stock && !getDetail.is_in_stock">
                           <span>Out of Stock</span>
                         </h5>
                         <h6 class="product-title">quantity</h6>
@@ -217,7 +214,6 @@
                       </b-tab>
                       <b-tab title="Details">
                         <b-card-text>
-                          {{getDetail.description}}
                           <div class="single-product-tables">
                             <table>
                               <tbody>
@@ -439,8 +435,8 @@ export default {
     Color(variants) {
       const uniqColor = []
       for (let i = 0; i < Object.keys(variants).length; i++) {
-        if (uniqColor.indexOf(variants[i].color) === -1) {
-          uniqColor.push(variants[i].color)
+        if (uniqColor.indexOf(variants[i].attributes.attribute_pa_color) === -1) {
+          uniqColor.push(variants[i].attributes.attribute_pa_color)
         }
       }
       return uniqColor
