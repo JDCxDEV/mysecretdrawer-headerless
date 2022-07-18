@@ -96,7 +96,7 @@ export default {
   methods: {
     // Get Image Url
     getImgUrl(path) {
-      return require('@/assets/images/' + path)
+      return path.full
     },
     closeCart(val) {
       val = false
