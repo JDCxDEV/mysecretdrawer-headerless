@@ -145,14 +145,14 @@
                             class="btn btn-solid"
                             title="Add to cart"
                             @click="addToCart(getDetail, counter)"
-                            :disabled="counter > getDetail.stock"
+                            :disabled="!getDetail.is_in_stock"
                           >Add To Cart</button>
                         </nuxt-link>
                         <button
                             class="btn btn-solid"
                             title="buy now"
                             @click="buyNow(getDetail, counter)"
-                            :disabled="counter > getDetail.stock"
+                            :disabled="!getDetail.is_in_stock"
                           >Buy Now</button>
                       </div>
                       <div class="border-product">
@@ -442,7 +442,7 @@ export default {
       return uniqColor
     },
     // add to cart
-    addToCart: function (product, qty) {
+    addToCart (product, qty) {
       product.quantity = qty || 1
       this.$store.dispatch('cart/addToCart', product)
     },

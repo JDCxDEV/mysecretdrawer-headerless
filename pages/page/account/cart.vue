@@ -184,7 +184,7 @@ export default {
   },
   methods: {
     getImgUrl(path) {
-      return require('@/assets/images/' + path)
+      return path.full
     },
     removeCartItem: function (product) {
       this.$store.dispatch('cart/removeCartItem', product)
