@@ -23,9 +23,6 @@
           <div class="collection-collapse-block-content">
           <div class="collection-brand-filter">
             <ul class="category-list">
-              <li @click="getCategoryFilter('all')">
-                <nuxt-link :to="{ path: '/collection/all'}">All products</nuxt-link>
-              </li>
               <li
               @click="getCategoryFilter(category)"
               v-for="(category,index) in filterbyCategory"

@@ -36,7 +36,7 @@
                   class="btn-sm btn-solid mr-2"
                 >Checkout</nuxt-link>
                 <nuxt-link
-                  :to="{ path: '/'}"
+                  :to="{ path: '/collection/all'}"
                   class="btn-sm btn-solid"
                 >Continue Shopping</nuxt-link>
               </div>

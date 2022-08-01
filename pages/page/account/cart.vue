@@ -148,7 +148,7 @@
         </div>
         <div class="row cart-buttons" v-if="cart.length">
           <div class="col-6">
-            <nuxt-link :to="{ path: '/'}" :class="'btn btn-solid'">continue shopping</nuxt-link>
+            <nuxt-link :to="{ path: '/collection/all'}" :class="'btn btn-solid'">continue shopping</nuxt-link>
           </div>
           <div class="col-6">
             <nuxt-link :to="{ path: '/page/account/checkout'}" :class="'btn btn-solid'">check out</nuxt-link>

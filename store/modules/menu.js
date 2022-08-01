@@ -45,10 +45,13 @@ const actions = {
       const result = await CoCart.get("products/categories?"+params);
 
       let categories = [];
+      categories.push({ "path": "/collection/" + 'all', "title": 'All Products', "type": "link", product_id: null });
       result.data.forEach((item) => {
         let category = { "path": "/collection/" + item.slug, "title": item.name.replace("&amp;", "&") , "type": "link", product_id: item.id };
         categories.push(category);
       });
+
+  
 
       let home_tab = {
         title: "Home", "type": "sub", "badgeValue": "new", "active": false

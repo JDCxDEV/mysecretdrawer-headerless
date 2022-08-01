@@ -53,6 +53,7 @@ const formatProduct = (item) =>{
       sale: item.prices.sale_price,
       discount: "40",
       stock: item.stock.stock_quantity ? item.stock.stock_quantity : 0,
+      stock_quantity: item.stock.stock_quantity,
       is_in_stock: item.stock.is_in_stock,
       new: true,
       tags: item.tags,

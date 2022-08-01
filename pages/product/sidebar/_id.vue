@@ -122,7 +122,7 @@
                               type="text"
                               name="quantity"
                               class="form-control input-number"
-                              :disabled="counter > getDetail.stock"
+                              :disabled="counter > getDetail.stock && !getDetail.is_in_stock"
                               v-model="counter"
                             />
                             <span class="input-group-prepend">
