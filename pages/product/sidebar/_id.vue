@@ -84,11 +84,11 @@
                           </span>
                         </h6>
                         <div class="size-box">
-                          <ul :key="selectedSize">
+                          <ul>
                             <li
                               class="product-title"
-                               v-for="(current) in size"
-                               v-bind:class="{ active: selectedSize == current.id}"
+                              v-bind:class="{ active: selectedSize == current.id}"
+                              v-for="(current,index) in size"
                               :key="size.id"
                             >
                               <a
@@ -438,8 +438,11 @@ export default {
     Color(variants) {
       const uniqColor = []
       for (let i = 0; i < Object.keys(variants).length; i++) {
-        if (uniqColor.indexOf(variants[i].attributes.attribute_pa_color) === -1) {
-          uniqColor.push(variants[i].attributes.attribute_colors?.toLowerCase())
+        if (variants[i].attributes.attribute_colors) {
+          uniqColor.push(variants[i].attributes.attribute_colors.toLowerCase())
+        }
+        if(variants[i].attributes.attribute_pa_color) {
+          uniqColor.push(variants[i].attributes.attribute_pa_color.toLowerCase())
         }
       }
       return [... new Set(uniqColor)];
@@ -476,8 +479,15 @@ export default {
       this.size = []
       this.activeColor = color
       this.getDetail.variants.filter((item) => {
-        if (this.activeColor == item.attributes.attribute_colors.toLowerCase()) {
-            this.size.push(item)
+        if(item.attributes.attribute_colors) {
+          if (this.activeColor == item.attributes.attribute_colors.toLowerCase()) {
+              this.size.push(item)
+          }
+        }
+        if(item.attributes.attribute_pa_color) {
+          if (this.activeColor == item.attributes.attribute_pa_color.toLowerCase()) {
+              this.size.push(item)
+          }
         }
       })
     },
