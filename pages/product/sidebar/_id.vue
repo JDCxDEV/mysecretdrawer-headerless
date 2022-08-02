@@ -84,17 +84,18 @@
                           </span>
                         </h6>
                         <div class="size-box">
-                          <ul>
+                          <ul :key="selectedSize">
                             <li
                               class="product-title"
-                              v-bind:class="{ active: selectedSize == size}"
-                              v-for="(size,index) in getDetail.variants"
-                              :key="index"
+                               v-for="(current) in size"
+                               v-bind:class="{ active: selectedSize == current.id}"
+                              :key="size.id"
                             >
                               <a
+                                v-if="current.id"
                                 href="javascript:void(0)"
-                                @click="changeSizeVariant(size)"
-                              >{{size.attributes['attribute_product-size']}}</a>
+                                @click="changeSizeVariant(current)"
+                              >{{ getSize(current) }}</a>
                             </li>
                           </ul>
                         </div>
@@ -210,7 +211,9 @@
                   <div class="col-sm-12 col-lg-12">
                     <b-tabs card>
                       <b-tab title="Description" active>
-                        <b-card-text v-html="getDetail.description"></b-card-text>
+                        <b-card-text>
+                          <p  v-html="getDetail.description"></p>
+                        </b-card-text>
                       </b-tab>
                       <b-tab title="Details">
                         <b-card-text>
@@ -436,10 +439,10 @@ export default {
       const uniqColor = []
       for (let i = 0; i < Object.keys(variants).length; i++) {
         if (uniqColor.indexOf(variants[i].attributes.attribute_pa_color) === -1) {
-          uniqColor.push(variants[i].attributes.attribute_pa_color)
+          uniqColor.push(variants[i].attributes.attribute_colors?.toLowerCase())
         }
       }
-      return uniqColor
+      return [... new Set(uniqColor)];
     },
     // add to cart
     addToCart (product, qty) {
@@ -460,7 +463,7 @@ export default {
     },
     // Change size variant
     changeSizeVariant(variant) {
-      this.selectedSize = variant
+      this.selectedSize = variant.id
     },
     getImgUrl(path, isUrl = false) {
       return isUrl ? path : require('@/assets/images/' + path)
@@ -473,10 +476,14 @@ export default {
       this.size = []
       this.activeColor = color
       this.getDetail.variants.filter((item) => {
-        if (id === item.image_id) {
-          this.size.push(item.size)
+        if (this.activeColor == item.attributes.attribute_colors.toLowerCase()) {
+            this.size.push(item)
         }
       })
+    },
+
+    getSize(variant) {
+      return variant.attributes['attribute_product-size'];
     }
   }
 }

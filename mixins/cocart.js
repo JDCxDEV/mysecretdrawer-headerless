@@ -75,6 +75,7 @@ export default {
                 tags: item.tags,
                 variants: item.variations,
                 images : this.formatImages(item.images, item.id),
+                short_description: item.short_description,
             };
 
             if(item.related.length && shouldFetchRelatedData) {

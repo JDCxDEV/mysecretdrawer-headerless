@@ -59,6 +59,7 @@ const formatProduct = (item) =>{
       tags: item.tags,
       variants: item.variations,
       images : formatImages(item.images, item.id),
+      short_description: item.short_description,
   };
   return product;
 };
