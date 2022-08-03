@@ -158,7 +158,7 @@
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">product details</h6>
-                        <p>{{ getDetail.short_description }}</p>
+                        <p v-html="getDetail.short_description "></p>
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">share it</h6>
@@ -212,7 +212,7 @@
                     <b-tabs card>
                       <b-tab title="Description" active>
                         <b-card-text>
-                          <p  v-html="getDetail.description"></p>
+                          <p  class="product-description-cstm" v-html="getDetail.description"></p>
                         </b-card-text>
                       </b-tab>
                       <b-tab title="Details">
@@ -513,5 +513,11 @@ export default {
     max-height: 624px;
     min-width: 480px;
     max-width: 480px;
+  }
+
+  .product-description-cstm li {
+    display: list-item; /* This has to be "list-item"                                          */
+    margin-left : 1em;  /* If you use default list-style-position 'outside', you may need this */
+    margin-bottom: -30px;
   }
   </style>

@@ -58,7 +58,7 @@ export default {
             let product = {
                 id: item.id,
                 title: item.name,
-                description: item.description,
+                description: this.parseString(item.description),
                 type: item.type,
                 brand: item.type,
                 average_rating: item.average_rating,
@@ -75,7 +75,7 @@ export default {
                 tags: item.tags,
                 variants: item.variations,
                 images : this.formatImages(item.images, item.id),
-                short_description: item.short_description,
+                short_description: item.short_description.replace(/(?:\r\n|\r|\n)/g, '<br>'),
                 attributes: item.attributes,
             };
 
@@ -88,7 +88,12 @@ export default {
             }
             return product;
         },
-
+        parseString(item) {
+            let cleanString = item.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            cleanString = cleanString.replace(/(?:&nbsp;)/g, '')
+            console.log(cleanString.replace(/(?:<br><br>)/g, '<br>'));
+            return cleanString.replace(/(?:<br><br>)/g, '<br>')
+        },
         fetchProducts() {        
             CoCart.get("products")
             .then((response) => {
