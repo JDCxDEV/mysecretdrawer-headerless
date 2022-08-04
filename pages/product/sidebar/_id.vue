@@ -59,7 +59,7 @@
                   </div>
                   <div class="col-lg-6 rtl-text">
                     <div class="product-right">
-                      <h2>{{ getDetail.title }}</h2>
+                      <h3>{{ getDetail.title }}</h3>
                       <h4 v-if="getDetail.sale">
                         <del>{{ getDetail.price * curr.curr | currency(curr.symbol) }}</del>
                         <span>{{ getDetail.discount }}% off</span>
@@ -447,12 +447,20 @@ export default {
     // Display Unique Color
     Color(variants) {
       const uniqColor = []
+      let color = '';
       for (let i = 0; i < Object.keys(variants).length; i++) {
         if (variants[i].attributes.attribute_colors) {
-          uniqColor.push(variants[i].attributes.attribute_colors.toLowerCase())
+          color = variants[i].attributes.attribute_colors.toLowerCase()
+          uniqColor.push(color)
         }
         if(variants[i].attributes.attribute_pa_color) {
-          uniqColor.push(variants[i].attributes.attribute_pa_color.toLowerCase())
+          color = variants[i].attributes.attribute_pa_color.toLowerCase()
+          uniqColor.push(color)
+        }
+
+        if(!this.loadColor) {
+          this.sizeVariant(null ,null, color)
+          this.loadColor = true;
         }
       }
 
@@ -495,7 +503,7 @@ export default {
       this.swiper.slideTo(id, 1000, false)
     },
     sizeVariant(id, slideId, color) {
-      this.swiper.slideTo(slideId, 1000, false)
+      // this.swiper.slideTo(slideId, 1000, false)
       this.size = []
       this.activeColor = color
       this.getDetail.variants.filter((item) => {
