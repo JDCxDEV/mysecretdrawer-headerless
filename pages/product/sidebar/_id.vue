@@ -21,7 +21,7 @@
                           :key="index"
                         >
                           <img
-                            :src="getImgUrl(product.src.woocommerce_thumbnail, true)"
+                            :src="getImgUrl(product.src.large, true)"
                             :id="product.image_id"
                             class="img-fluid bg-img custom-img-lg"
                             :alt="product.alt"
@@ -47,6 +47,12 @@
                               />
                             </div>
                           </div>
+                        </div>
+                        <div class="swiper-button-prev nav-cstm" slot="button-prev">
+                          <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-next nav-cstm" slot="button-next">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </div>
                       </div>
                     </div>
@@ -320,7 +326,7 @@
                                 ></textarea>
                               </div>
                               <div class="col-md-12">
-                                <button class="btn btn-solid" type="submit">Submit YOur Review</button>
+                                <button class="btn btn-solid" type="submit">Submit Your Review</button>
                               </div>
                             </div>
                           </form>
@@ -379,13 +385,19 @@ export default {
       swiperOption1: {
         slidesPerView: 3,
         spaceBetween: 30,
-        freeMode: true,
-        centeredSlides: false
+        centeredSlides: false,
+        loop: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
       },
       getDetail : {
         id: null,
         title: '',
-      }
+      },
+
+      loadColor: false,
     }
   },
   computed: {
@@ -403,8 +415,6 @@ export default {
     this.fetchSingleProduct(this.$route.params.id);
   },
   mounted() {
-
-    
     // For displaying default color and size on pageload
     // if(this.getDetail.variants?.length) {
     //   this.uniqColor = this.getDetail.variants[0].color
@@ -445,6 +455,18 @@ export default {
           uniqColor.push(variants[i].attributes.attribute_pa_color.toLowerCase())
         }
       }
+
+      if(!uniqColor.length) {
+        if(this.getDetail.attributes.attribute_color) {
+           uniqColor.push(Object.getOwnPropertyNames(this.getDetail.attributes.attribute_color.options));
+        }
+        if(!this.loadColor) {
+          this.getDetail.variants.filter((item) => {
+            this.size.push(item)
+          })
+          this.loadColor = true;
+        }
+      }
       return [... new Set(uniqColor)];
     },
     // add to cart
@@ -457,14 +479,12 @@ export default {
       this.$store.dispatch('cart/addToCart', product)
       this.$router.push('/page/account/checkout')
     },
-    // Item Count
     increment() {
       this.counter++
     },
     decrement() {
       if (this.counter > 1) this.counter--
     },
-    // Change size variant
     changeSizeVariant(variant) {
       this.selectedSize = variant.id
     },
@@ -516,8 +536,13 @@ export default {
   }
 
   .product-description-cstm li {
-    display: list-item; /* This has to be "list-item"                                          */
-    margin-left : 1em;  /* If you use default list-style-position 'outside', you may need this */
+    display: list-item;
+    margin-left : 1em;
     margin-bottom: -30px;
+  }
+
+  .nav-cstm {
+    font-size: 40px;
+    color: black;
   }
   </style>

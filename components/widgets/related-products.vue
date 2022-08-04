@@ -1,30 +1,30 @@
 <template>
   <div>
-      <section class="ratio_asos">
+    <section class="ratio_asos">
       <div class="container">
-    <div class="col-12 product-related">
-      <h2>{{ title }}</h2>
-    </div>
+        <div class="col-12 product-related">
+          <h2>{{ title }}</h2>
+        </div>
         <div class="row m-0">
-                <div
-                  class="col-xl-2 col-md-4 col-sm-6"
-                  v-for="(product,index) in productslist.slice(1, 7)"
-                  :key="index"
-                >
-                  <div class="product-box">
-                    <productBox1
-                                @opencartmodel="showCart"
-                                @showCompareModal="showCoampre"
-                                @openquickview="showQuickview"
-                                @showalert="alert"
-                                @alertseconds="alert"
-                                :product="product"
-                                :index="index"
-                              />
-                  </div>
-                </div>
+          <div
+            class="col-xl-3 col-md-4 col-sm-6"
+            v-for="(product,index) in productslist.slice(1, 7)"
+            :key="index"
+          >
+            <div class="product-box">
+              <productBox1
+                @opencartmodel="showCart"
+                @showCompareModal="showCoampre"
+                @openquickview="showQuickview"
+                @showalert="alert"
+                @alertseconds="alert"
+                :product="product"
+                :index="index"
+              />
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
     <b-alert
       :show="dismissCountDown"
