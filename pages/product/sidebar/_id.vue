@@ -398,6 +398,7 @@ export default {
       },
 
       loadColor: false,
+      loadSizeWithColor: false,
     }
   },
   computed: {
@@ -458,15 +459,18 @@ export default {
           uniqColor.push(color)
         }
 
-        if(!this.loadColor) {
+        if(!this.loadSizeWithColor) {
           this.sizeVariant(null ,null, color)
-          this.loadColor = true;
+          this.loadSizeWithColor = true;
         }
       }
 
       if(!uniqColor.length) {
         if(this.getDetail.attributes.attribute_color) {
-           uniqColor.push(Object.getOwnPropertyNames(this.getDetail.attributes.attribute_color.options));
+          Object.getOwnPropertyNames(this.getDetail.attributes.attribute_color.options).forEach(color => {
+            uniqColor.push(color);
+          });
+         
         }
         if(!this.loadColor) {
           this.getDetail.variants.filter((item) => {
@@ -504,20 +508,22 @@ export default {
     },
     sizeVariant(id, slideId, color) {
       // this.swiper.slideTo(slideId, 1000, false)
-      this.size = []
-      this.activeColor = color
-      this.getDetail.variants.filter((item) => {
-        if(item.attributes.attribute_colors) {
-          if (this.activeColor == item.attributes.attribute_colors.toLowerCase()) {
-              this.size.push(item)
+      if(!this.loadColor) {
+        this.size = []
+        this.activeColor = color
+        this.getDetail.variants.filter((item) => {
+          if(item.attributes.attribute_colors) {
+            if (this.activeColor == item.attributes.attribute_colors.toLowerCase()) {
+                this.size.push(item)
+            }
           }
-        }
-        if(item.attributes.attribute_pa_color) {
-          if (this.activeColor == item.attributes.attribute_pa_color.toLowerCase()) {
-              this.size.push(item)
+          if(item.attributes.attribute_pa_color) {
+            if (this.activeColor == item.attributes.attribute_pa_color.toLowerCase()) {
+                this.size.push(item)
+            }
           }
-        }
-      })
+        })
+      }
     },
 
     getSize(variant) {
@@ -550,6 +556,7 @@ export default {
   }
 
   .nav-cstm {
+    margin: -20px;
     font-size: 40px;
     color: black;
   }
