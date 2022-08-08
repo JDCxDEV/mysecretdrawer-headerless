@@ -147,14 +147,14 @@
                         </div>
                       </div>
                       <div class="product-buttons">
-                        <nuxt-link :to="{ path: '/page/account/cart'}">
+                        <!-- <nuxt-link :to="{ path: '/page/account/cart'}"> -->
                           <button
                             class="btn btn-solid"
                             title="Add to cart"
                             @click="addToCart(getDetail, counter)"
                             :disabled="!getDetail.is_in_stock"
                           >Add To Cart</button>
-                        </nuxt-link>
+                        <!-- </nuxt-link> -->
                         <button
                             class="btn btn-solid"
                             title="buy now"
@@ -358,6 +358,8 @@ import Timer from '../../../components/widgets/timer'
 import productSidebar from '../../../components/widgets/product-sidebar'
 import relatedProduct from '../../../components/widgets/related-products'
 import cocart from '../../../mixins/cocart';
+
+
 export default {
   mixins: [cocart],
   components: {
@@ -483,8 +485,32 @@ export default {
     },
     // add to cart
     addToCart (product, qty) {
-      product.quantity = qty || 1
-      this.$store.dispatch('cart/addToCart', product)
+      if(!this.getDetail.variants.length) {
+        product.quantity = qty || 1
+        this.$store.dispatch('cart/addToCart', product)
+        this.$router.push({
+            path: '/page/account/cart'
+        })
+      }
+      if(this.getDetail.variants.length && this.selectedSize) {
+        product.quantity = qty || 1
+        product.color = this.activeColor;
+        this.getDetail.variants.filter((item) => {
+          if(item.id == this.selectedSize && item.attributes['attribute_product-size']) {
+            product.size = item.attributes['attribute_product-size'];
+          } 
+        })
+        this.$store.dispatch('cart/addToCart', product)
+        this.$router.push({
+            path: '/page/account/cart'
+        })
+      }else {
+        this.$toast.open({
+            message: 'Please select size and color!',
+            type: 'error',
+            position: 'top-right',
+        });
+      }
     },
     buyNow: function (product, qty) {
       product.quantity = qty || 1
@@ -559,5 +585,8 @@ export default {
     margin: -20px;
     font-size: 40px;
     color: black;
+  }
+  .v-toast__text {
+    color: white !important;
   }
   </style>

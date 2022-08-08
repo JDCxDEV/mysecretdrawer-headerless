@@ -3175,6 +3175,18 @@ box-shadow: 0px 0px 3px #aaa;
     background-repeat: no-repeat;
     position: absolute;}
 }
+&.active{
+  .black::after{
+    content: "";
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/27/White_check.svg");
+    top: 10px;
+    right: 4px;
+    height: 15px;
+    width: 15px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    position: absolute;}
+}
 }
 }
 .image-swatch {

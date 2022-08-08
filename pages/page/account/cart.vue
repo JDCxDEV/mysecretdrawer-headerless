@@ -72,6 +72,21 @@
                         </h2>
                       </div>
                     </div>
+                    <div class="mt-2 row">
+                      <div class="col-md-6">Size : {{ item.size }}</div>
+                      <div class="col-md-6">
+                        Color: 
+                        <span class="color-variant">
+                        <li>
+                          <a
+                            :class="item.color"
+                            class="mt-1"
+                            v-bind:style="{ 'background-color':  item.color }"
+                          ></a>
+                        </li>
+                        </span>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <h2>{{ item.price * curr.curr | currency(curr.symbol) }}</h2>
@@ -204,3 +219,11 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.color-variant a{
+  height: 20px !important;
+  width: 20px !important;
+}
+</style>
