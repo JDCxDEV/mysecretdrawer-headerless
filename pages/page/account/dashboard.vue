@@ -15,7 +15,7 @@
                         <h2>My Dashboard</h2>
                       </div>
                       <div class="welcome-msg">
-                        <p>Hello, MARK JECNO !</p>
+                        <p>Hello, {{ user.first_name}} {{ user.last_name }} !</p>
                         <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
                       </div>
                       <div class="box-account box-info">
@@ -30,8 +30,8 @@
                                 <a href="#">Edit</a>
                               </div>
                               <div class="box-content">
-                                <h6>MARK JECNO</h6>
-                                <h6>MARk-JECNO@gmail.com</h6>
+                                <h6>{{ user.first_name}} {{ user.last_name }}</h6>
+                                <h6>{{ credential.email }}</h6>
                                 <h6>
                                   <a href="#">Change Password</a>
                                 </h6>
@@ -60,7 +60,7 @@
                               <div class="col-sm-6">
                                 <h6>Default Billing Address</h6>
                                 <address>
-                                  You have not set a default billing address.
+                                  {{ billing.address }}
                                   <br />
                                   <a href="#">Edit Address</a>
                                 </address>
@@ -68,7 +68,7 @@
                               <div class="col-sm-6">
                                 <h6>Default Shipping Address</h6>
                                 <address>
-                                  You have not set a default shipping address.
+                                  {{ shipping.address }}
                                   <br />
                                   <a href="#">Edit Address</a>
                                 </address>
@@ -204,7 +204,7 @@
                         <h2>Change password</h2>
                       </div>
                       <div class="welcome-msg">
-                        <p>Hello, MARK JECNO !</p>
+                        <p>Hello, {{ user.first_name}} {{ user.last_name }} !</p>
                         <p>you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings.</p>
                         <p>Sed Ut Perspiciatis Unde Omnis Iste Natus Error Sit Voluptatem Accusantium Doloremque Laudantium</p>
                         <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
@@ -221,7 +221,7 @@
                                 <a href="#">Edit</a>
                               </div>
                               <div class="box-content">
-                                <h6>MARK JECNO</h6>
+                                <h6>{{ user.first_name}} {{ user.last_name }}</h6>
                                 <h6>MARk-JECNO@gmail.com</h6>
                                 <h6>
                                   <a href="#">Change Password</a>
@@ -332,11 +332,21 @@
 import Header from '../../../components/header/header1'
 import Footer from '../../../components/footer/footer1'
 import Breadcrumbs from '../../../components/widgets/breadcrumbs'
+import { mapGetters } from 'vuex';
+
 export default {
   components: {
     Header,
     Footer,
-    Breadcrumbs
-  }
+    Breadcrumbs,
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user/user',
+      credential: 'user/credential',
+      billing: 'user/billing',
+      shipping: 'user/shipping',
+    }),
+  },
 }
 </script>

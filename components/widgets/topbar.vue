@@ -20,14 +20,21 @@
               </nuxt-link>
             </li>
             <li class="onhover-dropdown mobile-account">
-              <i class="fa fa-user" aria-hidden="true"></i> My Account
+              <i class="fa fa-user" aria-hidden="true"></i> 
+              <template v-if="validated">
+                {{ user.first_name }} {{ user.last_name}}
+              </template>
+              <template v-else>
+                My Account
+              </template>
+
               <ul class="onhover-show-div">
                 <li>
-                  <a v-if="isLogin" @click="logout"> Logout </a>
-                  <nuxt-link v-if="!isLogin" :to="{ path: '/page/account/login-firebase' }">Login</nuxt-link>
+                  <nuxt-link :to="{ path: '/page/account/dashboard' }">Dashboard</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="{ path: '/page/account/dashboard' }">Dashboard</nuxt-link>
+                  <a v-if="validated" @click="logout"> Logout </a>
+                  <nuxt-link v-if="!validated" :to="{ path: '/page/account/login-firebase' }">Login</nuxt-link>
                 </li>
               </ul>
             </li>
@@ -41,24 +48,26 @@
 <script>
 import firebase from 'firebase'
 import UserAuth from '../../pages/page/account/auth/auth'
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
       isLogin: false
     }
   },
-  created() {
-    if (process.client) {
-      this.isLogin = localStorage.getItem('userlogin')
-    }
-  },
   methods: {
     logout: function () {
-      firebase.auth().signOut().then(() => {
-        UserAuth.Logout()
-        this.$router.replace('/page/account/login-firebase')
-      })
-    }
-  }
+      this.$store.dispatch('user/unsetUserDetails').then(() =>{
+        this.$router.push({path: '/page/account/login'});
+      });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      validated: 'user/validated',
+      user: 'user/user',
+    }),
+  },
 }
 </script>

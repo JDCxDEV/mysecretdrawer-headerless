@@ -8,10 +8,10 @@
           <div class="col-lg-6">
             <h3>{{logintitle}}</h3>
             <div class="theme-card">
-              <form class="theme-form" v-on:submit="checkForm" method="post">
+              <form class="theme-form" method="post">
                 <div v-if="errors.length">
                   <ul class="validation-error mb-3">
-                    <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+                    <h6 class="text-danger" v-for="(error, index) in errors" :key="index">{{ error }}</h6>
                   </ul>
                 </div>
                 <div class="form-group">
@@ -88,6 +88,8 @@ import Header from '../../../components/header/header1'
 import Footer from '../../../components/footer/footer1'
 import Breadcrumbs from '../../../components/widgets/breadcrumbs'
 import Userauth from './auth/auth'
+// define a mixin object
+import CoCartAPI from "@cocart/cocart-rest-api";
 
 export default {
   components: {
@@ -100,12 +102,12 @@ export default {
       logintitle: 'Login',
       registertitle: 'New Customer',
       errors: [],
-      email: 'test@admin.com',
-      password: 'test@123456'
+      email: '',
+      password: ''
     }
   },
   methods: {
-    checkForm: function (e) {
+    checkForm() {
       this.errors = []
       if (!this.email) {
         this.errors.push('Email required.')
@@ -116,7 +118,6 @@ export default {
         this.errors.push('Password required.')
       }
       if (!this.errors.length) return true
-      e.preventDefault()
     },
     validEmail: function (email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -124,30 +125,34 @@ export default {
     },
 
     signUp: function () {
-      if (this.email === '' && this.password === '') {
-        this.email = 'test@admin.com'
-        this.password = 'test@123456'
-      } else {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(this.email, this.password)
-          .then(
-            (result) => {
-              console.log('Result', result)
-              Userauth.localLogin(result)
-              this.$router.replace('/page/account/checkout')
-            },
-            (err) => {
-              this.email = 'test@admin.com'
-              this.password = 'test@123456'
-              this.$toasted.show('Oops...' + err.message, {
-                theme: 'bubble',
-                position: 'bottom-right',
-                type: 'error',
-                duration: 2000
-              })
-            }
-          )
+      if(this.checkForm()) {
+        const CoCart = new CoCartAPI({
+          url: process.env.VUE_APP_API_URL,
+          version: 'cocart/v2',
+          consumerKey: this.email,
+          consumerSecret: this.password,
+          timeout: 5000,
+        });
+        CoCart.post("login", { })
+        .then((response) => {
+          if(response.status == 200) {
+              const credential = {
+                email: this.email,
+                password: this.password,
+              };
+
+            this.$store.dispatch('user/setCredential', credential);
+            this.$store.dispatch('user/fetchUserDetails').then(() =>{
+              this.$router.push({path: '/page/account/dashboard'});
+            });
+          }
+        })
+        .catch((error) => {
+          this.errors.push('Invalid Username & Password')
+        })
+        .finally(() => {
+          // Always executed.
+        });
       }
     },
     socialLogin() {
@@ -157,7 +162,7 @@ export default {
         .signInWithPopup(provider)
         .then((result) => {
           Userauth.localLogin(result)
-          this.$router.replace('/page/account/checkout')
+          this.$router.replace('/page/account/dashboard')
         })
         .catch((err) => {
           alert('Oops. ' + err.message)
