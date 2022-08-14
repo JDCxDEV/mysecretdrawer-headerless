@@ -408,7 +408,8 @@ export default {
       currency: state => state.products.currency
     }),
     ...mapGetters({
-      curr: 'products/changeCurrency'
+      curr: 'products/changeCurrency',
+      cart_key: 'user/cart_key'
     }),
     swiper() {
       return this.$refs.mySwiper.swiper
@@ -456,8 +457,8 @@ export default {
           color = variants[i].attributes.attribute_colors.toLowerCase()
           uniqColor.push(color)
         }
-        if(variants[i].attributes.attribute_pa_color) {
-          color = variants[i].attributes.attribute_pa_color.toLowerCase()
+        if(variants[i].attributes.attribute_pa_colors) {
+          color = variants[i].attributes.attribute_pa_colors.toLowerCase()
           uniqColor.push(color)
         }
 
@@ -468,8 +469,8 @@ export default {
       }
 
       if(!uniqColor.length) {
-        if(this.getDetail.attributes.attribute_color) {
-          Object.getOwnPropertyNames(this.getDetail.attributes.attribute_color.options).forEach(color => {
+        if(this.getDetail.attributes.attribute_pa_colors) {
+          Object.getOwnPropertyNames(this.getDetail.attributes.attribute_pa_colors.options).forEach(color => {
             uniqColor.push(color);
           });
          
@@ -483,8 +484,10 @@ export default {
       }
       return [... new Set(uniqColor)];
     },
-    // add to cart
+  
     addToCart (product, qty) {
+      /* Set cart key for session */
+      product.cart_key = this.cart_key;
       if(!this.getDetail.variants.length) {
         product.quantity = qty || 1
         this.$store.dispatch('cart/addToCart', product)
@@ -492,12 +495,15 @@ export default {
             path: '/page/account/cart'
         })
       }
+
+      /* Add to cart with variations */
       if(this.getDetail.variants.length && this.selectedSize) {
         product.quantity = qty || 1
         product.color = this.activeColor;
         this.getDetail.variants.filter((item) => {
-          if(item.id == this.selectedSize && item.attributes['attribute_product-size']) {
-            product.size = item.attributes['attribute_product-size'];
+          if(item.id == this.selectedSize && item.attributes['attribute_pa_product-size']) {
+            product.size = item.attributes['attribute_pa_product-size'];
+            product.variation = item;
           } 
         })
         this.$store.dispatch('cart/addToCart', product)
@@ -543,8 +549,8 @@ export default {
                 this.size.push(item)
             }
           }
-          if(item.attributes.attribute_pa_color) {
-            if (this.activeColor == item.attributes.attribute_pa_color.toLowerCase()) {
+          if(item.attributes.attribute_pa_colors) {
+            if (this.activeColor == item.attributes.attribute_pa_colors.toLowerCase()) {
                 this.size.push(item)
             }
           }
@@ -553,7 +559,7 @@ export default {
     },
 
     getSize(variant) {
-      return variant.attributes['attribute_product-size'];
+      return variant.attributes['attribute_pa_product-size'];
     }
   }
 }

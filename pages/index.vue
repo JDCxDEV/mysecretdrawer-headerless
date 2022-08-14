@@ -5,10 +5,32 @@
 </template>
 
 <script>
-const Fashion = () => import('./shop/fashion')
+const Fashion = () => import('./shop/fashion');
+import { mapGetters } from 'vuex';
 export default {
   components: {
     Fashion
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user/user',
+      credential: 'user/credential',
+      billing: 'user/billing',
+      shipping: 'user/shipping',
+      validated: 'user/validated',
+    }),
+  },
+
+  mounted() {
+    if(this.validated && this.user.id == 0) {
+        this.$store.dispatch('user/fetchUserDetails').then(() =>{
+          this.$router.push({path: '/page/account/dashboard'});
+        });
+    }else {
+       this.$store.dispatch('user/fetchCartKey');
+    }
   }
 }
 </script>
+
+

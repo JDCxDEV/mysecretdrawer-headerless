@@ -7,7 +7,9 @@ const state = {
   has_calculated_shipping: true,
   is_vat_exempt: false,
   validated: false,
-  credential: {}
+  credential: {},
+  cart_key: '',
+  guest: true,
 }
 // getters
 const getters = {
@@ -32,6 +34,9 @@ const getters = {
   validated: (state) => {
     return state.validated
   },
+  cart_key: (state) => {
+    return state.cart_key
+  },
 }
 // mutations
 const mutations = {
@@ -45,6 +50,7 @@ const mutations = {
     state.has_calculated_shipping = payload.has_calculated_shipping;
     state.is_vat_exempt = payload.is_vat_exempt;
     state.validated = true;
+    state.guest = false;
   },
   unsetUserDetails: (state, payload) => {
     state.user = {};
@@ -53,7 +59,12 @@ const mutations = {
     state.has_calculated_shipping = {};
     state.is_vat_exempt = {};
     state.validated = false;
+    state.credential = {};
+    state.guest = true;
   },
+  setCartKey: (state, payload) => {
+    state.cart_key = payload;
+  }
 }
 // actions
 const actions = {
@@ -74,6 +85,23 @@ const actions = {
       catch (error) {
         console.log(error)
       }
+  },
+  async fetchCartKey({ state, commit }, payload) {
+    try {
+     
+      const CoCartPro = new CoCartAPI({
+        url: process.env.VUE_APP_API_URL,
+        version: 'cocart/v2',
+      });
+
+      let params = state.cart_key ? '?cart_key=' + state.cart_key : '';
+      const result = await CoCartPro.get('cart' + params);
+      commit('setCartKey', result.data.cart_key);
+
+    }
+    catch (error) {
+      console.log(error)
+    }
   },  
   unsetUserDetails({ state, commit }, payload) {
     try {

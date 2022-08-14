@@ -348,5 +348,13 @@ export default {
       shipping: 'user/shipping',
     }),
   },
+
+  mounted() {
+    if(!this.validated) {
+      this.$store.dispatch('user/unsetUserDetails').then(() =>{
+        this.$router.push({path: '/page/account/login'});
+      });
+    }
+  }
 }
 </script>

@@ -69,7 +69,7 @@
         <del>{{ product.price }}</del>
       </h4>
       <h4 v-else>{{ product.price | currency(curr.symbol) }}</h4>
-      <!-- <ul class="color-variant" v-if="product.variants[0].color">
+      <ul class="color-variant" v-if="product.variants">
         <li v-for="(variant,variantIndex) in Color(product.variants)" :key="variantIndex">
           <a
             @click="productColorchange(variant, product)"
@@ -77,7 +77,7 @@
             v-bind:style="{ 'background-color' : variant}"
           ></a>
         </li>
-      </ul> -->
+      </ul>
     </div>
   </div>
 </template>
@@ -139,13 +139,20 @@ export default {
       this.$store.dispatch('products/addToCompare', product)
     },
     Color(variants) {
-      const uniqColor = []
+     const uniqColor = []
+      let color = '';
       for (let i = 0; i < Object.keys(variants).length; i++) {
-        if (uniqColor.indexOf(variants[i].color) === -1) {
-          uniqColor.push(variants[i].color)
+        if (variants[i].attributes.attribute_colors) {
+          color = variants[i].attributes.attribute_colors.toLowerCase()
+          uniqColor.push(color)
+        }
+        if(variants[i].attributes.attribute_pa_color) {
+          color = variants[i].attributes.attribute_pa_color.toLowerCase()
+          uniqColor.push(color)
         }
       }
-      return uniqColor
+
+      return [... new Set(uniqColor)];
     },
     productColorchange(color, product) {
       product.variants.map((item) => {

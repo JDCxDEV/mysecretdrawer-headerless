@@ -294,7 +294,6 @@ export default {
       return this.applyFilter.indexOf(filterItem) > -1
     },
     getCategoryFilter(category) {
-      console.log(category);
       this.$store.dispatch('menu/setSelectedCategory', category);
       this.$store.dispatch('filter/getCategoryFilter', category)
     },

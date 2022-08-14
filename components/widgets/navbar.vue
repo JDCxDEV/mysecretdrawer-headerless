@@ -101,7 +101,6 @@ export default {
       return this.activeItem === menuItem
     },
     setActive: function (menuItem) {
-      console.log(menuItem);
       if (this.activeItem === menuItem) {
         this.activeItem = ''
       } else {

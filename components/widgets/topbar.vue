@@ -29,7 +29,7 @@
               </template>
 
               <ul class="onhover-show-div">
-                <li>
+                <li v-if="validated">
                   <nuxt-link :to="{ path: '/page/account/dashboard' }">Dashboard</nuxt-link>
                 </li>
                 <li>

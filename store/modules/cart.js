@@ -1,7 +1,12 @@
-import products from '../../data/products'
+import CoCartAPI from "@cocart/cocart-rest-api";
+
+const CoCart = new CoCartAPI({
+  url: process.env.VUE_APP_API_URL,
+  version: 'cocart/v2'
+});
 
 const state = {
-  products: products.data,
+  products: [],
   cart: []
 }
 // getters
@@ -28,6 +33,26 @@ const mutations = {
         ...product,
         quantity: qty
       })
+
+      CoCart.post("cart/add-item?" + 'cart_key=' + product.cart_key, {
+        id: product.variation.id.toString(),
+        quantity: product.quantity.toString(),
+      })
+      .then((response) => {
+        // Successful request
+        console.log("Response Status:", response.status);
+        console.log("Response Headers:", response.headers);
+        console.log("Response Data:", response.data);
+      })
+      .catch((error) => {
+        // Invalid request, for 4xx and 5xx statuses
+        console.log("Response Status:", error.response.status);
+        console.log("Response Headers:", error.response.headers);
+        console.log("Response Data:", error.response.data);
+      })
+      .finally(() => {
+        // Always executed.
+      });
     }
   },
   updateCartQuantity: (state, payload) => {
@@ -47,10 +72,10 @@ const mutations = {
         if (qty !== 0 && stock) {
           state.cart[index].quantity = qty
         } else {
-          // state.cart.push({
-          //   ...product,
-          //   quantity: qty
-          // })
+          state.cart.push({
+            ...product,
+            quantity: qty
+          })
         }
         return true
       }
