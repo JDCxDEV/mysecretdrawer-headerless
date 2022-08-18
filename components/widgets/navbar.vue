@@ -13,10 +13,10 @@
               <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
             </div>
           </li>
-          <li v-for="(menuItem, index) in menulist" :key="index" :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'">
-            <a href="#" class="nav-link" @click="setActive(menuItem.title)">
+          <li  v-for="(menuItem, index) in menulist" :key="index" :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'">
+            <a href="#" class="nav-link"  @click="setActive(menuItem.title)" >
               {{menuItem.title}}
-              <span class="sub-arrow" v-if="menuItem.children || menuItem.megamenu"></span>
+              <span  class="sub-arrow" v-if="menuItem.children || menuItem.megamenu"></span>
             </a>
             <ul class="nav-submenu" :class="{ opensubmenu: isActive(menuItem.title) }" v-if="menuItem.children">
               <li v-for="(childrenItem, index) in menuItem.children" :key="index" @click="setCategory(childrenItem)">

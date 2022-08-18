@@ -215,6 +215,8 @@ const actions = {
       let params = {
         /* Default  number of product */
         per_page: 8,
+        hide_free: true,
+        return_variations: false,
       };
       
       params = {...params, ...payload?.params};

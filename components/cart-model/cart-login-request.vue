@@ -34,7 +34,7 @@ export default {
       currency: state => state.products.currency
     }),
     ...mapGetters({
-      curr: 'products/changeCurrency'
+      curr: 'products/changeCurrency' 
     })
   },
   methods: {

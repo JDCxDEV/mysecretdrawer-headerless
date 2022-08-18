@@ -15,7 +15,7 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(imag,index) in productData.images" :key="index">
                   <img
-                    :src="getImgUrl(imag.src)"
+                     :src='getImgUrl(imageSrc ? imageSrc : productData.images[0].src.woocommerce_thumbnail, true)'
                     :id="imag.image_id"
                     class="img-fluid bg-img"
                     alt="imag.alt"
@@ -30,7 +30,7 @@
             <h2>{{productData.title}}</h2>
             <h3 v-if="productData.sale">
               {{ discountedPrice(productData) * curr.curr | currency(curr.symbol) }}
-        <del>{{ productData.price * curr.curr | currency(curr.symbol) }}</del>
+              <del>{{ productData.price * curr.curr | currency(curr.symbol) }}</del>
             </h3>
             <h3 v-else>{{ productData.price * curr.curr | currency(curr.symbol) }}</h3>
             <ul class="color-variant" v-if="productData.variants[0].color">
@@ -53,7 +53,7 @@
             </div>
             <div class="border-product">
               <h6 class="product-title">product details</h6>
-              <p>{{productData.description.substring(0,250)+"...."}}</p>
+              <p v-html="productData.short_description.substring(0,250)+'....'"></p>
             </div>
             <div class="product-buttons">
               <a href="javascript:void(0)" @click="addToCart(product)" class="btn btn-solid">add to cart</a>
@@ -109,8 +109,9 @@ export default {
       this.$store.dispatch('cart/addToCart', product)
     },
     // Get Image Url
-    getImgUrl(path) {
-      return require('@/assets/images/' + path)
+    getImgUrl(path, isUrl = false) {
+      const lightCache = process.env.VUE_APP_LIGHT_CACHE != 'false'? process.env.VUE_APP_API_URL : '';
+      return isUrl ? lightCache + path : require('@/assets/images/' + path) 
     },
     // Display Sale Price Discount
     discountedPrice(product) {

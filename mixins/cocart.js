@@ -28,7 +28,7 @@ export default {
             items.forEach((item) => {
                 let category =  {
                     title: item.name.replace("&amp;", "&"),
-                    imagepath : item.image ? item.image.src : require('@/assets/images/electronics/5.jpg'),
+                    imagepath : item.image ? process.env.VUE_APP_API_URL + item.image.src : require('@/assets/images/electronics/5.jpg'),
                     subtitle: item.description
                 };
                 categories.push(category);

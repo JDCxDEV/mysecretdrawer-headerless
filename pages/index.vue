@@ -5,7 +5,7 @@
 </template>
 
 <script>
-const Fashion = () => import('./shop/fashion');
+const Fashion = () => import('./shop/furniture');
 import { mapGetters } from 'vuex';
 export default {
   components: {

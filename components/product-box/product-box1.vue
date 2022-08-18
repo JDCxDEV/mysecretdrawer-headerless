@@ -30,7 +30,7 @@
         </li>
       </ul>
       <div class="cart-info cart-wrap">
-          <button
+          <!-- <button
             data-toggle="modal"
             data-target="#addtocart"
             title="Add to cart"
@@ -39,10 +39,10 @@
             variant="primary"
           >
             <i class="ti-shopping-cart"></i>
-          </button>
-        <a href="javascript:void(0)" title="Wishlist">
+          </button> -->
+        <!-- <a href="javascript:void(0)" title="Wishlist">
           <i class="ti-heart" aria-hidden="true" @click="addToWishlist(product)"></i>
-        </a>
+        </a> -->
         <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)" v-b-modal.modal-lg variant="primary">
           <i class="ti-search" aria-hidden="true"></i>
         </a>
@@ -114,7 +114,8 @@ export default {
   },
   methods: {
     getImgUrl(path, isUrl = false) {
-      return isUrl ? path : require('@/assets/images/' + path) 
+      const lightCache = process.env.VUE_APP_LIGHT_CACHE != 'false'? process.env.VUE_APP_API_URL : '';
+      return isUrl ? lightCache + path : require('@/assets/images/' + path) 
     },
     addToCart: function (product) {
       this.cartval = true
