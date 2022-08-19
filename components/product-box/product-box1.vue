@@ -3,14 +3,15 @@
     <div class="img-wrapper">
       <div class="lable-block">
         <span class="lable3" v-if="product.new">new</span>
-        <span class="lable4" v-if="product.sale">on sale</span>
+        <span class="lable4" v-if="product.on_sale">on sale</span>
       </div>
       <div class="front">
         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
           <img
-            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src.woocommerce_thumbnail, true)'
+            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src.full, true)'
             :id="product.id"
-            class="img-fluid bg-img custom-img-collection"
+            class="img-fluid bg-img custom-img-collection-all"
+            :class="{customImgCollection : singleProduct }"
             :alt="product.title"
             :key="index"
           />
@@ -19,13 +20,13 @@
       <ul class="product-thumb-list">
         <li
           class="grid_thumb_img"
-          :class="{active: imageSrc === image.src.woocommerce_thumbnail}"
+          :class="{active: imageSrc === image.src.full}"
           v-for="(image,index) in product.images.slice(0,4)"
           :key="index"
-          @click="productVariantChange(image.src.woocommerce_thumbnail)"
+          @click="productVariantChange(image.src.full)"
         >
           <a href="javascript:void(0);">
-            <img :src="getImgUrl(image.src.woocommerce_thumbnail, true)" />
+            <img :src="getImgUrl(image.src.full, true)" />
           </a>
         </li>
       </ul>
@@ -64,9 +65,9 @@
         <h6>{{ product.title }}</h6>
       </nuxt-link>
       <p>{{ product.description }}</p>
-      <h4 v-if="product.sale">
+      <h4 v-if="product.on_sale">
         {{ discountedPrice(product) | currency(curr.symbol) }}
-        <del>{{ product.price }}</del>
+        <del>{{ product.regular_price }}</del>
       </h4>
       <h4 v-else>{{ product.price | currency(curr.symbol) }}</h4>
       <ul class="color-variant" v-if="product.variants">
@@ -86,7 +87,7 @@
 import { mapState, mapGetters } from 'vuex'
 import { log } from 'util'
 export default {
-  props: ['product', 'index'],
+  props: ['product', 'index', 'singleProduct'],
   data() {
     return {
       imageSrc: '',
@@ -181,7 +182,17 @@ export default {
 }
 </script>
 <style>
-.custom-img-collection {
-  min-height: 300px;
+@media only screen and (min-width: 500px) {
+  .custom-img-collection {
+    min-height: 400px;
+    max-height: 400px;
+  }
+
+  .custom-img-collection-all {
+    min-height: 300px;
+    max-height: 300px;
+  }
 }
+
+
 </style>

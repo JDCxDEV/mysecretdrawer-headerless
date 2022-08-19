@@ -13,6 +13,7 @@
           >
             <div class="product-box">
               <productBox1
+                :singleProduct="true"
                 @opencartmodel="showCart"
                 @showCompareModal="showCoampre"
                 @openquickview="showQuickview"

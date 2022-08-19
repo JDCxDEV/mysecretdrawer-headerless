@@ -21,7 +21,7 @@
                           :key="index"
                         >
                           <img
-                            :src="getImgUrl(product.src.large, true)"
+                            :src="getImgUrl(product.src.full, true)"
                             :id="product.image_id"
                             class="img-fluid bg-img custom-img-lg"
                             :alt="product.alt"
@@ -147,14 +147,14 @@
                         </div>
                       </div>
                       <div class="product-buttons">
-                        <!-- <nuxt-link :to="{ path: '/page/account/cart'}"> -->
-                          <button
-                            class="btn btn-solid"
-                            title="Add to cart"
-                            @click="addToCart(getDetail, counter)"
-                            :disabled="!getDetail.is_in_stock"
-                          >Add To Cart</button>
-                        <!-- </nuxt-link> -->
+                        <button
+                          class="btn btn-solid"
+                          title="Add to cart"
+                          @click="addToCart(getDetail, counter)"
+                          :disabled="!getDetail.is_in_stock"
+                        >
+                          Add To Cart
+                        </button>
                         <button
                             class="btn btn-solid"
                             title="buy now"
@@ -219,40 +219,6 @@
                       <b-tab title="Description" active>
                         <b-card-text>
                           <p  class="product-description-cstm" v-html="getDetail.description"></p>
-                        </b-card-text>
-                      </b-tab>
-                      <b-tab title="Details">
-                        <b-card-text>
-                          <div class="single-product-tables">
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td>Febric</td>
-                                  <td>Chiffon</td>
-                                </tr>
-                                <tr>
-                                  <td>Color</td>
-                                  <td>Red</td>
-                                </tr>
-                                <tr>
-                                  <td>Material</td>
-                                  <td>Crepe printed</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td>Length</td>
-                                  <td>50 Inches</td>
-                                </tr>
-                                <tr>
-                                  <td>Size</td>
-                                  <td>S, M, L .XXL</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
                         </b-card-text>
                       </b-tab>
                       <b-tab title="Video">
@@ -418,20 +384,6 @@ export default {
   beforeMount() {
     this.fetchSingleProduct(this.$route.params.id);
   },
-  mounted() {
-    // For displaying default color and size on pageload
-    // if(this.getDetail.variants?.length) {
-    //   this.uniqColor = this.getDetail.variants[0].color
-    //   this.sizeVariant(this.getDetail.variants[0].image_id)
-    //   this.changeSizeVariant(this.getDetail.variants[0].size)
-    // }
-
-    // // Active default color
-    // this.activeColor = this.uniqColor
- 
-    // // related product type
-    // this.relatedProducts()
-  },
   methods: {
     priceCurrency: function () {
       this.$store.dispatch('products/changeCurrency')
@@ -566,25 +518,10 @@ export default {
 </script>
 
   <style>
-  .custom-img {
-    min-height: 170px;
-    max-height: 170px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .custom-img-lg {
-    min-height: 624px;
-    max-height: 624px;
-    min-width: 480px;
-    max-width: 480px;
-  }
-
   .product-description-cstm li {
     display: list-item;
     margin-left : 1em;
-    margin-bottom: -30px;
+    margin-bottom: 10px;
   }
 
   .nav-cstm {
@@ -595,4 +532,21 @@ export default {
   .v-toast__text {
     color: white !important;
   }
+
+@media only screen and (max-width: 500px) {
+  .size-full {
+    height:  200px;
+    width: 350px;
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .size-full {
+    height: 400px;
+    width: 650px;
+    margin-bottom: 40px;
+  }
+}
+
+
   </style>

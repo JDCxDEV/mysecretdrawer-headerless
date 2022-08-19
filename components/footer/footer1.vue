@@ -47,7 +47,7 @@
               </div>
               <div class="footer-contant">
                 <div class="footer-logo">
-                  <img :src='"@/assets/images/custom/logo/logo.png"' style="height:80px;" alt="logo" />
+                  <img :src='"@/assets/images/custom/logo/logo.png"' style="height:100px;" alt="logo" />
                 </div>
                 <p>
                   A life without lingerie would be a dull life indeed! Lingerie adds spark and excitement to any relationship. Lingerie enhances, intrigues, titillates and invites! Beautiful lingerie for the beautiful you!<br><br>
