@@ -14,7 +14,6 @@ export default {
     methods: {
         fetchCategories() {        
             CoCart.get("products/categories",{
-                exclude: 17
             }).then((response) => {
                 this.category = helper.formatCategories(response.data);
             }).catch((error) => {

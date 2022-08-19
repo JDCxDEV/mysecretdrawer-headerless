@@ -47,7 +47,7 @@ const actions = {
       let categories = [];
       categories.push({ "path": "/collection/" + 'all', "title": 'All Products', "type": "link", product_id: null });
       result.data.forEach((item) => {
-        let category = { "path": "/collection/" + item.slug, "title": item.name.replace("&amp;", "&") , "type": "link", product_id: item.id };
+        let category = { "path": "/collection/" + item.slug, "title": item.name.replace("&amp;", "&") , "type": "link", product_id: item.id, image: item.image?.src };
         categories.push(category);
       });
 

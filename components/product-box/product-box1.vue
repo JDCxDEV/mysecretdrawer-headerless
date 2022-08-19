@@ -191,6 +191,9 @@ export default {
   .custom-img-collection-all {
     min-height: 300px;
     max-height: 300px;
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
   }
 }
 

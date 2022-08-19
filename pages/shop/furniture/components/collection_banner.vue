@@ -6,13 +6,13 @@
           <div class="col-md-4" v-for="(item, index) in items" :key="index">
             <a href="#">
               <div class="collection-banner p-right text-center">
-                <div class="img-part">
-                  <img :src="item.imagepath" class="img-fluid" alt />
+                <div class="img-part" style="position: relative;"> 
+                  <div class="collection-img"  :style="{'background-image': setBackground(item.imagepath)}"></div>
                 </div>
                 <div class="contain-banner banner-3">
                   <div>
-                    <h4>{{item.subtitle}}</h4>
-                    <h2>{{item.title}}</h2>
+                    <!-- <h4>{{item.subtitle}}</h4> -->
+                    <h4>{{item.title}}</h4>
                   </div>
                 </div>
               </div>
@@ -30,22 +30,37 @@ export default {
     return {
       items: [
         {
-          imagepath: require('@/assets/images/furniture/2banner1.jpg'),
-          title: 'sofa',
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/H3373-2OK.jpg',
+          title: 'Stocking and Legwear',
           subtitle: 'save 30%'
         },
         {
-          imagepath: require('@/assets/images/furniture/2banner2.jpg'),
-          title: 'new arrival',
-          subtitle: 'save 60%'
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R70334__2_hero.jpg',
+          title: 'Teddies',
+          subtitle: 'save 55%'
         },
         {
-          imagepath: require('@/assets/images/furniture/2banner3.jpg'),
-          title: 'chair',
-          subtitle: 'save 55%'
-        }
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80068-1P-1-5.jpg',
+          title: 'Pj & Warps',
+          subtitle: 'save 60%'
+        },
+
       ]
+    }
+  },
+  methods : {
+    setBackground(image) {
+      return `url(${image})`;  
     }
   }
 }
 </script>
+
+<style>
+.collection-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
+}
+</style>

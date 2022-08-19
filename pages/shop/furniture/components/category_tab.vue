@@ -11,14 +11,14 @@
             <div class="theme-tab">
               <b-tabs content-class="mt-3">
                 <b-tab
-                  :title="collection"
+                  :title="collection.name"
                   v-for="(collection,index) in category"
                   :key="index"
                 >
                   <div class="no-slider row">
                     <div
                       class="product-box"
-                      v-for="(product,index) in getCategoryProduct(collection)"
+                      v-for="(product,index) in currentList"
                       :key="index"
                     >
                     <productBox1
@@ -50,9 +50,9 @@
   </div>
 </template>
 <script type="text/javascript">
-import productBox1 from '../../../../components/product-box/product-box1'
+import productBox1 from '../../../../components/product-box/product-box1';
+import { mapGetters } from 'vuex'
 export default {
-  props: ['products', 'category'],
   components: {
     productBox1
   },
@@ -67,10 +67,45 @@ export default {
       comapreproduct: {},
       cartproduct: {},
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 0,
+      category: [
+        {
+          name: 'New Arrivals'
+        },
+        {
+          name: 'Trending',
+        },
+        {
+          name: 'best-sellers',
+        }
+      ]
     }
   },
+  computed: {
+    ...mapGetters({
+      productList: 'products/getProductList',
+    }),
+
+    currentList() {
+      return this.productList;
+    },
+  },
+
+  mounted() {
+    this.fetchProduct(1, {})
+  },
   methods: {
+    fetchProduct(page , params) {
+      let default_params = {
+        params : {
+          category: this.$store.state.menu.selected_category.product_id,
+          page: page,
+          ...params
+        },
+      };
+
+      this.$store.dispatch('products/fetchProducts', default_params);
+    },
     getCategoryProduct(collection) {
       return this.products.filter((item) => {
         if (item.collection.find(i => i === collection)) {
@@ -79,7 +114,7 @@ export default {
       })
     },
     alert(item) {
-      this.dismissCountDown = item
+      this.dismissCountDown = item;
     },
     showCartModal(item, productData) {
       this.showCart = item
