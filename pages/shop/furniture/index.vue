@@ -3,6 +3,7 @@
     <Header />
     <Slider />
     <CollectionBanner />
+            <CountDown />
     <ProductCategoryTab
       :products="products"
       :category="category"
@@ -10,6 +11,7 @@
       @openCompare="showCoampre"
       @openCart="showCart"
     />
+    
     <ParallaxBanner />
     <Blog />
     <Footer />
@@ -44,6 +46,7 @@ import CollectionBanner from "./components/collection_banner";
 import ProductCategoryTab from "./components/category_tab";
 import ParallaxBanner from "./components/parallax_banner";
 import Blog from "./components/blog";
+import CountDown from './components/countdown';
 
 export default {
   name: "furniture",
@@ -59,6 +62,7 @@ export default {
     compareModel,
     cartModel,
     newsletterModel,
+    CountDown,
   },
   data() {
     return {

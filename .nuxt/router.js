@@ -131,9 +131,11 @@ const _e3429260 = () => interopDefault(import('..\\pages\\shop\\flower\\componen
 const _7a7fe886 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\services.vue' /* webpackChunkName: "pages/shop/flower/components/services" */))
 const _0fb2c080 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\slider.vue' /* webpackChunkName: "pages/shop/flower/components/slider" */))
 const _33224e26 = () => interopDefault(import('..\\pages\\shop\\flower\\components\\top_products.vue' /* webpackChunkName: "pages/shop/flower/components/top_products" */))
+const _40ff8814 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\banner.vue' /* webpackChunkName: "pages/shop/furniture/components/banner" */))
 const _4913b428 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\blog.vue' /* webpackChunkName: "pages/shop/furniture/components/blog" */))
 const _928f8fc4 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\category_tab.vue' /* webpackChunkName: "pages/shop/furniture/components/category_tab" */))
 const _2610feda = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\collection_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/collection_banner" */))
+const _2cc27a52 = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\countdown.vue' /* webpackChunkName: "pages/shop/furniture/components/countdown" */))
 const _c660310c = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\parallax_banner.vue' /* webpackChunkName: "pages/shop/furniture/components/parallax_banner" */))
 const _5eed532b = () => interopDefault(import('..\\pages\\shop\\furniture\\components\\slider.vue' /* webpackChunkName: "pages/shop/furniture/components/slider" */))
 const _4c767a75 = () => interopDefault(import('..\\pages\\shop\\gym\\components\\blog.vue' /* webpackChunkName: "pages/shop/gym/components/blog" */))
@@ -726,6 +728,10 @@ export const routerOptions = {
     component: _33224e26,
     name: "shop-flower-components-top_products"
   }, {
+    path: "/shop/furniture/components/banner",
+    component: _40ff8814,
+    name: "shop-furniture-components-banner"
+  }, {
     path: "/shop/furniture/components/blog",
     component: _4913b428,
     name: "shop-furniture-components-blog"
@@ -737,6 +743,10 @@ export const routerOptions = {
     path: "/shop/furniture/components/collection_banner",
     component: _2610feda,
     name: "shop-furniture-components-collection_banner"
+  }, {
+    path: "/shop/furniture/components/countdown",
+    component: _2cc27a52,
+    name: "shop-furniture-components-countdown"
   }, {
     path: "/shop/furniture/components/parallax_banner",
     component: _c660310c,
