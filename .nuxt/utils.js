@@ -200,7 +200,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {"VUE_APP_API_URL":"https://mysecretdrawer.com/au","VUE_APP_LIGHT_CACHE":"false"}
+      env: {"VUE_APP_API_URL":"https://mysecretdrawer.com/au","VUE_APP_BLOG_API_URL":"https://mysecretdrawer.com/stories/wp-json/wp/v2/","VUE_APP_LIGHT_CACHE":"false"}
     }
     // Only set once
 

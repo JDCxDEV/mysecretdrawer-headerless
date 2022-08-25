@@ -1,3 +1,5 @@
+import axios from 'axios';
+import moment from 'moment';
 export default class formatHelper {
     formatImages(items, product_id){
         let images = [];
@@ -76,5 +78,17 @@ export default class formatHelper {
             });
         }
         return product;
+    }
+
+    formatBlog(blog) {
+        blog.display_title = blog.title.rendered;
+        blog.date = moment(blog.date, 'YYYY-MM-DD').format('MMM DD YYYY');
+        blog.author_link = blog._links.author[0].href;
+        blog.image_link = blog._links['wp:featuredmedia'][0].href;
+        blog.replies_link = blog._links.replies[0].href;
+        blog.comment_count = blog.comment_count;
+        blog.description = blog.excerpt.rendered;
+
+        return blog;
     }
 }

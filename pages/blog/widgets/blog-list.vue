@@ -9,7 +9,7 @@
       <div class="col-xl-6">
         <div class="blog-left">
           <nuxt-link :to="{ path: '/blog/blog-detail'}">
-            <img :src="getImgUrl(blog.images[0])" class="img-fluid" alt />
+            <img :src="blog.image" class="img-fluid" alt />
           </nuxt-link>
         </div>
       </div>
@@ -18,18 +18,15 @@
           <div>
             <h6>{{ blog.date }}</h6>
             <nuxt-link :to="{ path: '/blog/blog-detail'}">
-              <h4>{{blog.title}}</h4>
+              <h4>{{blog.display_title}}</h4>
             </nuxt-link>
             <ul class="post-social">
-              <li>Posted By : {{blog.auther}}</li>
+              <li>Posted By : {{blog.author_name}}</li>
               <li>
-                <i class="fa fa-heart"></i> 5 Hits
-              </li>
-              <li>
-                <i class="fa fa-comments"></i> 10 Comment
+                <i class="fa fa-comments"></i> {{ blog.comment_count }} Comment(s)
               </li>
             </ul>
-            <p>{{blog.description}}</p>
+            <div v-html="blog.description"></div>
           </div>
         </div>
       </div>
@@ -76,7 +73,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -84,19 +82,35 @@ export default {
       paginate: 6,
       paginateRange: 3,
       pages: [],
-      paginates: ''
+      paginates: '',
+      bloglist: [],
     }
   },
+
+  watch: {
+    bloglist: {
+      handler: function (after, before) {
+        this.getPaginate();
+        this.updatePaginate(1);
+      },
+      deep: true,
+    }
+  },
+
   computed: mapState({
-    bloglist: state => state.blog.bloglist
+    bloglistRaw: state => state.blog.bloglist
   }),
-  mounted() {
-    this.getPaginate()
-    this.updatePaginate(1)
+
+  async mounted() {
+    this.$store.dispatch('blog/fetchBlogs', { per_page: 100 }).then( ()=>{
+      this.fetchCompeteData(this.bloglistRaw).then(() =>{
+
+      });
+    });
   },
   methods: {
     getImgUrl(path) {
-      return require('@/assets/images/' + path)
+      return path;
     },
     getPaginate() {
       this.paginates = Math.round(this.bloglist.length / this.paginate)
@@ -137,6 +151,25 @@ export default {
         this.pages.push(i)
       }
       return this.pages
+    },
+    async fetchCompeteData(item) {
+      let blogs = [];
+      await Promise.all(item.map(item => 
+        axios.get(item.image_link).then( response =>{
+          item.image = response.data.guid.rendered;
+        }).then(() =>{
+          axios.get(item.author_link).then( response =>{
+            item.author_name = response.data.name;
+          }).then(() =>{
+          axios.get(item.replies_link).then( response =>{
+            item.comment_count = response.data.length;
+          })
+          blogs.push(item);
+        })
+        })
+  
+      ));
+      this.bloglist = blogs;  
     }
   }
 }

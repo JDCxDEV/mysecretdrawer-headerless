@@ -6,9 +6,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="banner-contain">
+                    <div class="banner-contain" style="text-shadow: 6px 6px 0px rgba(0,0,0,0.2);">
                         <h2>{{title}}</h2>
-                        <h3>{{subtitle}}</h3>
+                        <h3 style="color:whitesmoke">{{subtitle}}</h3>
                         <h4>{{text}}</h4>
                     </div>
                 </div>
@@ -23,10 +23,9 @@
 export default {
   data() {
     return {
-      imagepath: require('@/assets/images/parallax/3.jpg'),
-      title: '2019',
-      subtitle: 'interior design in home',
-      text: 'special offer'
+      imagepath: 'https://wallpaperaccess.com/full/4215564.jpg',
+      title: '2022',
+      subtitle: 'My Secret Drawer',
     }
   }
 }

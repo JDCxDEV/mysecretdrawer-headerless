@@ -2,8 +2,8 @@
   <div>
     <section class="banner-furniture ratio_45">
       <div class="container-fluid">
-        <div class="row partition3">
-          <div class="col-md-4" v-for="(item, index) in items" :key="index">
+        <div class="row partition3 text-center">
+          <div class="col-md-3" v-for="(item, index) in items" :key="index">
             <a href="#">
               <div class="collection-banner p-right text-center">
                 <div class="img-part" style="position: relative;"> 
@@ -12,11 +12,12 @@
                 <div class="contain-banner banner-3">
                   <div>
                     <!-- <h4>{{item.subtitle}}</h4> -->
-                    <h4>{{item.title}}</h4>
+                   
                   </div>
                 </div>
               </div>
             </a>
+             <h3 class="mt-2 text-danger"><b>{{item.title}}</b></h3>
           </div>
         </div>
       </div>
@@ -39,6 +40,11 @@ export default {
           title: 'Teddies',
           subtitle: 'save 55%'
         },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/20180726155777017701.jpg',
+          title: 'Corsets Bustiers',
+          subtitle: 'save 55%'
+        },        
         {
           imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80068-1P-1-5.jpg',
           title: 'Pj & Warps',

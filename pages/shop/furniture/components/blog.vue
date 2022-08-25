@@ -1,12 +1,12 @@
 <template>
 <div>
-    <section class="blog blog-2 section-b-space ratio3_2">
+    <section class="blog blog-2 section-b-space">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="title1">
                     <h4>{{subtitle}}</h4>
-            <h2 class="title-inner1">{{title}}</h2>
+                    <h2 class="title-inner1">{{title}}</h2>
                 </div>
                 <div v-swiper:mySwiper="swiperOption">
               <div class="swiper-wrapper">
@@ -15,7 +15,7 @@
                   <div class="classic-effect">
                     <div>
                       <img
-                        :src="getImgUrl(blog.images[0])"
+                        :src="blog.image"
                         class="img-fluid"
                         alt
                       />
@@ -26,10 +26,10 @@
                 <div class="blog-details">
                   <h4>{{blog.date}}</h4>
                   <a href="#">
-                    <p>{{blog.title}}</p>
+                    <p>{{blog.display_title}}</p>
                   </a>
                   <hr class="style1" />
-                  <h6>by: {{blog.author}} , 2 Comment</h6>
+                  <h6>by: {{ blog.author_name }} , {{ blog.comment_count1}} Comment(s)</h6>
                 </div>
               </div>
             </div>
@@ -42,43 +42,78 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
+import axios from 'axios';
 export default {
   data() {
     return {
       title: 'from the blog',
       subtitle: 'recent story',
       swiperOption: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 20,
         freeMode: true,
         breakpoints: {
           1199: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 20
           },
           991: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 20
           },
           420: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 20
           },
           0: {
             slidesPerView: 1,
             spaceBetween: 20
           } 
-        }
-      }
+        },
+      },
+      
+      bloglist: [],
     }
   },
   computed: mapState({
-    bloglist: state => state.blog.bloglist
+    bloglistRaw: state => state.blog.bloglist
   }),
   methods: {
     getImgUrl(path) {
       return require('@/assets/images/' + path)
+    }
+  },
+
+
+  async mounted() {
+    this.$store.dispatch('blog/fetchBlogs', {  per_page:4,}).then( ()=>{
+      this.fetchCompeteData(this.bloglistRaw);
+    });
+  },
+
+  methods: {
+    async fetchCompeteData(item) {
+      let blogs = [];
+      await Promise.all(item.map(item => 
+        axios.get(item.image_link).then( response =>{
+          item.image = response.data.guid.rendered;
+        }).then(() =>{
+          axios.get(item.author_link).then( response =>{
+            item.author_name = response.data.name;
+          }).then(() =>{
+          axios.get(item.replies_link).then( response =>{
+            item.comment_count = response.data.length;
+          })
+          blogs.push(item);
+        })
+        })
+  
+      ));
+
+      
+
+      this.bloglist = blogs;
     }
   }
 }
