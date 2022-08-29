@@ -7,6 +7,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _442288b8 = () => interopDefault(import('..\\pages\\blog\\blog-leftsidebar.vue' /* webpackChunkName: "pages/blog/blog-leftsidebar" */))
 const _652def6a = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
 const _bd293dbe = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
+const _47633564 = () => interopDefault(import('..\\pages\\blog\\singleBlog.vue' /* webpackChunkName: "pages/blog/singleBlog" */))
 const _5411ce5e = () => interopDefault(import('..\\pages\\collection\\full-width.vue' /* webpackChunkName: "pages/collection/full-width" */))
 const _731f848e = () => interopDefault(import('..\\pages\\collection\\list-view.vue' /* webpackChunkName: "pages/collection/list-view" */))
 const _c08bec9a = () => interopDefault(import('..\\pages\\collection\\metro.vue' /* webpackChunkName: "pages/collection/metro" */))
@@ -231,6 +232,10 @@ export const routerOptions = {
     path: "/blog/blog-rightsidebar",
     component: _bd293dbe,
     name: "blog-blog-rightsidebar"
+  }, {
+    path: "/blog/singleBlog",
+    component: _47633564,
+    name: "blog-singleBlog"
   }, {
     path: "/collection/full-width",
     component: _5411ce5e,
