@@ -1,5 +1,3 @@
-import axios from 'axios'
-import _ from 'lodash';
 export default {
   ssr: false,
   subdirectory: '/au',
@@ -29,7 +27,7 @@ export default {
   },
 
   router: {
-    base: ''
+    base: '/dist/'
   },
   /*
   ** Customize the progress-bar color

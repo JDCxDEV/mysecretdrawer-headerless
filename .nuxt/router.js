@@ -205,7 +205,6 @@ const _711c5e08 = () => interopDefault(import('..\\pages\\shop\\watch\\component
 const _2b0a00cd = () => interopDefault(import('..\\pages\\shop\\watch\\components\\timer_banner.vue' /* webpackChunkName: "pages/shop/watch/components/timer_banner" */))
 const _21be3075 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\top_products.vue' /* webpackChunkName: "pages/shop/watch/components/top_products" */))
 const _24d97a05 = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
-const _62248c60 = () => interopDefault(import('..\\pages\\blog\\_id.vue' /* webpackChunkName: "pages/blog/_id" */))
 const _871f6358 = () => interopDefault(import('..\\pages\\collection\\_id.vue' /* webpackChunkName: "pages/collection/_id" */))
 const _0816ec6c = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -1024,10 +1023,6 @@ export const routerOptions = {
     path: "/product/sidebar/:id?",
     component: _24d97a05,
     name: "product-sidebar-id"
-  }, {
-    path: "/blog/:id?",
-    component: _62248c60,
-    name: "blog-id"
   }, {
     path: "/collection/:id?",
     component: _871f6358,
