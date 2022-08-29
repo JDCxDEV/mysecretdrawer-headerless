@@ -69,20 +69,21 @@ export default {
   axios: {
   },
   generate: {
-    routes() {
+    fallback: '404.html', 
+    // routes() {
 
-      let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
-      let params = {
-        per_page: 100,
-      };
+    //   let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
+    //   let params = {
+    //     per_page: 100,
+    //   };
 
-      params = new URLSearchParams(_.pickBy(params)).toString();
-      return axios.get(url + params).then(res => {
-        return res.data.map(blog => {
-          return '/blog/' + blog.slug
-        })
-      })
-    }
+    //   params = new URLSearchParams(_.pickBy(params)).toString();
+    //   return axios.get(url + params).then(res => {
+    //     return res.data.map(blog => {
+    //       return '/blog/' + blog.slug
+    //     })
+    //   })
+    // }
   },
   /*
   ** Build configuration
