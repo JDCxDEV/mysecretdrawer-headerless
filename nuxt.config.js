@@ -77,7 +77,7 @@ export default {
       };
 
       params = new URLSearchParams(_.pickBy(params)).toString();
-      return axios.get(url).then(res => {
+      return axios.get(url + params).then(res => {
         return res.data.map(blog => {
           return '/blog/' + blog.slug
         })
