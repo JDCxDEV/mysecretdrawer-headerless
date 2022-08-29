@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/pets/components/collection-banner", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

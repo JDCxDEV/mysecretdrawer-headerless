@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/collection/six-grid", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/beauty/components/video-tutorial", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

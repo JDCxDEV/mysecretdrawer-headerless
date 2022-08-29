@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/page/element/logo-slider", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/blog/widgets/blog-list", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

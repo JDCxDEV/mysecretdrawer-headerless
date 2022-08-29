@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/beauty/components/instagram", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

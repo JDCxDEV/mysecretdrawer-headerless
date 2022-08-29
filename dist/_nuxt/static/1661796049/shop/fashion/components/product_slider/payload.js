@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/fashion/components/product_slider", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

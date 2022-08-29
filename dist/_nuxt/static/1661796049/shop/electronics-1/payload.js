@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/electronics-1", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

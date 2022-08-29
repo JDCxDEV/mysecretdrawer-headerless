@@ -1,4 +1,5 @@
-
+import axios from 'axios'
+import _ from 'lodash';
 export default {
   ssr: false,
   subdirectory: '/au',
@@ -68,7 +69,20 @@ export default {
   axios: {
   },
   generate: {
-    fallback: true
+    routes() {
+
+      let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
+      let params = {
+        per_page: 30,
+      };
+
+      params = new URLSearchParams(_.pickBy(params)).toString();
+      return axios.get(url).then(res => {
+        return res.data.map(blog => {
+          return '/blogs/' + blog.slug
+        })
+      })
+    }
   },
   /*
   ** Build configuration

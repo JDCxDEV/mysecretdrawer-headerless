@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/page/typography", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

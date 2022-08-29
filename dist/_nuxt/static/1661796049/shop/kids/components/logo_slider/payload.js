@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/kids/components/logo_slider", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/tools/components/select-vehical", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

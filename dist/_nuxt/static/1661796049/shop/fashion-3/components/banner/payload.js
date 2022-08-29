@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/shop/fashion-3/components/banner", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});
