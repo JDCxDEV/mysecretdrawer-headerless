@@ -27,7 +27,7 @@ export default {
   },
 
   router: {
-    base: '/dist/'
+    base: ''
   },
   /*
   ** Customize the progress-bar color
