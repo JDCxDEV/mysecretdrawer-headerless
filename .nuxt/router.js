@@ -4,7 +4,6 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _4f7c61f2 = () => interopDefault(import('..\\pages\\blog\\blog-detail.vue' /* webpackChunkName: "pages/blog/blog-detail" */))
 const _442288b8 = () => interopDefault(import('..\\pages\\blog\\blog-leftsidebar.vue' /* webpackChunkName: "pages/blog/blog-leftsidebar" */))
 const _652def6a = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
 const _bd293dbe = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
@@ -205,6 +204,7 @@ const _711c5e08 = () => interopDefault(import('..\\pages\\shop\\watch\\component
 const _2b0a00cd = () => interopDefault(import('..\\pages\\shop\\watch\\components\\timer_banner.vue' /* webpackChunkName: "pages/shop/watch/components/timer_banner" */))
 const _21be3075 = () => interopDefault(import('..\\pages\\shop\\watch\\components\\top_products.vue' /* webpackChunkName: "pages/shop/watch/components/top_products" */))
 const _24d97a05 = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
+const _62248c60 = () => interopDefault(import('..\\pages\\blog\\_id.vue' /* webpackChunkName: "pages/blog/_id" */))
 const _871f6358 = () => interopDefault(import('..\\pages\\collection\\_id.vue' /* webpackChunkName: "pages/collection/_id" */))
 const _0816ec6c = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -220,10 +220,6 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/blog/blog-detail",
-    component: _4f7c61f2,
-    name: "blog-blog-detail"
-  }, {
     path: "/blog/blog-leftsidebar",
     component: _442288b8,
     name: "blog-blog-leftsidebar"
@@ -1023,6 +1019,10 @@ export const routerOptions = {
     path: "/product/sidebar/:id?",
     component: _24d97a05,
     name: "product-sidebar-id"
+  }, {
+    path: "/blog/:id?",
+    component: _62248c60,
+    name: "blog-id"
   }, {
     path: "/collection/:id?",
     component: _871f6358,

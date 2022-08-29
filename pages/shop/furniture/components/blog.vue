@@ -10,8 +10,8 @@
                 </div>
                 <div v-swiper:mySwiper="swiperOption">
               <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(blog,index) in bloglist" :key="index">
-                <a href="#">
+              <div class="swiper-slide" v-for="(blog,index) in bloglist.reverse()" :key="index">
+                <a :href="'/blog/' + blog.slug">
                   <div class="classic-effect">
                     <div>
                       <img
@@ -25,11 +25,11 @@
                 </a>
                 <div class="blog-details">
                   <h4>{{blog.date}}</h4>
-                  <a href="#">
+                  <a :href="'/blog/' + blog.slug">
                     <p>{{blog.display_title}}</p>
                   </a>
                   <hr class="style1" />
-                  <h6>by: {{ blog.author_name }} , {{ blog.comment_count1}} Comment(s)</h6>
+                  <h6>by: {{ blog.author_name }} , {{ blog.comment_count}} Comment(s)</h6>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default {
     }
   },
   computed: mapState({
-    bloglistRaw: state => state.blog.bloglist
+    bloglistRaw: state => state.blog.recentBlogList
   }),
   methods: {
     getImgUrl(path) {
@@ -87,7 +87,14 @@ export default {
 
 
   async mounted() {
-    this.$store.dispatch('blog/fetchBlogs', {  per_page:4,}).then( ()=>{
+
+    let params = {
+      params: {
+        per_page:4,
+        order: 'desc',
+      },
+    }
+    this.$store.dispatch('blog/fetchBlogs', params).then( ()=>{
       this.fetchCompeteData(this.bloglistRaw);
     });
   },
@@ -97,7 +104,10 @@ export default {
       let blogs = [];
       await Promise.all(item.map(item => 
         axios.get(item.image_link).then( response =>{
+          console.log(response);
           item.image = response.data.guid.rendered;
+          item.thumbnail = response.data.media_details.sizes.thumbnail.source_url;
+          item.medium = response.data.media_details.sizes.medium.source_url;
         }).then(() =>{
           axios.get(item.author_link).then( response =>{
             item.author_name = response.data.name;
@@ -110,9 +120,6 @@ export default {
         })
   
       ));
-
-      
-
       this.bloglist = blogs;
     }
   }

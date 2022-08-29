@@ -1,11 +1,13 @@
-import blog from '../../data/blog';
 import formatHelper from './../../mixins/resuable/format'
 import _ from 'lodash';
 import axios from 'axios';
+
 const helper = new formatHelper;
+
 const state = {
-  blog: blog.data,
-  bloglist: blog.data
+  current: {},
+  bloglist: [],
+  recentBlogList: [],
 }
 // getters
 const getters = {
@@ -13,24 +15,28 @@ const getters = {
     const uniqueTag = []
     const blogTag = []
     state.bloglist.map((blog, index) => {
-      if (blog.tags) {
-        blog.tags.map((tag) => {
-          const index = uniqueTag.indexOf(tag)
-          if (index === -1) uniqueTag.push(tag)
-        })
+      
+      if (blog.categories) {
+          blog.categories.map((tag) => {
+            blogTag.push(tag)
+          })
       }
-    })
-    for (let i = 0; i < uniqueTag.length; i++) {
-      blogTag.push(uniqueTag[i])
-    }
-    return blogTag
+    }) 
+
+    return Array.from(new Set(blogTag));
   }
 }
 // mutations
 const mutations = {
-  setBloglist: (state) => {
-    return state.bloglist
+  setBloglist: (state, payload) => {
+    state.bloglist = payload
   },
+  setRecentBloglist: (state, payload) => {
+    state.recentBlogList = payload
+  },
+  setCurrentBlog: (state, payload) => {
+    state.current = payload
+  },  
 }
 // actions
 const actions = {
@@ -41,9 +47,8 @@ const actions = {
       let params = {
         /* Default  number of blogs */
       };
-   
 
-      params = new URLSearchParams(_.pickBy(payload)).toString();
+      params = new URLSearchParams(_.pickBy(payload.params)).toString();
       
       let blogs = [];
       const result = await axios.get(url + params);
@@ -54,11 +59,15 @@ const actions = {
         });  
       }
 
-      commit('setBloglist', blogs);
-
-      state.bloglist = blogs;
-
+      if(payload.type == 'list') {
+        commit('setBloglist', blogs);
+      }else if(payload.type == 'single'){
+        commit('setCurrentBlog', blogs[0]);
+      }else {
+        commit('setRecentBloglist', blogs);
       }
+
+    }
       catch (error) {
           alert(error)
           console.log(error)

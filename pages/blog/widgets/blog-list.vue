@@ -8,7 +8,7 @@
     >
       <div class="col-xl-6">
         <div class="blog-left">
-          <nuxt-link :to="{ path: '/blog/blog-detail'}">
+          <nuxt-link :to="{ path: '/blog/' + blog.slug}">
             <img :src="blog.image" class="img-fluid" alt />
           </nuxt-link>
         </div>
@@ -17,7 +17,7 @@
         <div class="blog-right">
           <div>
             <h6>{{ blog.date }}</h6>
-            <nuxt-link :to="{ path: '/blog/blog-detail'}">
+            <nuxt-link :to="{ path: '/blog/' + blog.slug}">
               <h4>{{blog.display_title}}</h4>
             </nuxt-link>
             <ul class="post-social">
@@ -38,7 +38,7 @@
             <nav aria-label="Page navigation">
               <ul class="pagination">
                 <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current-1)">
+                  <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current-1)" :class="{'disabled' : pages[0]  == 1}">
                     <span aria-hidden="true">
                       <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </span>
@@ -48,16 +48,17 @@
                   class="page-item"
                   v-for="(page_index, index) in this.pages"
                   :key="index"
-                  :class="{'active': page_index == current}"
+
                 >
                   <a
                     class="page-link"
                     href="javascrip:void(0)"
+                    :class="{'active-btn' : page_index == current }"
                     @click.prevent="updatePaginate(page_index)"
                   >{{ page_index }}</a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current+1)">
+                  <a class="page-link" href="javascript:void(0)" :class="{'disabled' : pages.slice(-1)[0]  == paginates}" @click="updatePaginate(current+1)">
                     <span aria-hidden="true">
                       <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </span>
@@ -102,7 +103,13 @@ export default {
   }),
 
   async mounted() {
-    this.$store.dispatch('blog/fetchBlogs', { per_page: 100 }).then( ()=>{
+    let params = {
+      params : {
+        per_page: 30
+      },
+      type: 'list'
+    }
+    this.$store.dispatch('blog/fetchBlogs', params).then( ()=>{
       this.fetchCompeteData(this.bloglistRaw).then(() =>{
 
       });
@@ -174,3 +181,16 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.disabled {
+  pointer-events: none;
+  background-color: lightgray;
+}
+
+.active-btn {
+  pointer-events: none;
+  background-color: #ececee;
+}
+</style>

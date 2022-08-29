@@ -80,8 +80,25 @@ export default class formatHelper {
         return product;
     }
 
+    unescapeHTML(str) {
+        var escapeChars = { lt: '<', gt: '>', quot: '"', apos: "'", amp: '&' };
+        return str.replace(/\&([^;]+);/g, function(entity, entityCode) {
+            var match;
+
+            if ( entityCode in escapeChars) {
+                return escapeChars[entityCode];
+            } else if ( match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
+                return String.fromCharCode(parseInt(match[1], 16));
+            } else if ( match = entityCode.match(/^#(\d+)$/)) {
+                return String.fromCharCode(~~match[1]);
+            } else {
+                return entity;
+            }
+        });
+    }
+
     formatBlog(blog) {
-        blog.display_title = blog.title.rendered;
+        blog.display_title = this.unescapeHTML(blog.title.rendered);
         blog.date = moment(blog.date, 'YYYY-MM-DD').format('MMM DD YYYY');
         blog.author_link = blog._links.author[0].href;
         blog.image_link = blog._links['wp:featuredmedia'][0].href;
