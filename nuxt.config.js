@@ -73,13 +73,13 @@ export default {
 
       let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
       let params = {
-        per_page: 30,
+        per_page: 100,
       };
 
       params = new URLSearchParams(_.pickBy(params)).toString();
       return axios.get(url).then(res => {
         return res.data.map(blog => {
-          return '/blogs/' + blog.slug
+          return '/blog/' + blog.slug
         })
       })
     }
