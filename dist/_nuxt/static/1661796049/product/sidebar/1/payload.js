@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/product/sidebar/1", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

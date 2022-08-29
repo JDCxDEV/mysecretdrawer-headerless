@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/shop/flower/components/services", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

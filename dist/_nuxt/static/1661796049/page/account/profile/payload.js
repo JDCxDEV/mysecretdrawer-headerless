@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/account/profile", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/collection/three-grid", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

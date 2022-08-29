@@ -1,6 +1,6 @@
 
 export default {
-  ssr: false,
+  ssr:true,
   subdirectory: '/au',
   target: 'static',
   /*

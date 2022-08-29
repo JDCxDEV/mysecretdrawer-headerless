@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/element/category", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

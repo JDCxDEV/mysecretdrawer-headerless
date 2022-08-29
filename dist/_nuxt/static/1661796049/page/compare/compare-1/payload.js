@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/compare/compare-1", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

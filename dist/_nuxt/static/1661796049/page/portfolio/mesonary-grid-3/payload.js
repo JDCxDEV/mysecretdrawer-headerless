@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/portfolio/mesonary-grid-3", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

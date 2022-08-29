@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/collection/sidebar-popup", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});

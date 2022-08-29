@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/shop/jewellery/components/parallax-banner", {data:[{}],fetch:{},mutations:[["layout\u002Fset",void 0]]});
