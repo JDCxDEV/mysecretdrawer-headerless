@@ -10,7 +10,7 @@
                 </div>
                 <div v-swiper:mySwiper="swiperOption">
               <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(blog,index) in bloglist.reverse()" :key="index">
+              <div class="swiper-slide" v-for="(blog,index) in bloglist" :key="index">
                 <a :href="'/blog/' + blog.slug">
                   <div class="classic-effect">
                     <div>

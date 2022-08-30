@@ -4,7 +4,7 @@
       <div class="theme-card">
         <h4>Recent Blog</h4>
         <ul class="recent-blog">
-          <li v-for="(blog,index) in bloglist.reverse()" :key="index">
+          <li v-for="(blog,index) in bloglist" :key="index">
             <nuxt-link :to="{ path: '/blog/' + blog.slug}">
               <div class="media">
                 <img :src="blog.thumbnail" class="img-fluid" alt />

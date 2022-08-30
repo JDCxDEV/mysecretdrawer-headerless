@@ -1,8 +1,6 @@
 export default {
   ssr: false,
-  subdirectory: '/au',
   target: 'static',
-  publicPath: '',
   /*
   ** Headers of the page
   */
