@@ -35,11 +35,33 @@ export default {
             })
         },
 
-        async fetchSingleProduct(id){
+        async fetchSingleProduct(id) {
             CoCart.get("products/" + id)
             .then((response) => {
                 this.getDetail = helper.formatProduct(response.data, true);
                 this.$store.dispatch('products/fetchRelatedProducts', this.getDetail.related);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+        
+        async fetchSingleProductWithParams(payload) {
+
+            let params = {
+                /* Default  number of product */
+                per_page: 4,
+                min_price : 1,
+              };
+              
+              params = {...params, ...payload};
+              
+            params = new URLSearchParams(_.pickBy(params)).toString();
+            CoCart.get("products/?" + params)
+            .then((response) => {
+                let products = response.data.products ;
+                this.product_first =  products.length ? helper.formatProduct(products[0]) : {}; 
+                this.product_second =  products.length ? helper.formatProduct(products[1]) : {}; 
             })
             .catch((error) => {
                 console.log(error);

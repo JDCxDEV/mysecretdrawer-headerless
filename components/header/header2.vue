@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <div class="main-menu border-section border-top-0">
+          <div class="main-menu border-section border-top-0 p-0">
             <div class="menu-left">
               <div class="navbar">
                 <a @click="left_sidebar" >
@@ -17,7 +17,7 @@
             </div>
             <div class="brand-logo layout2-logo">
               <a href="#">
-                <img :src='"../../assets/images/custom/logo/logo.png"' class="img-fluid" style="height: 100px;" alt>
+                <img :src='"../../assets/images/custom/logo/logo.png"' class="img-fluid" style="height:30px;" alt>
               </a>
             </div>
             <div class="menu-right pull-right">

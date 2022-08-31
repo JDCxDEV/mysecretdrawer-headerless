@@ -12,11 +12,15 @@
                         <div class="container">
                         <div class="row">
                             <div class="col">
-                            <div class="banner-contain">
-                                <h2>{{title}}</h2>
-                                <h3>{{subtitle}}</h3>
-                                <h4>{{text}}</h4>
-                            </div>
+                                <productBox1
+                                    @opencartmodel="showCartModal"
+                                    @showCompareModal="showcomparemodal"
+                                    @openquickview="showquickview"
+                                    @showalert="alert"
+                                    @alertseconds="alert"
+                                    :product="product"
+                                    :index="index"
+                                />
                             </div>
                         </div>
                         </div>

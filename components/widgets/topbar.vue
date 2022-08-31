@@ -1,25 +1,25 @@
 <template>
-  <div class="top-header">
+  <div class="top-header" style="background-color: #F40847;color: white !important;" >
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="header-contact">
+          <div class="header-contact text-white" >
             <ul>
-              <li>Welcome to Our store Multikart</li>
-              <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890
+              <li style="color: white !important;">Welcome to Our store My Secret Drawer</li>
+              <li style="color: white !important;">
+                <i class="fa fa-phone" aria-hidden="true" style="color: white !important;" ></i>Call Us: 123 - 456 - 7890
               </li>
             </ul>
           </div>
         </div>
         <div class="col-lg-6 text-right">
-          <ul class="header-dropdown">
-            <li class="mobile-wishlist">
+          <ul class="header-dropdown"  style="color: white !important;" >
+            <li class="mobile-wishlist"  style="color: white !important;">
               <nuxt-link :to="{ path: '/page/account/wishlist' }">
-                <i class="fa fa-heart" aria-hidden="true"></i>
+                <i   style="color: white !important;" class="fa fa-heart" aria-hidden="true"></i>
               </nuxt-link>
             </li>
-            <li class="onhover-dropdown mobile-account">
+            <li class="onhover-dropdown mobile-account"  style="color: white !important;">
               <i class="fa fa-user" aria-hidden="true"></i> 
               <template v-if="validated">
                 {{ user.first_name }} {{ user.last_name}}

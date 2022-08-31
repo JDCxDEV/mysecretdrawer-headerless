@@ -1,29 +1,23 @@
 <template>
   <div>
-    <section class="p-4 mt-5">
+    <section class="p-4 mt-5 deal-of-day-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div
-                        class="full-banner text-center"
-                        v-bind:style="{ 'background-image': `url(${imagepath})` }"
-                    >
-                        <img :src="imagepath" alt class="bg-img d-none" />
-                        <div class="container">
-                        <div class="row">
-                            <div class="col">
-                            <div class="banner-contain">
-                                <h2>{{title}}</h2>
-                                <h3>{{subtitle}}</h3>
-                                <h4>{{text}}</h4>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
+                <div class="col-md-3">
+                    <div class="product-box" v-if="product_first.id">
+                        <productBox1
+                            :singleProduct="true"
+                            @opencartmodel="showCart"
+                            @showCompareModal="showCoampre"
+                            @openquickview="showQuickview"
+                            @showalert="alert"
+                            @alertseconds="alert"
+                            :product="product_first"
+                        />
                     </div>
                 </div>
                 <div class="col-md-6 text-center mt-5">
-                    <h1>Deal of the day</h1>
+                    <h3 class="deal-of-day">Deal of the day</h3>
                     <div class="row text-center ml-5 mr-5 mb-3 mt-5">
                         <div class="col-md-3">
                             <h3>DAYS</h3>
@@ -57,69 +51,122 @@
                     </div>
 
                 </div>
-
+                <div class="col-md-3">
+                    <div class="product-box" v-if="product_second.id">
+                        <productBox1
+                            :singleProduct="true"
+                            @opencartmodel="showCart"
+                            @showCompareModal="showCoampre"
+                            @openquickview="showQuickview"
+                            @showalert="alert"
+                            @alertseconds="alert"
+                            :product="product_second"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     </section>
   </div>
 </template>
 <script type="text/javascript">
-import Banner from './banner'
+import Banner from './banner';
+import cocart from '../../../../mixins/cocart';
+import productBox1 from '../../../../components/product-box/product-box1.vue';
 export default {
+    mixins: [cocart],
     components: {
-        Banner
+        Banner,
+        productBox1
     },
-  data() {
-    return {
-      imagepath: require('@/assets/images/parallax/1.jpg'),
-      title: '2022',
-      subtitle: 'fashion trends',
-      text: 'special offer',
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0
-    }
-  }, 
-
-  mounted() {
-    this.initTimer();
-  },
-
-  methods: {
-    initTimer() {
-        const second = 1000,
-            minute = second * 60,
-            hour = minute * 60,
-            day = hour * 24;
-
-        let today = new Date(),
-            dd = String(today.getDate()).padStart(2, "0"),
-            mm = String(today.getMonth() + 1).padStart(2, "0"),
-            yyyy = today.getFullYear(),
-            nextYear = yyyy + 1,
-            dayMonth = "09/30/",
-            birthday = dayMonth + yyyy;
     
-        today = mm + "/" + dd + "/" + yyyy;
-        if (today > birthday) {
-            birthday = dayMonth + nextYear;
+    data() {
+        return {
+            imagepath: require('@/assets/images/parallax/1.jpg'),
+            title: '2022',
+            subtitle: 'fashion trends',
+            text: 'special offer',
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            product_first: {},
+            product_second: {},
         }
+    }, 
 
-    
-        const countDown = new Date(birthday).getTime(),
-        x = setInterval(()=> {    
+    mounted() {
+        this.initTimer();
+        this.fetchSingleProductWithParams({ tag:  1132});
+    },
 
-            const now = new Date().getTime(),
-                distance = countDown - now;
+    methods: {
+        initTimer() {
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
 
-            this.days = Math.floor(distance / (day)),
-            this.hours = Math.floor((distance % (day)) / (hour)),
-            this.minutes = Math.floor((distance % (hour)) / (minute)),
-            this.seconds = Math.floor((distance % (minute)) / second);
+            let today = new Date(),
+                dd = String(today.getDate()).padStart(2, "0"),
+                mm = String(today.getMonth() + 1).padStart(2, "0"),
+                yyyy = today.getFullYear(),
+                nextYear = yyyy + 1,
+                dayMonth = "09/30/",
+                birthday = dayMonth + yyyy;
+        
+            today = mm + "/" + dd + "/" + yyyy;
+            if (today > birthday) {
+                birthday = dayMonth + nextYear;
+            }
 
-        }, 0)
+        
+            const countDown = new Date(birthday).getTime(),
+            x = setInterval(()=> {    
+
+                const now = new Date().getTime(),
+                    distance = countDown - now;
+
+                this.days = Math.floor(distance / (day)),
+                this.hours = Math.floor((distance % (day)) / (hour)),
+                this.minutes = Math.floor((distance % (hour)) / (minute)),
+                this.seconds = Math.floor((distance % (minute)) / second);
+
+            }, 0)
+        },
+        alert(item) {
+            this.dismissCountDown = item
+        },
+        showQuickview(item, productData) {
+            this.showquickviewmodel = item
+            this.quickviewproduct = productData
+        },
+        showCoampre(item, productData) {
+            this.showcomparemodal = item
+            this.comapreproduct = productData
+        },
+        closeCompareModal(item) {
+            this.showcomparemodal = item
+        },
+        showCart(item, productData) {
+            this.showcartmodal = item
+            this.cartproduct = productData
+        },
+        closeCartModal(item) {
+            this.showcartmodal = item
+        }
     }
-  }
 }
 </script>
+
+<style>
+.deal-of-day {
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.deal-of-day-bg {
+    background: #f7f2f2;
+}
+</style>

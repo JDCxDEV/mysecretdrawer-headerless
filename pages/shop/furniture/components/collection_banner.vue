@@ -1,6 +1,9 @@
 <template>
   <div>
-    <section class="banner-furniture ratio_45">
+    <div class="banner-furniture ratio_45">
+      <div class="title2 section-t-space" style="padding-top: 30px;">
+      <h2 class="title-inner2 ">Our Style</h2>
+    </div>
       <div class="container-fluid">
         <div class="row partition3 text-center">
           <div class="col-md-3" v-for="(item, index) in items" :key="index">
@@ -21,7 +24,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

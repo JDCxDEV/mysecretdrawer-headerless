@@ -15,8 +15,10 @@
                   <div class="classic-effect">
                     <div>
                       <img
+                      width="640"
+                      height="960"
                         :src="blog.image"
-                        class="img-fluid"
+                        class="collection-img "
                         alt
                       />
                     </div>
@@ -125,3 +127,19 @@ export default {
   }
 }
 </script>
+
+
+<style>
+  .collection-img {
+    display: block;
+    width: 100%;
+    max-height: none;
+    max-width: none;
+    -webkit-transition: -webkit-filter .3s;
+    transition: -webkit-filter .3s;
+    -o-transition: filter .3s;
+    transition: filter .3s;
+    transition: filter .3s,-webkit-filter .3s;
+  }
+  </style>
+  

@@ -10,7 +10,7 @@ export default {
   },
 
   head: {
-    title: 'Multikart Ecommerce | Vuejs shopping theme',
+    title: 'MSD',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
