@@ -147,17 +147,14 @@
                 <div class="footer-contant">
                   <ul class="contact-list">
                     <li>
-                      <i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
+                      <i class="fa fa-map-marker"></i>Bannockburn, Queensland 4207, Australia
                     </li>
                     <li>
-                      <i class="fa fa-phone"></i>Call Us: 123-456-7898
+                      <i class="fa fa-phone"></i>123-456-7898
                     </li>
                     <li>
-                      <i class="fa fa-envelope-o"></i>Email Us:
-                      <a href="#">Support@Fiot.com</a>
-                    </li>
-                    <li>
-                      <i class="fa fa-fax"></i>Fax: 123456
+                      <i class="fa fa-envelope-o"></i>
+                      <a href="mailto:help@mysecretdrawer.co">help@mysecretdrawer.co</a>
                     </li>
                   </ul>
                 </div>

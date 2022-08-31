@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display: none;">
     <!-- theme setting -->
     <a href="javascript:void(0)">
       <div class="setting-sidebar" id="setting-icon" @click="openlayoutSidebar()">

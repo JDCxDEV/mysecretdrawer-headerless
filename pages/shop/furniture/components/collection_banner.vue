@@ -6,7 +6,8 @@
     </div>
       <div class="container-fluid">
         <div class="row partition3 text-center">
-          <div class="col-md-3" v-for="(item, index) in items" :key="index">
+          <div class="col-md-1"></div>
+          <div class="col-md-2" v-for="(item, index) in items" :key="index">
             <a href="#">
               <div class="collection-banner p-right text-center">
                 <div class="img-part" style="position: relative;"> 
@@ -53,6 +54,11 @@ export default {
           title: 'Pj & Warps',
           subtitle: 'save 60%'
         },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80588-2-3.jpg',
+          title: 'Long Sleeve Lace',
+          subtitle: 'save 60%'
+        },
 
       ]
     }
@@ -70,6 +76,6 @@ export default {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 280px;
+    height: 200px;
 }
 </style>
