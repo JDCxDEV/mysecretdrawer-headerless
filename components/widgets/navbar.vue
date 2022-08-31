@@ -142,3 +142,18 @@ export default {
   }
 }
 </style>
+
+<style>
+.main-menu .menu-left .navbar {
+    padding: 20px 10px 20px 0 !important;
+}
+.main-menu .brand-logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.onhover-div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+</style>

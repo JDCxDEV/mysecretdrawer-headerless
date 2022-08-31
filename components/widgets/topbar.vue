@@ -71,3 +71,13 @@ export default {
   },
 }
 </script>
+
+<style>
+.top-header .header-contact {
+    padding: 10px 0;
+}
+.top-header .header-dropdown li {
+    padding: 10px 25px;
+    padding-right: 20px;
+}
+</style>
