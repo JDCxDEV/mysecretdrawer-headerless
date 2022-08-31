@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-import Header from '../../components/header/header1'
+import Header from '../../components/header/header2'
 import Footer from '../../components/footer/footer1'
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
 import BlogSidebar from './widgets/blog-sidebar'

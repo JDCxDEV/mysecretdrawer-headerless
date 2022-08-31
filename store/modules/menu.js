@@ -63,13 +63,7 @@ const actions = {
       };
 
       let blogs_tab = {
-        title: "Blog", "type": "sub", "active": false, 
-        children: [
-          { path: "/blog/blog-leftsidebar", "title": "Left Sidebar", "type": "link" },
-          { path: "/blog/blog-rightsidebar", "title": "Right Sidebar", "type": "link" },
-          { path: "/blog/blog-nosidebar", "title": "No Sidebar", "type": "link" },
-          { path: "/blog/blog-detail", "title": "Blog details", "type": "link" }
-        ]
+        title: "Blog", "type": "link", "active": false,  path: "/blog",
       }
 
       let temp_data = Menu.data;

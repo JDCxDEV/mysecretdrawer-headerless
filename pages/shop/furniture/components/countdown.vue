@@ -17,7 +17,12 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center mt-5">
-                    <h3 class="deal-of-day">Deal of the day</h3>
+                    <div class="title3">
+                        <h4>{{subtitle}}</h4>
+                        <h2 class="title-inner3">Deal of the day</h2>
+                        <div class="line"></div>
+                    </div>
+                    <h3 class="deal-of-day"></h3>
                     <div class="row text-center ml-5 mr-5 mb-3 mt-5">
                         <div class="col-md-3">
                             <h3>DAYS</h3>

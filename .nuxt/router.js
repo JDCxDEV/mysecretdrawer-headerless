@@ -4,7 +4,7 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _442288b8 = () => interopDefault(import('..\\pages\\blog\\blog-leftsidebar.vue' /* webpackChunkName: "pages/blog/blog-leftsidebar" */))
+const _0b610530 = () => interopDefault(import('..\\pages\\blog\\index.vue' /* webpackChunkName: "pages/blog/index" */))
 const _652def6a = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
 const _bd293dbe = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
 const _5411ce5e = () => interopDefault(import('..\\pages\\collection\\full-width.vue' /* webpackChunkName: "pages/collection/full-width" */))
@@ -220,9 +220,9 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/blog/blog-leftsidebar",
-    component: _442288b8,
-    name: "blog-blog-leftsidebar"
+    path: "/blog",
+    component: _0b610530,
+    name: "blog"
   }, {
     path: "/blog/blog-nosidebar",
     component: _652def6a,
@@ -1020,7 +1020,7 @@ export const routerOptions = {
     component: _24d97a05,
     name: "product-sidebar-id"
   }, {
-    path: "/blog/:id?",
+    path: "/blog/:id",
     component: _62248c60,
     name: "blog-id"
   }, {
