@@ -1,7 +1,23 @@
 <template>
   <div>
+    <div class="title2 section-t-space red-section">
+      <div class="comtainer-fluid">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-2 sideline">
+            Gorgeous designs<br>Sensual fabrics
+          </div>
+          <div class="col-md-2 sideline">
+            Many styles and colors<br>Petite to Plus sizes
+          </div>
+          <div class="col-md-2">
+            Affordable quality<br>Free delivery
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="banner-furniture ratio_45">
-      <div class="title2 section-t-space" style="padding-top: 30px;">
+    <div class="title2 section-t-space" style="padding-top: 30px;">
       <h2 class="title-inner2 ">Our Style</h2>
     </div>
       <div class="container">
@@ -109,5 +125,18 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     height: 200px;
+}
+
+.red-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: url('https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/woman-lying-in-bed.jpg');
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.sideline {
+  border: 2px solid rgb(255, 255, 255); border-width: 0px 3px 0 0px;
 }
 </style>
