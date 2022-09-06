@@ -4,10 +4,9 @@
       <div class="title2 section-t-space" style="padding-top: 30px;">
       <h2 class="title-inner2 ">Our Style</h2>
     </div>
-      <div class="container-fluid">
+      <div class="container">
         <div class="row partition3 text-center">
-          <div class="col-md-1"></div>
-          <div class="col-md-2" v-for="(item, index) in items" :key="index">
+          <div class="col-md-3" v-for="(item, index) in items" :key="index">
             <a href="#">
               <div class="collection-banner p-right text-center">
                 <div class="img-part" style="position: relative;"> 
@@ -16,7 +15,6 @@
                 <div class="contain-banner banner-3">
                   <div>
                     <!-- <h4>{{item.subtitle}}</h4> -->
-                   
                   </div>
                 </div>
               </div>
@@ -59,7 +57,41 @@ export default {
           title: 'Long Sleeve Lace',
           subtitle: 'save 60%'
         },
-
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80636-2P-1-2.jpg',
+          title: 'Babydoll & Chemise',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/P5138-4.jpg',
+          title: 'Panties',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/H30311-2.jpg',
+          title: 'Body Stockings',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80467-1.jpg',
+          title: 'Leather Look',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/DY3258-1-3OK.jpg',
+          title: 'Beach Wear',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/1-1-4.jpg',
+          title: 'Bra Sets',
+          subtitle: 'save 60%'
+        },
+        {
+          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80465-7.jpg',
+          title: 'Gartered Lingerie	',
+          subtitle: 'save 60%'
+        },
       ]
     }
   },

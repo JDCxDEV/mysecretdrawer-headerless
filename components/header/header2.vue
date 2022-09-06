@@ -10,14 +10,14 @@
             <div class="menu-left">
               <div class="navbar">
                 <a @click="left_sidebar" >
-                  <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                  <img :src='"../../assets/images/custom/icons/menu.png"' class="img-fluid" style="height:50px;cursor: pointer;" alt>
                 </a>
                 <LeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
               </div>
             </div>
             <div class="brand-logo layout2-logo">
               <a href="#">
-                <img :src='"../../assets/images/custom/logo/logo.png"' class="img-fluid" style="height:30px;" alt>
+                <img :src='"../../assets/images/custom/logo/logo.png"' class="img-fluid" style="height:50px;" alt>
               </a>
             </div>
             <div class="menu-right pull-right">
@@ -27,7 +27,8 @@
         </div>
       </div>
     </div>
-    <div class="container">
+
+     <div  style="display: none" class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="main-nav-center">
@@ -35,7 +36,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+    
   </header>
   <!-- header end -->
 </template>

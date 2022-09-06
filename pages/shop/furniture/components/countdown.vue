@@ -3,6 +3,8 @@
     <section class="p-4 mt-5 deal-of-day-bg">
         <div class="container">
             <div class="row">
+                <div class="col-md-2">
+                </div>
                 <div class="col-md-3">
                     <div class="product-box" v-if="product_first.id">
                         <productBox1
@@ -16,7 +18,7 @@
                         />
                     </div>
                 </div>
-                <div class="col-md-6 text-center mt-5">
+                <div class="col-md-4 text-center mt-5">
                     <div class="title3">
                         <h4>{{subtitle}}</h4>
                         <h2 class="title-inner3">Deal of the day</h2>

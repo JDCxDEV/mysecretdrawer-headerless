@@ -15,8 +15,8 @@
                   <div class="classic-effect">
                     <div>
                       <img
-                      width="640"
-                      height="960"
+                        width="640"
+                        style="height: 250px;"
                         :src="blog.image"
                         class="collection-img "
                         alt

@@ -83,6 +83,7 @@ const actions = {
           console.log(error)
       }
   },
+  
   setSelectedCategory: (context, payload) => {
     context.commit("setSelectedCategory", payload);
   },
