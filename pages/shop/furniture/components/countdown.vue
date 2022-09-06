@@ -3,7 +3,7 @@
     <section class="p-4 mt-5 deal-of-day-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                 </div>
                 <div class="col-md-3">
                     <div class="product-box" v-if="product_first.id">
