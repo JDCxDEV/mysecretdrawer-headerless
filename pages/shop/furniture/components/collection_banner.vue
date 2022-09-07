@@ -22,7 +22,7 @@
     </div>
       <div class="container">
         <div class="row partition3 text-center">
-          <div class="col-md-3" v-for="(item, index) in items" :key="index">
+          <div class="col-md-3 border" v-for="(item, index) in items" :key="index"> 
             <a href="#">
               <div class="collection-banner p-right text-center">
                 <div class="img-part" style="position: relative;"> 
@@ -74,7 +74,7 @@ export default {
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80636-2P-1-2.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/R80734-red-Main-scaled.jpg',
           title: 'Babydoll & Chemise',
           subtitle: 'save 60%'
         },
@@ -84,27 +84,27 @@ export default {
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/H30311-2.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/H3370-MAIN-scaled.jpg',
           title: 'Body Stockings',
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80467-1.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/R80385-MAIN-scaled.jpg',
           title: 'Leather Look',
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/DY3258-1-3OK.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/DY3258-MAIN-scaled.jpg',
           title: 'Beach Wear',
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/1-1-4.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/R80614-MAIN-1-scaled.jpg',
           title: 'Bra Sets',
           subtitle: 'save 60%'
         },
         {
-          imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80465-7.jpg',
+          imagepath: 'https://mysecretdrawer.com/au/wp-content/uploads/sites/13/2022/09/R80465-MAIN-scaled.jpg',
           title: 'Gartered Lingerie	',
           subtitle: 'save 60%'
         },
@@ -138,5 +138,9 @@ export default {
 
 .sideline {
   border: 2px solid rgb(255, 255, 255); border-width: 0px 3px 0 0px;
+}
+
+.border {
+  
 }
 </style>
