@@ -27,6 +27,29 @@
           </ul>
         </li>
         <li>
+          <a href="javascript:void(0)" @click="setActive('bags')">THE PLAYGROUND
+            <span class="sub-arrow"></span>
+          </a>
+          <ul :class="{ opensub1: isActive('bags') }" style="width:250px;">
+              <li>
+                <a href="/collection/bdsm">BDSM</a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" @click="setActive('bags')">YOUR SIZE?
+            <span class="sub-arrow"></span>
+          </a>
+          <ul :class="{ opensub1: isActive('bags') }" style="width:250px;">
+            <li>
+              <a href="/your-size-chart/">OUR SIZE CHART</a>
+            </li>
+            <li>
+              <a href="/our-models-sizes/">OUR MODELS’ SIZES</a>
+            </li>
+          </ul>
+        </li>
+        <li>
           <a href="/blog">Blogs</a>
         </li>
       </ul>
