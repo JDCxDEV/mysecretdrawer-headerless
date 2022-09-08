@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="title2 section-t-space">
+    <!-- <div class="title2 section-t-space">
       <h4>{{subtitle}}</h4>
       <h2 class="title-inner2 ">{{title}}</h2>
-    </div>
-    <section class="section-b-space p-t-0 ratio_asos">
+    </div> -->
+    <section class="section-b-space p-t-0 ratio_asos mt-5">
       <div class="container">
         <div class="row">
           <div class="col">

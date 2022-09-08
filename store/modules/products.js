@@ -1,6 +1,7 @@
 import CoCartAPI from "@cocart/cocart-rest-api";
 import formatHelper from './../../mixins/resuable/format'
 import _ from 'lodash';
+import { componentsPlugin } from "bootstrap-vue";
 
 const CoCart = new CoCartAPI({
   url: process.env.VUE_APP_API_URL,
@@ -156,6 +157,7 @@ const actions = {
     try {
 
       let url = "products?";
+    
       let params = {
         /* Default  number of product */
         per_page: 8,

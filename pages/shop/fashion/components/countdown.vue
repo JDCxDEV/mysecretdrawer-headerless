@@ -36,7 +36,7 @@
                             <h3>HOURS</h3>
                         </div>
                         <div class="col-md-3">
-                            <h3>MINS</h3>
+                            <h6>MINS</h6>
                         </div>
                         <div class="col-md-3">
                             <h3>SECS</h3>

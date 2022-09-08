@@ -5,8 +5,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="title1">
-                    <h4>{{subtitle}}</h4>
-                    <h2 class="title-inner1">{{title}}</h2>
+                    <!-- <h4>{{subtitle}}</h4> -->
+                    <h2 class="title-inner1 v2" style="margin-top: -50px;"></h2>
+                    <h2 class="title-inner1" style="margin-top: -20px;">{{title}}</h2>
                 </div>
                 <div v-swiper:mySwiper="swiperOption">
               <div class="swiper-wrapper">
@@ -15,8 +16,7 @@
                   <div class="classic-effect">
                     <div>
                       <img
-                        width="640"
-                        style="height: 250px;"
+                      
                         :src="blog.image"
                         class="collection-img "
                         alt
@@ -49,8 +49,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      title: 'from the blog',
-      subtitle: 'recent story',
+      title: 'My Secret Stories',
+      subtitle: 'My Secret Stories',
       swiperOption: {
         slidesPerView: 4,
         spaceBetween: 20,
@@ -132,14 +132,23 @@ export default {
 <style>
   .collection-img {
     display: block;
-    width: 100%;
-    max-height: none;
-    max-width: none;
-    -webkit-transition: -webkit-filter .3s;
-    transition: -webkit-filter .3s;
-    -o-transition: filter .3s;
-    transition: filter .3s;
-    transition: filter .3s,-webkit-filter .3s;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+
   }
+
+.title1 .title-inner1:after {
+    position: absolute;
+    height: 5px;
+    width: 150px;
+    background-color: #ff4c3b;
+    background-color: var(--theme-deafult);
+    content: "";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+}
   </style>
   

@@ -27,16 +27,16 @@
                     <h3 class="deal-of-day"></h3>
                     <div class="row text-center ml-5 mr-5 mb-3 mt-5">
                         <div class="col-md-3">
-                            <h3>DAYS</h3>
+                            <h5>DAYS</h5>
                         </div>
                         <div class="col-md-3">
-                            <h3>HOURS</h3>
+                            <h5>HOURS</h5>
                         </div>
                         <div class="col-md-3">
-                            <h3>MINS</h3>
+                            <h5>MINS</h5>
                         </div>
                         <div class="col-md-3">
-                            <h3>SECS</h3>
+                            <h5>SECS</h5>
                         </div>
                     </div>
                     <div class="row text-center ml-5 mr-5 mt-3">
@@ -53,7 +53,7 @@
                             <h3>{{ seconds }}</h3>
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-solid btn-danger btn-round mt-5">Shop Now</button>
+                            <a  href="collection/all" class="btn btn-solid btn-danger btn-round mt-5">Shop Now</a>
                         </div>
                     </div>
 

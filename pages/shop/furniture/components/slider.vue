@@ -18,7 +18,7 @@
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
                             <h2 class="text-white" style="text-transform: none; !important">{{ item.title }}</h2>
                             <h4 class="text-white" style="text-transform: none;">{{ item.subtitle }}</h4>
-                            <a href class="btn btn-solid btn-circle">shop now</a>
+                            <a href="collection/all" class="btn btn-solid btn-circle">shop now</a>
                         </div>
                       </div>
                     </div>
@@ -48,9 +48,8 @@ export default {
       items: [
         {
           imagepath: require('@/assets/images/custom/banner/woman_in_lingerie.jpg'),
-          title: 'Bring new adventure into your life!',
-          subtitle: 'The world’s most sensuous lingerie delivered to your door!',
-          subtitle_top: 'Bring new adventure into your life!',
+          title: 'Beautiful lingerie for every Body',
+          subtitle_top:'Bring new adventures into your life!',
           alignclass: 'p-left'
         },
         {

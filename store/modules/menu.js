@@ -39,7 +39,8 @@ const actions = {
     try {
 
       const params = new URLSearchParams({
-        exclude: 17
+        exclude: 10,
+        per_page: 100,
       }).toString();
 
       const result = await CoCart.get("products/categories?"+params);

@@ -264,9 +264,11 @@ export default {
   },
   methods: {
     fetchProduct(page , params) {
+
+      console.log(this.$route.params.id); 
       let default_params = {
         params : {
-          category: this.$store.state.menu.selected_category.product_id,
+          category: this.$route.params.id,
           page: page,
           ...params
         },
@@ -321,7 +323,8 @@ export default {
       this.allfilters.splice(0, this.allfilters.length)
     },
     getCategoryFilter() {
-      this.updatePaginate(1)
+      this.updatePaginate(1);
+     
       this.$store.dispatch('filter/getCategoryFilter', this.$route.params.id)
     },
     allfilter(selectedVal) {
