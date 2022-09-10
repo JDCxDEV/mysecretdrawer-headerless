@@ -31,7 +31,7 @@
                       required="required"
                     />
                   </div>
-                  <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                  <button @click="subscribe" class="btn btn-solid" id="mc-submit">subscribe</button>
                 </form>
               </div>
             </div>
@@ -59,28 +59,28 @@
                 <div class="footer-social">
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="https://www.facebook.com/MySecretDrawerOfficial/">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                      <a href="https://www.pinterest.ph/MySecretDrawer/">
+                        <i class="fa fa-pinterest" aria-hidden="true"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="https://twitter.com/_mysecretdrawers">
                         <i class="fa fa-twitter" aria-hidden="true"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="https://www.instagram.com/_mysecretdrawer/">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <i class="fa fa-rss" aria-hidden="true"></i>
+                      <a href="https://www.youtube.com/channel/UCZSCmoSR7M-Ac7eVlbCDj9Q">
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
                       </a>
                     </li>
                   </ul>
@@ -90,7 +90,7 @@
             <div class="col offset-xl-1">
               <div class="sub-title">
                 <div class="footer-title">
-                  <h4>my account</h4>
+                  <h4>Fast Links</h4>
                 </div>
                 <div class="footer-contant">
                   <ul>
@@ -212,7 +212,35 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+
+  methods: {
+    subscribe() {
+
+      const headers = {
+        'Authorization' : `Bearer ${process.env.VUE_APP_SEND_FOX_KEY}`,
+        "access-control-allow-origin": "*",
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': '*',
+      }
+
+      const data = {
+        email : 'jeremy.delacruz.dev@gmail.com',
+        lists: ['361222']
+      }
+      axios.post( process.env.VUE_APP_SEND_FOX_API + '/contacts', data, {
+          headers: headers
+        })
+        .then((response) => {
+          
+        })
+        .catch((error) => {
+
+        })
+      
+    }
+  }
 }
 </script>
 

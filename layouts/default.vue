@@ -15,7 +15,7 @@ import layoutSetting from '../components/widgets/layout-setting'
 export default {
   head() {
     return {
-      title: 'MultiKart Ecommerce | Vuejs Shopping Theme'
+      title: 'My Secret Drawer | Home of beautiful lingerie'
     }
   },
   components: {
