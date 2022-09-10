@@ -217,19 +217,27 @@ export default {
 
   methods: {
     subscribe() {
-
+      
+      axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+      axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
       const headers = {
         'Authorization' : `Bearer ${process.env.VUE_APP_SEND_FOX_KEY}`,
-        "access-control-allow-origin": "*",
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Credentials':true,
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Headers':  'Origin, Content-Type, X-Requested-With',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       }
 
-      const data = {
-        email : 'jeremy.delacruz.dev@gmail.com',
-        lists: ['361222']
-      }
-      axios.post( process.env.VUE_APP_SEND_FOX_API + '/contacts', data, {
+      const lists = [361222];
+
+      const formData = new FormData();
+      formData.set('email','jeremy.delacruz.dev@gmail.com')
+      lists.forEach(function(value) {
+        formData.append("lists[]", value) // you have to add array symbol after the key name
+      })
+
+
+      axios.post( process.env.VUE_APP_SEND_FOX_API + '/contacts', formData, {
           headers: headers
         })
         .then((response) => {
