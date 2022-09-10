@@ -54,8 +54,10 @@ export default {
     '@nuxtjs/axios',
     'vue-scrollto/nuxt',
     '@nuxtjs/dotenv',
+    '@nuxtjs/proxy',
    
   ],
+  
   dotenv: {
     /* module options */
   },
@@ -64,6 +66,15 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
+  },
+  proxy: {
+    // Simple proxy
+    '/api/': {
+      target: 'https://api.sendfox.com/',
+      pathRewrite: { "^/api/": "" }
+    },
+    
   },
   generate: {
     fallback: '404.html', 

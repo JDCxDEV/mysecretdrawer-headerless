@@ -1,5 +1,6 @@
 <template>
   <div>
+    <subscribe @hideModal="hideModal"></subscribe>
     <footer class="footer-light">
       <div class="light-layout">
         <div class="container">
@@ -20,18 +21,20 @@
                   id="mc-embedded-subscribe-form"
                   name="mc-embedded-subscribe-form"
                   target="_blank"
+                  @submit.prevent="subscribe"
                 >
                   <div class="form-group mx-sm-3">
                     <input
-                      type="text"
+                      type="email"
                       class="form-control"
                       name="EMAIL"
                       id="mce-EMAIL"
                       placeholder="Enter your email"
                       required="required"
+                      v-model="email"
                     />
                   </div>
-                  <button @click="subscribe" class="btn btn-solid" id="mc-submit">subscribe</button>
+                  <button type="submit" class="btn btn-solid" id="mc-submit">subscribed</button>
                 </form>
               </div>
             </div>
@@ -213,47 +216,57 @@
 
 <script>
 import axios from 'axios'
+import Subscribe from '../widgets/subscribe.vue';
 export default {
+    components: {
+      Subscribe
+    },
+    data() {
+        return {
+            email: "",
+        };
+    },
+    methods: {
+        subscribe() {
+            axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+            axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+            axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Origin, Content-Type, X-Requested-With";
+            axios.defaults.headers.common["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS";
+            const headers = {
+                "Authorization": `Bearer ${process.env.VUE_APP_SEND_FOX_KEY}`,
+            };
+            const lists = [361222];
+            const formData = new FormData();
+            formData.set("email", this.email);
+            lists.forEach(function (value) {
+                formData.append("lists[]", value); // you have to add array symbol after the key name
+            });
+            axios.post("/api/contacts", formData, {
+                headers: headers
+            }).then((response) => {
+              this.openModal();    
+            })
+                .catch((error) => {
+            });
+        },
 
-  methods: {
-    subscribe() {
-      
-      axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-      axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-      const headers = {
-        'Authorization' : `Bearer ${process.env.VUE_APP_SEND_FOX_KEY}`,
-        'Access-Control-Allow-Credentials':true,
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Headers':  'Origin, Content-Type, X-Requested-With',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      }
+        openModal() {
+          this.$bvModal.show('subscribe-modal')
+        },
+        hideModal() {
+          this.$bvModal.hide('subscribe-modal')
+        }
+    },
 
-      const lists = [361222];
-
-      const formData = new FormData();
-      formData.set('email','jeremy.delacruz.dev@gmail.com')
-      lists.forEach(function(value) {
-        formData.append("lists[]", value) // you have to add array symbol after the key name
-      })
-
-
-      axios.post( process.env.VUE_APP_SEND_FOX_API + '/contacts', formData, {
-          headers: headers
-        })
-        .then((response) => {
-          
-        })
-        .catch((error) => {
-
-        })
-      
-    }
-  }
 }
 </script>
 
 <style>
 footer p {
   line-height: 20px !important;
+}
+
+body {
+  overflow-x: hidden;
 }
 </style>
