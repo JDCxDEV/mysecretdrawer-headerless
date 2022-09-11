@@ -68,7 +68,7 @@ export default {
         },        
         {
           imagepath: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2021/04/R80068-1P-1-5.jpg',
-          title: "Pj's & Warps",
+          title: "PJ's & Wraps",
           subtitle: 'save 60%',
           link: 'collection/pjs-and-wraps',
         },

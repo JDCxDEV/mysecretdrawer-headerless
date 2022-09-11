@@ -72,7 +72,8 @@ export default {
     // Simple proxy
     '/api/': {
       target: 'https://api.sendfox.com/',
-      pathRewrite: { "^/api/": "" }
+      pathRewrite: { "^/api/": "" },
+      changeOrigin: true
     },
     
   },
