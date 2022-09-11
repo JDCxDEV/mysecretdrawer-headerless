@@ -50,7 +50,7 @@
           </ul>
         </li>
         <li>
-          <a href="/blog">Blogs</a>
+          <a href="/blog">stories</a>
         </li>
       </ul>
     </nav>

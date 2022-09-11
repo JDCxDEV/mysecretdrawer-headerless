@@ -10,7 +10,7 @@
                 <div class="subscribe">
                   <div>
                     <h4>KNOW IT ALL FIRST!</h4>
-                    <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                    <p>Never Miss Anything From My Secret Drawer By Signing Up To Our Newsletter.</p>
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@
               </div>
               <div class="footer-contant">
                 <div class="footer-logo">
-                  <img :src='"@/assets/images/custom/logo/logo.png"' style="height:100px;" alt="logo" />
+                  <img :src='"@/assets/images/custom/logo/logo.png"' style="height:50px;" alt="logo" />
                 </div>
                 <p>
                   A life without lingerie would be a dull life indeed! Lingerie adds spark and excitement to any relationship. Lingerie enhances, intrigues, titillates and invites! Beautiful lingerie for the beautiful you!<br><br>
@@ -98,19 +98,16 @@
                 <div class="footer-contant">
                   <ul>
                     <li>
-                      <a href="#">mens</a>
+                      <a href="/collection/for-her">For Her</a>
                     </li>
                     <li>
-                      <a href="#">womens</a>
+                      <a href="/collection/for-him">For Him</a>
                     </li>
                     <li>
-                      <a href="#">clothing</a>
+                      <a href="/collection/bdsm">Playground - BDSM</a>
                     </li>
                     <li>
-                      <a href="#">accessories</a>
-                    </li>
-                    <li>
-                      <a href="#">featured</a>
+                      <a href="/collection/accessories">accessories</a>
                     </li>
                   </ul>
                 </div>
@@ -124,19 +121,16 @@
                 <div class="footer-contant">
                   <ul>
                     <li>
-                      <a href="#">shipping & return</a>
+                      <a href="/our-size-chart">Our Size Chart</a>
                     </li>
                     <li>
-                      <a href="#">secure shopping</a>
+                      <a href="/our-model-sizes">Our Model's Sizes</a>
                     </li>
                     <li>
-                      <a href="#">gallary</a>
+                      <a href="/affiliates">affiliates</a>
                     </li>
                     <li>
-                      <a href="#">affiliates</a>
-                    </li>
-                    <li>
-                      <a href="#">contacts</a>
+                      <a href="/testimonials">Testimonials</a>
                     </li>
                   </ul>
                 </div>
