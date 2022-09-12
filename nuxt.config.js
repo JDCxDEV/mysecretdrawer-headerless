@@ -66,16 +66,30 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: '/',
+    browserBaseURL: '/',
     proxy: true
   },
   proxy: {
     // Simple proxy
     '/api/': {
-      target: process.env.API_URL,
+      target: process.env.BASE_URL,
       pathRewrite: { "^/api/": "" },
       changeOrigin: true
     },
     
+  },
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL,
+    },
+  },
+  
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL,
+    },
   },
   generate: {
     fallback: '404.html', 
