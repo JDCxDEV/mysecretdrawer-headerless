@@ -39,7 +39,7 @@ const actions = {
     try {
 
       const params = new URLSearchParams({
-        exclude: [30, 866, 149, 198, 829, 830],
+        exclude: [30, 866, 149, 198, 829, 830, 785],
         per_page: 100,
       }).toString();
 

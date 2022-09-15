@@ -24,6 +24,12 @@
                     <b-table striped hover bordered :items="items_hosiery"></b-table>
                 </div>
             </div>
+            <div class="row text-center">
+              <div class="col-md-12">
+                <h5 class="mb-4 mt-4">We take great care to make sure our sizing is accurate. We strongly recommend you take the same care when ordering so that you are not disappointed.</h5>
+                <img src="https://344800.smushcdn.com/915356/wp-content/uploads/sites/13/elementor/thumbs/msd-heart-1-pgfml373rtqrv8jjq1hw7tgwy1gz5mee1w439c3if4.png?lossy=0&strip=1&webp=1">
+              </div>
+            </div>
         </div>
       <Footer />
     </div>

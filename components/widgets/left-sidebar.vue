@@ -13,9 +13,8 @@
         <li>
           <a href="/">Home</a>
         </li>
-
         <li>
-          <a href="javascript:void(0)" @click="setActive('bags')">shop
+          <a href="javascript:void(0)" @click="setActive('bags')">For Her
             <span class="sub-arrow"></span>
           </a>
           <ul :class="{ opensub1: isActive('bags') }" style="width:250px;">
@@ -24,6 +23,16 @@
                 <a :href="category.path">{{ category.title }}</a>
               </li>
             </template>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" @click="setActive('bags')">For Him
+            <span class="sub-arrow"></span>
+          </a>
+          <ul :class="{ opensub1: isActive('bags') }" style="width:250px;">
+            <li>
+              <a href="/collection/men">Men</a>
+            </li>
           </ul>
         </li>
         <li>
