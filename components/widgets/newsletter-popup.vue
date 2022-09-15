@@ -38,10 +38,10 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem('showModel') !== 'newsletter') {
-      this.showModal()
-      localStorage.setItem('showModel', 'newsletter')
-    }
+    // if (localStorage.getItem('showModel') !== 'newsletter') {
+    //   this.showModal()
+    //   localStorage.setItem('showModel', 'newsletter')
+    // }
   },
   methods: {
     showModal() {
