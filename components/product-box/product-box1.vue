@@ -64,7 +64,7 @@
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
         <h6>{{ product.title }}</h6>
       </nuxt-link>
-      <p>{{ product.description }}</p>
+      <p v-html="product.short_description"></p>
       <h4 v-if="product.on_sale">
         {{ discountedPrice(product) | currency(curr.symbol) }}
         <del>{{ product.regular_price }}</del>
@@ -75,7 +75,7 @@
           <a
             @click="productColorchange(variant, product)"
             :class="[variant]"
-            v-bind:style="{ 'background-color' : variant}"
+            v-bind:style="{ 'background-color' : parseColor(variant)}"
           ></a>
         </li>
       </ul>
@@ -177,7 +177,21 @@ export default {
     discountedPrice(product) {
       const price = product.price - (product.price * product.discount / 100)
       return price
-    }
+    },
+    parseColor(color) {
+      let colors = {
+        'dark-red' : '#790606', 
+        'dark-blue' : '#06038D',
+        'bright-red' : '#EE4B2B',
+        'apricot' : '#FBCEB1',
+      }
+
+      if(colors[color]) {
+        return colors[color];
+      } 
+
+      return color;
+    },
   }
 }
 </script>
@@ -191,9 +205,9 @@ export default {
   .custom-img-collection-all {
     min-height: 300px;
     max-height: 300px;
-      display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

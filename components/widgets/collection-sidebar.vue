@@ -47,6 +47,7 @@
               class="custom-control custom-checkbox collection-filter-checkbox"
               v-for="(color,index) in filterbycolor"
               :key="index"
+              v-if="color.name != 'Color'"
             >
               <input
               type="checkbox"
@@ -55,7 +56,7 @@
               :id="color.id"
               v-model="applyFilter"
               @change="appliedFilter(color.id)" />
-              <span :class="color" v-bind:style="{ 'background-color' : color.slug}"></span>
+              <span :class="color" v-bind:style="{ 'background-color' : parseColor(color.slug) }"></span>
               <label class="custom-control-label" :class="{selected: isActive(color.name)}" v-bind:for="color.id">{{color.name}}</label>
             </div>
           </div>
@@ -227,6 +228,20 @@ export default {
     
   },
   methods: {
+    parseColor(color) {
+      let colors = {
+        'dark-red' : '#790606', 
+        'dark-blue' : '#06038D',
+        'bright-red' : '#EE4B2B',
+        'apricot' : '#FBCEB1',
+      }
+
+      if(colors[color]) {
+        return colors[color];
+      } 
+
+      return color;
+    },
     getCategoryProduct(collection) {
       return this.productslist.filter((item) => {
         if (item.collection.find(i => i === collection)) {

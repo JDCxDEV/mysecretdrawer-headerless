@@ -12,15 +12,6 @@
           <span class="padding-l">:</span>
           <span class="timer-cal">Hrs</span>
         </span>
-        <span>
-          <span class="timer-num">{{ minutes }}</span>
-          <span class="padding-l">:</span>
-          <span class="timer-cal">Min</span>
-        </span>
-        <span>
-          <span class="timer-num">{{ seconds }}</span>
-          <span class="timer-cal">Sec</span>
-        </span>
       </p>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <template>
   <div>
-      <div class="row">
-    <div class="col-xl-12">
-      <div class="filter-main-btn mb-2 ml-3">
-        <span class="filter-btn btn btn-theme" @click="filter = !filter">
-          <i class="fa fa-filter" aria-hidden="true"></i> filter
-        </span>
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="filter-main-btn mb-2 ml-3">
+          <span class="filter-btn btn btn-theme" @click="filter = !filter">
+            <i class="fa fa-filter" aria-hidden="true"></i> filter
+          </span>
       </div>
     </div>
    </div>

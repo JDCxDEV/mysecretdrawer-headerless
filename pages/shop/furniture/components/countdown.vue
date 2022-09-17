@@ -26,31 +26,19 @@
                     </div>
                     <h3 class="deal-of-day"></h3>
                     <div class="row text-center ml-5 mr-5 mb-3 mt-5">
-                        <div class="col-md-3">
-                            <h5>DAYS</h5>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <h5>HOURS</h5>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <h5>MINS</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5>SECS</h5>
                         </div>
                     </div>
                     <div class="row text-center ml-5 mr-5 mt-3">
-                        <div class="col-md-3">
-                            <h3>{{ days }}</h3>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <h3>{{ hours }}</h3>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <h3>{{ minutes }}</h3>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>{{ seconds }}</h3>
                         </div>
                         <div class="col-md-12">
                             <a  href="collection/all" class="btn btn-solid btn-danger btn-round mt-5">Shop Now</a>
@@ -80,6 +68,8 @@
 import Banner from './banner';
 import cocart from '../../../../mixins/cocart';
 import productBox1 from '../../../../components/product-box/product-box1.vue';
+import moment from 'moment';
+import 'moment-timezone';
 export default {
     mixins: [cocart],
     components: {
@@ -109,37 +99,40 @@ export default {
 
     methods: {
         initTimer() {
+
             const second = 1000,
                 minute = second * 60,
                 hour = minute * 60,
                 day = hour * 24;
 
-            let today = new Date(),
-                dd = String(today.getDate()).padStart(2, "0"),
-                mm = String(today.getMonth() + 1).padStart(2, "0"),
-                yyyy = today.getFullYear(),
-                nextYear = yyyy + 1,
-                dayMonth = "09/30/",
-                birthday = dayMonth + yyyy;
-        
-            today = mm + "/" + dd + "/" + yyyy;
-            if (today > birthday) {
-                birthday = dayMonth + nextYear;
-            }
+            const countDown =  moment().add(1,'days').startOf('day');
 
-        
-            const countDown = new Date(birthday).getTime(),
-            x = setInterval(()=> {    
+            var duration = moment.duration(countDown.diff(moment()));
+            var hours = duration.asHours();
+            var minutes = this.getDecimal(hours);
 
-                const now = new Date().getTime(),
-                    distance = countDown - now;
+            const x = setInterval(()=> {    
 
-                this.days = Math.floor(distance / (day)),
-                this.hours = Math.floor((distance % (day)) / (hour)),
-                this.minutes = Math.floor((distance % (hour)) / (minute)),
-                this.seconds = Math.floor((distance % (minute)) / second);
+            const now = moment().unix(),
+      
+            distance = countDown - now;
+    
+            this.hours = Math.trunc(hours);
+            this.minutes = Math.round(minutes);
+
 
             }, 0)
+        },
+
+        getDecimal(num) {
+            if (Number.isInteger(num)) {
+                return 0;
+            }
+
+            const decimalStr = num.toString().split('.')[1];
+            const minutesToDecimal = '0.' + Number(decimalStr);
+            const minutes = Number(minutesToDecimal) * 60;
+            return minutes;
         },
         alert(item) {
             this.dismissCountDown = item

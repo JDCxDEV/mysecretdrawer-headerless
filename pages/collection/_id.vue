@@ -107,7 +107,7 @@
                           class="col-grid-box"
                           :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-12':listview == true}"
                           v-for="(product,index) in currentList"
-                          :key="index"
+                          :key="product.id"
                           >
                             <div class="product-box">
                               <productBox1

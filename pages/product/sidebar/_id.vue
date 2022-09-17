@@ -74,7 +74,7 @@
                         >
                           <a
                             :class="[variant]"
-                            v-bind:style="{ 'background-color' : variant}"
+                            v-bind:style="{ 'background-color' : parseColor(variant)}"
                             @click="sizeVariant(getDetail.variants[variantIndex].image_id, variantIndex, variant)"
                           ></a>
                         </li>
@@ -392,8 +392,8 @@ export default {
       this.$store.dispatch('products/addToWishlist', product)
     },
     discountedPrice(product) {
-      const price = product.price - (product.price * product.discount / 100)
-      return price
+      const price = product.price - (product.price * product.discount / 100);
+      return price;
     },
     // Related Products display
     relatedProducts() {
@@ -413,6 +413,14 @@ export default {
           color = variants[i].attributes.attribute_pa_colors.toLowerCase()
           uniqColor.push(color)
         }
+        if(variants[i].attributes.attribute_pa_color) {
+          color = variants[i].attributes.attribute_pa_color.toLowerCase()
+          uniqColor.push(color)
+        }
+        if(variants[i].attributes.attribute_color) {
+          color = variants[i].attributes.attribute_color.toLowerCase()
+          uniqColor.push(color)
+        }
 
         if(!this.loadSizeWithColor) {
           this.sizeVariant(null ,null, color)
@@ -426,6 +434,16 @@ export default {
             uniqColor.push(color);
           });
          
+        }
+        if(this.getDetail.attributes.attribute_pa_color) {
+          Object.getOwnPropertyNames(this.getDetail.attributes.attribute_pa_color.options).forEach(color => {
+            uniqColor.push(color);
+          });   
+        }
+        if(this.getDetail.attributes.attribute_color) {
+          Object.getOwnPropertyNames(this.getDetail.attributes.attribute_color.options).forEach(color => {
+            uniqColor.push(color);
+          });   
         }
         if(!this.loadColor) {
           this.getDetail.variants.filter((item) => {
@@ -455,6 +473,10 @@ export default {
         this.getDetail.variants.filter((item) => {
           if(item.id == this.selectedSize && item.attributes['attribute_pa_product-size']) {
             product.size = item.attributes['attribute_pa_product-size'];
+            product.variation = item;
+          } 
+          if(item.id == this.selectedSize && item.attributes['attribute_product-size']) {
+            product.size = item.attributes['attribute_product-size'];
             product.variation = item;
           } 
         })
@@ -506,13 +528,47 @@ export default {
                 this.size.push(item)
             }
           }
+          if(item.attributes.attribute_pa_color) {
+            if (this.activeColor == item.attributes.attribute_pa_color.toLowerCase()) {
+                this.size.push(item)
+            }
+          }
+          if(item.attributes.attribute_color) {
+            if (this.activeColor == item.attributes.attribute_color.toLowerCase()) {
+                this.size.push(item)
+            }
+          }
         })
       }
     },
 
     getSize(variant) {
-      return variant.attributes['attribute_pa_product-size'];
-    }
+      if(variant.attributes['attribute_pa_product-size']) {
+        return variant.attributes['attribute_pa_product-size'];
+      }
+      if(variant.attributes['attribute_size']) {
+        return variant.attributes['attribute_size'];
+      }
+      if(variant.attributes['attribute_product-size']) {
+        return variant.attributes['attribute_product-size'];
+      }
+      
+    },
+    parseColor(color) {
+      let colors = {
+        'dark-red' : '#790606', 
+        'dark-blue' : '#06038D',
+        'bright-red' : '#EE4B2B',
+        'apricot' : '#FBCEB1',
+        'light green': '#b7dacb',
+      }
+
+      if(colors[color]) {
+        return colors[color];
+      } 
+
+      return color;
+    },
   }
 }
 </script>

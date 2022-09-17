@@ -168,6 +168,11 @@ const actions = {
       if(!params.min_price) {
         params.min_price = 1;
       }
+
+      if(params.category == 'all') {
+        delete params.category; 
+      }
+      
       
       params = new URLSearchParams(_.pickBy(params)).toString();
   

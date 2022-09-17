@@ -5,10 +5,10 @@
         <div class="col-lg-6">
           <div class="header-contact text-white" >
             <ul>
-              <li style="color: white !important;">Welcome to Our store My Secret Drawer</li>
-              <li style="color: white !important;">
-                <i class="fa fa-phone" aria-hidden="true" style="color: white !important;" ></i>Call Us: 123 - 456 - 7890
-              </li>
+              <li><a style="color: white !important;" href="collection/all">SHOP</a></li>
+              <li><a style="color: white !important;" href="collection/all">CONTACT US</a></li>
+              <li><a style="color: white !important;" href="collection/all">FAQS</a></li>
+              <li><a style="color: white !important;" href="collection/all">PRIVACY & SECURITY</a></li>
             </ul>
           </div>
         </div>

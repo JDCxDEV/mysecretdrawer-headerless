@@ -35,12 +35,6 @@
                         <div class="col-md-3">
                             <h3>HOURS</h3>
                         </div>
-                        <div class="col-md-3">
-                            <h6>MINS</h6>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>SECS</h3>
-                        </div>
                     </div>
                     <div class="row text-center ml-5 mr-5 mt-3">
                         <div class="col-md-3">
