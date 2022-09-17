@@ -62,7 +62,7 @@ export default {
     this.$bvModal.show('modal-checkout');
     setTimeout(
       () => {
-        window.location.replace("https://dev-msd.com/perfect-checkout?cart_key=" + this.cart_key);
+        window.location.replace("https://mysecretdrawer.com/au/api-checkout/?cocart-load-cart=" + this.cart_key);
       },
       3000
     );
