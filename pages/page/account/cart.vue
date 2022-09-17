@@ -25,7 +25,7 @@
                     </nuxt-link>
                   </td>
                   <td>
-                    <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">{{item.title}}</nuxt-link>
+                    <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">{{ item.title }}</nuxt-link>
                     <div class="mobile-cart-content row">
                       <div class="col-xs-3">
                         <div class="qty-box">
@@ -36,7 +36,7 @@
                                 class="btn quantity-left-minus"
                                 data-type="minus"
                                 data-field
-                                @click="decrement()"
+                                @click="decrement(item)"
                               >
                                 <i class="ti-angle-left"></i>
                               </button>
@@ -53,7 +53,7 @@
                                 class="btn quantity-right-plus"
                                 data-type="plus"
                                 data-field
-                                @click="increment()"
+                                @click="increment(item)"
                               >
                                 <i class="ti-angle-right"></i>
                               </button>
@@ -73,18 +73,23 @@
                       </div>
                     </div>
                     <div class="mt-2 row">
-                      <div class="col-md-6">Size : {{ item.size }}</div>
+                      <div class="col-md-6">Size : {{ item.size.toUpperCase() }}</div>
                       <div class="col-md-6">
                         Color: 
-                        <span class="color-variant">
-                        <li>
-                          <a
-                            :class="item.color"
-                            class="mt-1"
-                            v-bind:style="{ 'background-color':  item.color }"
-                          ></a>
-                        </li>
-                        </span>
+                        <template v-if="item.color">
+                          <span class="color-variant">
+                            <li>
+                              <a
+                                :class="item.color"
+                                class="mt-1"
+                                v-bind:style="{ 'background-color':  item.color }"
+                              ></a>
+                            </li>
+                          </span>
+                        </template>
+                        <template v-else>
+                          <b> none </b>
+                        </template>
                       </div>
                     </div>
                   </td>
@@ -156,7 +161,7 @@
               </h3>
               <h4 class="mb-3">Add something to make me happy :)</h4>
               <div class="col-12">
-                <nuxt-link :to="{ path: '/'}" class="btn btn-solid">continue shopping</nuxt-link>
+                <nuxt-link :to="{ path: '/collection/all' }" class="btn btn-solid">continue shopping</nuxt-link>
               </div>
             </div>
           </div>
@@ -176,7 +181,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import Header from '../../../components/header/header1'
+import Header from '../../../components/header/header2'
 import Footer from '../../../components/footer/footer1'
 import Breadcrumbs from '../../../components/widgets/breadcrumbs'
 export default {
@@ -204,16 +209,16 @@ export default {
     removeCartItem: function (product) {
       this.$store.dispatch('cart/removeCartItem', product)
     },
-    increment(product, qty = 1) {
+    increment(item) {
       this.$store.dispatch('cart/updateCartQuantity', {
-        product: product,
-        qty: qty
+        product: item,
+        qty: 1
       })
     },
-    decrement(product, qty = -1) {
+    decrement(item) {
       this.$store.dispatch('cart/updateCartQuantity', {
-        product: product,
-        qty: qty
+        product: item,
+        qty: -1
       })
     }
   }

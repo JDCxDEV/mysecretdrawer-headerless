@@ -478,6 +478,10 @@ export default {
           if(item.id == this.selectedSize && item.attributes['attribute_product-size']) {
             product.size = item.attributes['attribute_product-size'];
             product.variation = item;
+          }
+          if(item.id == this.selectedSize && item.attributes['attribute_pa_product-sizes']) {
+            product.size = item.attributes['attribute_pa_product-sizes'];
+            product.variation = item;
           } 
         })
         this.$store.dispatch('cart/addToCart', product)
@@ -544,15 +548,17 @@ export default {
 
     getSize(variant) {
       if(variant.attributes['attribute_pa_product-size']) {
-        return variant.attributes['attribute_pa_product-size'];
+        return variant.attributes['attribute_pa_product-size'].toUpperCase();
       }
       if(variant.attributes['attribute_size']) {
-        return variant.attributes['attribute_size'];
+        return variant.attributes['attribute_size'].toUpperCase();
       }
       if(variant.attributes['attribute_product-size']) {
-        return variant.attributes['attribute_product-size'];
+        return variant.attributes['attribute_product-size'].toUpperCase();
       }
-      
+      if(variant.attributes['attribute_pa_product-sizes']) {
+        return variant.attributes['attribute_pa_product-sizes'].toUpperCase();
+      }
     },
     parseColor(color) {
       let colors = {

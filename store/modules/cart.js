@@ -57,17 +57,18 @@ const mutations = {
   },
   updateCartQuantity: (state, payload) => {
     // Calculate Product stock Counts
-    function calculateStockCounts(product, quantity) {
-      const qty = product.quantity + quantity
-      const stock = product.stock
-      if (stock < qty) {
+    function calculateStockCounts(item, quantity) {
+      const qty = item.quantity + quantity
+      const stock = item.stock
+      if (stock < qty && !item.is_in_stock) {
         return false
       }
       return true
     }
     state.cart.find((items, index) => {
       if (items.id === payload.product.id) {
-        const qty = state.cart[index].quantity + payload.qty
+        const qty = state.cart[index].quantity + payload.qty;
+        console.log(state.cart[index])
         const stock = calculateStockCounts(state.cart[index], payload.qty)
         if (qty !== 0 && stock) {
           state.cart[index].quantity = qty

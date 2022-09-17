@@ -140,6 +140,7 @@
                                     <a
                                       class="page-link"
                                       href="javascrip:void(0)"
+                                      :class="{'active-btn' : page_index == current }"
                                       @click.prevent="updatePaginate(page_index)"
                                     >{{ page_index }}</a>
                                   </li>
@@ -264,8 +265,6 @@ export default {
   },
   methods: {
     fetchProduct(page , params) {
-
-      console.log(this.$route.params.id); 
       let default_params = {
         params : {
           category: this.$route.params.id,
@@ -324,13 +323,15 @@ export default {
     },
     getCategoryFilter() {
       this.updatePaginate(1);
-     
+      
       this.$store.dispatch('filter/getCategoryFilter', this.$route.params.id)
     },
     allfilter(selectedVal) {
-      this.allfilters = selectedVal
+      this.current = 1;
+      this.pages = [1, 2, 3, 4, 5];
+      this.allfilters = selectedVal;
+  
       this.$store.dispatch('filter/setTags', selectedVal)
-      this.getPaginate()
 
       let params = [];
 
@@ -378,6 +379,7 @@ export default {
     },
 
     pricefilterArray(item) {
+      this.pages = [1, 2, 3, 4, 5];
       this.$store.dispatch('filter/priceFilter', item)
       this.fetchProduct(1, this.priceRange)
     },
@@ -397,7 +399,7 @@ export default {
     },
 
     updatePaginate(page) {
-      this.current = page
+      this.current = page;
       let start = 0
       let end = 0
       if (this.current < this.paginateRange - 1) {
@@ -410,15 +412,24 @@ export default {
       if (start < 1) {
         start = 1
       }
-      if (end > this.paginates) {
-        end = this.paginates
+      if (end > this.pagination.total_pages) {
+        end = this.pagination.total_pages
       }
 
       if(page > this.paginateRange) {
           let tem_pages = [];
           this.pages.forEach(page => {  
-            tem_pages.push(page + 1)    
+            tem_pages.push(page + 1)
           });
+
+          if(tem_pages.slice(-1).pop() > this.pagination.total_pages) {
+            let tem_pages_2 = [];
+            tem_pages.forEach(page => {  
+              tem_pages_2.push(page -1)
+            });
+
+            tem_pages = tem_pages_2;
+          }
           this.pages = tem_pages;
       }
       
@@ -449,3 +460,15 @@ export default {
   }
 }
 </script>
+
+<style>
+  .disabled {
+  pointer-events: none;
+  background-color: lightgray;
+}
+
+.active-btn {
+  pointer-events: none;
+  background-color: #ececee;
+}
+</style>

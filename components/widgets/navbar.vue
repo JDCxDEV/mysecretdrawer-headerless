@@ -121,7 +121,6 @@ export default {
       return this.activemegaChild === megaChildItem
     },
     setActivesubmega: function (megaChildItem) {
-         console.log(megaChildItem);
       if (this.activemegaChild === megaChildItem) {
         this.activemegaChild = ''
       } else {
