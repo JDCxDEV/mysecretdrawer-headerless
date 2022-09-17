@@ -73,7 +73,14 @@
                       </div>
                     </div>
                     <div class="mt-2 row">
-                      <div class="col-md-6">Size : {{ item.size.toUpperCase() }}</div>
+                      <div class="col-md-6">Size : 
+                        <template v-if="item.size">
+                          {{ item.size.toUpperCase() }}
+                        </template>
+                        <template v-else>
+                          ---
+                        </template>
+                      </div>
                       <div class="col-md-6">
                         Color: 
                         <template v-if="item.color">

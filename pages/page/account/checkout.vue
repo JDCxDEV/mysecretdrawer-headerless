@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <Breadcrumbs title="Checkout" />
+    <!-- <Breadcrumbs title="Checkout" /> -->
      <LoginModal :openCart="showLoginModal"  @closeCart="closeModal" />
     <Footer />
   </div>
