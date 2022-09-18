@@ -19,6 +19,12 @@ const getters = {
   cartTotal: (state) => {
     return state.cart_json.totals
   },
+  cartKey: (state) => {
+    return state.cart_key
+  },
+  cartHasCoupon: (state) => {
+    return state.cart_json.coupons.length ? true : false;
+  },
   cartTotalAmount: (state) => {
     return state.cart.reduce((total, product) => {
       return total + (product.price * product.quantity)

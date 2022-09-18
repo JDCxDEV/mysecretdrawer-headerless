@@ -175,11 +175,16 @@
                     </tr>
                     <tr>
                       <th scope="row">Shipping</th>
-                      <td>-----</td>
+                      <td v-if="this.cartTotal.shipping_total > 0">
+                        ${{ (this.cartTotal.shipping_total ?  (this.cartTotal.shipping_total / 100) : 0) }}
+                      </td>
+                      <td v-else>
+                        <span class="badge badge-info">free shipping</span>
+                      </td>
                     </tr>
                     <tr>
                       <th scope="row">Total</th>
-                      <td><b>${{ computeTotal(cart, 'subtotal') }} AUD </b>(includes ${{ computeTotal(cart, 'total_tax')  }} Tax)</td>
+                      <td><b>${{ computeTotal(cart, 'total') }} AUD </b>(includes ${{ computeTotal(cart, 'total_tax')  }} Tax)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -233,6 +238,7 @@ export default {
       cartTotal: 'cart/cartTotalAmount',
       curr: 'products/changeCurrency',
       cartTotal: 'cart/cartTotal',
+      hasCoupon: 'cart/cartHasCoupon',
     })
   },
   methods: {
@@ -272,11 +278,16 @@ export default {
           total_tax += item.totals.tax;
         });
       }
+
       if(label == 'subtotal') {
         return total.toFixed(2);
       }
       if(label == 'total_tax') {
         return total_tax.toFixed(2);
+      }
+      if(label == 'total') {
+        total = total + (this.cartTotal.shipping_total ?  (this.cartTotal.shipping_total / 100) : 0)
+        return total.toFixed(2);
       }
     }
   }
