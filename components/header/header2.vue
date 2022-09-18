@@ -53,6 +53,10 @@ export default {
       leftSidebarVal: false
     }
   },
+
+  mounted() {
+    this.$store.dispatch('cart/fetchCartInformation');
+  },
   components: {
     TopBar,
     LeftSidebar,

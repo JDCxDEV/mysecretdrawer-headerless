@@ -7,12 +7,17 @@ const CoCart = new CoCartAPI({
 
 const state = {
   products: [],
-  cart: []
+  cart: [],
+  cart_key: '',
+  cart_json: {}
 }
 // getters
 const getters = {
   cartItems: (state) => {
     return state.cart
+  },
+  cartTotal: (state) => {
+    return state.cart_json.totals
   },
   cartTotalAmount: (state) => {
     return state.cart.reduce((total, product) => {
@@ -22,39 +27,6 @@ const getters = {
 }
 // mutations
 const mutations = {
-  addToCart: (state, payload) => {
-    const product = payload
-    const cartItems = state.cart.find(item => item.id === payload.id)
-    const qty = payload.quantity ? payload.quantity : 1
-    if (cartItems) {
-      cartItems.quantity = qty
-    } else {
-      state.cart.push({
-        ...product,
-        quantity: qty
-      })
-
-      CoCart.post("cart/add-item?" + 'cart_key=' + product.cart_key, {
-        id: product.variation.id.toString(),
-        quantity: product.quantity.toString(),
-      })
-      .then((response) => {
-        // Successful request
-        console.log("Response Status:", response.status);
-        console.log("Response Headers:", response.headers);
-        console.log("Response Data:", response.data);
-      })
-      .catch((error) => {
-        // Invalid request, for 4xx and 5xx statuses
-        console.log("Response Status:", error.response.status);
-        console.log("Response Headers:", error.response.headers);
-        console.log("Response Data:", error.response.data);
-      })
-      .finally(() => {
-        // Always executed.
-      });
-    }
-  },
   updateCartQuantity: (state, payload) => {
     // Calculate Product stock Counts
     function calculateStockCounts(item, quantity) {
@@ -85,12 +57,105 @@ const mutations = {
   removeCartItem: (state, payload) => {
     const index = state.cart.indexOf(payload)
     state.cart.splice(index, 1)
-  }
+  },
+  setCartInformation: (state, payload) => {
+    state.cart_key = payload.cart_key;
+    state.cart = payload.items;
+    state.cart_json = payload;
+  },
 }
 // actions
 const actions = {
-  addToCart: (context, payload) => {
-    context.commit('addToCart', payload)
+  addToCart: ({ dispatch, state }, payload) => {
+    const product = payload
+    CoCart.post("cart/add-item?" + 'cart_key=' + state.cart_key, {
+      id: product.variation.id.toString(),
+      quantity: product.quantity.toString(),
+    })
+    .then((response) => {
+      // Successful request
+      console.log("Response Status:", response.status);
+      console.log("Response Headers:", response.headers);
+      console.log("Response Data:", response.data);
+    })
+    .catch((error) => {
+      // Invalid request, for 4xx and 5xx statuses
+      console.log("Response Status:", error.response.status);
+      console.log("Response Headers:", error.response.headers);
+      console.log("Response Data:", error.response.data);
+    })
+    .finally(() => {
+      dispatch('fetchCartInformation')
+    });
+  },
+  async fetchCartInformation({ dispatch, state, commit }, payload) {
+    try {
+      
+      const CoCartPro = new CoCartAPI({
+        url: process.env.VUE_APP_API_URL,
+        version: 'cocart/v2',
+      });
+
+      let params = state.cart_key ? '?cart_key=' + state.cart_key : '';
+      const result = await CoCartPro.get('cart' + params);
+      commit('setCartInformation', result.data);
+    }
+    catch (error) {
+      console.log(error)
+    }
+  },
+  async updateProductQuantity({ dispatch, state, commit }, {vm, payload}) {
+    try {
+      const product = payload;
+      CoCart.post("cart/item/" + product.item_key + '?cart_key=' + state.cart_key, {
+        "quantity": payload.quantity.value
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        let error_message = '';
+        
+        if(error.response.data.code == 'cocart_quantity_invalid_amount') {
+          if(payload.quantity.value <= 0) {
+            error_message = 'Invalid quantity - '
+          }else {
+            error_message = 'Low on stock - '
+          }
+        }
+
+        vm.$toast.open({
+          message: error_message + error.response.data.message,
+          type: 'error',
+          position: 'top-right',
+        });
+      })
+      .finally((error) => {
+        dispatch('fetchCartInformation')
+      });
+    }
+    catch (error) {
+      console.log(error)
+    }
+  },
+  removeToCart: ({ dispatch, state }, payload) => {
+    const product = payload
+    CoCart.delete("cart/item/" + product.item_key + '?cart_key=' + state.cart_key)
+    .then((response) => {
+      // Successful request
+      console.log("Response Status:", response.status);
+      console.log("Response Headers:", response.headers);
+      console.log("Response Data:", response.data);
+    })
+    .catch((error) => {
+      // Invalid request, for 4xx and 5xx statuses
+      console.log("Response Status:", error.response.status);
+      console.log("Response Headers:", error.response.headers);
+      console.log("Response Data:", error.response.data);
+    })
+    .finally(() => {
+      dispatch('fetchCartInformation')
+    });
   },
   updateCartQuantity: (context, payload) => {
     context.commit('updateCartQuantity', payload)

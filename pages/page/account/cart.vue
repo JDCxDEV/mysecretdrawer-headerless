@@ -21,7 +21,7 @@
                 <tr>
                   <td>
                     <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
-                      <img :src="getImgUrl(item.images[0].src)" alt />
+                      <img :src="getImgUrl(item.featured_image)" alt />
                     </nuxt-link>
                   </td>
                   <td>
@@ -74,8 +74,8 @@
                     </div>
                     <div class="mt-2 row">
                       <div class="col-md-6">Size : 
-                        <template v-if="item.size">
-                          {{ item.size.toUpperCase() }}
+                        <template v-if="item.meta.variation['Product Size']">
+                          {{ item.meta.variation['Product Size'].toUpperCase() }}
                         </template>
                         <template v-else>
                           ---
@@ -83,13 +83,13 @@
                       </div>
                       <div class="col-md-6">
                         Color: 
-                        <template v-if="item.color">
+                        <template v-if="item.meta.variation['Color']">
                           <span class="color-variant">
                             <li>
                               <a
                                 :class="item.color"
                                 class="mt-1"
-                                v-bind:style="{ 'background-color':  item.color }"
+                                v-bind:style="{ 'background-color':  item.meta.variation['Color'] }"
                               ></a>
                             </li>
                           </span>
@@ -101,7 +101,7 @@
                     </div>
                   </td>
                   <td>
-                    <h2>{{ item.price * curr.curr | currency(curr.symbol) }}</h2>
+                    <h2>{{ (item.price / 100) * curr.curr | currency(curr.symbol) }}</h2>
                   </td>
                   <td>
                     <div class="qty-box">
@@ -113,6 +113,7 @@
                             data-type="minus"
                             data-field
                             @click="decrement(item)"
+                            :disabled="item.cart_item_data.wdr_free_product == 'Free'"
                           >
                             <i class="ti-angle-left"></i>
                           </button>
@@ -121,8 +122,9 @@
                           type="text"
                           name="quantity"
                           class="form-control input-number"
-                          :disabled="item.quantity > item.stock"
-                          v-model="item.quantity"
+                          v-model="item.quantity.value"
+                          @change="changeQuantity(item)"
+                          :disabled="item.cart_item_data.wdr_free_product == 'Free'"
                         />
                         <span class="input-group-prepend">
                           <button
@@ -131,6 +133,7 @@
                             data-type="plus"
                             data-field
                             @click="increment(item)"
+                            :disabled="item.cart_item_data.wdr_free_product == 'Free'"
                           >
                             <i class="ti-angle-right"></i>
                           </button>
@@ -139,28 +142,50 @@
                     </div>
                   </td>
                   <td>
-                    <a class="icon" @click="removeCartItem(item)">
-                      <i class="ti-close"></i>
+                    <a class="icon" @click="removeToCart(item)">
+                      <template v-if="item.cart_item_data.wdr_free_product == 'Free'">
+                        <h4>
+                          <span class="badge badge-info">Free Item</span>
+                        </h4>
+                      </template>
+                      <template v-else>
+                        <i class="ti-close"></i>
+                      </template>
                     </a>
                   </td>
                   <td>
                     <h2
                       class="td-color"
-                    >{{ (item.price * curr.curr) * item.quantity | currency(curr.symbol) }}</h2>
+                    > $ {{ getProductTotalPrice(item)}}</h2>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table class="table cart-table table-responsive-md" v-if="cart.length">
-              <tfoot>
-                <tr>
-                  <td>total price :</td>
-                  <td>
-                    <h2>{{ cartTotal * curr.curr | currency(curr.symbol) }}</h2>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+            <div class="row">
+              <div class="col-md-8">
+
+              </div>
+              <div class="col-md-4"  v-if="cart.length">
+                <h3 class="mt-4">Cart totals</h3>
+                <table class="table table-striped mt-4">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Subtotal</th>
+                      <td>${{ computeTotal(cart, 'subtotal') }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Shipping</th>
+                      <td>-----</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Total</th>
+                      <td><b>${{ computeTotal(cart, 'subtotal') }} AUD </b>(includes ${{ computeTotal(cart, 'total_tax')  }} Tax)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             <div class="col-sm-12 empty-cart-cls text-center" v-if="!cart.length">
               <img :src='"@/assets/images/icon-empty-cart.png"' class="img-fluid" alt="empty cart" />
               <h3 class="mt-3">
@@ -206,27 +231,53 @@ export default {
     ...mapGetters({
       cart: 'cart/cartItems',
       cartTotal: 'cart/cartTotalAmount',
-      curr: 'products/changeCurrency'
+      curr: 'products/changeCurrency',
+      cartTotal: 'cart/cartTotal',
     })
   },
   methods: {
     getImgUrl(path) {
-      return path.full
+      return path
     },
     removeCartItem: function (product) {
       this.$store.dispatch('cart/removeCartItem', product)
     },
     increment(item) {
-      this.$store.dispatch('cart/updateCartQuantity', {
-        product: item,
-        qty: 1
-      })
+      item.quantity.value += 1;
+      this.$store.dispatch('cart/updateProductQuantity', {vm: this, payload: item})
     },
     decrement(item) {
-      this.$store.dispatch('cart/updateCartQuantity', {
-        product: item,
-        qty: -1
-      })
+      item.quantity.value -= 1;
+      this.$store.dispatch('cart/updateProductQuantity', {vm: this, payload: item})
+    },
+    removeToCart (product) {
+      this.$store.dispatch('cart/removeToCart', product)
+    },
+    getProductTotalPrice(item) {
+      let price = (item.price / 100) * item.quantity.value;
+
+      return price.toFixed(2);
+    },
+    changeQuantity(item){
+      this.$store.dispatch('cart/updateProductQuantity', {vm: this, payload: item})
+    },
+    computeTotal(items, label = 'subtotal') {
+      let total = 0;
+      let total_tax = 0;
+      if(items.length > 0) {
+      
+        items.forEach(item => {
+          total += item.totals.total;
+          total += item.totals.tax;
+          total_tax += item.totals.tax;
+        });
+      }
+      if(label == 'subtotal') {
+        return total.toFixed(2);
+      }
+      if(label == 'total_tax') {
+        return total_tax.toFixed(2);
+      }
     }
   }
 }

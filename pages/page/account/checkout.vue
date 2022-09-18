@@ -27,7 +27,7 @@ export default {
       cart: 'cart/cartItems',
       cartTotal: 'cart/cartTotalAmount',
       curr: 'products/changeCurrency',
-      cart_key: 'user/cart_key'
+      cart_key: 'cart/cart_key'
     })
   },
   data() {

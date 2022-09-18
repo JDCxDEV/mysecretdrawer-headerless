@@ -26,8 +26,6 @@ export default {
         this.$store.dispatch('user/fetchUserDetails').then(() =>{
           this.$router.push({path: '/page/account/dashboard'});
         });
-    }else {
-       this.$store.dispatch('user/fetchCartKey');
     }
   }
 }
