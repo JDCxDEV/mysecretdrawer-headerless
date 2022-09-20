@@ -16,7 +16,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/multikart/favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2020/01/cropped-faviconoriginal-32x32.jpg' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' }
     ],
     script: [

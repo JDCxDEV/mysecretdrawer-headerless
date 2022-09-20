@@ -106,7 +106,6 @@ export default {
       let blogs = [];
       await Promise.all(item.map(item => 
         axios.get(item.image_link).then( response =>{
-          console.log(response);
           item.image = response.data.guid.rendered;
           item.thumbnail = response.data.media_details.sizes.thumbnail.source_url;
           item.medium = response.data.media_details.sizes.medium.source_url;

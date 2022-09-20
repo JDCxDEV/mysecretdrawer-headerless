@@ -20,12 +20,12 @@
               <tbody v-for="(item,index) in cart" :key="index">
                 <tr>
                   <td>
-                    <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
+                    <a class="link" @click="redirect(item)">
                       <img :src="getImgUrl(item.featured_image)" alt />
-                    </nuxt-link>
+                    </a>
                   </td>
                   <td>
-                    <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">{{ item.title }}</nuxt-link>
+                    <span class="link" @click="redirect(item)">{{ item.title }}</span>
                     <div class="mobile-cart-content row">
                       <div class="col-xs-3">
                         <div class="qty-box">
@@ -162,7 +162,29 @@
               </tbody>
             </table>
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-3">
+                <div class="input-group mt-3">
+                  <span class="input-group-prepend">
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-type="minus"
+                      data-field
+                      @click="applyCoupon()"
+      
+                    >
+                      Apply Coupon
+                    </button>
+                  </span>
+                    <input
+                      type="text"
+                      name="quantity"
+                      class="form-control input-number"
+                      v-model="coupon"
+                    />
+                </div>
+              </div>
+              <div class="col-md-5">
 
               </div>
               <div class="col-md-4"  v-if="cart.length">
@@ -217,14 +239,27 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-import Header from '../../../components/header/header2'
-import Footer from '../../../components/footer/footer1'
-import Breadcrumbs from '../../../components/widgets/breadcrumbs'
+import { mapGetters } from 'vuex';
+import Header from '../../../components/header/header2';
+import Footer from '../../../components/footer/footer1';
+import Breadcrumbs from '../../../components/widgets/breadcrumbs';
+import CoCartAPI from "@cocart/cocart-rest-api";
+
+const CoCart = new CoCartAPI({
+    url: process.env.VUE_APP_API_URL,
+    version: 'cocart/v2'
+});
+
+const CoCartV1 = new CoCartAPI({
+    url: process.env.VUE_APP_API_URL,
+    version: 'cocart/v1'
+});
+
 export default {
   data() {
     return {
-      counter: 1
+      counter: 1,
+      coupon: '',
     }
   },
   components: {
@@ -289,6 +324,52 @@ export default {
         total = total + (this.cartTotal.shipping_total ?  (this.cartTotal.shipping_total / 100) : 0)
         return total.toFixed(2);
       }
+    },
+    redirect(item) {
+      if(item.meta.product_type == 'variation') {
+        CoCart.get("products/" + item.id)
+        .then((response) => {
+          this.$router.push({
+            path: '/product/sidebar/' + response.data.parent_id
+          })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+      }else {
+        this.$router.push({
+          path: '/product/sidebar/' + item.id
+        })
+      }
+    },
+
+    applyCoupon() {
+      let data = {
+        "coupon": this.coupon
+      };
+
+      CoCartV1.post("coupon", data)
+      .then((response) => {
+        // Successful request
+        console.log("Response Status:", response.status);
+        console.log("Response Headers:", response.headers);
+        console.log("Response Data:", response.data);
+        this.$toast.open({
+            message: 'Coupon has been successfully added!',
+            type: 'success',
+            position: 'top-right',
+        });
+      })
+      .catch((error) => {
+        this.$toast.open({
+            message: 'Expired or Invalid Coupon',
+            type: 'error',
+            position: 'top-right',
+        });
+      })
+      .finally(() => {
+        this.$store.dispatch('cart/fetchCartInformation');
+      });
     }
   }
 }
@@ -299,5 +380,18 @@ export default {
 .color-variant a{
   height: 20px !important;
   width: 20px !important;
+}
+
+.link{
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.link:hover{
+  cursor: pointer;
+  color: #ff4c3b !important;
+}
+.v-toast__text {
+  color:white !important;
 }
 </style>

@@ -47,6 +47,11 @@ import TopBar from '../widgets/topbar'
 import LeftSidebar from '../widgets/left-sidebar'
 import Nav from '../widgets/navbar'
 import HeaderWidgets from '../widgets/header-widgets'
+import CoCartAPI from "@cocart/cocart-rest-api";
+const CoCartV1 = new CoCartAPI({
+    url: process.env.VUE_APP_API_URL,
+    version: 'cocart/v1'
+});
 export default {
   data() {
     return {
@@ -56,6 +61,7 @@ export default {
 
   mounted() {
     this.$store.dispatch('cart/fetchCartInformation');
+    this.applyCoupon(this.$route.query.affliate);
   },
   components: {
     TopBar,
@@ -69,6 +75,32 @@ export default {
     },
     closeBarValFromChild(val) {
       this.leftSidebarVal = val
+    },
+    applyCoupon(coupon) {
+      if(coupon) {
+        let data = {
+          "coupon": coupon
+        };
+
+        CoCartV1.post("coupon", data)
+        .then((response) => {
+          this.$toast.open({
+              message: 'Thank for using affiliate link!',
+              type: 'success',
+              position: 'top-right',
+          });
+        })
+        .catch((error) => {
+          this.$toast.open({
+              message: 'Expired or Invalid Affiliate Link',
+              type: 'error',
+              position: 'top-right',
+          });
+        })
+        .finally(() => {
+          this.$store.dispatch('cart/fetchCartInformation');
+        }); 
+      }
     }
   }
 }

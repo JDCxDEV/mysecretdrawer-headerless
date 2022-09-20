@@ -43,9 +43,9 @@
                             />
                           </div>
                           <div class="product-detail">
-                            <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                            <a class="link" @click="redirect(product)">
                               <h6>{{ product.title }}</h6>
-                            </nuxt-link>
+                            </a>
                             <h4>{{ product.price * curr.curr | currency(curr.symbol) }}</h4>
                           </div>
                         </li>
@@ -92,19 +92,19 @@
           <ul class="show-div shopping-cart" v-if="cart.length">
             <li v-for="(item,index) in cart" :key="index">
               <div class="media">
-                <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
+                <a class="link" @click="redirect(item)">
                   <img alt class="mr-3" :src='getImgUrl(item.featured_image)'>
-                </nuxt-link>
+                </a>
                 <div class="media-body">
-                  <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
+                  <a class="link" @click="redirect(item)">
                     <h4>{{item.title}}</h4>
-                  </nuxt-link>
+                  </a>
                   <h4>
-                    <span>{{item.quantity}} x {{ item.price | currency }}</span>
+                    <span>{{item.quantity.value }} x {{ (item.price / 100) | currency }}</span>
                   </h4>
                 </div>
               </div>
-              <div class="close-circle">
+              <div class="close-circle" v-if="item.cart_item_data.wdr_free_product != 'Free'">
                 <a href="#" @click='removeCartItem(item)'>
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
@@ -114,7 +114,7 @@
               <div class="total">
                 <h5>
                   subtotal :
-                  <span>{{ cartTotal | currency }}</span>
+                  <span>{{  computeTotal(cart, 'subtotal') | currency }}</span>
                 </h5>
               </div>
             </li>
@@ -135,7 +135,14 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex';
+import CoCartAPI from "@cocart/cocart-rest-api";
+
+const CoCart = new CoCartAPI({
+    url: process.env.VUE_APP_API_URL,
+    version: 'cocart/v2'
+});
+
 export default {
   data() {
     return {
@@ -173,7 +180,59 @@ export default {
     updateCurrency: function (currency, currSymbol) {
       this.currencyChange = { curr: currency, symbol: currSymbol }
       this.$store.dispatch('products/changeCurrency', this.currencyChange)
+    },
+    computeTotal(items, label = 'subtotal') {
+      let total = 0;
+      let total_tax = 0;
+      if(items.length > 0) {
+      
+        items.forEach(item => {
+          total += item.totals.total;
+          total += item.totals.tax;
+          total_tax += item.totals.tax;
+        });
+      }
+
+      if(label == 'subtotal') {
+        return total.toFixed(2);
+      }
+      if(label == 'total_tax') {
+        return total_tax.toFixed(2);
+      }
+      if(label == 'total') {
+        total = total + (this.cartTotal.shipping_total ?  (this.cartTotal.shipping_total / 100) : 0)
+        return total.toFixed(2);
+      }
+    },
+    redirect(item) {
+      if(item.meta.product_type == 'variation') {
+        CoCart.get("products/" + item.id)
+        .then((response) => {
+          this.$router.push({
+            path: '/product/sidebar/' + response.data.parent_id
+          })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+      }else {
+        this.$router.push({
+          path: '/product/sidebar/' + item.id
+        })
+      }
     }
   }
 }
 </script>
+
+<style>
+.link{
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.link:hover{
+  cursor: pointer;
+  color: #ff4c3b !important;
+}
+</style>
