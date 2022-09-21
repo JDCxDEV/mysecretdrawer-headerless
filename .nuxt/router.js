@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _0b610530 = () => interopDefault(import('..\\pages\\blog\\index.vue' /* webpackChunkName: "pages/blog/index" */))
+const _476b0402 = () => interopDefault(import('..\\pages\\contact-us\\index.vue' /* webpackChunkName: "pages/contact-us/index" */))
 const _de18a80c = () => interopDefault(import('..\\pages\\our-models-sizes\\index.vue' /* webpackChunkName: "pages/our-models-sizes/index" */))
 const _7438e9c4 = () => interopDefault(import('..\\pages\\your-size-chart\\index.vue' /* webpackChunkName: "pages/your-size-chart/index" */))
 const _652def6a = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
@@ -225,6 +226,10 @@ export const routerOptions = {
     path: "/blog",
     component: _0b610530,
     name: "blog"
+  }, {
+    path: "/contact-us",
+    component: _476b0402,
+    name: "contact-us"
   }, {
     path: "/our-models-sizes",
     component: _de18a80c,

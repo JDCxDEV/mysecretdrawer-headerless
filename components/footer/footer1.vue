@@ -124,7 +124,7 @@
                       <a href="/our-size-chart">Our Size Chart</a>
                     </li>
                     <li>
-                      <a href="/our-model-sizes">Our Model's Sizes</a>
+                      <a href="/our-models-sizes">Our Model's Sizes</a>
                     </li>
                     <li>
                       <a href="/affiliates">affiliates</a>

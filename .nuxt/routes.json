@@ -7,6 +7,13 @@
     "_name": "_0b610530"
   },
   {
+    "name": "contact-us",
+    "path": "/contact-us",
+    "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\contact-us\\\\index.vue",
+    "chunkName": "pages/contact-us/index",
+    "_name": "_476b0402"
+  },
+  {
     "name": "our-models-sizes",
     "path": "/our-models-sizes",
     "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\our-models-sizes\\\\index.vue",
