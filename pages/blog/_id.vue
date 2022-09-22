@@ -5,12 +5,12 @@
     <section class="blog-detail-page section-b-space ratio2_3">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 blog-detail">
+          <div class="col-sm-7 blog-detail">
             <div class="container">
               <div class="row">
                 <div class="col-sm-2 blog-detail">
               </div>
-              <div class="col-sm-8 blog-detail">
+              <div class="col-sm-6 blog-detail">
                 <img :src='blog.image' class="img-fluid" alt="blog" />
               </div>
               </div>
@@ -171,13 +171,56 @@ export default {
           console.log(item)
           this.blog = blog;
           })
-        
         })
         })
       ));
-
-      
     }
   }
 }
 </script>
+
+<style>
+  #toc_container {
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin-bottom: 1em;
+    width: auto;
+    display: table;
+    font-size: 95%;
+}
+#toc_container p.toc_title {
+    text-align: center;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+#toc_container.no_bullets li, #toc_container.no_bullets ul, #toc_container.no_bullets ul li, .toc_widget_list.no_bullets, .toc_widget_list.no_bullets li {
+    background: 0 0;
+    list-style-type: none;
+    list-style: none;
+}
+
+#toc_container ul ul {
+    margin-left: 1.5em;
+}
+
+#toc_container li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: #c36;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.9rem;
+}
+
+</style>
