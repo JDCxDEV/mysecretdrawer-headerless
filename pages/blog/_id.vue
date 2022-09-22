@@ -223,4 +223,50 @@ p {
     margin-bottom: 0.9rem;
 }
 
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+.wp-block-image figcaption {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.wp-block-image .aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-block-image.aligncenter, .wp-block-image .aligncenter, .wp-block-image.alignleft, .wp-block-image .alignleft, .wp-block-image.alignright, .wp-block-image .alignright {
+    display: table;
+}
+
+.wp-block-image.aligncenter>figcaption, .wp-block-image .aligncenter>figcaption, .wp-block-image.alignleft>figcaption, .wp-block-image .alignleft>figcaption, .wp-block-image.alignright>figcaption, .wp-block-image .alignright>figcaption {
+    display: table-caption;
+    caption-side: bottom;
+}
+
+.blog-detail-page .blog-detail img {
+    margin-bottom: 5px;
+}
+.wp-block-image.aligncenter>figcaption, .wp-block-image .aligncenter>figcaption, .wp-block-image.alignleft>figcaption, .wp-block-image .alignleft>figcaption, .wp-block-image.alignright>figcaption, .wp-block-image .alignright>figcaption {
+    display: table-caption;
+    caption-side: bottom;
+}
+.wp-block-image figcaption {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+.elementor *, .elementor :after, .elementor :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+figcaption {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+    font-style: italic;
+    font-weight: 400;
+}
+
 </style>
