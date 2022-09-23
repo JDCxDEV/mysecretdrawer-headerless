@@ -111,11 +111,13 @@
   </div>
 </template>
 <script>
+  
 import Header from '../../components/header/header2'
 import Footer from '../../components/footer/footer1'
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
 import { mapState } from 'vuex';
 import axios from 'axios';
+import $ from 'jQuery';
 
 export default {
   components: {
@@ -137,7 +139,11 @@ export default {
       },
     }
   },
+
   async mounted() {
+
+    this.initScrollToDiv();
+
     let params = {
       params : {
         per_page: 30,
@@ -150,6 +156,7 @@ export default {
       blog.push(this.current);
       this.fetchCompeteData(blog);
     });
+
   },
   
   methods: {
@@ -174,8 +181,29 @@ export default {
         })
         })
       ));
-    }
+    },
+    initScrollToDiv() {
+      $(document).on('click', 'a[href^="#"]', function(e) {
+        // target element id
+        var id = $(this).attr('href');
+
+        // target element
+        var $id = $(id);
+        if ($id.length === 0) {
+            return;
+        }
+
+        // prevent standard hash navigation (avoid blinking in IE)
+        e.preventDefault();
+
+        // top position relative to the document
+        var pos = $id.offset().top;
+
+        // animated top scrolling
+        $('body, html').animate({scrollTop: pos});
+    });
   }
+  },
 }
 </script>
 
@@ -209,8 +237,6 @@ export default {
     display: list-item;
     text-align: -webkit-match-parent;
 }
-
-
 
 a {
     background-color: transparent;
