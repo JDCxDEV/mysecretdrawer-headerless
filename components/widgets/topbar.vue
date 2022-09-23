@@ -7,7 +7,7 @@
             <ul>
               <li><a style="color: white !important;" href="collection/all">SHOP</a></li>
               <li><a style="color: white !important;" href="contact-us">CONTACT US</a></li>
-              <li><a style="color: white !important;" href="faq">FAQS</a></li>
+              <li><a style="color: white !important;" href="faqs">FAQS</a></li>
               <li><a style="color: white !important;" href="privacy-and-security">PRIVACY & SECURITY</a></li>
             </ul>
           </div>

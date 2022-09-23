@@ -8,6 +8,7 @@ const _0b610530 = () => interopDefault(import('..\\pages\\blog\\index.vue' /* we
 const _476b0402 = () => interopDefault(import('..\\pages\\contact-us\\index.vue' /* webpackChunkName: "pages/contact-us/index" */))
 const _32e16be6 = () => interopDefault(import('..\\pages\\faqs\\index.vue' /* webpackChunkName: "pages/faqs/index" */))
 const _de18a80c = () => interopDefault(import('..\\pages\\our-models-sizes\\index.vue' /* webpackChunkName: "pages/our-models-sizes/index" */))
+const _292d26cf = () => interopDefault(import('..\\pages\\privacy-and-security\\index.vue' /* webpackChunkName: "pages/privacy-and-security/index" */))
 const _7438e9c4 = () => interopDefault(import('..\\pages\\your-size-chart\\index.vue' /* webpackChunkName: "pages/your-size-chart/index" */))
 const _652def6a = () => interopDefault(import('..\\pages\\blog\\blog-nosidebar.vue' /* webpackChunkName: "pages/blog/blog-nosidebar" */))
 const _bd293dbe = () => interopDefault(import('..\\pages\\blog\\blog-rightsidebar.vue' /* webpackChunkName: "pages/blog/blog-rightsidebar" */))
@@ -239,6 +240,10 @@ export const routerOptions = {
     path: "/our-models-sizes",
     component: _de18a80c,
     name: "our-models-sizes"
+  }, {
+    path: "/privacy-and-security",
+    component: _292d26cf,
+    name: "privacy-and-security"
   }, {
     path: "/your-size-chart",
     component: _7438e9c4,
