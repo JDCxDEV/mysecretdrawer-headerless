@@ -117,7 +117,7 @@ import Footer from '../../components/footer/footer1'
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
 import { mapState } from 'vuex';
 import axios from 'axios';
-import $ from 'jQuery';
+import $ from 'jquery';
 
 export default {
   components: {
