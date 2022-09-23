@@ -9,7 +9,7 @@
                     </span>
                     <h3 class="mt-5 contact-us-title">Drop Us a Line</h3>
                     <p class="contact-us-description">
-                        If you have any questions, accolades or (heaven forbid), a complaint, don't hesitate to reach out. We'll typically respond within a few hours.
+                        If you have any questions, accolades or (heaven forbid), a complaint, don't hesitate to reach out. We'll typically respond within a few hours. 1
                     </p>
                     <a  class="contact-us-email" href="mailto:help@mysecretdrawer.co">help@mysecretdrawer.co</a>
                 </div>

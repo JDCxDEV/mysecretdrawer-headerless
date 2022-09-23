@@ -14,6 +14,13 @@
     "_name": "_476b0402"
   },
   {
+    "name": "faqs",
+    "path": "/faqs",
+    "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\faqs\\\\index.vue",
+    "chunkName": "pages/faqs/index",
+    "_name": "_32e16be6"
+  },
+  {
     "name": "our-models-sizes",
     "path": "/our-models-sizes",
     "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\our-models-sizes\\\\index.vue",
