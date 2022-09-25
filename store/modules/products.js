@@ -92,7 +92,7 @@ const mutations = {
     state.wishlist.splice(index, 1)
   },
   addToCompare: (state, payload) => {
-    const product = state.products.find(item => item.id === payload.id)
+    const product = payload;
     const compareItems = state.compare.find(item => item.id === payload.id)
     if (compareItems) {
     } else {

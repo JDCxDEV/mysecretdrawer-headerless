@@ -1,10 +1,9 @@
 <template>
   <div>
     <b-modal
-      id="modal-lg"
+      id="quickview-modal"
       size="lg"
       centered
-      title="Quickview"
       :hide-footer="true"
       v-if="openModal"
     >
@@ -27,7 +26,12 @@
         </div>
         <div class="col-lg-6 rtl-text">
           <div class="product-right">
-            <h2>{{productData.title}}</h2>
+            <div class="row">
+              <div class="col-md-12 text-center mb-4">
+                <img :src='"@/assets/images/custom/logo/logo.png"' style="height:50px;" alt="logo" />
+              </div>
+            </div>
+            <h3>{{productData.title}}</h3>
             <h3 v-if="productData.sale">
               {{ discountedPrice(productData) * curr.curr | currency(curr.symbol) }}
               <del>{{ productData.price * curr.curr | currency(curr.symbol) }}</del>
@@ -52,11 +56,10 @@
               </div>
             </div>
             <div class="border-product">
-              <h6 class="product-title">product details</h6>
-              <p v-html="productData.short_description.substring(0,250)+'....'"></p>
+              <h4 class="product-title mb-4">product details</h4>
+              <p class="quick-view-text" v-html="productData.short_description.substring(0,250)+'....'"></p>
             </div>
-            <div class="product-buttons">
-              <a href="javascript:void(0)" @click="addToCart(product)" class="btn btn-solid">add to cart</a>
+            <div class="product-buttons text-center">
               <nuxt-link :to="{ path: '/product/sidebar/'+productData.id}" class="btn btn-solid">view detail</nuxt-link>
             </div>
           </div>
@@ -120,3 +123,14 @@ export default {
   }
 }
 </script>
+
+
+<style>
+  #quickview-modal .modal-content {
+    padding: 0px;
+  }
+
+  .quick-view-text {
+    font-size: 18px;
+  }
+</style>
