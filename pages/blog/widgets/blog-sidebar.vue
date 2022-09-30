@@ -86,7 +86,7 @@ export default {
   async mounted() {
     let params = {
       params: {
-        per_page: 5 ,
+        per_page: 10 ,
         order: 'desc',
       },
     }
