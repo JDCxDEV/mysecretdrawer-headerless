@@ -163,7 +163,7 @@ export default {
   .siderbar-social-media li:not(:first-child){
     margin-left: 20px;
   }
-  .siderbar-social-media  ul, li {
+  .siderbar-social-media li {
     display:inline !important;
-}
+  }
 </style>
