@@ -4,13 +4,14 @@
     <Breadcrumbs title="Blog" />
     <section class="blog-detail-page section-b-space ratio2_3">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-7 blog-detail">
+        <section class="section-b-space blog-page ratio2_3">
+          <div class="row">
+          <div class="col-md-7 blog-detail">
             <div class="container">
               <div class="row">
-                <div class="col-sm-2 blog-detail">
+              <div class="col-sm-2">
               </div>
-              <div class="col-sm-6 blog-detail">
+              <div class="col-sm-6">
                 <img :src='blog.image' class="img-fluid" alt="blog" />
               </div>
               </div>
@@ -24,9 +25,11 @@
               </li>
             </ul>
             <div v-html="blog.content.rendered"></div>
-          
           </div>
+          <BlogSidebar :showPopularTags="false" />
         </div>
+        </section>
+
 
         <div class="row section-b-space" style="display: none;">
           <div class="col-sm-12">
@@ -115,6 +118,7 @@
 import Header from '../../components/header/header2'
 import Footer from '../../components/footer/footer1'
 import Breadcrumbs from '../../components/widgets/breadcrumbs'
+import BlogSidebar from './widgets/blog-sidebar'
 import { mapState } from 'vuex';
 import axios from 'axios';
 import $ from 'jquery';
@@ -123,7 +127,8 @@ export default {
   components: {
     Header,
     Breadcrumbs,
-    Footer
+    Footer,
+    BlogSidebar
   },
 
   computed: mapState({
@@ -208,6 +213,22 @@ export default {
 </script>
 
 <style>
+
+  .blog-detail {
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    border-color: #D3D3D3ED;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  }
+
+  .blog-detail img {
+    height: auto;
+    max-width: 100%;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
   #toc_container {
     border: 1px solid #aaa;
     padding: 10px;
@@ -263,6 +284,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     margin-right: auto;
 }
 
+
+
 .wp-block-image.aligncenter, .wp-block-image .aligncenter, .wp-block-image.alignleft, .wp-block-image .alignleft, .wp-block-image.alignright, .wp-block-image .alignright {
     display: table;
 }
@@ -293,6 +316,11 @@ figcaption {
     line-height: 1.4;
     font-style: italic;
     font-weight: 400;
+}
+
+.red-line {
+  color: #F40847;
+  padding-right: 10px;
 }
 
 </style>

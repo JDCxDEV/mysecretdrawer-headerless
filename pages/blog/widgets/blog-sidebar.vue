@@ -1,8 +1,8 @@
 <template>
-  <div class="col-xl-3 col-lg-4 col-md-5">
+  <div class="col-xl-3 col-lg-4 col-md-3">
     <div class="blog-sidebar">
       <div class="theme-card">
-        <h4>Recent Blog</h4>
+        <h4><b class="red-line">|</b>Recent Blog</h4>
         <ul class="recent-blog">
           <li v-for="(blog,index) in bloglist" :key="index">
             <nuxt-link :to="{ path: '/blog/' + blog.slug}">
@@ -17,11 +17,41 @@
           </li>
         </ul>
       </div>
-      <div class="theme-card">
+      <div class="theme-card" v-if="showPopularTags">
         <h4>Popular Tags</h4>
         <ul class="popular-tag">
           <li v-for="(tag,index) in tags" :key="index">
             <span>{{ tag }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="theme-card">
+        <h4><b class="red-line">|</b>Follow Us</h4>
+        <ul class="siderbar-social-media">
+          <li>
+            <a href="https://www.facebook.com/MySecretDrawerOfficial/">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pinterest.ph/MySecretDrawer/">
+              <i class="fa fa-pinterest" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/_mysecretdrawers">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/_mysecretdrawer/">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCZSCmoSR7M-Ac7eVlbCDj9Q">
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -40,6 +70,14 @@ export default {
       bloglist: [],
     }
   },
+
+  props : {
+    showPopularTags: {
+      default : true,
+      type: String
+    },
+  },
+
   
   computed: mapState({
     bloglistRaw: state => state.blog.bloglist
@@ -119,3 +157,10 @@ export default {
   }
 }
 </script>
+
+
+<style>
+  .siderbar-social-media li:not(:first-child){
+    margin-left: 20px;
+  }
+</style>

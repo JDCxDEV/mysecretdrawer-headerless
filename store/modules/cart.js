@@ -33,7 +33,10 @@ const getters = {
 }
 // mutations
 const mutations = {
-  updateCartQuantity: (state, payload) => {
+  updateCartQuantity: (state, payload
+    
+    
+     ) => {
     // Calculate Product stock Counts
     function calculateStockCounts(item, quantity) {
       const qty = item.quantity + quantity
