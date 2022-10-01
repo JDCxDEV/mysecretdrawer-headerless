@@ -1,6 +1,32 @@
 <template>
 <div>
-    <div
+  <div
+      class="row"
+
+    >
+      <div class="col-xl-12">
+        <div class="row">
+          <div class="col-sm-4 mb-2 text-center"
+            v-for="(blog,index) in bloglist"
+            :key="index"
+            v-show="setPaginate(index)"
+          >
+            <div class="card card-blog">
+              <img class="card-img-top collection-img" :src="blog.image"  alt="Card image cap">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ blog.display_title}}</h5>
+                <div v-html="parseBlog(blog.description)"></div>
+               
+              </div>
+              <div class="card-footer">
+                <a :href="'/blog/' + blog.slug" class="btn btn-danger">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div
       class="row blog-media"
       v-for="(blog,index) in bloglist"
       :key="index"
@@ -30,7 +56,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="product-pagination border-cls-blog mb-0" v-if="bloglist.length > this.paginate">
       <div class="theme-paggination-block">
         <div class="row">
@@ -80,7 +106,7 @@ export default {
   data() {
     return {
       current: 1,
-      paginate: 6,
+      paginate: 12,
       paginateRange: 3,
       pages: [],
       paginates: '',
@@ -105,7 +131,7 @@ export default {
   async mounted() {
     let params = {
       params : {
-        per_page: 30
+        per_page: 100
       },
       type: 'list'
     }
@@ -168,15 +194,22 @@ export default {
           axios.get(item.author_link).then( response =>{
             item.author_name = response.data.name;
           }).then(() =>{
-          axios.get(item.replies_link).then( response =>{
-            item.comment_count = response.data.length;
-          })
+          // axios.get(item.replies_link).then( response =>{
+          //   item.comment_count = response.data.length;
+          // })
           blogs.push(item);
         })
         })
   
       ));
       this.bloglist = blogs;  
+    },
+    parseBlog(text) {
+      if(text.length > 120) {
+        return text.slice(0, 120) + '...';
+      }
+
+      return text;
     }
   }
 }
@@ -192,5 +225,28 @@ export default {
 .active-btn {
   pointer-events: none;
   background-color: #ececee;
+}
+
+.collection-img {
+  height: 200px !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: 600 !important;
+  line-height: 14px;
+  font-size: 14px;
+}
+
+.card-blog {
+  height: 400px;
+}
+
+.card-footer {
+  background-color: white;
+  border-top: 0px solid rgba(0, 0, 0, 0.125);
 }
 </style>

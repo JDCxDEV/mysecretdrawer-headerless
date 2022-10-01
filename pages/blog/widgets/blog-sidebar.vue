@@ -143,9 +143,9 @@ export default {
           axios.get(item.author_link).then( response =>{
             item.author_name = response.data.name;
           }).then(() =>{
-          axios.get(item.replies_link).then( response =>{
-            item.comment_count = response.data.length;
-          })
+          // axios.get(item.replies_link).then( response =>{
+          //   item.comment_count = response.data.length;
+          // })
           blogs.push(item);
         })
         })
