@@ -16,7 +16,7 @@
                       <div class="slider-contain text-white" >
                         <div class="slider-banner-text">
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
-                            <div class="text-white"  style="text-transform: none; !important;font-family: 'Arizonia' !important;font-size:76px;max-width: 75%;line-height: 60px;">{{ item.title }}</div>
+                            <div class="text-white"  style="text-transform: none; !important;font-family: 'Arizonia' !important;font-size:76px;max-width: 75%;line-height: 65px;">{{ item.title }}</div>
                             <h4 class="text-white" style="text-transform: none;">{{ item.subtitle }}</h4>
                             <a href="collection/all" class="btn btn-solid btn-circle">shop now</a>
                         </div>
@@ -48,13 +48,13 @@ export default {
       items: [
         {
           imagepath: require('@/assets/images/custom/banner/woman_in_lingerie.jpg'),
-          title: 'Beautiful lingerie for every Body',
+          title: 'Beautiful Lingerie for Every Body',
           subtitle_top:'Bring new adventures into your life!',
           alignclass: 'p-left'
         },
         {
           imagepath: require('@/assets/images/custom/banner/woman_in_lingerie.jpeg'),
-          title: 'JUST ONE LIFE TO LIVE…',
+          title: 'Just Live Life to Live…',
           subtitle: 'Get an exciting new outfit of beautiful lingerie delivered to your door every month for just $34.95! Gorgeous designs assembled with the finest fabrics. Lingerie guaranteed to stimulate both mind and body. Just choose your preferred size, complete the order and we’ll do the rest! Our promise is simple… love it or return it!',
           alignclass: 'p-left'
         }
@@ -70,7 +70,7 @@ export default {
   font-family: "Raleway", Sans-serif  ;
 }
 .slider-banner-text h4{
-  margin-top: 20px;
+  margin-top: 10px;
   max-width: 70%;
   font-size: 18px;
   font-weight: 400 !important;
@@ -86,6 +86,6 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
-    height: 65vh;
+    height: 62vh;
 } 
 </style>
