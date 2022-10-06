@@ -54,7 +54,7 @@ export default {
         },
         {
           imagepath: require('@/assets/images/custom/banner/woman_in_lingerie.jpeg'),
-          title: 'Just Live Life to Live…',
+          title: 'Just One Life to Live…',
           subtitle: 'Get an exciting new outfit of beautiful lingerie delivered to your door every month for just $34.95! Gorgeous designs assembled with the finest fabrics. Lingerie guaranteed to stimulate both mind and body. Just choose your preferred size, complete the order and we’ll do the rest! Our promise is simple… love it or return it!',
           alignclass: 'p-left'
         }
