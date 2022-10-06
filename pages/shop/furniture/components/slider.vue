@@ -16,7 +16,7 @@
                       <div class="slider-contain text-white" >
                         <div class="slider-banner-text">
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
-                            <h2 class="text-white" style="text-transform: none; !important">{{ item.title }}</h2>
+                            <div class="text-white"  style="text-transform: none; !important;font-family: 'Arizonia' !important;font-size:76px;max-width: 75%;line-height: 60px;">{{ item.title }}</div>
                             <h4 class="text-white" style="text-transform: none;">{{ item.subtitle }}</h4>
                             <a href="collection/all" class="btn btn-solid btn-circle">shop now</a>
                         </div>
@@ -71,7 +71,7 @@ export default {
 }
 .slider-banner-text h4{
   margin-top: 20px;
-  max-width: 7  0%;
+  max-width: 70%;
   font-size: 18px;
   font-weight: 400 !important;
   line-height: 25px;
@@ -81,4 +81,11 @@ export default {
 .btn-circle {
   border-radius: 20px !important;
 }
+
+.center-slider .home, .home-slider .home {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 65vh;
+} 
 </style>

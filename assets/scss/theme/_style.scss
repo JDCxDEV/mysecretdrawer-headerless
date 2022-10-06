@@ -64,7 +64,7 @@ font-family: $font_0, $font_1;
 position: relative;
 background: $white;
 font-size: 14px;
-font-family: "Raleway", Sans-serif !important;
+font-family: "Raleway", Sans-serif;
 }
 
 h1 {
@@ -13789,4 +13789,10 @@ left: unset;
   &:after {
     display: none;
   }
+}
+
+@font-face {
+  font-family: "Arizonia";
+  src: local("Arizonia"),
+   url(./../fonts/Arizonia-Regular.ttf) format("truetype");
 }
