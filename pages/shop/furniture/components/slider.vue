@@ -1,6 +1,6 @@
 <template>
     <div>
-<section class="p-0">
+      <section class="p-0">
       <div class="slide-1 home-slider">
         <div v-swiper:mySwiper="swiperOption">
           <div class="swiper-wrapper">
@@ -13,11 +13,11 @@
                 <div class="container">
                   <div class="row">
                     <div class="col">
-                      <div class="slider-contain text-white" >
+                      <div class="slider-contain text-white"  style="margin-top: -70px">
                         <div class="slider-banner-text">
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
                             <div class="text-white"  style="text-transform: none; !important;font-family: 'Arizonia' !important;font-size:76px;max-width: 75%;line-height: 65px;">{{ item.title }}</div>
-                            <h4 class="text-white" style="text-transform: none;">{{ item.subtitle }}</h4>
+                            <h4 class="text-white mt-4" style="text-transform: none;">{{ item.subtitle }}</h4>
                             <a href="collection/all" class="btn btn-solid btn-circle">shop now</a>
                         </div>
                       </div>
