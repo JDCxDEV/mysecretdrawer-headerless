@@ -6,9 +6,8 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item, index) in items" :key="index">
               <div
-                class="text-center"
+                class="text-center landing-image"
                 :class="item.alignclass"
-                style="background-size: cover; background-size: 100% 100% !important; height: 87vh !important;"
                 v-bind:style="{ 'background-image': 'url(' + item.imagepath + ')' }"
               >
                 <div class="container">
@@ -90,5 +89,44 @@ export default {
     background-repeat: no-repeat;
     background-position: 50%;
     height: 87vh !important;
-} 
+}
+
+.landing-image {
+  background-size: cover; 
+  background-size: 100% 100% !important; 
+  height: 86.5vh !important;
+}
+
+@media only screen and (max-width: 1745.5px) {
+  .landing-image {
+    background-size: cover; 
+    background-size: 100% 100% !important; 
+    height: 85vh !important;
+  }
+}
+
+@media only screen and (max-width: 1536.5px) {
+  .landing-image {
+    background-size: cover; 
+    background-size: 100% 100% !important; 
+    height: 83vh !important;
+  }
+}
+
+@media only screen and (max-width: 1280.5px) {
+  .landing-image {
+    background-size: cover; 
+    background-size: 100% 100% !important; 
+    height: 75vh !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .landing-image {
+    background-size: cover; 
+    background-size: 100% 100% !important; 
+    height: 40.5vh !important;
+  }
+}
+
 </style>
