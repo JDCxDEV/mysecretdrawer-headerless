@@ -19,7 +19,7 @@
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
                             <div class="text-white"  style="text-transform: none; font-family: Allura !important; font-size: 76px; max-width: 75%; line-height: 65px;">{{ item.title }}</div>
                             <h4 class="text-white mt-4" style="text-transform: none;">{{ item.subtitle }}</h4>
-                            <!-- <a href="collection/all" class="btn btn-solid btn-circle mt-4">shop now</a> -->
+                            <a  v-if="item.hasButton" href="collection/all" class="btn btn-solid btn-circle mt-4">shop now</a>
                         </div>
                       </div>
                     </div>
@@ -51,13 +51,15 @@ export default {
           imagepath: require('@/assets/images/custom/banner/landing.jpg'),
           title: '',
           subtitle_top:'',
-          alignclass: 'p-left'
+          alignclass: 'p-left',
+          hasButton: false,
         },
         {
-          imagepath: require('@/assets/images/custom/banner/woman_in_lingerie.jpeg'),
-          title: 'Just One Life to Live…',
-          subtitle: 'Get an exciting new outfit of beautiful lingerie delivered to your door every month for just $39.95! Gorgeous designs assembled with the finest fabrics. Lingerie guaranteed to stimulate both mind and body. Just choose your preferred size, complete the order and we’ll do the rest! Our promise is simple… love it or return it!',
-          alignclass: 'p-left'
+          imagepath: require('@/assets/images/custom/banner/landing-2.jpeg'),
+          title: '',
+          subtitle: '',
+          alignclass: 'p-left',
+          hasButton: true,
         }
       ]
     }
