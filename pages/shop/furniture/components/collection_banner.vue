@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="title2 section-t-space red-section">
-      <div class="comtainer-fluid">
+      <div class="container-fluid">
         <div class="row d-flex justify-content-center ">
-          <div class="col-md-3 sideline red-landing-text">
+          <div class="col-md-3 col-sm-4 sideline red-landing-text">
             Gorgeous designs<br>Sensual fabrics
           </div>
-          <div class="col-md-3 sideline red-landing-text">
+          <div class="col-md-3 col-sm-4 sideline red-landing-text">
             Many styles and colors<br>Petite to Plus sizes
           </div>
-          <div class="col-md-3 red-landing-text">
+          <div class="col-md-3 col-sm-4 red-landing-text">
             Affordable quality<br>Free delivery
           </div>
         </div>
