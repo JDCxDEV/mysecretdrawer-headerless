@@ -2,15 +2,14 @@
   <div>
     <div class="title2 section-t-space red-section">
       <div class="comtainer-fluid">
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-2 sideline red-landing-text">
+        <div class="row d-flex justify-content-center ">
+          <div class="col-md-3 sideline red-landing-text">
             Gorgeous designs<br>Sensual fabrics
           </div>
-          <div class="col-md-2 sideline red-landing-text">
+          <div class="col-md-3 sideline red-landing-text">
             Many styles and colors<br>Petite to Plus sizes
           </div>
-          <div class="col-md-2 red-landing-text">
+          <div class="col-md-3 red-landing-text">
             Affordable quality<br>Free delivery
           </div>
         </div>
