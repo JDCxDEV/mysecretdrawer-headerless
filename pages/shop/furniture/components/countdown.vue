@@ -41,7 +41,7 @@
                             <h3>{{ minutes }}</h3>
                         </div>
                         <div class="col-md-12">
-                            <a  href="collection/all" class="btn btn-solid btn-danger btn-round mt-5">Shop Now</a>
+                            <a  href="collection/all" class="btn btn-solid btn-danger btn-round mt-3 mb-3">Shop Now</a>
                         </div>
                     </div>
 

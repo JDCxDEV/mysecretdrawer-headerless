@@ -31,6 +31,12 @@ export default {
 </script>
 
 <style>
+
+.parallax-banner {
+    background-size: cover;
+    background-size: 100% 100% !important;
+    height: 70vh !important;
+}
 @media only screen and (max-width: 600px) {
   .parallax-banner {
     background-size: cover;

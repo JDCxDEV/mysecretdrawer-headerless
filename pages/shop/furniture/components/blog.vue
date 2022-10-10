@@ -1,6 +1,6 @@
 <template>
 <div>
-    <section class="blog blog-2 section-b-space">
+  <section class="blog blog-2 section-b-space mt-4" >
     <div class="container">
         <div class="row">
             <div class="col-md-12">

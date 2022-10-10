@@ -50,7 +50,7 @@
                             <h3>{{ seconds }}</h3>
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-solid btn-danger btn-round mt-5">Shop Now</button>
+                            <button type="submit" class="btn btn-solid btn-danger btn-round mt-3 mb-3">Shop Now</button>
                         </div>
                     </div>
 
