@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title2 section-t-space red-section">
+    <!-- <div class="title2 section-t-space red-section">
       <div class="container-fluid">
         <div class="row d-flex justify-content-center ">
           <div class="col-md-3 col-sm-4 sideline red-landing-text">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="banner-furniture ratio_45">
     <div class="title2 section-t-space" style="padding-top: 30px;">
       <div class="title1 mt-5">

@@ -6,8 +6,9 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item, index) in items" :key="index">
               <div
-                class="home text-center"
+                class="text-center"
                 :class="item.alignclass"
+                style="background-size: cover; background-size: 100% 100% !important;"
                 v-bind:style="{ 'background-image': 'url(' + item.imagepath + ')' }"
               >
                 <div class="container">
@@ -18,7 +19,7 @@
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
                             <div class="text-white"  style="text-transform: none; font-family: Allura !important; font-size: 76px; max-width: 75%; line-height: 65px;">{{ item.title }}</div>
                             <h4 class="text-white mt-4" style="text-transform: none;">{{ item.subtitle }}</h4>
-                            <a href="collection/all" class="btn btn-solid btn-circle mt-4">shop now</a>
+                            <!-- <a href="collection/all" class="btn btn-solid btn-circle mt-4">shop now</a> -->
                         </div>
                       </div>
                     </div>
@@ -86,7 +87,5 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
-    height: 100%;
-    margin-top: 20px;
 } 
 </style>
