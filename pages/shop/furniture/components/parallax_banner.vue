@@ -1,9 +1,7 @@
 <template>
     <div>
 <section class="p-0">
-    <div class="full-banner parallax text-center p-left" style="background-size: cover;
-    background-size: 100% 100% !important;
-    height: 50vh !important;" v-bind:style="{ 'background-image': `url(${imagepath})` }">
+    <div class="full-banner parallax text-center parallax-banner p-left" v-bind:style="{ 'background-image': `url(${imagepath})` }">
          <img :src="imagepath" alt class="bg-img d-none" />
         <div class="container">
             <div class="row">
@@ -31,3 +29,13 @@ export default {
   }
 }
 </script>
+
+<style>
+@media only screen and (max-width: 600px) {
+  .parallax-banner {
+    background-size: cover;
+    background-size: 95% 40% !important;
+    height: 40vh !important;
+  }
+}
+</style>
