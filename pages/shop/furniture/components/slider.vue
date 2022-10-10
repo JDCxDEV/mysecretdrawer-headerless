@@ -8,7 +8,7 @@
               <div
                 class="text-center"
                 :class="item.alignclass"
-                style="background-size: cover; background-size: 100% 100% !important;"
+                style="background-size: cover; background-size: 100% 100% !important; height: 87vh !important;"
                 v-bind:style="{ 'background-image': 'url(' + item.imagepath + ')' }"
               >
                 <div class="container">
@@ -89,5 +89,6 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
+    height: 87vh !important;
 } 
 </style>
