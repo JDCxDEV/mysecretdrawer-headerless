@@ -21,7 +21,7 @@
                     <p class="contact-us-description">
                         We're totally committed to bringing beautiful lingerie into every adult life. Think of it as a throwback to the<br> 'Make Love Not War' era! <br>If you think you'd be a great fit, either as an affiliate, reseller or supplier, get in touch. We're open to all conversations!
                     </p>
-                    <a  class="contact-us-email" href="mailto:oppurtunity@mysecretdrawer.co">oppurtunity@mysecretdrawer.co</a>
+                    <a  class="contact-us-email" href="mailto:opportunity@mysecretdrawer.co">opportunity@mysecretdrawer.co</a>
                 </div>
                 <div class="col-md-4 text-center">
                     <span class="circle-icons">

@@ -9,8 +9,8 @@
               <div class="col-lg-6">
                 <div class="subscribe">
                   <div>
-                    <h4>KNOW IT ALL FIRST!</h4>
-                    <p>Never Miss Anything From My Secret Drawer By Signing Up To Our Newsletter.</p>
+                    <h4>BRIGHTEN UP YOUR SUNDAYS!</h4>
+                    <p>Get our latest styles and stories delivered to your inbox!</p>
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@
             <div class="col">
               <div class="sub-title">
                 <div class="footer-title">
-                  <h4>why we choose</h4>
+                  <h4>&nbsp;</h4>
                 </div>
                 <div class="footer-contant">
                   <ul>
