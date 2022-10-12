@@ -1,5 +1,50 @@
 <template>
 <div>
+  <div class="container mt-3 mb-3">
+    <div class="row">
+      <div class="col-md-6">
+        <img  src="https://344800.smushcdn.com/915356/wp-content/uploads/sites/13/2021/04/blue-lingerie.png?lossy=0&strip=1&webp=1" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <div class="title2 section-t-space" style="padding-top: 30px;">
+      <div class="title1 mt-5">
+        <h2 class="title-inner1 v2" style="margin-top: -50px;"></h2>
+        <h2 class="title-inner1" style="margin-top: -20px;">Our Story</h2>
+      </div>
+    <div>
+      <div class="our-info">
+        <p class="text-left">
+          My Secret Drawer ® is a global lingerie brand based in Australia. Our goal is to design and make beautiful, affordable, quality lingerie for the beautiful you – no matter your age, your size, your gender or your location.
+          We know that lovely lingerie titillates and excites. It stimulates the imagination and the body. It’s an aid to love-making bliss. Whether you wear it under your work clothes or under your bed covers, beautiful lingerie will always enhance the beautiful you!
+        </p>
+        <h3 class="text-left text-danger">Love it or return it!</h3>
+        <p class="text-left">
+          It’s simple. If you’re not happy, we aren’t happy. Return your selection unworn and in the original packaging and we will happily refund or replace at your choice.
+        </p>
+        <h3 class="text-left text-danger">Your Size</h3>
+        <p class="text-left">
+          ‘One Size’ might work for socks but it sure doesn’t work for lingerie! In fact, getting deliveries of ridiculously small outfits is the very reason My Secret Drawer® was born. We proudly make styles and sizes from XS to 6XL because we are all unique.
+        </p>
+        <h3 class="text-left text-danger">Free delivery</h3>
+        <p class="text-left">
+          All orders over $95 are delivered free anywhere in the world a courier can reasonably reach. Members get free delivery on all orders over $50 and get an automatic 10% discount on every item!
+        </p>
+        <h3 class="text-left text-danger">Secure Payment facilities</h3>
+        <p class="text-left">
+          All payments are handled externally by our payment partners, PayPal and Stripe. We do not see or store your credit card or account details.
+        </p>
+        <h3 class="text-left text-danger">Pay in 4</h3>
+        <p class="text-left">
+          You have the option of paying as you purchase or using our ‘Pay in 4’ options via either Wizpay or PayPal.
+        </p>
+        <a  href="collection/all" class="btn btn-solid btn-circle mt-2 text-left">shop now</a>
+      </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
   <section class="blog blog-2 section-b-space mt-4" >
     <div class="container">
         <div class="row">
@@ -148,6 +193,20 @@ export default {
     right: 0;
     margin: 0 auto;
     bottom: 0;
+}
+
+.our-info p {
+  font-family: "Raleway", Sans-serif;
+  font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.our-info  h3{
+  font-weight: bolder;
 }
   </style>
   

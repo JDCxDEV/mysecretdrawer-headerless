@@ -24,7 +24,7 @@
               <a href="https://twitter.com/_mysecretdrawers">
                 <i style="color: white !important;" class="fa fa-twitter" aria-hidden="true"></i>
               </a>
-              <a href="https://www.instagram.com/_mysecretdrawer/">
+              <a href="https://www.instagram.com/mysecretdrawerco/">
                 <i style="color: white !important;" class="fa fa-instagram" aria-hidden="true"></i>
               </a>
               <a href="https://www.youtube.com/channel/UCZSCmoSR7M-Ac7eVlbCDj9Q">

@@ -77,7 +77,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/_mysecretdrawer/">
+                      <a href="https://www.instagram.com/mysecretdrawerco/">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                       </a>
                     </li>
@@ -151,7 +151,7 @@
                     </li>
                     <li>
                       <i class="fa fa-envelope-o"></i>
-                      <a href="mailto:help@mysecretdrawer.co">help@mysecretdrawer.co</a>
+                      <a href="mailto:help@mysecretdrawer.co">Help@MySecretDrawer.Co</a>
                     </li>
                   </ul>
                 </div>
@@ -166,7 +166,7 @@
             <div class="col-xl-6 col-md-6 col-sm-12">
               <div class="footer-end">
                 <p>
-                  <i class="fa fa-copyright" aria-hidden="true"></i> 2022 All Rights Reserved 
+                  <i class="fa fa-copyright" aria-hidden="true"></i> 2022 All Rights Reserved - Now4Group
                 </p>
               </div>
             </div>

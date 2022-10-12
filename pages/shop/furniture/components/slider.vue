@@ -14,11 +14,11 @@
                   <div class="row">
                     <div class="col">
                       <div class="slider-contain text-white" >
-                        <div class="slider-banner-text">
+                        <div class="slider-banner-text text-right">
                             <h4 class="text-white mb-4">{{ item.subtitle_top }}</h4>
                             <div class="text-white"  style="text-transform: none; font-family: Allura !important; font-size: 76px; max-width: 75%; line-height: 65px;">{{ item.title }}</div>
                             <h4 class="text-white mt-4" style="text-transform: none;">{{ item.subtitle }}</h4>
-                            <a  v-if="item.hasButton" href="collection/all" class="btn btn-solid btn-circle mt-4">shop now</a>
+                            <a  v-if="item.hasButton" href="collection/all" style="margin-top: 200px !important" class="pull-right text-right btn btn-solid btn-circle">shop now</a>
                         </div>
                       </div>
                     </div>
@@ -57,7 +57,7 @@ export default {
           imagepath: require('@/assets/images/custom/banner/landing-2.jpeg'),
           title: '',
           subtitle: '',
-          alignclass: 'p-left',
+          alignclass: 'p-right',
           hasButton: true,
         }
       ]
