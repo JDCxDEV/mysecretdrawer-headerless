@@ -66,7 +66,7 @@
       </nuxt-link>
       <p v-html="product.short_description"></p>
       <h4 v-if="product.on_sale">
-        {{ discountedPrice(product) | currency(curr.symbol) }}
+        {{ product.price | currency(curr.symbol) }}
         <del>{{ product.regular_price }}</del>
       </h4>
       <h4 v-else>{{ product.price | currency(curr.symbol) }}</h4>

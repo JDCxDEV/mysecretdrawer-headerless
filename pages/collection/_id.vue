@@ -94,12 +94,20 @@
                       </div>
                       <div class="product-wrapper-grid" :class="{'list-view':listview == true}">
                         <div class="row">
-                          <div class="col-sm-12">
+                          <div class="col-sm-12" v-if="loaded">
                             <div class="text-center section-t-space section-b-space" v-if="currentList.length == 0">
                               <img :src='"@/assets/images/empty-search.jpg"' class="img-fluid" alt />
                               <h3 class="mt-3">Sorry! Couldn't find the product you were looking For!!!</h3>
                               <div class="col-12 mt-3">
                                   <nuxt-link :to="{ path: '/'}" class="btn btn-solid">continue shopping</nuxt-link>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-12" v-else>
+                            <div class="text-center section-t-space section-b-space" v-if="currentList.length == 0">
+                              <img :src='"@/assets/images/ajax-loader.gif"' class="img-fluid" alt />
+                              <h3 class="mt-3">Fetching Products</h3>
+                              <div class="col-12 mt-3">
                               </div>
                             </div>
                           </div>
@@ -240,6 +248,7 @@ export default {
         }
       },
       string_params: '',
+      loaded: false,
     }
   },
   
@@ -274,7 +283,9 @@ export default {
         string_url: this.string_params
       };
 
-      this.$store.dispatch('products/fetchProducts', default_params);
+      this.$store.dispatch('products/fetchProducts', default_params).then(()=>{
+        this.loaded = true;
+      });
     },
     onChangeSort(event) {
       this.$store.dispatch('filter/sortProducts', event.target.value)
