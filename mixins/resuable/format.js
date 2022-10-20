@@ -47,6 +47,7 @@ export default class formatHelper {
     formatProduct(item, shouldFetchRelatedData = false) {
         let product = {
             id: item.id,
+            slug: item.slug,
             title: this.parseString(item.name),
             description: item.description,
             type: item.type,

@@ -116,7 +116,7 @@
                 <div class="swiper-slide">
                   <div>
                     <div class="media" v-for="(product,index) in getCategoryProduct('new products').splice(0,3)" :key="index">
-                      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                      <nuxt-link :to="{ path: '/product/'+product.slug}">
                         <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
                       </nuxt-link>
                       <div class="media-body align-self-center">
@@ -127,7 +127,7 @@
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                         </div>
-                        <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                        <nuxt-link :to="{ path: '/product/'+product.slug}">
                           <h6>{{product.title}}</h6>
                         </nuxt-link>
                         <h4 v-if="product.sale">
@@ -142,7 +142,7 @@
                   <div class="swiper-slide" v-if="getCategoryProduct('new products').length >= 4">
                   <div>
                     <div class="media" v-for="(product, index) in getCategoryProduct('new products').splice(3,3)" :key="index">
-                      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                      <nuxt-link :to="{ path: '/product/'+product.slug}">
                         <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
                       </nuxt-link>
                       <div class="media-body align-self-center">

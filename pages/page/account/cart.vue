@@ -326,21 +326,9 @@ export default {
       }
     },
     redirect(item) {
-      if(item.meta.product_type == 'variation') {
-        CoCart.get("products/" + item.id)
-        .then((response) => {
-          this.$router.push({
-            path: '/product/sidebar/' + response.data.parent_id
-          })
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-      }else {
-        this.$router.push({
-          path: '/product/sidebar/' + item.id
-        })
-      }
+      this.$router.push({
+        path: '/product/' + item.slug
+      })
     },
 
     applyCoupon() {

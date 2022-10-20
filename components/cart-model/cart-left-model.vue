@@ -15,11 +15,11 @@
           <ul class="cart_product">
             <li v-for="(item,index) in cart" :key="index">
               <div class="media">
-                <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
+                <nuxt-link :to="{ path: '/product/'+item.slug}">
                   <img alt class="mr-3" :src='getImgUrl(item.images[0].src)'>
                 </nuxt-link>
                 <div class="media-body">
-                  <nuxt-link :to="{ path: '/product/sidebar/'+item.id}">
+                  <nuxt-link :to="{ path: '/product/'+item.slug}">
                     <h4>{{item.title}}</h4>
                   </nuxt-link>
                   <h4>

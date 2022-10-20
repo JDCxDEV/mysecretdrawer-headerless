@@ -6,7 +6,7 @@
         <span class="lable4" v-if="product.on_sale">on sale</span>
       </div>
       <div class="front">
-        <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+        <nuxt-link :to="{ path: '/product/'+product.slug}">
           <img
             :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src.full, true)'
             :id="product.id"

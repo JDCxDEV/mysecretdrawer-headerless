@@ -36,10 +36,13 @@ export default {
         },
 
         async fetchSingleProduct(id) {
-            CoCart.get("products/" + id)
+            CoCart.get("products/?slug=" + id)
             .then((response) => {
-                this.getDetail = helper.formatProduct(response.data, true);
-                this.$store.dispatch('products/fetchRelatedProducts', this.getDetail.related);
+                if(response.data.products.length) {
+                    this.getDetail = helper.formatProduct(response.data.products[0], true);
+                    this.$store.dispatch('products/fetchRelatedProducts', this.getDetail.related);
+                }
+
             })
             .catch((error) => {
                 console.log(error);

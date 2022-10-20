@@ -186,7 +186,7 @@
                   <div class="swiper-slide">
                     <div>
                       <div class="media" v-for="(product,index) in productList" :key="index">
-                        <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                        <nuxt-link :to="{ path: '/product/'+product.slug}">
                           <img class="img-fluid" :src="getImgUrl(product.images[0].src.woocommerce_thumbnail, true)" alt>
                         </nuxt-link>
                         <div class="media-body align-self-center">

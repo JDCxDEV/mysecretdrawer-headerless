@@ -211,6 +211,7 @@ const _21be3075 = () => interopDefault(import('..\\pages\\shop\\watch\\component
 const _24d97a05 = () => interopDefault(import('..\\pages\\product\\sidebar\\_id.vue' /* webpackChunkName: "pages/product/sidebar/_id" */))
 const _62248c60 = () => interopDefault(import('..\\pages\\blog\\_id.vue' /* webpackChunkName: "pages/blog/_id" */))
 const _871f6358 = () => interopDefault(import('..\\pages\\collection\\_id.vue' /* webpackChunkName: "pages/collection/_id" */))
+const _46f89863 = () => interopDefault(import('..\\pages\\product\\_id.vue' /* webpackChunkName: "pages/product/_id" */))
 const _0816ec6c = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -1052,6 +1053,10 @@ export const routerOptions = {
     path: "/collection/:id?",
     component: _871f6358,
     name: "collection-id"
+  }, {
+    path: "/product/:id?",
+    component: _46f89863,
+    name: "product-id"
   }, {
     path: "/",
     component: _0816ec6c,
