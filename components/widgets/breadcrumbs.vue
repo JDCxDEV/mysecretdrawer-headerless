@@ -28,3 +28,13 @@ export default {
   props: ['title']
 }
 </script>
+
+<style>
+.breadcrumb-item  {
+  text-transform: none;
+}
+
+.page-title h2  {
+  text-transform: none !important;
+}
+</style>

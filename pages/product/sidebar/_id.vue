@@ -163,8 +163,8 @@
                           >Buy Now</button>
                       </div>
                       <div class="border-product">
-                        <h6 class="product-title">product details</h6>
-                        <p v-html="getDetail.short_description "></p>
+                        <h4 class="product-title mb-2">product details</h4>
+                        <p class="short-description" v-html="getDetail.short_description "></p>
                       </div>
                       <div class="border-product">
                         <h6 class="product-title">share it</h6>
@@ -586,6 +586,19 @@ export default {
     margin-bottom: 10px;
   }
 
+  .product-description-cstm a {
+    color: red;
+  }
+
+  .product-description-cstm p strong {
+    font-size: 20px;
+  }
+
+  .product-description-cstm p b {
+    font-size: 20px;
+  }
+
+
   .nav-cstm {
     margin: -20px;
     font-size: 40px;
@@ -609,6 +622,11 @@ export default {
     margin-bottom: 40px;
   }
 }
+
+  .short-description {
+    font-size: 16px;
+  }
+
 
 
   </style>
