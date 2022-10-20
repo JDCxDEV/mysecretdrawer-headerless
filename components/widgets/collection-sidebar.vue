@@ -234,6 +234,13 @@ export default {
         'dark-blue' : '#06038D',
         'bright-red' : '#EE4B2B',
         'apricot' : '#FBCEB1',
+        'light-brown' : '#C4A484',
+        'light-pink' : '#FFB6C1',
+        'navy-blue': '#000080',
+        'navyblue': '#000080',
+        'purple-black': '#301934',
+        'red-black': '#8B0000',
+        'skintone': '#f1c27d',
       }
 
       if(colors[color]) {

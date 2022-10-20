@@ -185,18 +185,22 @@
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <div>
-                      <div class="media" v-for="(product,index) in getCategoryProduct('new products').splice(0,3)" :key="index">
+                      <div class="media" v-for="(product,index) in productList" :key="index">
                         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
                           <img class="img-fluid" :src="getImgUrl(product.images[0].src.woocommerce_thumbnail, true)" alt>
                         </nuxt-link>
                         <div class="media-body align-self-center">
                           <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                            <div>
+                              <template v-for="rating in Math.round(product.average_rating)">
+                                <i class="fa fa-star" style="color: #ffd200;"></i>
+                              </template>
+                              <template v-for="rating in (5 - Math.round(product.average_rating))">
+                                <i class="fa fa-star" style="color: gray;"></i>
+                              </template>
+                            </div>
                           </div>
+                          
                           <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
                             <h6>{{product.title}}</h6>
                           </nuxt-link>
@@ -209,9 +213,9 @@
                       </div>
                     </div>
                   </div>
-                   <div class="swiper-slide" v-if="getCategoryProduct('new products').length >= 4">
+                   <!-- <div class="swiper-slide" v-if="productList.length >= 4">
                     <div>
-                      <div class="media" v-for="(product, index) in getCategoryProduct('new products').splice(3,3)" :key="index">
+                      <div class="media" v-for="(product, index) in productList" :key="index">
                         <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
                           <img class="img-fluid" :src="getImgUrl(product.images[0].src.woocommerce_thumbnail, true)" alt>
                         </nuxt-link>
@@ -234,7 +238,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               <div class="swiper-button-prev" slot="button-prev">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -250,6 +254,7 @@
   </div>
 </template>
 <script>
+import { throws } from 'assert'
 import { mapState, mapGetters } from 'vuex'
 export default {
   data() {
@@ -265,12 +270,15 @@ export default {
       }
     }
   },
+  mounted() {
+    this.fetchNewProduct();
+  },
   computed: {
     ...mapState({
-      productslist: state => state.products.productslist,
       currency: state => state.products.currency
     }),
     ...mapGetters({
+      productList: 'products/getProductList',
       filterbyCategory: 'menu/getCategories',
       curr: 'products/changeCurrency'
     })
@@ -284,7 +292,8 @@ export default {
       })
     },
     getImgUrl(path, isUrl = false) {
-      return isUrl ? path : require('@/assets/images/' + path) 
+      const lightCache = process.env.VUE_APP_LIGHT_CACHE != 'false'? process.env.VUE_APP_API_URL : '';
+      return isUrl ? lightCache + path : require('@/assets/images/' + path) 
     },
     discountedPrice(product) {
       const price = product.price - (product.price * product.discount / 100)
@@ -299,7 +308,19 @@ export default {
     },
     toggleSidebarBlock() {
       this.openBlock = !this.openBlock
-    }
+    },
+    fetchNewProduct() {
+      let default_params = {
+        params : {
+          orderby: 'date',
+          per_page: 4
+        },
+      };
+
+      this.$store.dispatch('products/fetchProducts', default_params).then(() =>{
+        this.loaded = true;
+      })
+    },
   }
 }
 </script>

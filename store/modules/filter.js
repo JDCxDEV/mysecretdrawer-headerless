@@ -186,7 +186,7 @@ const actions = {
     
 
       const registers = await Promise.all(result.data.map(item => 
-        CoCart.get("products/attributes/" + item.id + '/terms').then( response =>{
+        CoCart.get("products/attributes/" + item.id + '/terms?per_page=100&exclude=1091').then( response =>{
           item.terms = response.data;
           filters.push(item);
         })

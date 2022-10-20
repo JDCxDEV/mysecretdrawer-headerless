@@ -83,12 +83,12 @@
                         <p class="active" v-if="getDetail.stock"> Hurry! We have only {{ getDetail.stock }} product in stock. </p>
                       </div>
                       <div class="product-description border-product">
-                        <h6 class="product-title size-text">
+                        <!-- <h6 class="product-title size-text">
                           select size
                           <span>
                             <a href="javascript:void(0)" v-b-modal.modal-1>size chart</a>
                           </span>
-                        </h6>
+                        </h6> -->
                         <div class="size-box">
                           <ul>
                             <li
@@ -196,18 +196,18 @@
                               </a>
                             </li>
                           </ul>
-                          <form class="d-inline-block">
+                          <!-- <form class="d-inline-block">
                             <button class="wishlist-btn" @click="addToWishlist(product)">
                               <i class="fa fa-heart"></i>
                               <span class="title-font">Add To WishList</span>
                             </button>
-                          </form>
+                          </form> -->
                         </div>
                       </div>
-                      <div class="border-product">
+                      <!-- <div class="border-product">
                         <h6 class="product-title">Time Reminder</h6>
                         <Timer date="December 20, 2020" />
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -234,7 +234,7 @@
                           </div>
                         </b-card-text>
                       </b-tab>
-                      <b-tab title="Write Review">
+                      <!-- <b-tab title="Write Review">
                         <b-card-text>
                           <form class="theme-form">
                             <div class="form-row">
@@ -297,7 +297,7 @@
                             </div>
                           </form>
                         </b-card-text>
-                      </b-tab>
+                      </b-tab> -->
                     </b-tabs>
                   </div>
                 </div>
@@ -623,10 +623,15 @@ export default {
   }
 }
 
-  .short-description {
-    font-size: 16px;
-  }
+.short-description {
+  font-size: 16px;
+}
+
+.short-description br{
+  display: block; /* makes it have a width */
+  content: ""; /* clears default height */
+  margin-top: 10px; /* change this to whatever height you want it */
+}
 
 
-
-  </style>
+</style>
