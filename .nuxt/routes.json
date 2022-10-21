@@ -1428,13 +1428,6 @@
     "_name": "_21be3075"
   },
   {
-    "name": "product-sidebar-id",
-    "path": "/product/sidebar/:id?",
-    "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\product\\\\sidebar\\\\_id.vue",
-    "chunkName": "pages/product/sidebar/_id",
-    "_name": "_24d97a05"
-  },
-  {
     "name": "blog-id",
     "path": "/blog/:id",
     "component": "C:\\\\Users\\\\Default.LAPTOP-5LOJ08AS\\\\project\\\\mysecretdrawer-headerless\\\\pages\\\\blog\\\\_id.vue",

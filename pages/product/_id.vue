@@ -221,7 +221,7 @@
                           <p  class="product-description-cstm" v-html="getDetail.description"></p>
                         </b-card-text>
                       </b-tab>
-                      <b-tab title="Video">
+                      <!-- <b-tab title="Video">
                         <b-card-text>
                           <div class="mt-3 text-center">
                             <iframe
@@ -233,7 +233,7 @@
                             ></iframe>
                           </div>
                         </b-card-text>
-                      </b-tab>
+                      </b-tab> -->
                       <!-- <b-tab title="Write Review">
                         <b-card-text>
                           <form class="theme-form">
@@ -582,8 +582,17 @@ export default {
   <style>
   .product-description-cstm li {
     display: list-item;
-    margin-left : 1em;
-    margin-bottom: 10px;
+    margin-left : 2.5em;
+  }
+
+  .product-description-cstm h5 {
+    margin-top: 20px;
+  }
+
+
+  .product-description-cstm  ul {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
   }
 
   .product-description-cstm a {
@@ -627,11 +636,8 @@ export default {
   font-size: 16px;
 }
 
-.short-description br{
-  display: block; /* makes it have a width */
-  content: ""; /* clears default height */
-  margin-top: 10px; /* change this to whatever height you want it */
+.product-description-cstm .last-section h5{
+  font-size: 14px !important;
+  margin-top: 10px;
 }
-
-
 </style>
