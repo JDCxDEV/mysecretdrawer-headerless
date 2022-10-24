@@ -61,7 +61,7 @@
           <i class="fa fa-star" style="color: gray;"></i>
         </template>
       </div>
-      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+      <nuxt-link :to="{ path: '/product/'+product.slug}">
         <h6>{{ product.title }}</h6>
       </nuxt-link>
       <p v-html="product.short_description"></p>
