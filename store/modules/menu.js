@@ -52,8 +52,6 @@ const actions = {
         categories.push(category);
       });
 
-  
-
       let home_tab = {
         title: "Home", "type": "sub", "badgeValue": "new", "active": false
       };

@@ -201,7 +201,7 @@
                             </div>
                           </div>
                           
-                          <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+                          <nuxt-link :to="{ path: '/product/'+product.slug}">
                             <h6>{{product.title}}</h6>
                           </nuxt-link>
                           <h4 v-if="product.sale">
