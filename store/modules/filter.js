@@ -52,7 +52,7 @@ const getters = {
       });
     }
 
-    return size;
+    return size.sort(function(a, b){return a.description - b.description});
   },
 
   tagItems: (state) => {
@@ -186,7 +186,7 @@ const actions = {
     
 
       const registers = await Promise.all(result.data.map(item => 
-        CoCart.get("products/attributes/" + item.id + '/terms?per_page=100&exclude=1091&hide_empty=true&orderby=term_group').then( response =>{
+        CoCart.get("products/attributes/" + item.id + '/terms?per_page=100&exclude=1091&hide_empty=true&orderby=description').then( response =>{
           item.terms = response.data;
           filters.push(item);
         })
