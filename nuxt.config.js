@@ -1,83 +1,73 @@
 export default {
   ssr: false,
-  target: 'server',
-  /*
-  ** Headers of the page
-  */
+  target: "server",
 
   render: {
-    csp: true
+    csp: true,
   },
 
   head: {
-    title: 'MSD',
+    title: "MSD",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'https://mysecretdrawer.com/wp-content/uploads/sites/13/2020/01/cropped-faviconoriginal-32x32.jpg' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' }
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "https://mysecretdrawer.com/wp-content/uploads/sites/13/2020/01/cropped-faviconoriginal-32x32.jpg",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Lato:300,400,700,900",
+      },
     ],
-    script: [
-      { src: 'https://checkout.stripe.com/checkout.js'}
-    ]
+    script: [{ src: "https://checkout.stripe.com/checkout.js" }],
   },
 
   router: {
-    base: ''
+    base: "",
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#ff4c3b', throttle: 200, height: '3px', css: true },
-  /*
-  ** Global CSS
-  */
-  css: [
-    'swiper/css/swiper.css',
-    '~/assets/scss/app.scss',
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
+
+  loading: {
+    color: "#ff4c3b",
+    throttle: 200,
+    height: "3px",
+    css: true,
+  },
+
+  css: ["swiper/css/swiper.css", "~/assets/scss/app.scss"],
+
   plugins: [
-     { src: '~/plugins/plugin.js', ssr:false },
-     { src: '~/plugins/localStorage.js', ssr:false },
+    { src: "~/plugins/plugin.js", ssr: false },
+    { src: "~/plugins/localStorage.js", ssr: false },
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    'bootstrap-vue/nuxt',
-    '@nuxtjs/axios',
-    'vue-scrollto/nuxt',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/proxy',
-   
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/axios",
+    "vue-scrollto/nuxt",
+    "@nuxtjs/dotenv",
+    "@nuxtjs/proxy",
   ],
-  
+
   dotenv: {
-    /* module options */
+    // module options
   },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+
   axios: {
-    baseURL: '/',
-    browserBaseURL: '/',
-    proxy: true
+    baseURL: "/",
+    browserBaseURL: "/",
+    proxy: true,
   },
+
   proxy: {
-    // Simple proxy
-    '/api/': {
+    "/api/": {
       target: process.env.BASE_URL,
       pathRewrite: { "^/api/": "" },
-      changeOrigin: true
+      changeOrigin: true,
     },
-    
   },
 
   publicRuntimeConfig: {
@@ -85,21 +75,18 @@ export default {
       browserBaseURL: process.env.BROWSER_BASE_URL,
     },
   },
-  
+
   privateRuntimeConfig: {
     axios: {
       baseURL: process.env.BASE_URL,
     },
   },
+
   generate: {
-    fallback: '404.html', 
+    fallback: "404.html",
     // routes() {
-
-    //   let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
-    //   let params = {
-    //     per_page: 100,
-    //   };
-
+    //   let url = process.env.VUE_APP_BLOG_API_URL + "posts?";
+    //   let params = { per_page: 100 };
     //   params = new URLSearchParams(_.pickBy(params)).toString();
     //   return axios.get(url + params).then(res => {
     //     return res.data.map(blog => {
@@ -108,18 +95,12 @@ export default {
     //   })
     // }
   },
-  /*
-  ** Build configuration
-  */
+
   build: {
-    transpile: [
-      "vee-validate/dist/rules"
-    ],
-    /*
-    ** You can extend webpack config here
-    */
+    transpile: ["vee-validate/dist/rules"],
     extend(config, ctx) {
+      // Extend webpack config here
     },
-    babel: { compact: true }
-  }
-}
+    babel: { compact: true },
+  },
+};
