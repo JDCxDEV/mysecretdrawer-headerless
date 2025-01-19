@@ -452,6 +452,8 @@ export default {
           this.loadColor = true;
         }
       }
+
+      this.size.reverse();
       return [... new Set(uniqColor)];
     },
   
@@ -509,6 +511,7 @@ export default {
     },
     changeSizeVariant(variant) {
       this.selectedSize = variant.id
+      this.size.reverse();
     },
     getImgUrl(path, isUrl = false) {
       return isUrl ? path : require('@/assets/images/' + path)

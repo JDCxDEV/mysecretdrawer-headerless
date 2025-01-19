@@ -1,3 +1,15 @@
-const middleware = {}
+const middleware = {
+  // Authentication Middleware
+  auth({ store, redirect }) {
+    if (!store.state.authenticated) {
+      return redirect("/login");
+    }
+  },
 
-export default middleware
+  // Logging Middleware
+  logger({ route }) {
+    console.log(`[Middleware] Accessing: ${route.path}`);
+  },
+};
+
+export default middleware;
