@@ -1,32 +1,38 @@
-import Vue from 'vue'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import Vue2Filters from 'vue2-filters'
-import { VueMasonryPlugin } from 'vue-masonry'
-// import InfiniteLoading from 'vue-infinite-loading'
-import firebase from 'firebase/app'
-import PayPal from 'vue-paypal-checkout'
-import VueLazyLoad from 'vue-lazyload'
-import ProductZoomer from 'vue-product-zoomer'
-import VueScrollTo from 'vue-scrollto'
-import VueToast from 'vue-toast-notification';
-import 'vue-toast-notification/dist/theme-sugar.css';
+import Vue from "vue";
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import Vue2Filters from "vue2-filters";
+import { VueMasonryPlugin } from "vue-masonry";
+// import InfiniteLoading from 'vue-infinite-loading';
+import firebase from "firebase/app";
+import "firebase/auth"; // Import Firebase authentication module if needed
+import PayPal from "vue-paypal-checkout";
+import VueLazyLoad from "vue-lazyload";
+import ProductZoomer from "vue-product-zoomer";
+import VueScrollTo from "vue-scrollto";
+import VueToast from "vue-toast-notification";
+import "vue-toast-notification/dist/theme-sugar.css";
 
-Vue.use(VueAwesomeSwiper)
-Vue.use(Vue2Filters)
-Vue.use(VueMasonryPlugin)
-// Vue.use(InfiniteLoading)
-Vue.component('paypal-checkout', PayPal)
-Vue.use(VueLazyLoad)
-Vue.use(ProductZoomer)
-Vue.use(VueScrollTo)
-Vue.use(VueToast);
-
-const config = {
+// Initialize Firebase with your configuration
+const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGE_SENDER_ID",
-  appId: "YOUR_API_ID"
+  appId: "YOUR_API_ID",
 };
-firebase.initializeApp(config)
+
+firebase.initializeApp(firebaseConfig);
+
+// Use Vue plugins
+Vue.use(VueAwesomeSwiper);
+Vue.use(Vue2Filters);
+Vue.use(VueMasonryPlugin);
+// Vue.use(InfiniteLoading);
+Vue.component("paypal-checkout", PayPal);
+Vue.use(VueLazyLoad);
+Vue.use(ProductZoomer);
+Vue.use(VueScrollTo);
+Vue.use(VueToast);
+
+export default Vue;
