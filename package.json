@@ -1,8 +1,8 @@
 {
   "name": "multikart-ssr",
-  "version": "1.0.0",
-  "description": "My awe-inspiring Nuxt.js project",
-  "author": "pixelstrap",
+  "version": "1.0.2",
+  "description": "My Secret Drawer - Headless App",
+  "author": "jdcxdev",
   "private": true,
   "scripts": {
     "dev": "nuxt",
