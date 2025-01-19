@@ -1,83 +1,79 @@
-import formatHelper from './../../mixins/resuable/format'
-import _ from 'lodash';
-import axios from 'axios';
+import formatHelper from "./../../mixins/reusable/format"; // Adjusted path based on common conventions
+import _ from "lodash";
+import axios from "axios";
 
-const helper = new formatHelper;
+const helper = new formatHelper();
 
 const state = {
   current: {},
   bloglist: [],
   recentBlogList: [],
-}
+};
+
 // getters
 const getters = {
   getblogTag: (state) => {
-    const uniqueTag = []
-    const blogTag = []
-    state.bloglist.map((blog, index) => {
-      
+    const blogTag = [];
+
+    state.bloglist.forEach((blog) => {
       if (blog.categories) {
-          blog.categories.map((tag) => {
-            blogTag.push(tag)
-          })
+        blog.categories.forEach((tag) => {
+          blogTag.push(tag);
+        });
       }
-    }) 
+    });
 
     return Array.from(new Set(blogTag));
-  }
-}
+  },
+};
+
 // mutations
 const mutations = {
   setBloglist: (state, payload) => {
-    state.bloglist = payload
+    state.bloglist = payload;
   },
   setRecentBloglist: (state, payload) => {
-    state.recentBlogList = payload
+    state.recentBlogList = payload;
   },
   setCurrentBlog: (state, payload) => {
-    state.current = payload
-  },  
-}
+    state.current = payload;
+  },
+};
+
 // actions
 const actions = {
   async fetchBlogs({ commit }, payload) {
     try {
+      let url = `${process.env.VUE_APP_BLOG_API_URL}posts`; // Adjusted URL concatenation
 
-      let url =  process.env.VUE_APP_BLOG_API_URL + "posts?";
       let params = {
-        /* Default  number of blogs */
+        // Default parameters for blog posts query
       };
 
       params = new URLSearchParams(_.pickBy(payload.params)).toString();
-      
-      let blogs = [];
-      const result = await axios.get(url + params);
 
-      if(result.data.length) {
-        result.data.forEach((item) => {
-          blogs.push(helper.formatBlog(item));
-        });  
+      const response = await axios.get(`${url}?${params}`);
+
+      let blogs = response.data.map((item) => helper.formatBlog(item)); // Using map for transformation
+
+      if (payload.type === "list") {
+        commit("setBloglist", blogs);
+      } else if (payload.type === "single" && blogs.length > 0) {
+        commit("setCurrentBlog", blogs[0]);
+      } else {
+        commit("setRecentBloglist", blogs);
       }
-
-      if(payload.type == 'list') {
-        commit('setBloglist', blogs);
-      }else if(payload.type == 'single'){
-        commit('setCurrentBlog', blogs[0]);
-      }else {
-        commit('setRecentBloglist', blogs);
-      }
-
+    } catch (error) {
+      alert(error);
+      console.error(error);
     }
-      catch (error) {
-          alert(error)
-          console.log(error)
-      }
   },
-}
+};
+
 export default {
   namespaced: true,
   state,
   getters,
   actions,
-  mutations
-}
+  mutations,
+};
