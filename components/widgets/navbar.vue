@@ -1,56 +1,122 @@
 <template>
   <div>
-    <!-- Sample menu definition -->
+    <!-- Main Navigation -->
     <div class="main-navbar">
       <div id="mainnav">
-        <div class="toggle-nav" :class="leftSidebarVal ? 'toggle-button' : ''" @click="openmobilenav=true">
+        <!-- Mobile Toggle Button -->
+        <div
+          class="toggle-nav"
+          :class="{ 'toggle-button': leftSidebarVal }"
+          @click="mobilenav"
+        >
           <i class="fa fa-bars sidebar-bar"></i>
         </div>
-        <ul class="nav-menu" :class="{ opennav: openmobilenav }" >
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu" :class="{ opennav: openmobilenav }">
+          <!-- Back Button for Mobile Navigation -->
           <li class="back-btn">
             <div class="mobile-back text-right">
-              <span @click="openmobilenav=false">Back</span>
+              <span @click="openmobilenav = false">Back</span>
               <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
             </div>
           </li>
-          <li  v-for="(menuItem, index) in menulist" :key="index" :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'">
-            <a :href="menuItem.path ? menuItem.path : '#'" class="nav-link"  @click="setActive(menuItem.title)" >
-              {{menuItem.title}}
-              <span  class="sub-arrow" v-if="menuItem.children || menuItem.megamenu"></span>
+
+          <!-- Dynamic Menu Items -->
+          <li
+            v-for="(menuItem, index) in menulist"
+            :key="index"
+            :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'"
+          >
+            <!-- Menu Link -->
+            <a
+              :href="menuItem.path || '#'"
+              class="nav-link"
+              @click="setActive(menuItem.title)"
+            >
+              {{ menuItem.title }}
+              <span class="sub-arrow" v-if="menuItem.children || menuItem.megamenu"></span>
             </a>
-            <ul class="nav-submenu" :class="{ opensubmenu: isActive(menuItem.title) }" v-if="menuItem.children">
-              <li v-for="(childrenItem, index) in menuItem.children" :key="index" @click="setCategory(childrenItem)">
-                <a href="javascript:void(0)" @click="setAc1tiveChild(childrenItem.title)" v-if="childrenItem.children">
-                  {{childrenItem.title}}
+
+            <!-- Submenu -->
+            <ul
+              class="nav-submenu"
+              :class="{ opensubmenu: isActive(menuItem.title) }"
+              v-if="menuItem.children"
+            >
+              <li
+                v-for="(childrenItem, index) in menuItem.children"
+                :key="index"
+                @click="setCategory(childrenItem)"
+              >
+                <a
+                  v-if="childrenItem.children"
+                  href="javascript:void(0)"
+                  @click="setActiveChild(childrenItem.title)"
+                >
+                  {{ childrenItem.title }}
                   <span class="sub-arrow" v-if="childrenItem.children"></span>
                 </a>
-                <nuxt-link v-else :to="{ path: childrenItem.path}"  @click="setActiveChild(childrenItem.title)">
-                  {{childrenItem.title}}
+                <nuxt-link
+                  v-else
+                  :to="{ path: childrenItem.path }"
+                  @click="setActiveChild(childrenItem.title)"
+                >
+                  {{ childrenItem.title }}
                 </nuxt-link>
-                <ul class="nav-sub-childmenu" :class="{ opensubchild: isActiveChild(childrenItem.title) }" v-if="childrenItem.children">
-                  <li v-for="(childrenSubItem, index) in childrenItem.children" :key="index">
-                    <nuxt-link :to="{ path: childrenSubItem.path}">
-                      {{childrenSubItem.title}}
+
+                <!-- Sub-Child Menu -->
+                <ul
+                  class="nav-sub-childmenu"
+                  :class="{ opensubchild: isActiveChild(childrenItem.title) }"
+                  v-if="childrenItem.children"
+                >
+                  <li
+                    v-for="(childrenSubItem, index) in childrenItem.children"
+                    :key="index"
+                  >
+                    <nuxt-link :to="{ path: childrenSubItem.path }">
+                      {{ childrenSubItem.title }}
                     </nuxt-link>
                   </li>
                 </ul>
               </li>
             </ul>
-            <div class="mega-menu-container" :class="{ opensubmenu: isActive('portfolio') }" v-if="menuItem.megamenu">
+
+            <!-- Mega Menu -->
+            <div
+              class="mega-menu-container"
+              :class="{ opensubmenu: isActive('portfolio') }"
+              v-if="menuItem.megamenu"
+            >
               <div class="container">
                 <div class="row">
-                  <div class="col mega-box"  v-for="(childrenItem, index) in menuItem.children" :key="index">
+                  <div
+                    class="col mega-box"
+                    v-for="(childrenItem, index) in menuItem.children"
+                    :key="index"
+                  >
                     <div class="link-section">
-                      <div class="menu-title" @click="setActivesubmega('portfolio')">
-                        <h5>{{childrenItem.title}}
+                      <div
+                        class="menu-title"
+                        @click="setActivesubmega('portfolio')"
+                      >
+                        <h5>
+                          {{ childrenItem.title }}
                           <span class="sub-arrow"></span>
                         </h5>
                       </div>
-                      <div class="menu-content" :class="{ opensubmegamenu: isActivesubmega('portfolio') }">
+                      <div
+                        class="menu-content"
+                        :class="{ opensubmegamenu: isActivesubmega('portfolio') }"
+                      >
                         <ul>
-                          <li v-for="(childrenSubItem, index) in childrenItem.children" :key="index">
-                            <nuxt-link :to="{ path: childrenSubItem.path}">
-                              {{childrenSubItem.title}}
+                          <li
+                            v-for="(childrenSubItem, index) in childrenItem.children"
+                            :key="index"
+                          >
+                            <nuxt-link :to="{ path: childrenSubItem.path }">
+                              {{ childrenSubItem.title }}
                             </nuxt-link>
                           </li>
                         </ul>
@@ -66,72 +132,62 @@
     </div>
   </div>
 </template>
-<script>
-import { mapState } from 'vuex'
-export default {
-  props: ['leftSidebarVal'],
 
+<script>
+import { mapState } from "vuex";
+
+export default {
+  props: ["leftSidebarVal"],
   data() {
     return {
       openmobilenav: false,
-      subnav: false,
-      activeItem: 'home',
-      activeChildItem: 'fashion 1',
-      activemegaChild: 'portfolio'
-    }
+      activeItem: "home",
+      activeChildItem: "fashion 1",
+      activemegaChild: "portfolio",
+    };
   },
   computed: {
     ...mapState({
-      menulist: state => state.menu.data,
-      hasFilterItem: state => state.filter.filterItems.length ? true : false
+      menulist: (state) => state.menu.data,
+      hasFilterItem: (state) =>
+        state.filter.filterItems.length ? true : false,
     }),
   },
-
   mounted() {
-    this.$store.dispatch('menu/fetchCategories')
-    if(!this.hasFilterItem) {
-      this.$store.dispatch('filter/fetchFilterItems')
+    this.$store.dispatch("menu/fetchCategories");
+    if (!this.hasFilterItem) {
+      this.$store.dispatch("filter/fetchFilterItems");
     }
   },
   methods: {
-    mobilenav: function () {
-      this.openmobilenav = !this.openmobilenav
+    mobilenav() {
+      this.openmobilenav = !this.openmobilenav;
     },
-    isActive: function (menuItem) {
-      return this.activeItem === menuItem
+    isActive(menuItem) {
+      return this.activeItem === menuItem;
     },
-    setActive: function (menuItem) {
-      if (this.activeItem === menuItem) {
-        this.activeItem = ''
-      } else {
-        this.activeItem = menuItem
-      }
+    setActive(menuItem) {
+      this.activeItem = this.activeItem === menuItem ? "" : menuItem;
     },
-    isActiveChild: function (menuChildItem) {
-      return this.activeChildItem === menuChildItem
+    isActiveChild(menuChildItem) {
+      return this.activeChildItem === menuChildItem;
     },
-    setActiveChild: function (menuChildItem) {
-      if (this.activeChildItem === menuChildItem) {
-        this.activeChildItem = ''
-      } else {
-        this.activeChildItem = menuChildItem
-      }
+    setActiveChild(menuChildItem) {
+      this.activeChildItem =
+        this.activeChildItem === menuChildItem ? "" : menuChildItem;
     },
-    isActivesubmega: function (megaChildItem) {
-      return this.activemegaChild === megaChildItem
+    isActivesubmega(megaChildItem) {
+      return this.activemegaChild === megaChildItem;
     },
-    setActivesubmega: function (megaChildItem) {
-      if (this.activemegaChild === megaChildItem) {
-        this.activemegaChild = ''
-      } else {
-        this.activemegaChild = megaChildItem
-      }
+    setActivesubmega(megaChildItem) {
+      this.activemegaChild =
+        this.activemegaChild === megaChildItem ? "" : megaChildItem;
     },
-    setCategory: function (item){
-      this.$store.dispatch('menu/setSelectedCategory', item);
-    }
-  }
-}
+    setCategory(item) {
+      this.$store.dispatch("menu/setSelectedCategory", item);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -144,15 +200,14 @@ export default {
 
 <style>
 .main-menu .menu-left .navbar {
-    padding: 20px 10px 20px 0 !important;
+  padding: 20px 10px 20px 0 !important;
 }
 .main-menu .brand-logo {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-
 .onhover-div {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 </style>
